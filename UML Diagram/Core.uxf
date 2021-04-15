@@ -1,0 +1,41 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLPackage</id><coordinates><x>48</x><y>150</y><w>470</w><h>310</h></coordinates><panel_attributes>Mate.Core
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>338</x><y>30</y><w>100</w><h>70</h></coordinates><panel_attributes>Interface
+IPiece
+-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>58</x><y>180</y><w>450</w><h>270</h></coordinates><panel_attributes>Abstractions
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>68</x><y>210</y><w>220</w><h>200</h></coordinates><panel_attributes>Enumerations
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>84</x><y>240</y><w>90</w><h>160</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Files
+-
+a = 0
+b = 1
+c = 2
+d = 3
+e = 4
+f = 5
+g = 6
+h = 7
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>184</x><y>240</y><w>90</w><h>160</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Ranks
+-
+one = 0
+two = 1
+three = 2
+four = 3
+five = 4
+six = 5
+seven = 6
+eight = 7
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>210</y><w>190</w><h>110</h></coordinates><panel_attributes>Position
+-
++ &lt;&lt;property&gt;&gt; File: Files
++ &lt;&lt;property&gt;&gt; Rank: Ranks
+-
++ SameRank(Position): bool
++ SameFile(Position): bool
++ SamePosition(Position) : bool 
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
