@@ -1,13 +1,12 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLPackage</id><coordinates><x>318</x><y>170</y><w>530</w><h>430</h></coordinates><panel_attributes>Mate.Core
---
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>608</x><y>50</y><w>100</w><h>70</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>598</x><y>50</y><w>100</w><h>70</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
 IPiece
 -
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>328</x><y>200</y><w>250</w><h>240</h></coordinates><panel_attributes>Abstractions
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>218</x><y>90</y><w>280</w><h>440</h></coordinates><panel_attributes>Abstractions
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>338</x><y>230</y><w>230</w><h>200</h></coordinates><panel_attributes>Enumerations
+group=1</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>238</x><y>140</y><w>230</w><h>200</h></coordinates><panel_attributes>Enumerations
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>354</x><y>260</y><w>90</w><h>160</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+
+group=1</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>254</x><y>170</y><w>90</w><h>160</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 Files
 -
 a = 1
@@ -19,7 +18,8 @@ f = 6
 g = 7
 h = 8
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>464</x><y>260</y><w>90</w><h>160</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+--
+group=1</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>364</x><y>170</y><w>90</w><h>160</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 Ranks
 -
 one = 1
@@ -30,7 +30,8 @@ five = 5
 six = 6
 seven = 7
 eight = 8
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>250</y><w>230</w><h>140</h></coordinates><panel_attributes>Square
+--
+group=1</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>370</y><w>240</w><h>140</h></coordinates><panel_attributes>Square
 -
 + File: Files
 + Rank: Ranks
@@ -40,6 +41,16 @@ eight = 8
 + IsSameFileAs(Position): bool
 + IsSameSquareAs(Position) : bool 
 - GetColor(): bool
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>100</y><w>100</w><h>30</h></coordinates><panel_attributes>Board
+---
+group=1</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>590</y><w>240</w><h>80</h></coordinates><panel_attributes>Board
 --
---</panel_attributes><additional_attributes></additional_attributes></element></diagram>
++ Squares: IReadOnlyCollection&lt;Square&gt;
+- _squares: List&lt;Square&gt;
+--
+- BuildBoard(): void
+---
+group=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>340</x><y>500</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>188</x><y>20</y><w>670</w><h>690</h></coordinates><panel_attributes>Mate.Core
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>220</x><y>550</y><w>280</w><h>140</h></coordinates><panel_attributes>Elements
+--
+group=2</panel_attributes><additional_attributes></additional_attributes></element></diagram>
