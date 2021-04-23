@@ -23,4 +23,15 @@ namespace Core.Abstractions
         seven = 7,
         eigth = 8
     }
+
+    public enum MoveType{
+        Normal = 1,
+        Capture = 2,
+        Passant = 3,
+        Castle = 4,
+        PromoteToKnight = 5,
+        PromotToBishop = 6,
+        PromoteToRook = 7,
+        PromoteToQueen = 8
+    }
 }
