@@ -1,7 +1,7 @@
 ```mermaid
     classDiagram
     class Files{
-        <<enum>>
+        <<enumeration>>
         a
         b
         c
@@ -12,7 +12,7 @@
         h
     }
     class Ranks{
-        <<enum>>
+        <<enumeration>>
         one
         two
         three
@@ -23,7 +23,7 @@
         eight
     }
     class MoveType{
-        <<enum>>
+        <<enumeration>>
         Normal
         Capture
         Passant
@@ -34,31 +34,34 @@
         PromoteToQueen
     }
     class Square{
-        +File Files
-        +Rank Ranks
-        +Color bool
+        +Files File
+        +Ranks Rank
+        +bool Color
         +IsSameFileAs(Square) bool
         +IsSameRankAs(Square) bool
         +IsSameSquareAs(Square) bool
         -GetColor() bool
     }
     class Board{
-
+        -Dictionary<Square,IPiece> Pieces
+        +IReadOnlyDictionary~Square,IPiece~ Position  
     }
     class Move{
-        +Square: Square
-        +Type: MoveType
+        +Square Square
+        +MoveType Type
     }
     class IPiece{
         <<interface>>
-        AvailableMoves
+        bool Color
+        IReadOnlyCollection~Move~ AvailableMoves 
     }
     class Piece{
-
+        + bool Color
+        +IReadOnlyCollection~Move~ AvailableMoves 
     }
     Ranks --* "1" Square
     Files --* "1" Square
     Square --* "64" Board
-    IPiece --* "2" Board
+    IPiece --* "0..64" Board
     Piece ..|> IPiece
 ```
