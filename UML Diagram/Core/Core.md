@@ -22,6 +22,10 @@
         seven
         eight
     }
+    class Tuple~Files,Ranks~{
+        +Files Item1
+        +Ranks Item2    
+    }
     class MoveType{
         <<enumeration>>
         Normal
@@ -59,8 +63,9 @@
         + bool Color
         +IReadOnlyCollection~Move~ AvailableMoves 
     }
-    Ranks --* "1" Square
-    Files --* "1" Square
+    Ranks --* "1"  Tuple~Files,Ranks~
+    Files --* "1"  Tuple~Files,Ranks~
+    Tuple~Files,Ranks~ <|-- Square
     Square --* "64" Board
     IPiece --* "0..64" Board
     Piece ..|> IPiece

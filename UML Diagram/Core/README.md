@@ -83,9 +83,12 @@ class Program
                 Console.WriteLine(pair.Value.Color);
         }
         
-        Console.WriteLine("Can I change the IReadOnlyCollection? - No");
+        Console.WriteLine(
+                "Can I change the IReadOnlyCollection? - No");
         
-        Console.WriteLine("Can I change the IReadOnlyCollection Value's Property? - No");
+        Console.WriteLine(
+                "Can I change the IReadOnlyCollection " + 
+                "Value's Property? - No");
         
         
     }
@@ -143,7 +146,9 @@ public class Square
 
     public bool IsSameFileAs(Square p) => (this.File == p.File);
     public bool IsSameRankAs(Square p) => (this.Rank == p.Rank);
-    public bool IsSameSquareAs(Square p) => (IsSameFileAs(p) && IsSameRankAs(p));
+    public bool IsSameSquareAs(Square p) => 
+        (IsSameFileAs(p) && IsSameRankAs(p));
+    
     private bool GetColor() =>
         ((int) File % 2 == 0) ^ 
         ((int) Rank % 2 == 0);        
@@ -177,7 +182,8 @@ class Program
         
         var board = new Dictionary<Square,int>();
         
-        Console.WriteLine("\nCreate a board, in a dictionary storing ints");
+        Console.WriteLine(
+            "\nCreate a board, in a dictionary storing ints");
         
         int i = 1;
         
@@ -189,8 +195,10 @@ class Program
         
         foreach(var entry in board)
         {
-            Console.WriteLine("\tSquare {0}{1}",entry.Key.File, (int)entry.Key.Rank);
-            Console.WriteLine("\t\tValue stored = {0}", entry.Value);
+            Console.WriteLine("\tSquare {0}{1}"
+                ,entry.Key.File, (int)entry.Key.Rank);
+            Console.WriteLine("\t\tValue stored = {0}"
+                , entry.Value);
         }
         
         Console.WriteLine("\nAccess element via key");
@@ -233,6 +241,85 @@ System.Collections.Generic.KeyNotFoundException: The given key was not present i
 
 We need to implement a `Square` that can behave as a `Key`. Or use another approach.
 
+## Solution: Make `Square` inherit from `Tuple<Files,Ranks>`
+
+The following changes were added to `Square`.
+
+```csharp
+public class Square : Tuple<Files, Ranks>
+{
+    public Files File { get => this.Item1;}
+    public Ranks Rank { get => this.Item2;}
+
+    public bool Color { get => GetColor(); }  
+
+    public Square(Files f, Ranks r) : base(f,r) { }
+
+    public bool IsSameFileAs(Square p) => (this.File == p.File);
+    public bool IsSameRankAs(Square p) => (this.Rank == p.Rank);
+    public bool IsSameSquareAs(Square p) => 
+        (IsSameFileAs(p) && IsSameRankAs(p));
+    
+    private bool GetColor() =>
+        ((int) File % 2 == 0) ^ 
+        ((int) Rank % 2 == 0);        
+}
+```
+
+`Program.Main()` was executed, yilding the following output:
+
+```
+Test if s1 and s2 are equal
+False
+True
+
+Create a board, in a dictionary storing ints
+
+Access all elements in the board
+	Square a1
+		Value stored = 1
+	Square a2
+		Value stored = 2
+	Square b1
+		Value stored = 3
+	Square b2
+		Value stored = 4
+
+Access element via key
+3
+```
+
+`Square`'s `s1` and `s2` were still not equals, because they are different objetcs, and the `==` operator was not overridden. 
+
+To further ilustrate, the following code was implemented:
+
+```csharp
+foreach (Files f in Enum.GetValues(typeof(Files)))
+    foreach (Ranks r in Enum.GetValues(typeof(Ranks)))
+    {
+        var value = board[new Square(f,r)];
+        Console.WriteLine("\tSquare {0}{1}",
+            f, 
+            (int)r);
+        Console.WriteLine("\t\tValue stored = {0}", 
+            value);
+    }
+```
+
+Which outputs:
+
+```
+    Square a1
+		Value stored = 1
+	Square a2
+		Value stored = 2
+	Square b1
+		Value stored = 3
+	Square b2
+		Value stored = 4
+```
+
+
 ## Testing the code 
 
-The code was to test `Board` implementation was creating using [Conding Ground's C# online compiler (Mono v5.2.2)](https://www.tutorialspoint.com/compile_csharp_online.php).
+The previous code was implementd andd tested using [Conding Ground's C# online compiler (Mono v5.2.2)](https://www.tutorialspoint.com/compile_csharp_online.php).
