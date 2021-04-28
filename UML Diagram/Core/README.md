@@ -1,6 +1,6 @@
 # Core UML
 
-# Piece and Board Design 
+## Piece and Board Design 
 
 The following snippet was implemented to provide basic implementation of piece ownership.
 
@@ -118,3 +118,121 @@ Can I change the IReadOnlyCollection Value's Property? - No
 ```
 
 We need to check the how will we implement an `Square` object as an key. Or do we need a `<Files,Ranks>` pair as a `Key`?
+
+## Checking if `Square` operates as a `TKey`
+
+It doesn't. The following code proves.
+
+```csharp
+using System.IO;
+using System;
+using System.Collections.Generic;
+
+public class Square
+{
+    public Files File { get; set; }
+    public Ranks Rank { get; set; }
+
+    public bool Color { get => GetColor(); }  
+
+    public Square(Files f, Ranks r)
+    {
+        File = f;
+        Rank = r;
+    }
+
+    public bool IsSameFileAs(Square p) => (this.File == p.File);
+    public bool IsSameRankAs(Square p) => (this.Rank == p.Rank);
+    public bool IsSameSquareAs(Square p) => (IsSameFileAs(p) && IsSameRankAs(p));
+    private bool GetColor() =>
+        ((int) File % 2 == 0) ^ 
+        ((int) Rank % 2 == 0);        
+}
+
+public enum Files
+{
+    a = 1,
+    b = 2
+}
+
+public enum Ranks
+{
+    one = 1,
+    two = 2
+}
+
+class Program
+{
+    
+    static void Main()
+    {
+        var s1 = new Square(Files.a, Ranks.one);
+        var s2 = new Square(Files.a, Ranks.one);
+        var s3 = new Square(Files.b, Ranks.one);
+        
+        Console.WriteLine("Test if s1 and s2 are equal");
+        
+        Console.WriteLine(s1 == s2);
+        Console.WriteLine(s1.IsSameSquareAs(s2));
+        
+        var board = new Dictionary<Square,int>();
+        
+        Console.WriteLine("\nCreate a board, in a dictionary storing ints");
+        
+        int i = 1;
+        
+        foreach (Files f in Enum.GetValues(typeof(Files)))
+            foreach (Ranks r in Enum.GetValues(typeof(Ranks)))
+                board.Add(new Square(f,r), i++);
+        
+        Console.WriteLine("\nAccess all elements in the board");
+        
+        foreach(var entry in board)
+        {
+            Console.WriteLine("\tSquare {0}{1}",entry.Key.File, (int)entry.Key.Rank);
+            Console.WriteLine("\t\tValue stored = {0}", entry.Value);
+        }
+        
+        Console.WriteLine("\nAccess element via key");
+        
+        Console.WriteLine(board[s3]); // Error: the given key was not present in dictionary
+    
+    }
+}
+```
+
+It returns:
+
+```
+Test if s1 and s2 are equal
+False
+True
+
+Create a board, in a dictionary storing ints
+
+Access all elements in the board
+	Square a1
+		Value stored = 1
+	Square a2
+		Value stored = 2
+	Square b1
+		Value stored = 3
+	Square b2
+		Value stored = 4
+
+Access element via key
+
+Unhandled Exception:
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+  at System.Collections.Generic.Dictionary`2[TKey,TValue].get_Item (TKey key) [0x0001e] in <902ab9e386384bec9c07fa19aa938869>:0 
+  at Program.Main () [0x0018d] in <49510240740047a3a73e3bbe069e7b66>:0 
+[ERROR] FATAL UNHANDLED EXCEPTION: System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+  at System.Collections.Generic.Dictionary`2[TKey,TValue].get_Item (TKey key) [0x0001e] in <902ab9e386384bec9c07fa19aa938869>:0 
+  at Program.Main () [0x0018d] in <49510240740047a3a73e3bbe069e7b66>:0 
+```
+
+We need to implement a `Square` that can behave as a `Key`. Or use another approach.
+
+## Testing the code 
+
+The code was to test `Board` implementation was creating using [Conding Ground's C# online compiler (Mono v5.2.2)](https://www.tutorialspoint.com/compile_csharp_online.php).
