@@ -1,5 +1,9 @@
 namespace Core.Abstractions
 {
+
+    /// <summary>
+    /// Defines all Files within a Chess board.
+    /// </summary>
     public enum Files
     {
         a = 1,
@@ -12,6 +16,10 @@ namespace Core.Abstractions
         h = 8
     }
 
+
+    /// <summary>
+    /// Defines all Ranks within a Chess board.
+    /// </summary>
     public enum Ranks
     {
         one = 1,
@@ -24,6 +32,10 @@ namespace Core.Abstractions
         eigth = 8
     }
 
+
+    /// <summary>
+    /// Defines all types of moves in a Chess game.
+    /// </summary>
     public enum MoveType{
         Normal = 1,
         Capture = 2,
