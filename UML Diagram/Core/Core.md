@@ -61,13 +61,34 @@
         IReadOnlyCollection~Move~ AvailableMoves 
     }
     class Piece{
+        <<abstract>>
         +bool Color
         +IReadOnlyCollection~Move~ AvailableMoves 
+    }
+    class Pawn{
+    }
+    class Knight{
+    }
+    class Bishop{
+    }
+    class Rook{
+    }
+    class Queen{
+    }
+    class King{
     }
     Ranks --* "1"  Tuple~Files,Ranks~
     Files --* "1"  Tuple~Files,Ranks~
     Tuple~Files,Ranks~ <|-- Square
     Square --* "64" Board
+    MoveType --* Move
+    Square --* Move
     IPiece --* "0..64" Board
     Piece ..|> IPiece
+    Piece <|-- Pawn
+    Piece <|-- Knight
+    Piece <|-- Bishop
+    Piece <|-- Rook
+    Piece <|-- Queen
+    Piece <|-- King
 ```
