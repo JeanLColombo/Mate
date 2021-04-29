@@ -22,7 +22,7 @@ namespace Core.Abstractions
         /// <summary>
         /// Returns value indicating the <see cref="Square"/>' color.
         /// </summary>
-        /// <returns><c>true</c> if the Square is white. <c>false</c> otherwise.</returns>            
+        /// <returns><c>true</c> if the <see cref="Square"/> is white. <c>false</c> otherwise.</returns>            
         public bool Color { get => GetColor(); }  
 
         /// <summary>
