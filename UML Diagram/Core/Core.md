@@ -48,7 +48,8 @@
     }
     class Board{
         -Dictionary<Square,IPiece> Pieces
-        +IReadOnlyDictionary~Square,IPiece~ Position  
+        +IReadOnlyDictionary~Square,IPiece~ Position 
+        -BuildBoard() void 
     }
     class Move{
         +Square Square

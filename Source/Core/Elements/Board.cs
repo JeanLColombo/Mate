@@ -4,19 +4,43 @@ using Core.Abstractions;
 
 namespace Core.Elements
 {
+    /// <summary>
+    /// Defines a chess <c>Board</c> and its properties.
+    /// </summary>
     public class Board
     {
-        public IReadOnlyCollection<Square> Squares { get => _squares; }
+        /// <summary>
+        /// Get the current position on the <c>Board</c>.
+        /// </summary>
+        /// <value></value>
+        public IReadOnlyDictionary<Square, IPiece> Position { get => Pieces; }
 
-        private List<Square> _squares {get; set;} = new  List<Square>();
+        /// <summary>
+        /// The Dictionary of Pieces on the board, based on their
+        /// position.
+        /// </summary>
+        /// <typeparam name="Square">Used as a <c>Key</c> 
+        /// to access pieces.</typeparam>
+        /// <typeparam name="IPiece">The piece on the <c>Square</c>. 
+        /// Can be <c>null</c>.</typeparam>
+        /// <returns></returns>
+        private Dictionary<Square,IPiece> Pieces {get; set;} = new  Dictionary<Square,IPiece>();
 
+        /// <summary>
+        /// Creates a new <c>Board</c> object with no Pieces.
+        /// </summary>
+        /// <returns></returns>
         public Board() => BuildBoard();
 
+        /// <summary>
+        /// Build a <c>Board</c> based on <c>Files</c> and <c>Ranks</c>
+        /// with no Pieces.
+        /// </summary>
         private void BuildBoard()
         {
             foreach (Files f in Enum.GetValues(typeof(Files)))
                 foreach (Ranks r in Enum.GetValues(typeof(Ranks)))
-                    _squares.Add(new Square(f, r));
+                    Pieces.Add(new Square(f, r), null);
         }
     }
 }
