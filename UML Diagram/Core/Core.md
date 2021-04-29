@@ -61,7 +61,7 @@
         IReadOnlyCollection~Move~ AvailableMoves 
     }
     class Piece{
-        + bool Color
+        +bool Color
         +IReadOnlyCollection~Move~ AvailableMoves 
     }
     Ranks --* "1"  Tuple~Files,Ranks~
