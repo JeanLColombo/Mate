@@ -63,6 +63,7 @@
     class Piece{
         <<abstract>>
         +bool Color
+        +Piece(bool)
         +AvailableMoves(IReadOnlyDictionary~Square,IPiece~)* IReadOnlyCollection~Move~  
     }
     class Pawn{

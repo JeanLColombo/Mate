@@ -23,6 +23,15 @@ namespace Core.Abstractions
         /// <returns></returns>
         public abstract IReadOnlyCollection<Move> AvailableMoves(IReadOnlyDictionary<Square,IPiece> position);
 
+        /// <summary>
+        /// Creates a new <see cref="Piece"/> object, of a given <paramref name="color"/>.
+        /// </summary>
+        /// <param name="color">White if <see cref="true"/>. Black otherwise.</param>
+        public Piece(bool color)
+        {
+            Color = color;
+        } 
+
 
         /// <summary>
         /// Associate <see cref="IPiece.Color"/> to <see cref="Color"/>.
