@@ -14,10 +14,14 @@ namespace Core.Abstractions
         /// <value><c>true</c> if the <see cref="IPiece"/> is white. <c>false</c> otherwise.</value>
         bool Color {get;}
 
+
         /// <summary>
-        /// Return all <see cref="Move"/>'s availablre por <see cref="IPiece"/>.
+        /// Return all basic <see cref="Move"/>'s available for <see cref="IPiece"/> at
+        /// a given <paramref name="position"/>.
         /// </summary>
-        /// <value></value>
-        IReadOnlyCollection<Move> AvailableMoves { get; }
+        /// <param name="position">Dictionary containing <see cref="IPiece"/>'s at
+        /// various <see cref="Square"/>'s.</param>
+        /// <returns></returns>
+        IReadOnlyCollection<Move> AvailableMoves(IReadOnlyDictionary<Square,IPiece> position);
     }
 }

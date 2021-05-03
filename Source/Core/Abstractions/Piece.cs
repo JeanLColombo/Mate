@@ -15,11 +15,13 @@ namespace Core.Abstractions
         public bool Color {get;}
 
         /// <summary>
-        /// Return all <see cref="Move"/>'s availablre por <see cref="IPiece"/>.
+        /// Return all basic <see cref="Move"/>'s available for <see cref="Piece"/> at
+        /// a given <paramref name="position"/>.
         /// </summary>
-        /// <value></value>
-        public virtual IReadOnlyCollection<Move> AvailableMoves {get;} = 
-            Enumerable.Empty<Move>().ToArray();
+        /// <param name="position">Dictionary containing <see cref="IPiece"/>'s at
+        /// various <see cref="Square"/>'s</param>
+        /// <returns></returns>
+        public abstract IReadOnlyCollection<Move> AvailableMoves(IReadOnlyDictionary<Square,IPiece> position);
 
 
         /// <summary>
@@ -30,6 +32,7 @@ namespace Core.Abstractions
         /// <summary>
         /// Associate <see cref="IPiece.AvailableMoves"/> to <see cref="AvailableMoves"/>.
         /// </summary>
-        IReadOnlyCollection<Move> IPiece.AvailableMoves => AvailableMoves;
+        IReadOnlyCollection<Move> IPiece.AvailableMoves(IReadOnlyDictionary<Square,IPiece> p) 
+            => AvailableMoves(p);
     }
 }

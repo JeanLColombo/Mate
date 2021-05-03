@@ -58,12 +58,12 @@
     class IPiece{
         <<interface>>
         bool Color
-        IReadOnlyCollection~Move~ AvailableMoves 
+        AvailableMoves(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~  
     }
     class Piece{
         <<abstract>>
         +bool Color
-        +IReadOnlyCollection~Move~ AvailableMoves 
+        +AvailableMoves(IReadOnlyDictionary~Square,IPiece~)* IReadOnlyCollection~Move~  
     }
     class Pawn{
     }
