@@ -52,7 +52,8 @@
         -BuildBoard() void 
     }
     class Move{
-        +Square Square
+        +Square FromSquare
+        +Square ToSquare
         +MoveType Type
     }
     class IPiece{
@@ -78,10 +79,16 @@
     }
     class King{
     }
+    class Chess{
+        -Board Board
+        +Chess()
+        +AvailableMoves() IReadOnlyCollection~Move~
+    }
     Ranks --* "1"  Tuple~Files,Ranks~
     Files --* "1"  Tuple~Files,Ranks~
     Tuple~Files,Ranks~ <|-- Square
     Square --* "64" Board
+    Board --* "1" Chess
     MoveType --* Move
     Square --* Move
     IPiece --* "0..64" Board

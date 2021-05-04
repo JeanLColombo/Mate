@@ -6,27 +6,37 @@ namespace Core.Abstractions
     public class Move
     {
         /// <summary>
+        /// Origin <see cref="Square"/>.
+        /// </summary>
+        /// <value></value>
+        public Square FromSquare {get;}
+
+        /// <summary>
         /// Destination <see cref="Square"/>.
         /// </summary>
         /// <value></value>
-        public Square ToSquare {get; private set;}
+        public Square ToSquare {get;}
 
         /// <summary>
         /// Associated <see cref="MoveType"/>.
         /// </summary>
         /// <value></value>
-        public MoveType Type {get; private set;}
-
+        public MoveType Type {get;}
+  
         /// <summary>
-        /// A move must contain the destination <see cref="Square"/>, 
-        /// and the <see cref="MoveType"/>, so that if could be properly managed.
+        /// A move must contain the <paramref name="origin"/> of a <see cref="Piece"/>, 
+        /// the destination <paramref name="destination"/>, and the associated
+        /// <see cref="MoveType"/>.
         /// </summary>
-        /// <param name="s"></param>
-        /// <param name="t"></param>
-        public Move(Square s, MoveType t)
+        /// <param name="origin"><see cref="Piece"/> original <see cref="Square"/>.</param>
+        /// <param name="destination">The new <see cref="Square"/></param>
+        /// <param name="type">The <see cref="MoveType"/>, so that it can be properly
+        /// managed.</param>
+        public Move(Square origin, Square destination, MoveType type)
         {
-            ToSquare = s;
-            Type = t;
+            FromSquare = origin;
+            ToSquare = destination;
+            Type = type;
         }
     }
 }
