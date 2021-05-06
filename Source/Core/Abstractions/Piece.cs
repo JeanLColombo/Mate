@@ -15,6 +15,15 @@ namespace Core.Abstractions
         public bool Color {get;}
 
         /// <summary>
+        /// Creates a new <see cref="Piece"/> object, of a given <paramref name="color"/>.
+        /// </summary>
+        /// <param name="color">White if <see cref="true"/>. Black otherwise.</param>
+        public Piece(bool color)
+        {
+            Color = color;
+        } 
+
+        /// <summary>
         /// Return all basic <see cref="Move"/>'s available for <see cref="Piece"/> at
         /// a given <paramref name="position"/>.
         /// </summary>
@@ -24,14 +33,23 @@ namespace Core.Abstractions
         public abstract IReadOnlyCollection<Move> AvailableMoves(IReadOnlyDictionary<Square,IPiece> position);
 
         /// <summary>
-        /// Creates a new <see cref="Piece"/> object, of a given <paramref name="color"/>.
+        /// Gets the <see cref="Square"/> where <see cref="Piece"/> is
+        /// placed, based on a given <paramref name="position"/>. 
         /// </summary>
-        /// <param name="color">White if <see cref="true"/>. Black otherwise.</param>
-        public Piece(bool color)
+        /// <param name="position">A read-only <see cref="IPiece"/> dictionary.</param>
+        /// <returns></returns>
+        public Square GetSquareFrom(IReadOnlyDictionary<Square,IPiece> position)
         {
-            Color = color;
-        } 
+            var ls = position
+                .Select(p => p.Key)
+                .Where(k => position[k] == this)
+                .ToList();
+            
+            if (ls.Count == 0)
+                return null;
 
+            return new Square(ls.First());
+        }
 
         /// <summary>
         /// Associate <see cref="IPiece.Color"/> to <see cref="Color"/>.

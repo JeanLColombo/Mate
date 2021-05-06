@@ -31,7 +31,5 @@ namespace Tests.Core.Elements
                 foreach (Ranks r in Enum.GetValues(typeof(Ranks)))
                     Assert.Null(b.Position[new Square(f, r)]);
         }
-
-        //TODO: Change from list to dictionary - get elements via their file and ranks.
     }
 }

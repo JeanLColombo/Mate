@@ -15,7 +15,7 @@ namespace Core
         /// Chessboard, invisible to users.
         /// </summary>
         /// <value></value>
-        private Board Board {get;} 
+        private Board Board {get;} = new Board();
 
         /// <summary>
         /// Creates a new <see cref="Chess"/> object, with no pieces.

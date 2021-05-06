@@ -13,6 +13,17 @@ namespace Tests.Core.Abstractions
         }
 
         [Fact]
+        public void TestConstructionFromSquare()
+        {
+            var s1 = new Square(Files.a, Ranks.one);
+            var s2 = new Square(s1);
+
+            Assert.Equal(s1.File, s2.File);
+            Assert.Equal(s1.Rank, s2.Rank);
+            Assert.False(s1 == s2);
+        }
+
+        [Fact]
         public void TestSquaresWithSameFiles()
         {
             var s1 = new Square(Files.a, Ranks.one);

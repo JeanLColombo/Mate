@@ -34,6 +34,15 @@ namespace Core.Abstractions
         public Square(Files f, Ranks r) : base(f, r) {}
 
         /// <summary>
+        /// Builds a new <see cref="Square"/> from a given <paramref name="square"/>.
+        /// </summary>
+        /// <param name="square">New <see cref="File"/> and <see cref="File"/> will be 
+        /// the same as <paramref name="square.File"/> and 
+        /// <paramref name="square.Rank"/>.</param>
+        /// <returns></returns>
+        public Square(Square square) : this(square.File, square.Rank) {}
+
+        /// <summary>
         /// Indicates if two <see cref="Square"/>'s have the same File.
         /// </summary>
         /// <param name="p"></param>

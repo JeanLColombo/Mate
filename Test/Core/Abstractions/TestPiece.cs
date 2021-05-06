@@ -20,5 +20,30 @@ namespace Tests.Core.Abstractions
             Assert.Empty(p.AvailableMoves(new Dictionary<Square,IPiece>()));
 
         }
+
+        [Fact]
+        public void TestGetSquareFromPosition()
+        {
+            var p = new MockedPiece(true);
+            var position = CreatePosition(p);
+
+            Assert.Equal(new Square(Files.a, Ranks.two), p.GetSquareFrom(position));
+        }
+
+        [Fact]
+        public void TestGetSquareFromPieceNotInPosition()
+        {
+            var p = new MockedPiece(false);
+            var position = CreatePosition();
+
+            Assert.Null(p.GetSquareFrom(position));
+        }
+
+        private IReadOnlyDictionary<Square,IPiece> CreatePosition(IPiece p = null) 
+            => new Dictionary<Square,IPiece>() { 
+                {new Square(Files.a, Ranks.one), null},
+                {new Square(Files.a, Ranks.two), p},
+                {new Square(Files.b, Ranks.one), null},
+                {new Square(Files.b, Ranks.two), null}};
     }
 }

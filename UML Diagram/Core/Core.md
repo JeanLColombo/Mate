@@ -41,6 +41,8 @@
         +Files File
         +Ranks Rank
         +bool Color
+        +Square(Files, Ranks)
+        +Square(Square)
         +IsSameFileAs(Square) bool
         +IsSameRankAs(Square) bool
         +IsSameSquareAs(Square) bool
@@ -55,6 +57,7 @@
         +Square FromSquare
         +Square ToSquare
         +MoveType Type
+        +Move(Square, Square, MoveTye)
     }
     class IPiece{
         <<interface>>
@@ -65,6 +68,7 @@
         <<abstract>>
         +bool Color
         +Piece(bool)
+        +GetSquare(IReadOnlyDictionary~Square,IPiece~) Square
         +AvailableMoves(IReadOnlyDictionary~Square,IPiece~)* IReadOnlyCollection~Move~  
     }
     class Pawn{
