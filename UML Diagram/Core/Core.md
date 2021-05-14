@@ -49,7 +49,7 @@
         -GetColor() bool
     }
     class Board{
-        -Dictionary<Square,IPiece> Pieces
+        -Dictionary~Square,IPiece~ Pieces
         +IReadOnlyDictionary~Square,IPiece~ Position 
         -BuildBoard() void 
     }
@@ -68,7 +68,7 @@
         <<abstract>>
         +bool Color
         +Piece(bool)
-        +GetSquare(IReadOnlyDictionary~Square,IPiece~) Square
+        +GetSquareFrom(IReadOnlyDictionary~Square,IPiece~) Square
         +AvailableMoves(IReadOnlyDictionary~Square,IPiece~)* IReadOnlyCollection~Move~  
     }
     class Pawn{
@@ -87,6 +87,11 @@
         -Board Board
         +Chess()
         +AvailableMoves() IReadOnlyCollection~Move~
+    }
+    class Maneuverability{
+        <<static>>
+        +MoveThrough(int) Square
+        +Square(int, int) Square
     }
     Ranks --* "1"  Tuple~Files,Ranks~
     Files --* "1"  Tuple~Files,Ranks~
