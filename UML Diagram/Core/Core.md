@@ -90,8 +90,11 @@
     }
     class Maneuverability{
         <<static>>
-        +MoveThrough(int) Square
-        +Square(int, int) Square
+        +MovePlus(this Square, int, int)$ Square
+        +MoveThroughFiles(this Square, int)$ Square
+        +MoveThroughRanks(this Square, int)$ Square
+        +MoveThroughMainDiagonal(this Square, int)$ Square
+        +MoveThroughOppositeDiagonal(this Square, int)$ Square
     }
     Ranks --* "1"  Tuple~Files,Ranks~
     Files --* "1"  Tuple~Files,Ranks~
