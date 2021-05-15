@@ -26,16 +26,17 @@ namespace Core.Elements.Pieces
         public override IReadOnlyCollection<Move> AvailableMoves(IReadOnlyDictionary<Square, IPiece> position)
         {
             var square = this.GetSquareFrom(position);
-            var _squares = new List<Move>();
+            var moves = new List<Move>();
 
             if (square is null)
-                return _squares;
+                return moves;
 
             foreach (int one in new int[] {1, -1})
                 foreach (int two in new int[] {2, -2})
                 {
-                    
                 }
+
+        
 
             throw new System.NotImplementedException();
         }

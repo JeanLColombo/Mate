@@ -100,6 +100,9 @@
         <<static>>
         +AttackSquare(this Piece, Square, IReadOnlyDictionary~Square,IPiece~)$ Move
     }
+    class Helper{
+        <<static>>
+    }
     Ranks --* "1"  Tuple~Files,Ranks~
     Files --* "1"  Tuple~Files,Ranks~
     Tuple~Files,Ranks~ <|-- Square
