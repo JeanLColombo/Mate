@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
 using Core.Abstractions;
+using Core.Extensions;
 
 namespace Core.Elements.Pieces
 {
@@ -28,17 +28,19 @@ namespace Core.Elements.Pieces
             var square = this.GetSquareFrom(position);
             var moves = new List<Move>();
 
-            if (square is null)
+            if (this.GetSquareFrom(position) is null)
                 return moves;
 
             foreach (int one in new int[] {1, -1})
                 foreach (int two in new int[] {2, -2})
                 {
+                    moves.AddNonNull(this.AttackSquare(square.MovePlus(one, two), position));
+                    moves.AddNonNull(this.AttackSquare(square.MovePlus(two, one), position));
                 }
 
-        
+            return moves;
 
-            throw new System.NotImplementedException();
+            //TODO: Test this method.
         }
 
     }
