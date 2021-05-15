@@ -96,6 +96,10 @@
         +MoveThroughMainDiagonal(this Square, int)$ Square
         +MoveThroughOppositeDiagonal(this Square, int)$ Square
     }
+    class Attacking{
+        <<static>>
+        +AttackSquare(this Piece, Square, IReadOnlyDictionary~Square,IPiece~)$ Move
+    }
     Ranks --* "1"  Tuple~Files,Ranks~
     Files --* "1"  Tuple~Files,Ranks~
     Tuple~Files,Ranks~ <|-- Square

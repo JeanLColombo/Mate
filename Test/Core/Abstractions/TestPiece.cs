@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Xunit;
 using Core.Abstractions;
+using Tests.Core.Mocks;
 
 namespace Tests.Core.Abstractions
 {

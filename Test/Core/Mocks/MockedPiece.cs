@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using System.Collections;
 using System.Linq;
 using Core.Abstractions;
 
-namespace Tests.Core.Abstractions
+namespace Tests.Core.Mocks
 {
     /// <summary>
     /// Implements a Mock for <see cref="Piece"/>.
