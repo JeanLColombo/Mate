@@ -100,8 +100,13 @@
         <<static>>
         +AttackSquare(this Piece, Square, IReadOnlyDictionary~Square,IPiece~)$ Move
     }
+    class Setup{
+        <<static>>
+        +AddPiece(this Board, Square, bool)$ bool
+    }
     class Helper{
         <<static>>
+        +AddNonNull(this List~T~, T)$
     }
     Ranks --* "1"  Tuple~Files,Ranks~
     Files --* "1"  Tuple~Files,Ranks~

@@ -24,7 +24,7 @@ namespace Core.Elements
         /// <typeparam name="IPiece">The piece on the <c>Square</c>. 
         /// Can be <c>null</c>.</typeparam>
         /// <returns></returns>
-        private Dictionary<Square,IPiece> Pieces {get; set;} = new  Dictionary<Square,IPiece>();
+        internal Dictionary<Square,IPiece> Pieces {get; set;} = new  Dictionary<Square,IPiece>();
 
         /// <summary>
         /// Creates a new <see cref="Board"/> object with no <see cref="IPiece"/>'s.
