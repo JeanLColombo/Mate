@@ -59,7 +59,12 @@ namespace Core.Abstractions
         /// <summary>
         /// Associate <see cref="IPiece.AvailableMoves"/> to <see cref="AvailableMoves"/>.
         /// </summary>
-        IReadOnlyCollection<Move> IPiece.AvailableMoves(IReadOnlyDictionary<Square,IPiece> p) 
-            => AvailableMoves(p);
+        IReadOnlyCollection<Move> IPiece.AvailableMoves(IReadOnlyDictionary<Square,IPiece> position) 
+        {
+            if (this.GetSquareFrom(position) is null)
+                return new List<Move>();
+
+            return AvailableMoves(position);
+        }
     }
 }

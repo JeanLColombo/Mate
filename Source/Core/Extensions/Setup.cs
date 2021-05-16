@@ -22,6 +22,8 @@ namespace Core.Extensions
         /// properly created.</returns>
         public static bool AddPiece<TPiece>(this Board board, Square square, bool color) where TPiece : Piece
         {
+            if (square is null) return false;
+            
             if (board.Position[square] is not null)
                 return false;
 

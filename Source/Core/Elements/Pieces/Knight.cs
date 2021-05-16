@@ -28,9 +28,6 @@ namespace Core.Elements.Pieces
             var square = this.GetSquareFrom(position);
             var moves = new List<Move>();
 
-            if (this.GetSquareFrom(position) is null)
-                return moves;
-
             foreach (int one in new int[] {1, -1})
                 foreach (int two in new int[] {2, -2})
                 {
@@ -39,8 +36,6 @@ namespace Core.Elements.Pieces
                 }
 
             return moves;
-
-            //TODO: Test this method.
         }
 
     }

@@ -27,7 +27,7 @@ namespace Core.Extensions
         {
             var originSquare = piece.GetSquareFrom(position);
 
-            if(originSquare is null)
+            if(originSquare is null || square is null)
                 return null;
 
             var attackedPiece = position[square];

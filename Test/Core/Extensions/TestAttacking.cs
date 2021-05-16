@@ -60,6 +60,18 @@ namespace Tests.Core.Extensions
             Assert.Null(m);
         }
 
+        [Fact]
+        public void TestAttackNoSquares()
+        {
+            var piece = new MockedPiece(true);
+            
+            var m = piece.AttackSquare(
+                null, 
+                CreatePosition(piece));
+
+            Assert.Null(m);
+        }
+
         private IReadOnlyDictionary<Square,IPiece> CreatePosition(
             IPiece p = null) 
             => new Dictionary<Square,IPiece>() { 
