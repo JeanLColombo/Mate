@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Xunit;
 using Core.Abstractions;
@@ -33,7 +34,7 @@ namespace Tests.Core.Extensions
         
 
         [Fact]
-        public void TestMoveThroughFiles() =>
+        public void TestManeuverThroughFiles() =>
             Assert.True(
                 squareAOne
                 .Maneuver(Through.Files, 1)
@@ -41,7 +42,7 @@ namespace Tests.Core.Extensions
                     new Square(Files.b,Ranks.one)));
 
         [Fact]
-        public void TestMoveThroughRanks() =>
+        public void TestManeuverThroughRanks() =>
             Assert.True(
                 squareAOne
                 .Maneuver(Through.Ranks, 1)
@@ -49,7 +50,7 @@ namespace Tests.Core.Extensions
                     new Square(Files.a, Ranks.two)));
 
         [Fact]
-        public void TestMoveThroughMainDiagonal() =>
+        public void TestManeuverhroughMainDiagonal() =>
             Assert.True(
                 squareAOne
                 .Maneuver(Through.MainDiagonal, 2)
@@ -57,12 +58,18 @@ namespace Tests.Core.Extensions
                     new Square(Files.c, Ranks.three)));
         
         [Fact]
-        public void TestMoveThroughOppositeDiagonal() =>
+        public void TestManeuverThroughOppositeDiagonal() =>
             Assert.True(
                 new Square(Files.c, Ranks.three)
                 .Maneuver(Through.OppositeDiagonal, -2)
                 .IsSameSquareAs(
                     new Square(Files.e, Ranks.one)));
+
+        [Fact]
+        public void TestManeuverThrowsException() =>
+            Assert.Throws<ArgumentException>(
+                () => squareAOne.Maneuver((Through)(-1), 0));
+        
 
         private static Square squareAOne => new Square(Files.a, Ranks.one);
 
