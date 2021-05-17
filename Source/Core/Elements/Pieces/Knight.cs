@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Abstractions;
@@ -16,9 +15,7 @@ namespace Core.Elements.Pieces
         /// </summary>
         /// <param name="color">True for white. Black otherwise.</param>
         /// <returns></returns>
-        public Knight(bool color) : base(color)
-        {
-        }
+        public Knight(bool color) : base(color) {}
 
         /// <summary>
         /// Returns all moves available for a <see cref="Knight"/> based on a board <paramref name="position"/>. 
