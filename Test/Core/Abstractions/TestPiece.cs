@@ -41,10 +41,14 @@ namespace Tests.Core.Abstractions
         }
 
         private IReadOnlyDictionary<Square,IPiece> CreatePosition(IPiece p = null) 
-            => new Dictionary<Square,IPiece>() { 
-                {new Square(Files.a, Ranks.one), null},
-                {new Square(Files.a, Ranks.two), p},
-                {new Square(Files.b, Ranks.one), null},
-                {new Square(Files.b, Ranks.two), null}};
+        {
+            var position = new Dictionary<Square,IPiece>();
+
+            if(p is not null) 
+                position[new Square(Files.a, Ranks.two)] = p;
+            
+            return position;
+        }
+
     }
 }
