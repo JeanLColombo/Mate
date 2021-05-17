@@ -24,7 +24,7 @@ namespace Core.Extensions
         {
             if (square is null) return false;
             
-            if (board.Position[square] is not null)
+            if (board.Position.TryGetValue(square, out var piece))
                 return false;
 
             board.Pieces[square] = (TPiece)Activator.CreateInstance(typeof(TPiece), new object[] {color});    

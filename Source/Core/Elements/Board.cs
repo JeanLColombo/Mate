@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Core.Abstractions;
 
@@ -30,17 +29,6 @@ namespace Core.Elements
         /// Creates a new <see cref="Board"/> object with no <see cref="IPiece"/>'s.
         /// </summary>
         /// <returns></returns>
-        public Board() => BuildBoard();
-
-        /// <summary>
-        /// Build a <see cref="Board"/>, based on <see cref="Files"/> and <see cref="Ranks"/>,
-        /// with no <see cref="IPiece"/>'s.
-        /// </summary>
-        private void BuildBoard()
-        {
-            foreach (Files f in Enum.GetValues(typeof(Files)))
-                foreach (Ranks r in Enum.GetValues(typeof(Ranks)))
-                    Pieces.Add(new Square(f, r), null);
-        }
+        public Board() {}
     }
 }

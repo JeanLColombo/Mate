@@ -74,10 +74,14 @@ namespace Tests.Core.Extensions
 
         private IReadOnlyDictionary<Square,IPiece> CreatePosition(
             IPiece p = null) 
-            => new Dictionary<Square,IPiece>() { 
-                {new Square(Files.a, Ranks.one), p},
-                {new Square(Files.a, Ranks.two), null},
+        {
+            var position = new Dictionary<Square,IPiece>() { 
                 {new Square(Files.b, Ranks.one), new MockedPiece(true)},
                 {new Square(Files.b, Ranks.two), new MockedPiece(false)}};
+
+            if (p is not null) position[new Square(Files.a, Ranks.one)] = p;
+
+            return position;
+        }
     }
 }
