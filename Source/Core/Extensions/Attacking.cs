@@ -30,9 +30,7 @@ namespace Core.Extensions
             if(originSquare is null || square is null)
                 return null;
 
-            var attackedPiece = position[square];
-
-            if(attackedPiece is null)
+            if(!(position.TryGetValue(square, out var attackedPiece)))
                 return new Move(originSquare, square, MoveType.Normal);
 
             if(attackedPiece.Color != piece.Color)
