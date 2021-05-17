@@ -46,4 +46,14 @@ namespace Core.Abstractions
         PromoteToRook = 7,
         PromoteToQueen = 8
     }
+
+    /// <summary>
+    /// Defines all possible orientations of moviment through the board.
+    /// </summary>
+    public enum Through{
+        Files = 1,
+        Ranks = 2,
+        MainDiagonal = 3,
+        OppositeDiagonal = 4
+    }
 }

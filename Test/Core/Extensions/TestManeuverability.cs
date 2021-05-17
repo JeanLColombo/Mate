@@ -36,7 +36,7 @@ namespace Tests.Core.Extensions
         public void TestMoveThroughFiles() =>
             Assert.True(
                 squareAOne
-                .MoveThroughFiles(1)
+                .Maneuver(Through.Files, 1)
                 .IsSameSquareAs(
                     new Square(Files.b,Ranks.one)));
 
@@ -44,7 +44,7 @@ namespace Tests.Core.Extensions
         public void TestMoveThroughRanks() =>
             Assert.True(
                 squareAOne
-                .MoveThroughRanks(1)
+                .Maneuver(Through.Ranks, 1)
                 .IsSameSquareAs(
                     new Square(Files.a, Ranks.two)));
 
@@ -52,7 +52,7 @@ namespace Tests.Core.Extensions
         public void TestMoveThroughMainDiagonal() =>
             Assert.True(
                 squareAOne
-                .MoveThroughMainDiagonal(2)
+                .Maneuver(Through.MainDiagonal, 2)
                 .IsSameSquareAs(
                     new Square(Files.c, Ranks.three)));
         
@@ -60,7 +60,7 @@ namespace Tests.Core.Extensions
         public void TestMoveThroughOppositeDiagonal() =>
             Assert.True(
                 new Square(Files.c, Ranks.three)
-                .MoveThroughOppositeDiagonal(-2)
+                .Maneuver(Through.OppositeDiagonal, -2)
                 .IsSameSquareAs(
                     new Square(Files.e, Ranks.one)));
 

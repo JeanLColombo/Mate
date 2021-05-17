@@ -11,7 +11,7 @@ namespace Core.Extensions
     {
         /// <summary>
         /// Returns the destination <see cref="Square"/> by moving a certain <paramref name="numberOfFiles"/>
-        /// and a cerntain <paramref name="numberOfRanks"/> from origin <paramref cref="square"/>.
+        /// and a cerntain <paramref name="numberOfRanks"/> from origin <paramref name="square"/>.
         /// </summary>
         /// <param name="square">Origin square.</param>
         /// <param name="numberOfFiles">Number of <see cref="Files"/>. A negative number indicates a change
@@ -33,47 +33,27 @@ namespace Core.Extensions
         }
 
         /// <summary>
-        /// Return a destination <see cref="Square"/>, by moving a certain <paramref name="numberOfFiles"/>
-        /// from a origin <paramref name="square"/>.
+        /// Returns the destination <see cref="Square"/> by moving a certain <paramref name="numberOfSquares"/>
+        /// through an <paramref name="orientation"/> from origin <paramref name="square"/>.
         /// </summary>
         /// <param name="square">Origin square.</param>
-        /// <param name="numberOfFiles">Number of <see cref="Files"/>. A negative number indicates a change
-        /// in sense.</param>
-        /// <returns>Destination square.</returns>
-        public static Square MoveThroughFiles(this Square square, int numberOfFiles) 
-            => square.MovePlus(numberOfFiles, 0);
-
-        /// <summary>
-        /// Return a destination <see cref="Square"/>, by moving a certain <paramref name="numberOfRanks"/>
-        /// from a origin <paramref name="square"/>.
-        /// </summary>
-        /// <param name="square">Origin square.</param>
-        /// <param name="numberOfRanks">Number of <see cref="Ranks"/>. A negative number indicates a change
-        /// in sense.</param>
-        /// <returns>Destination square.</returns>
-        public static Square MoveThroughRanks(this Square square, int numberOfRanks) 
-            => square.MovePlus(0, numberOfRanks);
-
-        /// <summary>
-        /// Return a destination <see cref="Square"/>, by moving a certain <paramref name="numberOfSquares"/>
-        /// through the main diagonal, from a origin <paramref name="square"/>.
-        /// </summary>
-        /// <param name="square">Origin square.</param>
-        /// <param name="numberOfSquares">Number of squares. A negative number indicates a change
-        /// in sense.</param>
-        /// <returns>Destination square.</returns>
-        public static Square MoveThroughMainDiagonal(this Square square, int numberOfSquares) 
-            => square.MovePlus(numberOfSquares, numberOfSquares);   
-
-        /// <summary>
-        /// Return a destination <see cref="Square"/>, by moving a certain <paramref name="numberOfSquares"/>
-        /// through the opposite diagonal, from a origin <paramref name="square"/>.
-        /// </summary>
-        /// <param name="square">Origin square.</param>
-        /// <param name="numberOfSquares">Number of squares. A negative number indicates a change
-        /// in sense.</param>
-        /// <returns>Destination square.</returns>
-        public static Square MoveThroughOppositeDiagonal(this Square square, int numberOfSquares) 
-            => square.MovePlus(-numberOfSquares, numberOfSquares);     
+        /// <param name="orientation">The move orientation.</param>
+        /// <param name="numberOfSquares">Number of squares. A negative number indicates a change in sense.</param>
+        /// <returns></returns>
+        public static Square Maneuver(
+            this Square square, 
+            Through orientation, 
+            int numberOfSquares) 
+            => orientation switch 
+            {
+                Through.Files               => square.MovePlus(numberOfSquares, 0),
+                Through.Ranks               => square.MovePlus(0, numberOfSquares),
+                Through.MainDiagonal        => square.MovePlus(numberOfSquares, numberOfSquares),
+                Through.OppositeDiagonal    => square.MovePlus(-numberOfSquares, numberOfSquares),
+                _                           => throw new 
+                    ArgumentException(
+                        message: "Invalid enum parameter", 
+                        paramName: nameof(orientation))
+            };     
     }
 }

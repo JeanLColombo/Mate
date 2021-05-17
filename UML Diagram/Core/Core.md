@@ -37,6 +37,13 @@
         PromoteToRook
         PromoteToQueen
     }
+    class Through{
+        <<enumeration>>
+        Files
+        Ranks
+        MainDiagonal
+        OppositeDiagonal
+    }
     class Square{
         +Files File
         +Ranks Rank
@@ -74,6 +81,7 @@
     class Pawn{
     }
     class Knight{
+        +AvailableMoves(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
     }
     class Bishop{
     }
@@ -91,10 +99,7 @@
     class Maneuverability{
         <<static>>
         +MovePlus(this Square, int, int)$ Square
-        +MoveThroughFiles(this Square, int)$ Square
-        +MoveThroughRanks(this Square, int)$ Square
-        +MoveThroughMainDiagonal(this Square, int)$ Square
-        +MoveThroughOppositeDiagonal(this Square, int)$ Square
+        +Maneuver(this Square, Through, int)$ Square
     }
     class Attacking{
         <<static>>
@@ -111,7 +116,7 @@
     Ranks --* "1"  Tuple~Files,Ranks~
     Files --* "1"  Tuple~Files,Ranks~
     Tuple~Files,Ranks~ <|-- Square
-    Square --* "64" Board
+    Square --* "0..64" Board
     Board --* "1" Chess
     MoveType --* Move
     Square --* Move
