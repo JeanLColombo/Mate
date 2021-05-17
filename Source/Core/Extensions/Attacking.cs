@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Core.Abstractions;
 using Core.Elements;
@@ -37,6 +38,24 @@ namespace Core.Extensions
                 return new Move(originSquare, square, MoveType.Capture);
 
             return null; 
+        }
+
+        /// <summary>
+        /// Attack all squares through a certain direction.
+        /// </summary>
+        /// <param name="piece">Attacking <see cref="Piece"/>.</param>
+        /// <param name="orientation">Attack orientation.</param>
+        /// <param name="position">A given <see cref="Board.Position"/>.</param>
+        /// <param name="sense">True if the attack sense follows the orientation.
+        /// False otherwise.</param>
+        /// <returns>A read-only <see cref="Move"/> collection.</returns>
+        public static IReadOnlyCollection<Move> Attack(
+            this Piece piece, 
+            Through orientation, 
+            bool sense,
+            IReadOnlyDictionary<Square, IPiece> position)
+        {
+            throw new NotImplementedException();
         }
 
     }

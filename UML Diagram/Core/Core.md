@@ -104,6 +104,7 @@
     class Attacking{
         <<static>>
         +AttackSquare(this Piece, Square, IReadOnlyDictionary~Square,IPiece~)$ Move
+        +Attack(this Piece, Square, boo, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
     }
     class Setup{
         <<static>>
