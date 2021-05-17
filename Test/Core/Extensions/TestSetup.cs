@@ -18,7 +18,7 @@ namespace Tests.Core.Extensions
             Assert.True(board.AddPiece<MockedPiece>(square, true));
             Assert.True(board.Position[square] is MockedPiece);
             Assert.True(board.Position[square].Color);
-            Assert.Single(board.Position.Values.Where(p=> p is not null).ToList());
+            Assert.Single(board.Position);
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace Tests.Core.Extensions
             Assert.True(board.AddPiece<MockedPiece>(square, false));
             Assert.False(board.AddPiece<MockedPiece>(square, true));
             Assert.False(board.Position[square].Color);
-            Assert.Single(board.Position.Values.Where(p=> p is not null).ToList());
+            Assert.Single(board.Position);
         }
 
         [Fact]

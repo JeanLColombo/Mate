@@ -1,7 +1,5 @@
-using System;
 using Xunit;
 using Core.Elements;
-using Core.Abstractions;
 
 namespace Tests.Core.Elements
 {
