@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Core.Abstractions;
 using Core.Extensions;
 
@@ -26,17 +28,14 @@ namespace Core.Elements.Pieces
         public override IReadOnlyCollection<Move> AvailableMoves(IReadOnlyDictionary<Square, IPiece> position)
         {
             var square = this.GetSquareFrom(position);
-            var moves = new List<Move>();
-
-            foreach (int one in new int[] {1, -1})
-                foreach (int two in new int[] {2, -2})
-                {
-                    moves.AddNonNull(this.AttackSquare(square.MovePlus(one, two), position));
-                    moves.AddNonNull(this.AttackSquare(square.MovePlus(two, one), position));
-                }
-
-            return moves;
+            
+            return new []{1, -1}
+                .SelectMany(one => new []{2, -2}
+                    .SelectMany(two => new [] {(one, two), (two, one)}))
+                .Select(ns => square.MovePlus(ns.Item1, ns.Item2))
+                .Select(s => this.AttackSquare(s, position))
+                .Where(m => m is not null)
+                .ToList();
         }
-
     }
 }
