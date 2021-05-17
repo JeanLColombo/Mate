@@ -38,6 +38,7 @@ namespace Core.Elements
         /// </summary>
         private void BuildBoard()
         {
+            //TODO: The problem lies here. Board already can have a Pieces dictionary that is empty. We will start here.
             foreach (Files f in Enum.GetValues(typeof(Files)))
                 foreach (Ranks r in Enum.GetValues(typeof(Ranks)))
                     Pieces.Add(new Square(f, r), null);
