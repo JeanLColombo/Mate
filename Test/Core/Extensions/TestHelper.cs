@@ -11,9 +11,9 @@ namespace Tests.Core.Extensions
         [Fact]
         public void TestAddingNonNullToList()
         {
-            var l = new List<IPiece>();
+            var l = new HashSet<IPiece>();
 
-            l.AddNonNull(new MockedPiece(true));    
+            Assert.True(l.AddNonNull(new MockedPiece(true)));    
 
             Assert.Single(l);
         }
@@ -21,9 +21,9 @@ namespace Tests.Core.Extensions
         [Fact]
         public void TestAddingNullToList()
         {
-            var l = new List<IPiece>();
+            var l = new HashSet<IPiece>();
 
-            l.AddNonNull(null);    
+            Assert.False(l.AddNonNull(null));    
 
             Assert.Empty(l);
         }

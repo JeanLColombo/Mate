@@ -124,6 +124,167 @@ namespace Tests.Core.Extensions
             Assert.Single(moves.Where(m => m.Type == MoveType.Capture).ToList());
         }
 
+        [Fact]
+        public void TestAttackThroughEmptyRanks()
+        {
+            var pos = CreatePositionB();
+
+            var moves = ((Piece)pos[SquareEFour]).Attack(Through.Ranks, false, pos);
+            
+            var toSquares = moves.Select(m => m.ToSquare).ToList();
+
+            Assert.Equal(3, moves.Count);
+            Assert.Contains(new Square(Files.e, Ranks.one), toSquares);  
+            Assert.Contains(new Square(Files.e, Ranks.two), toSquares);
+            Assert.Contains(new Square(Files.e, Ranks.three), toSquares); 
+
+            Assert.All(moves, m => Assert.Equal(MoveType.Normal, m.Type));
+            Assert.All(moves, m => Assert.Equal(SquareEFour, m.FromSquare));     
+        }
+
+        [Fact]
+        public void TestAttackThroughOcuppiedRanks()
+        {
+            var pos = CreatePositionB(new Square(Files.e, Ranks.seven));
+
+            var moves = ((Piece)pos[SquareEFour]).Attack(Through.Ranks, true, pos);
+            
+            var toSquares = moves.Select(m => m.ToSquare).ToList();
+
+            Assert.Equal(2, moves.Count);
+            Assert.Contains(new Square(Files.e, Ranks.five), toSquares);  
+            Assert.Contains(new Square(Files.e, Ranks.six), toSquares);     
+        }
+
+        [Fact]
+        public void TestAttackThroughEnemyRanks()
+        {
+            var pos = CreatePositionB(SquareEFour, new Square(Files.e, Ranks.eigth));
+
+            var moves = ((Piece)pos[SquareEFour]).Attack(Through.Ranks, true, pos);
+            
+            var toSquares = moves.Select(m => m.ToSquare).ToList();
+
+            Assert.Equal(4, moves.Count);
+            Assert.Contains(new Square(Files.e, Ranks.five), toSquares);  
+            Assert.Contains(new Square(Files.e, Ranks.six), toSquares);    
+            Assert.Contains(new Square(Files.e, Ranks.seven), toSquares);  
+            Assert.Contains(new Square(Files.e, Ranks.eigth), toSquares); 
+
+            Assert.All(moves, m => Assert.Equal(SquareEFour, m.FromSquare));
+            Assert.Single(moves.Where(m => m.Type == MoveType.Capture).ToList());
+        }
+
+        [Fact]
+        public void TestAttackThroughEmptyMainDiagonal()
+        {
+            var pos = CreatePositionB();
+
+            var moves = ((Piece)pos[SquareEFour]).Attack(Through.MainDiagonal, true, pos);
+            
+            var toSquares = moves.Select(m => m.ToSquare).ToList();
+
+            Assert.Equal(3, moves.Count);
+            Assert.Contains(new Square(Files.f, Ranks.five), toSquares);  
+            Assert.Contains(new Square(Files.g, Ranks.six), toSquares);
+            Assert.Contains(new Square(Files.h, Ranks.seven), toSquares); 
+
+            Assert.All(moves, m => Assert.Equal(MoveType.Normal, m.Type));
+            Assert.All(moves, m => Assert.Equal(SquareEFour, m.FromSquare));     
+        }
+
+        [Fact]
+        public void TestAttackThroughOcuppiedMainDiagonal()
+        {
+            var pos = CreatePositionB(new Square(Files.f, Ranks.five));
+
+            var moves = ((Piece)pos[SquareEFour]).Attack(Through.MainDiagonal, true, pos);
+            
+            var toSquares = moves.Select(m => m.ToSquare).ToList();
+
+            Assert.Empty(moves); 
+        }
+
+        [Fact]
+        public void TestAttackThroughEnemyMainDiagonal()
+        {
+            var pos = CreatePositionB(SquareEFour, new Square(Files.d, Ranks.three));
+
+            var moves = ((Piece)pos[SquareEFour]).Attack(Through.MainDiagonal, false, pos);
+            
+            Move m = moves.First();
+            
+            Assert.Single(moves);
+            Assert.Equal(new Square(Files.d, Ranks.three), m.ToSquare);  
+            Assert.Equal(SquareEFour, m.FromSquare);    
+            Assert.Equal(MoveType.Capture, m.Type);
+        }
+
+        [Fact]
+        public void TestAttackThroughEmptyOppositeDiagonal()
+        {
+            var pos = CreatePositionB();
+
+            var moves = ((Piece)pos[SquareEFour]).Attack(Through.OppositeDiagonal, true, pos);
+            
+            var toSquares = moves.Select(m => m.ToSquare).ToList();
+
+            Assert.Equal(4, moves.Count);
+            Assert.Contains(new Square(Files.d, Ranks.five), toSquares);  
+            Assert.Contains(new Square(Files.c, Ranks.six), toSquares);
+            Assert.Contains(new Square(Files.b, Ranks.seven), toSquares); 
+            Assert.Contains(new Square(Files.a, Ranks.eigth), toSquares);
+
+            Assert.All(moves, m => Assert.Equal(MoveType.Normal, m.Type));
+            Assert.All(moves, m => Assert.Equal(SquareEFour, m.FromSquare));     
+        }
+
+        [Fact]
+        public void TestAttackThroughOcuppiedOppositeDiagonal()
+        {
+            var pos = CreatePositionB(new Square(Files.a, Ranks.eigth));
+
+            var moves = ((Piece)pos[SquareEFour]).Attack(Through.OppositeDiagonal, true, pos);
+            
+            var toSquares = moves.Select(m => m.ToSquare).ToList();
+
+            Assert.Equal(3, moves.Count);
+            Assert.Contains(new Square(Files.d, Ranks.five), toSquares);  
+            Assert.Contains(new Square(Files.c, Ranks.six), toSquares);
+            Assert.Contains(new Square(Files.b, Ranks.seven), toSquares); 
+
+            Assert.All(moves, m => Assert.Equal(MoveType.Normal, m.Type));
+            Assert.All(moves, m => Assert.Equal(SquareEFour, m.FromSquare)); 
+        }
+
+        [Fact]
+        public void TestAttackThroughEnemyOppositeDiagonal()
+        {
+            var pos = CreatePositionB(SquareEFour, new Square(Files.f, Ranks.three));
+
+            var moves = ((Piece)pos[SquareEFour]).Attack(Through.OppositeDiagonal, false, pos);
+            
+            Move m = moves.First();
+            
+            Assert.Single(moves);
+            Assert.Equal(new Square(Files.f, Ranks.three), m.ToSquare);  
+            Assert.Equal(SquareEFour, m.FromSquare);    
+            Assert.Equal(MoveType.Capture, m.Type);
+        }
+
+        [Fact]
+        public void TestAttackThroughFromOffThePosition()
+        {
+            var piece = new MockedPiece(true);
+            
+            var m = piece.Attack(
+                Through.Files, 
+                true,
+                CreatePositionA());
+
+            Assert.Empty(m);
+        }
+
         private Square SquareEFour => new Square(Files.e, Ranks.four);
 
         private IReadOnlyDictionary<Square,IPiece> CreatePositionA(

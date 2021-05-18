@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace Core.Extensions
@@ -14,12 +13,13 @@ namespace Core.Extensions
         /// <param name="list"></param>
         /// <param name="value"></param>
         /// <typeparam name="T"></typeparam>
-        public static void AddNonNull<T>(this List<T> list, T value)
+        public static bool AddNonNull<T>(this HashSet<T> list, T value)
         {
-            if (value == null) 
-                return;   
+            if (value == null) return false;   
             
             list.Add(value);
+
+            return true;
         }
     }
 }
