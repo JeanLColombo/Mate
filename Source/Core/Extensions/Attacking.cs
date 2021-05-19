@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using Core.Abstractions;
 using Core.Elements;
 
@@ -43,20 +43,21 @@ namespace Core.Extensions
         /// <param name="position">A given <see cref="Board.Position"/>.</param>
         /// <param name="sense">True if the attack sense follows the orientation.
         /// False otherwise.</param>
+        /// <param name="range">The range of the attack. Indicates how deep the attack is
+        /// relative to <see cref="Piece.GetSquareFrom(IReadOnlyDictionary{Square, IPiece})"/>.</param>
         /// <returns>A read-only <see cref="Move"/> collection.</returns>
         public static IReadOnlyCollection<Move> Attack(
             this Piece piece, 
             Through orientation, 
             bool sense,
-            IReadOnlyDictionary<Square, IPiece> position)
+            IReadOnlyDictionary<Square, IPiece> position,
+            int range = 7)
         {
-            var moves = new HashSet<Move>();
-
             var originSquare = piece.GetSquareFrom(position);
 
-            if(originSquare is not null) moves.UnionWith(originSquare.Attack(orientation, sense, 1, position));
+            if(originSquare is null) return new List<Move>();
 
-            return moves;
+            return originSquare.Attack(orientation, sense, position).Take(range).ToList();
         }
 
         /// <summary>
@@ -93,28 +94,34 @@ namespace Core.Extensions
         /// <param name="orientation">Attack orientation.</param>
         /// <param name="sense">True if the attack sense follows the orientation.
         /// False otherwise.</param>
-        /// <param name="numberOfSquares">Distance from <paramref name="originSquare"/>.</param>
         /// <param name="position">A given <see cref="Board.Position"/>.</param>
         /// <returns></returns>
-        private static HashSet<Move> Attack(
+        private static IEnumerable<Move> Attack(
             this Square originSquare,
             Through orientation,
             bool sense,
-            int numberOfSquares,
             IReadOnlyDictionary<Square, IPiece> position)
         {
-            var moves = new HashSet<Move>();
+            var moves = new List<Move>();
 
-            var m = originSquare.AttackSquare(
+            int numberOfSquares = 1;
+
+            var move = originSquare.AttackSquare(
                 originSquare.Maneuver(
                     orientation, sense ? numberOfSquares : -numberOfSquares), 
                 position);
 
-            if(moves.AddNonNull(m) && m.Type is not MoveType.Capture)
-                moves.UnionWith(originSquare.Attack(orientation, sense, ++numberOfSquares, position));
+            while(move is not null)
+            {
+                yield return move;
 
-            return moves;   
+                if (move.Type is MoveType.Capture) yield break;
+
+                move = originSquare.AttackSquare(
+                originSquare.Maneuver(
+                    orientation, sense ? (numberOfSquares+=1) : -(numberOfSquares+=1)), 
+                position); 
+            }   
         }    
-
     }
 }
