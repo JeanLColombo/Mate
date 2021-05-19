@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core.Abstractions;
+using Core.Extensions;
 
-namespace Core.Extensions.Pieces
+namespace Core.Elements.Pieces
 {
     /// <summary>
     /// Implements the <see cref="Rook"/> piece.
