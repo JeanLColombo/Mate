@@ -86,6 +86,7 @@
     class Bishop{
     }
     class Rook{
+        +AvailableMoves(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
     }
     class Queen{
     }
