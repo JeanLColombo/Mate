@@ -40,6 +40,14 @@ namespace Tests.Core.Abstractions
             Assert.Null(p.GetSquareFrom(position));
         }
 
+        [Fact]
+        public void TestAvailableMovesFromOutsideOfPosition() =>
+            Assert.Empty(
+                (new MockedPiece(false))
+                .AvailableMoves(
+                    CreatePosition(new MockedPiece(true))));    
+        
+
         private IReadOnlyDictionary<Square,IPiece> CreatePosition(IPiece p = null) 
         {
             var position = new Dictionary<Square,IPiece>();
