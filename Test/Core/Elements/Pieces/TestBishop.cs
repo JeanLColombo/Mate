@@ -16,34 +16,34 @@ namespace Tests.Core.Elements.Pieces
         {
             var board = new Board();
 
-            board.AddPiece<Bishop>(SquareEFour, true);
+            board.AddPiece<Bishop>(SquareEFive, true);
 
-            var moves = board.Position[SquareEFour].AvailableMoves(board.Position);
+            var moves = board.Position[SquareEFive].AvailableMoves(board.Position);
 
             var toSquares = moves.Select(m => m.ToSquare).ToList();
 
-            Assert.Equal(14, moves.Count);
+            Assert.Equal(13, moves.Count);
             
-            //Enumerable.Range(-7, 14).Select(num)
+            SquareEFive.Maneuver(Through.MainDiagonal, 7);
 
-            SquareEFour.Maneuver(Through.MainDiagonal, 7);
-
-            Assert.All(Enum.GetValues(typeof(Files)).Cast<Files>()
-                .Where(f => f is not Files.e)
-                .Select(f => new Square(f , Ranks.four)).ToList(), 
+            Assert.All(Enum.GetValues(typeof(Files)).Cast<int>()
+                .Where(i => i is not (int)Files.e)
+                .Select(i => new Square((Files)i , (Ranks)i)).ToList(), 
                 s => Assert.Contains(s, toSquares));
 
-            Assert.All(Enum.GetValues(typeof(Ranks)).Cast<Ranks>()
-                .Where(r => r is not Ranks.four)
-                .Select(r => new Square(Files.e , r)).ToList(), 
+            Assert.All(Enumerable.Range(-4,8)
+                .Where(i => i !=0)
+                .Select(i => SquareEFive.Maneuver(Through.OppositeDiagonal, i))
+                .Where(s => s is not null)
+                .ToList(), 
                 s => Assert.Contains(s, toSquares));
 
             Assert.All(moves, m => Assert.Equal(MoveType.Normal, m.Type));
-            Assert.All(moves, m => Assert.Equal(SquareEFour, m.FromSquare));   
+            Assert.All(moves, m => Assert.Equal(SquareEFive, m.FromSquare));   
         }
 
         private Square SquareAOne => new Square(Files.a, Ranks.one);
-        private Square SquareEFour => new Square(Files.e, Ranks.four);
+        private Square SquareEFive => new Square(Files.e, Ranks.five);
     
     }
 }
