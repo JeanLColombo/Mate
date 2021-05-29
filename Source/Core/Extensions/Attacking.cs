@@ -51,13 +51,13 @@ namespace Core.Extensions
             Through orientation, 
             bool sense,
             IReadOnlyDictionary<Square, IPiece> position,
-            int range = 7)
+            uint range = 7)
         {
             var originSquare = piece.GetSquareFrom(position);
 
             if(originSquare is null) return new List<Move>();
 
-            return originSquare.Attack(orientation, sense, position).Take(range).ToList();
+            return originSquare.Attack(orientation, sense, position).Take((int)range).ToList();
         }
 
         /// <summary>
