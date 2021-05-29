@@ -60,7 +60,7 @@ namespace Tests.Core.Elements.Pieces
         }
 
         [Fact]
-        public void TestKnightAttacks()
+        public void TestKnightAttack()
         {   
             var moves = PlaceKnightsAt(
                 new Square(Files.a, Ranks.one), 

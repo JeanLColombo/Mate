@@ -116,6 +116,9 @@ namespace Tests.Core.Elements.Pieces
             Assert.All(moves, m => Assert.Equal(SquareAOne, m.FromSquare));
 
             Assert.Single(moves.Where(m => m.Type is MoveType.Capture).ToList());
+
+            Assert.Equal(new Square(Files.a, Ranks.three), 
+                moves.Where(m => m.Type == MoveType.Capture).Select(m => m.ToSquare).ToList().First());
         }
 
         private Square SquareAOne => new Square(Files.a, Ranks.one);
