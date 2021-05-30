@@ -81,12 +81,15 @@
     class Pawn{
     }
     class Knight{
+        +Knight(bool)
         +AvailableMoves(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
     }
     class Bishop{
+        +Bishop(bool)
         +AvailableMoves(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
     }
     class Rook{
+        +Rook(bool)
         +AvailableMoves(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
     }
     class Royalty{
@@ -95,6 +98,8 @@
         #RoyalAttack(IReadOnlyDictionary~Square,IPiece~, int) IReadOnlyCollection~Move~
     }
     class Queen{
+        +Queen(bool)
+        +AvailableMoves(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
     }
     class King{
     }
