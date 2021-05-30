@@ -92,7 +92,7 @@
     class Royalty{
         <<Abstract>>
         +Royalty(bool)
-        +RoyalAttack(IReadOnlyDictionary~Square,IPiece~, int) IReadOnlyCollection~Move~
+        #RoyalAttack(IReadOnlyDictionary~Square,IPiece~, int) IReadOnlyCollection~Move~
     }
     class Queen{
     }
