@@ -89,6 +89,11 @@
     class Rook{
         +AvailableMoves(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
     }
+    class Royalty{
+        <<Abstract>>
+        +Royalty(bool)
+        +RoyalAttack(IReadOnlyDictionary~Square,IPiece~, int) IReadOnlyCollection~Move~
+    }
     class Queen{
     }
     class King{
@@ -131,6 +136,7 @@
     Piece <|-- Knight
     Piece <|-- Bishop
     Piece <|-- Rook
-    Piece <|-- Queen
-    Piece <|-- King
+    Piece <|-- Royalty
+    Royalty <|-- Queen
+    Royalty <|-- King
 ```

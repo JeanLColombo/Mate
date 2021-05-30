@@ -5,17 +5,17 @@ using Core.Abstractions;
 namespace Tests.Core.Mocks
 {
     /// <summary>
-    /// Implements a Mock for <see cref="Piece"/>.
+    /// Implements a Mock for <see cref="Royalty"/>.
     /// </summary>
-    public class MockedPiece : Piece
+    public class MockedRoyalPiece : Royalty
     {
 
         /// <summary>
-        /// Creates a new <see cref="MockPiece"/> for <see cref="Piece"/>.
+        /// Creates a new <see cref="MockedRoyalPiece"/> for <see cref="Royalty"/>.
         /// </summary>
-        /// <param name="color"><see cref="Piece"/> color.</param>
+        /// <param name="color"><see cref="Royalty"/> color.</param>
         /// <returns></returns>
-        public MockedPiece(bool color) : base(color) {}
+        public MockedRoyalPiece(bool color) : base(color) {}
 
         /// <summary>
         /// Returns an empty collection of <see cref="Move"/>s.
