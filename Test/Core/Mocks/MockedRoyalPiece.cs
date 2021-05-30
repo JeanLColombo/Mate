@@ -25,5 +25,16 @@ namespace Tests.Core.Mocks
         public override IReadOnlyCollection<Move> AvailableMoves(
             IReadOnlyDictionary<Square,IPiece> position) 
                 => Enumerable.Empty<Move>().ToArray();
+
+        /// <summary>
+        /// Allows public visibility to <see cref="Royalty.RoyalAttack"/>.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="numberOfSquares"></param>
+        /// <returns></returns>
+        public IReadOnlyCollection<Move> GetRoyalAttack(
+            IReadOnlyDictionary<Square,IPiece> position, 
+            uint numberOfSquares) => 
+                RoyalAttack(position, numberOfSquares);
     }
 }

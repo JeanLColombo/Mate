@@ -1,10 +1,8 @@
 using System;
 using System.Linq;
-using System.Collections.Generic;
 using Xunit;
 using Core.Abstractions;
 using Core.Elements;
-using Core.Elements.Pieces;
 using Core.Extensions;
 using Tests.Core.Mocks;
 
@@ -21,7 +19,7 @@ namespace Tests.Core.Abstractions
 
             var royal = (MockedRoyalPiece)board.Position[SquareEFive];
 
-            var moves = royal.RoyalAttack(board.Position, 7);
+            var moves = royal.GetRoyalAttack(board.Position, 7);
 
             var toSquares = moves.Select(m => m.ToSquare).ToList();
 
@@ -62,7 +60,7 @@ namespace Tests.Core.Abstractions
 
             var royal = (MockedRoyalPiece)board.Position[SquareAOne];
 
-            var moves = royal.RoyalAttack(board.Position, 3);
+            var moves = royal.GetRoyalAttack(board.Position, 3);
 
             var toSquares = moves.Select(m => m.ToSquare).ToList();
 
@@ -100,7 +98,7 @@ namespace Tests.Core.Abstractions
 
             var royal = (MockedRoyalPiece)board.Position[SquareAOne];
 
-            var moves = royal.RoyalAttack(board.Position, 2);
+            var moves = royal.GetRoyalAttack(board.Position, 2);
 
             var toSquares = moves.Select(m => m.ToSquare).ToList();
 
@@ -138,7 +136,7 @@ namespace Tests.Core.Abstractions
 
             var royal = (MockedRoyalPiece)board.Position[SquareAOne];
 
-            var moves = royal.RoyalAttack(board.Position, 4);
+            var moves = royal.GetRoyalAttack(board.Position, 4);
 
             var toSquares = moves.Select(m => m.ToSquare).ToList();
 

@@ -25,7 +25,7 @@ namespace Core.Abstractions
         /// <param name="position">An <see cref="Board.Position"/>.</param>
         /// <param name="numberOfSquares">A number of squares.</param>
         /// <returns></returns>
-        public IReadOnlyCollection<Move> RoyalAttack(IReadOnlyDictionary<Square,IPiece> position, uint numberOfSquares)
+        protected IReadOnlyCollection<Move> RoyalAttack(IReadOnlyDictionary<Square,IPiece> position, uint numberOfSquares)
             => Enum.GetValues(typeof(Through)).Cast<Through>()
                 .SelectMany(t => new[]{true, false}
                     .SelectMany(s => new[]{(t, s)}))
