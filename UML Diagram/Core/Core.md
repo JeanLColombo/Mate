@@ -79,6 +79,10 @@
         +AvailableMoves(IReadOnlyDictionary~Square,IPiece~)* IReadOnlyCollection~Move~  
     }
     class Pawn{
+        +Pawn(bool)
+        +AvailableMoves(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
+        -PawnAttack(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
+        -PawnMove(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
     }
     class Knight{
         +Knight(bool)
@@ -102,6 +106,8 @@
         +AvailableMoves(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
     }
     class King{
+        +King(bool)
+        +AvailableMoves(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
     }
     class Chess{
         -Board Board
