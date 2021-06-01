@@ -53,11 +53,14 @@ namespace Core.Extensions
             IReadOnlyDictionary<Square, IPiece> position,
             uint range = 7)
         {
-            var originSquare = piece.GetSquareFrom(position);
+            var square = piece.GetSquareFrom(position);
 
-            if(originSquare is null) return new List<Move>();
-
-            return originSquare.Attack(orientation, sense, position).Take((int)range).ToList();
+            return (square is null) ? 
+                new List<Move>() : 
+                square
+                    .Attack(orientation, sense, position)
+                    .Take((int)range)
+                    .ToList();
         }
 
         /// <summary>

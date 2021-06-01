@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Core.Extensions
 {
@@ -18,8 +20,20 @@ namespace Core.Extensions
             if (value == null) return false;   
             
             list.Add(value);
-
+            
             return true;
         }
+
+        /// <summary>
+        /// Appends each element of <paramref name="value"/> to the end of <paramref name="list"/>.
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="values"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static IReadOnlyCollection<T> Append<T>(
+            this IReadOnlyCollection<T> list, 
+            IReadOnlyCollection<T> values) 
+            => list.ToList().Union(values.ToList()).ToList();
     }
 }
