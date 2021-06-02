@@ -24,7 +24,7 @@ namespace Core.Elements.Pieces
         /// <param name="position">A given <see cref="Board.Position"/>.</param>
         /// <returns></returns>
         public override IReadOnlyCollection<Move> AvailableMoves(IReadOnlyDictionary<Square,IPiece> position) =>
-            throw new NotImplementedException();
+            PawnAttack(position).Unify(PawnMove(position));
 
         /// <summary>
         /// Given a <paramref name="position"/>, attacks adjacent diagnals, 
