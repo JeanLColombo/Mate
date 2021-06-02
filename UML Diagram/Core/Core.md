@@ -132,7 +132,8 @@
     }
     class Helper{
         <<static>>
-        +AddNonNull(this List~T~, T)$
+        +AddNonNull(this List~T~, T)$ bool
+        +Unify(this IReadOnlyCollection~T~, IReadOnlyCollection~T~) IReadOnlyCollection~T~
     }
     Ranks --* "1"  Tuple~Files,Ranks~
     Files --* "1"  Tuple~Files,Ranks~

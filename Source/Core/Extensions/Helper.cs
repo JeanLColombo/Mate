@@ -25,15 +25,17 @@ namespace Core.Extensions
         }
 
         /// <summary>
-        /// Appends each element of <paramref name="value"/> to the end of <paramref name="list"/>.
+        /// Creates a new <see cref="IReadOnlyCollection"/>, containing all 
+        /// <typeparamref name="T"/> items in <paramref name="firstCollection"/> and 
+        /// in <paramref name="secondCollection"/>, while excluding duplicates.
         /// </summary>
-        /// <param name="list"></param>
-        /// <param name="values"></param>
+        /// <param name="firstCollection"></param>
+        /// <param name="secondCollection"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static IReadOnlyCollection<T> Append<T>(
-            this IReadOnlyCollection<T> list, 
-            IReadOnlyCollection<T> values) 
-            => list.ToList().Union(values.ToList()).ToList();
+        public static IReadOnlyCollection<T> Unify<T>(
+            this IReadOnlyCollection<T> firstCollection, 
+            IReadOnlyCollection<T> secondCollection) 
+            => firstCollection.ToList().Union(secondCollection.ToList()).ToList();
     }
 }
