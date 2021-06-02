@@ -15,14 +15,9 @@ namespace Core.Extensions
         /// <param name="list"></param>
         /// <param name="value"></param>
         /// <typeparam name="T"></typeparam>
-        public static bool AddNonNull<T>(this HashSet<T> list, T value)
-        {
-            if (value == null) return false;   
+        public static bool AddNonNull<T>(this HashSet<T> list, T value) 
+            => (value is null) ? false : list.Add(value);
             
-            list.Add(value);
-            
-            return true;
-        }
 
         /// <summary>
         /// Creates a new <see cref="IReadOnlyCollection"/>, containing all 
