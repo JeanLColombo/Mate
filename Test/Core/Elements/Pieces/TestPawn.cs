@@ -97,6 +97,50 @@ namespace Tests.Core.Elements.Pieces
                     pawnData.Item1.IsSameSquareAs(m.FromSquare)));
         }
 
+        [Theory]
+        [MemberData(nameof(PawnDataC))]
+        public void TestPawnUpdateToPromotions(
+            Tuple<Square, bool> pawnData,
+            Tuple<Square, bool> mockData)
+        {
+            var board = new Board();
+
+            board.AddPiece<Pawn>(pawnData.Item1, pawnData.Item2);   
+
+            var notNullMock = mockData is not null;
+
+            if (notNullMock)
+                board.AddPiece<MockedPiece>(mockData.Item1, mockData.Item2);
+            
+            var moves = board.Position[pawnData.Item1].AvailableMoves(board.Position);
+
+            Assert.Equal((notNullMock ? 2 : 1)*4, moves.Count);
+
+            Assert.All(moves, (m) => Assert.True(m.FromSquare.IsSameSquareAs(pawnData.Item1)));
+
+            Assert.All(moves, (m) => Assert.Equal((pawnData.Item2 ? Ranks.eigth : Ranks.one), m.ToSquare.Rank));
+            
+            var distinctToFiles = moves.Select(m => m.ToSquare.File).Distinct().ToList();
+
+            var distinctTypes = moves.Select(m => m.Type).Distinct().ToList();
+
+            Assert.Equal(4, distinctTypes.Count);
+
+            Assert.All(new MoveType[]{
+                MoveType.PromoteToKnight, 
+                MoveType.PromotToBishop, 
+                MoveType.PromoteToRook, 
+                MoveType.PromoteToQueen}, 
+                (mt) => 
+                Assert.Contains(mt, distinctTypes));
+
+            Assert.Equal((notNullMock ? 2 : 1), distinctToFiles.Count);
+
+            Assert.Contains(pawnData.Item1.File, distinctToFiles);    
+
+            if (notNullMock) 
+                Assert.Contains(mockData.Item1.File, distinctToFiles);  
+        }
 
         public static IEnumerable<object[]> PawnDataA => new []{
             new object[]
@@ -142,6 +186,29 @@ namespace Tests.Core.Elements.Pieces
                 new Tuple<Square, bool>(new Square(Files.c, Ranks.four), true),
                 new Tuple<Square, bool>(new Square(Files.d, Ranks.four), false)
             }
+        };
+
+        public static IEnumerable<object[]> PawnDataC => new []{
+            new object[]
+            {
+                new Tuple<Square, bool>(new Square(Files.c, Ranks.seven), true),
+                null
+            },
+            new object[]
+            {
+                new Tuple<Square, bool>(new Square(Files.c, Ranks.two), false),
+                new Tuple<Square, bool>(new Square(Files.b, Ranks.one), true)
+            },
+            new object[]
+            {
+                new Tuple<Square, bool>(new Square(Files.c, Ranks.two), false),
+                new Tuple<Square, bool>(new Square(Files.d, Ranks.one), true)
+            },
+            new object[]
+            {
+                new Tuple<Square, bool>(new Square(Files.c, Ranks.seven), true),
+                new Tuple<Square, bool>(new Square(Files.d, Ranks.eigth), false)
+            },
         };
     }
 }
