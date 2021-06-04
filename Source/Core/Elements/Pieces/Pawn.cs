@@ -24,7 +24,11 @@ namespace Core.Elements.Pieces
         /// <param name="position">A given <see cref="Board.Position"/>.</param>
         /// <returns></returns>
         public override IReadOnlyCollection<Move> AvailableMoves(IReadOnlyDictionary<Square,IPiece> position) =>
-            PawnAttack(position).Unify(PawnMoveFoward(position));
+            PawnAttack(position)
+            .Unify(PawnMoveFoward(position))
+            .SelectMany(
+                m => UpdateToPromotions(m))
+            .ToList();
 
         /// <summary>
         /// Given a <paramref name="position"/>, attacks adjacent diagnals, 
@@ -50,23 +54,24 @@ namespace Core.Elements.Pieces
                 .ToList();
 
         /// <summary>
-        /// Available moves for when<see cref="Pawn"/> reach the end of the <see cref="Board"/>, 
-        /// according to <see cref="IPiece.Color"/>.
+        /// Updates a <see cref="Pawn"/> <paramref name="move"/> to a list of all available promotions,
+        /// depending on their <see cref="Move.ToSquare"/> and <see cref="IPiece.Color"/>.
         /// </summary>
-        /// <param name="position">A given <see cref="Board.Position"/>.</param>
-        /// <returns>A new <see cref="Move"/> collection, containg the information from <see cref="PawnMoveFoward"/> 
-        /// and <see cref="PawnAttack"/>, while changing the  <see cref="MoveType"/> for all possible
-        /// promotions.</returns>
-        private IReadOnlyCollection<Move> PawnPromotion(IReadOnlyDictionary<Square,IPiece> position) => 
-            PawnAttack(position).Unify(PawnMoveFoward(position))
-                .Where(m => m.ToSquare.Rank == (Color ? Ranks.eigth :  Ranks.one))
-                .SelectMany(m => 
-                    new MoveType[]{
-                        MoveType.PromoteToKnight, 
-                        MoveType.PromotToBishop, 
-                        MoveType.PromoteToRook, 
-                        MoveType.PromoteToQueen}
-                    .Select(mt => new Move(m.FromSquare, m.ToSquare, mt)))
-                .ToList();
+        /// <param name="move"></param>
+        /// <returns>Either a read-only collection containg <paramref name="move"/> or a list of
+        /// updated moves.</returns>
+        private IReadOnlyCollection<Move> UpdateToPromotions(Move move) => 
+            move.ToSquare.Rank != (Color ? Ranks.eigth :  Ranks.one) ? 
+                new List<Move>(){move} :
+                new MoveType[]{
+                    MoveType.PromoteToKnight, 
+                    MoveType.PromotToBishop, 
+                    MoveType.PromoteToRook, 
+                    MoveType.PromoteToQueen}
+                    .Select(
+                        mt => 
+                        new Move(move.FromSquare, move.ToSquare, mt))
+                    .ToList(); 
+            
     }
 }

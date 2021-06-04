@@ -82,7 +82,8 @@
         +Pawn(bool)
         +AvailableMoves(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
         -PawnAttack(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
-        -PawnMove(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
+        -PawnMoveFoward(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
+        -UpdateToPromotions(Move) IReadOnlyCollection~Move~
     }
     class Knight{
         +Knight(bool)
