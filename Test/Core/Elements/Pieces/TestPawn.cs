@@ -114,14 +114,34 @@ namespace Tests.Core.Elements.Pieces
         };
 
         public static IEnumerable<object[]> PawnDataB => new []{
-            new object[][]
+            new object[]
             {
-                new object[]{new Square(Files.c, Ranks.three), true},
-                new object[]{new Square(Files.b, Ranks.four), false},
-                new object[]{new Square(Files.c, Ranks.four), true},
-                new object[]{new Square(Files.d, Ranks.four), false},
+                new Tuple<Square, bool>(new Square(Files.c, Ranks.three), true),
+                new Tuple<Square, bool>(new Square(Files.b, Ranks.four), false),
+                new Tuple<Square, bool>(new Square(Files.c, Ranks.four), true),
+                new Tuple<Square, bool>(new Square(Files.d, Ranks.four), false)
+            },
+            new object[]
+            {
+                new Tuple<Square, bool>(new Square(Files.c, Ranks.six), false),
+                new Tuple<Square, bool>(new Square(Files.b, Ranks.five), true),
+                new Tuple<Square, bool>(new Square(Files.c, Ranks.five), true),
+                new Tuple<Square, bool>(new Square(Files.d, Ranks.five), true)
+            },
+            new object[]
+            {
+                new Tuple<Square, bool>(new Square(Files.c, Ranks.three), true),
+                new Tuple<Square, bool>(new Square(Files.b, Ranks.four), false),
+                null,
+                null
+            },
+            new object[]
+            {
+                new Tuple<Square, bool>(new Square(Files.c, Ranks.three), true),
+                null,
+                new Tuple<Square, bool>(new Square(Files.c, Ranks.four), true),
+                new Tuple<Square, bool>(new Square(Files.d, Ranks.four), false)
             }
-
         };
     }
 }
