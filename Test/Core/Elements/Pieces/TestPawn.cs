@@ -134,6 +134,13 @@ namespace Tests.Core.Elements.Pieces
                 (mt) => 
                 Assert.Contains(mt, distinctTypes));
 
+            Assert.All(new MoveType[]{ 
+                MoveType.Castle, 
+                MoveType.Capture, 
+                MoveType.Normal},
+                (mt) => 
+                Assert.DoesNotContain(mt, distinctTypes));
+
             Assert.Equal((notNullMock ? 2 : 1), distinctToFiles.Count);
 
             Assert.Contains(pawnData.Item1.File, distinctToFiles);    
