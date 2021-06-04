@@ -24,7 +24,7 @@ namespace Core.Elements.Pieces
         /// <param name="position">A given <see cref="Board.Position"/>.</param>
         /// <returns></returns>
         public override IReadOnlyCollection<Move> AvailableMoves(IReadOnlyDictionary<Square,IPiece> position) =>
-            PawnAttack(position).Unify(PawnMove(position));
+            PawnAttack(position).Unify(PawnMoveFoward(position));
 
         /// <summary>
         /// Given a <paramref name="position"/>, attacks adjacent diagnals, 
@@ -44,9 +44,29 @@ namespace Core.Elements.Pieces
         /// </summary>
         /// <param name="position">A given <see cref="Board.Position"/>.</param>
         /// <returns>Returns only <see cref="MoveType.Normal"/>.</returns>
-        private IReadOnlyCollection<Move> PawnMove(IReadOnlyDictionary<Square,IPiece> position) =>
+        private IReadOnlyCollection<Move> PawnMoveFoward(IReadOnlyDictionary<Square,IPiece> position) =>
             this.Attack(Through.Ranks, Color, position, 1)
                 .Where(m => m.Type is MoveType.Normal)
+                .ToList();
+
+        /// <summary>
+        /// Available moves for when<see cref="Pawn"/> reach the end of the <see cref="Board"/>, 
+        /// according to <see cref="IPiece.Color"/>.
+        /// </summary>
+        /// <param name="position">A given <see cref="Board.Position"/>.</param>
+        /// <returns>A new <see cref="Move"/> collection, containg the information from <see cref="PawnMoveFoward"/> 
+        /// and <see cref="PawnAttack"/>, while changing the  <see cref="MoveType"/> for all possible
+        /// promotions.</returns>
+        private IReadOnlyCollection<Move> PawnPromotion(IReadOnlyDictionary<Square,IPiece> position) => 
+            PawnAttack(position).Unify(PawnMoveFoward(position))
+                .Where(m => m.ToSquare.Rank == (Color ? Ranks.eigth :  Ranks.one))
+                .SelectMany(m => 
+                    new MoveType[]{
+                        MoveType.PromoteToKnight, 
+                        MoveType.PromotToBishop, 
+                        MoveType.PromoteToRook, 
+                        MoveType.PromoteToQueen}
+                    .Select(mt => new Move(m.FromSquare, m.ToSquare, mt)))
                 .ToList();
     }
 }
