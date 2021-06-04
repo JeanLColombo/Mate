@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Core.Abstractions;
+using Core.Extensions;
 
 namespace Core.Elements
 {
@@ -30,5 +31,14 @@ namespace Core.Elements
         /// </summary>
         /// <returns></returns>
         public Board() {}
+
+        /// <summary>
+        /// Creates a new instance of <see cref="Board"/>, containing a complete 
+        /// copy of given <paramref name="position"/>.
+        /// </summary>
+        /// <param name="position">A read-only dictionary of <see cref="IPieces"/> instances
+        /// placed in <see cref="Square"/> instances.</param>    
+        public Board(IReadOnlyDictionary<Square,IPiece> position) 
+        {this.Copy(position);}
     }
 }

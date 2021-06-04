@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Core.Abstractions;
 using Core.Elements;
+using Core.Elements.Pieces;
 
 namespace Core.Extensions
 {
@@ -31,5 +34,20 @@ namespace Core.Extensions
 
             return true;       
         }
+
+        /// <summary>
+        /// Copies the give <paramref name="position"/> to <paramref name="board"/>.
+        /// </summary>
+        /// <param name="board"></param>
+        /// <param name="position"></param>
+        public static void Copy(this Board board, IReadOnlyDictionary<Square,IPiece> position)
+            => position
+                .Select(kv => 
+                    board.Pieces[kv.Key] = 
+                        (IPiece)Activator.CreateInstance(
+                            kv.Value.GetType(), 
+                            new object[] {kv.Value.Color}))
+                .ToList();
+        
     }
 }

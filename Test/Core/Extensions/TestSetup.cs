@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Xunit;
 using Core.Abstractions;
@@ -40,6 +41,59 @@ namespace Tests.Core.Extensions
 
             Assert.False(board.AddPiece<MockedPiece>(null, true));
             Assert.Empty(board.Position.Values.Where(p=> p is not null).ToList());
+        }
+
+        [Fact]
+        public void TestCopyEmptyPosition()
+        {
+            var b1 = new Board();
+            var b2 = new Board(b1.Position);
+
+            Assert.Empty(b2.Position);
+        }
+
+        [Fact]
+        public void TestCopy()
+        {
+            var b1 = new Board();
+
+            b1.AddPiece<MockedPiece>(new Square(Files.a, Ranks.one), true);
+            b1.AddPiece<MockedRoyalPiece>(new Square(Files.h, Ranks.eigth), false);
+
+            var b2 = new Board(b1.Position);
+
+            AssertTestCopies(b2);
+
+            Assert.NotSame(b1, b2);
+            Assert.NotSame(b1.Position, b2.Position);
+        }
+
+        [Fact]
+        public void TestCopyOfBoardThatCeasesToExist()
+        {
+            var b1 = new Board();
+
+            {
+                var b2 = new Board();
+
+                b1.AddPiece<MockedPiece>(new Square(Files.a, Ranks.one), true);
+                b1.AddPiece<MockedRoyalPiece>(new Square(Files.h, Ranks.eigth), false);
+
+                b1.Copy(b2.Position);
+            }
+
+            AssertTestCopies(b1);
+        }
+
+        private void AssertTestCopies(Board b)
+        {
+            Assert.Equal(2, b.Position.Count);
+
+            Assert.True(b.Position[new Square(Files.a, Ranks.one)].Color);
+            Assert.False(b.Position[new Square(Files.h, Ranks.eigth)].Color);
+
+            Assert.True(b.Position[new Square(Files.a, Ranks.one)] is MockedPiece);
+            Assert.True(b.Position[new Square(Files.h, Ranks.eigth)] is MockedRoyalPiece);
         }
     }
 }
