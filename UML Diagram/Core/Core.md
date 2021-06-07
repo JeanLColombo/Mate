@@ -134,10 +134,11 @@
         +AddNonNull(this List~T~, T)$ bool
         +Unify(this IReadOnlyCollection~T~, IReadOnlyCollection~T~) IReadOnlyCollection~T~
     }
-    class Record{
+    class MoveEntry{
         +Move Move
         +IReadOnlyDictionary~Square,IPiece~ Position
-        +Record(Move, IReadOnlyDictionary~Square,IPiece~)
+        +MoveEntry(Move, IReadOnlyDictionary~Square,IPiece~)
+        +MoveEntry(Move, Board)
     }
     Ranks --* "1"  Square
     Files --* "1"  Square
@@ -154,6 +155,6 @@
     Piece <|-- Royalty
     Royalty <|-- Queen
     Royalty <|-- King
-    Move --* Record
-    Board --* Record
+    Move --* MoveEntry
+    Board --* MoveEntry
 ```

@@ -38,14 +38,15 @@
         +Board()
         +Board(+IReadOnlyDictionary~Square,IPiece~)
     }
-    class Record{
+    class MoveEntry{
         +Move Move
         +IReadOnlyDictionary~Square,IPiece~ Position
-        +Record(Move, IReadOnlyDictionary~Square,IPiece~)
+        +MoveEntry(Move, IReadOnlyDictionary~Square,IPiece~)
+        +MoveEntry(Move, Board)
     }
     MoveType --* Move
     Square --* "2" Move
     Move --* Tuple~Move,Board~
     Board --* Tuple~Move,Board~
-    Tuple~Move,Board~ <|-- Record 
+    Tuple~Move,Board~ <|-- MoveEntry 
 ```
