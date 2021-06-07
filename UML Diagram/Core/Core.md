@@ -22,10 +22,6 @@
         seven
         eight
     }
-    class Tuple~Files,Ranks~{
-        +Files Item1
-        +Ranks Item2    
-    }
     class MoveType{
         <<enumeration>>
         Normal
@@ -131,15 +127,20 @@
     class Setup{
         <<static>>
         +AddPiece(this Board, Square, bool)$ bool
+        +Copy(this Board, IReadOnlyDictionary~Square,IPiece~)$
     }
     class Helper{
         <<static>>
         +AddNonNull(this List~T~, T)$ bool
         +Unify(this IReadOnlyCollection~T~, IReadOnlyCollection~T~) IReadOnlyCollection~T~
     }
-    Ranks --* "1"  Tuple~Files,Ranks~
-    Files --* "1"  Tuple~Files,Ranks~
-    Tuple~Files,Ranks~ <|-- Square
+    class Record{
+        +Move Move
+        +IReadOnlyDictionary~Square,IPiece~ Position
+        +Record(Move, IReadOnlyDictionary~Square,IPiece~)
+    }
+    Ranks --* "1"  Square
+    Files --* "1"  Square
     Square --* "0..64" Board
     Board --* "1" Chess
     MoveType --* Move
@@ -153,4 +154,6 @@
     Piece <|-- Royalty
     Royalty <|-- Queen
     Royalty <|-- King
+    Move --* Record
+    Board --* Record
 ```
