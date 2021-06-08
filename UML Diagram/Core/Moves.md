@@ -41,12 +41,12 @@
     class MoveEntry{
         +Move Move
         +IReadOnlyDictionary~Square,IPiece~ Position
+        -Board board
         +MoveEntry(Move, IReadOnlyDictionary~Square,IPiece~)
         +MoveEntry(Move, Board)
     }
     MoveType --* Move
     Square --* "2" Move
-    Move --* Tuple~Move,Board~
-    Board --* Tuple~Move,Board~
-    Tuple~Move,Board~ <|-- MoveEntry 
+    Move --* MoveEntry
+    Board --* MoveEntry
 ```

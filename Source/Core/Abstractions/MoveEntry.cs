@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Core.Elements;
 
@@ -7,19 +6,25 @@ namespace Core.Abstractions
     /// <summary>
     /// Records a <see cref="Move"/> entry applied to a <see cref="Board"/> state. 
     /// </summary>
-    public class MoveEntry : Tuple<Move, Board>
+    public class MoveEntry
     {
         /// <summary>
         /// The recorded <see cref="Move"/> entry.
         /// </summary>
         /// <value></value>    
-        public Move Move { get => Item1; }     
+        public Move Move { get; }     
 
         /// <summary>
         /// The recorded <see cref="Board.Position"/>.
         /// </summary>
         /// <value></value>
-        public IReadOnlyDictionary<Square, IPiece> Position {get => Item2.Position; }
+        public IReadOnlyDictionary<Square, IPiece> Position {get => board.Position; }
+
+        /// <summary>
+        /// The recorded <see cref="Board"/>.
+        /// </summary>
+        /// <value></value>
+        private Board board { get; }   
 
         /// <summary>
         /// Creates a new <paramref name="move"/> entry applied to 
@@ -29,8 +34,11 @@ namespace Core.Abstractions
         /// <paramref name="position"/>.</param>
         /// <param name="position">A given <see cref="Board.Position"/>.</param>
         /// <returns></returns>
-        public MoveEntry(Move move, IReadOnlyDictionary<Square, IPiece> position) : 
-            base(move, new Board(position)) { }
+        public MoveEntry(Move move, IReadOnlyDictionary<Square, IPiece> position)
+        { 
+            Move = move;
+            board = new Board(position);
+        }
 
         /// <summary>
         /// Creates a new <paramref name="move"/> entry applied to 

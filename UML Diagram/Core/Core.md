@@ -137,6 +137,7 @@
     class MoveEntry{
         +Move Move
         +IReadOnlyDictionary~Square,IPiece~ Position
+        -Board board
         +MoveEntry(Move, IReadOnlyDictionary~Square,IPiece~)
         +MoveEntry(Move, Board)
     }
