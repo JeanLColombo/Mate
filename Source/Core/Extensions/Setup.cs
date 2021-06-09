@@ -19,7 +19,7 @@ namespace Core.Extensions
         /// <param name="board"></param>
         /// <param name="square"></param>
         /// <param name="color">True if <typeparamref name="TPiece"/> is white. False otherwise.</param>
-        /// <typeparam name="TPiece"><typeparamref name="TPiece"/> must inherherit 
+        /// <typeparam name="TPiece"><typeparamref name="TPiece"/> must inherited 
         /// from <see cref="Piece"/>.</typeparam>
         /// <returns>True if a new <typeparamref name="TPiece"/> was 
         /// properly created.</returns>

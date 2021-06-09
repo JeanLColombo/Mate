@@ -11,7 +11,7 @@ namespace Core.Extensions
     {
         /// <summary>
         /// Returns the destination <see cref="Square"/> by moving a certain <paramref name="numberOfFiles"/>
-        /// and a cerntain <paramref name="numberOfRanks"/> from origin <paramref name="square"/>.
+        /// and a certain <paramref name="numberOfRanks"/> from origin <paramref name="square"/>.
         /// </summary>
         /// <param name="square">Origin square.</param>
         /// <param name="numberOfFiles">Number of <see cref="Files"/>. A negative number indicates a change

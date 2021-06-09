@@ -17,6 +17,15 @@ namespace Core
         /// <value></value>
         private Board Board {get;} = new Board();
 
+        
+        /// <summary>
+        /// A <see cref="MoveEntry"/> list of all past <see cref="Move"/> 
+        /// instances processed by <see cref="Chess"/>.
+        /// </summary>
+        /// <typeparam name="MoveEntry"></typeparam>
+        /// <returns></returns>
+        public List<MoveEntry> MoveEntries {get; private set;} = new List<MoveEntry>();
+
         /// <summary>
         /// Creates a new <see cref="Chess"/> object, with no pieces.
         /// </summary>
@@ -28,7 +37,7 @@ namespace Core
         /// <param name="player">True for player with white pieces, false for player
         /// with black pieces.</param>
         /// <returns>A collection of available <see cref="Move"/>s.</returns>
-        public IReadOnlyCollection<Move> AvailableMoves(bool player)
+        protected IReadOnlyCollection<Move> AvailableMoves(bool player)
             => throw new NotImplementedException();
 
     }

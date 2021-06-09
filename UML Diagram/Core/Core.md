@@ -29,7 +29,7 @@
         Passant
         Castle
         PromoteToKnight
-        PromotToBishop
+        PromoteToBishop
         PromoteToRook
         PromoteToQueen
     }
@@ -79,7 +79,7 @@
         +Pawn(bool)
         +AvailableMoves(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
         -PawnAttack(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
-        -PawnMoveFoward(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
+        -PawnMoveForward(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
         -UpdateToPromotions(Move) IReadOnlyCollection~Move~
     }
     class Knight{
@@ -109,6 +109,7 @@
     }
     class Chess{
         -Board Board
+        +List~MoveEntry~ MoveEntries
         +Chess()
         +AvailableMoves() IReadOnlyCollection~Move~
     }
@@ -144,7 +145,6 @@
     Ranks --* "1"  Square
     Files --* "1"  Square
     Square --* "0..64" Board
-    Board --* "1" Chess
     MoveType --* Move
     Square --* Move
     IPiece --* "0..64" Board
@@ -158,4 +158,6 @@
     Royalty <|-- King
     Move --* MoveEntry
     Board --* MoveEntry
+    Board --* "1" Chess
+    MoveEntry --* "*" Chess
 ```
