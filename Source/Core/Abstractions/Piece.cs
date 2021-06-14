@@ -38,18 +38,11 @@ namespace Core.Abstractions
         /// </summary>
         /// <param name="position">A read-only <see cref="IPiece"/> dictionary.</param>
         /// <returns></returns>
-        public Square GetSquareFrom(IReadOnlyDictionary<Square,IPiece> position)
-        {
-            var ls = position
+        public Square GetSquareFrom(IReadOnlyDictionary<Square,IPiece> position) => 
+            position
                 .Select(p => p.Key)
-                .Where(k => position[k] == this)
-                .ToList();
-            
-            if (ls.Count == 0)
-                return null;
-
-            return new Square(ls.First());
-        }
+                .FirstOrDefault(k => position[k] == this);
+        
 
         /// <summary>
         /// Associate <see cref="IPiece.Color"/> to <see cref="Color"/>.

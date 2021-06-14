@@ -7,7 +7,7 @@
         Passant
         Castle
         PromoteToKnight
-        PromotToBishop
+        PromoteToBishop
         PromoteToRook
         PromoteToQueen
     }

@@ -133,7 +133,7 @@
     class Helper{
         <<static>>
         +AddNonNull(this List~T~, T)$ bool
-        +Unify(this IReadOnlyCollection~T~, IReadOnlyCollection~T~) IReadOnlyCollection~T~
+        +Unify(this IReadOnlyCollection~T~, IReadOnlyCollection~T~)$ IReadOnlyCollection~T~
     }
     class MoveEntry{
         +Move Move
@@ -141,6 +141,10 @@
         -Board board
         +MoveEntry(Move, IReadOnlyDictionary~Square,IPiece~)
         +MoveEntry(Move, Board)
+    }
+    class SpecializedMoves{
+        <<static>>
+        +HasMoved(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ bool 
     }
     Ranks --* "1"  Square
     Files --* "1"  Square

@@ -39,6 +39,13 @@
     class Helper{
         <<static>>
         +AddNonNull(this List~T~, T)$ bool
-        +Unify(this IReadOnlyCollection~T~, IReadOnlyCollection~T~) IReadOnlyCollection~T~
+        +Unify(this IReadOnlyCollection~T~, IReadOnlyCollection~T~)$ IReadOnlyCollection~T~
+    }
+```
+```mermaid
+    classDiagram
+    class SpecializedMoves{
+        <<static>>
+        +HasMoved(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ bool 
     }
 ```

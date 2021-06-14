@@ -50,7 +50,7 @@ namespace Tests.Core.Extensions
                     new Square(Files.a, Ranks.two)));
 
         [Fact]
-        public void TestManeuverhroughMainDiagonal() =>
+        public void TestManeuverThroughMainDiagonal() =>
             Assert.True(
                 squareAOne
                 .Maneuver(Through.MainDiagonal, 2)
