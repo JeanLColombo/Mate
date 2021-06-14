@@ -58,7 +58,7 @@ namespace Tests.Core.Extensions
             var b1 = new Board();
 
             b1.AddPiece<MockedPiece>(new Square(Files.a, Ranks.one), true);
-            b1.AddPiece<MockedRoyalPiece>(new Square(Files.h, Ranks.eigth), false);
+            b1.AddPiece<MockedRoyalPiece>(new Square(Files.h, Ranks.eight), false);
 
             var b2 = new Board(b1.Position);
 
@@ -77,7 +77,7 @@ namespace Tests.Core.Extensions
                 var b2 = new Board();
 
                 b1.AddPiece<MockedPiece>(new Square(Files.a, Ranks.one), true);
-                b1.AddPiece<MockedRoyalPiece>(new Square(Files.h, Ranks.eigth), false);
+                b1.AddPiece<MockedRoyalPiece>(new Square(Files.h, Ranks.eight), false);
 
                 b1.Copy(b2.Position);
             }
@@ -90,10 +90,10 @@ namespace Tests.Core.Extensions
             Assert.Equal(2, b.Position.Count);
 
             Assert.True(b.Position[new Square(Files.a, Ranks.one)].Color);
-            Assert.False(b.Position[new Square(Files.h, Ranks.eigth)].Color);
+            Assert.False(b.Position[new Square(Files.h, Ranks.eight)].Color);
 
             Assert.True(b.Position[new Square(Files.a, Ranks.one)] is MockedPiece);
-            Assert.True(b.Position[new Square(Files.h, Ranks.eigth)] is MockedRoyalPiece);
+            Assert.True(b.Position[new Square(Files.h, Ranks.eight)] is MockedRoyalPiece);
         }
     }
 }

@@ -17,7 +17,6 @@ namespace Core
         /// <value></value>
         private Board Board {get;} = new Board();
 
-        
         /// <summary>
         /// A <see cref="MoveEntry"/> list of all past <see cref="Move"/> 
         /// instances processed by <see cref="Chess"/>.

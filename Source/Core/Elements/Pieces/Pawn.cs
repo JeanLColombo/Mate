@@ -24,7 +24,7 @@ namespace Core.Elements.Pieces
         /// <returns></returns>
         public override IReadOnlyCollection<Move> AvailableMoves(IReadOnlyDictionary<Square,IPiece> position) =>
             PawnAttack(position)
-            .Unify(PawnMoveFoward(position))
+            .Unify(PawnMoveForward(position))
             .SelectMany(
                 m => UpdateToPromotions(m))
             .ToList();
@@ -47,7 +47,7 @@ namespace Core.Elements.Pieces
         /// </summary>
         /// <param name="position">A given <see cref="Board.Position"/>.</param>
         /// <returns>Returns only <see cref="MoveType.Normal"/>.</returns>
-        private IReadOnlyCollection<Move> PawnMoveFoward(IReadOnlyDictionary<Square,IPiece> position) =>
+        private IReadOnlyCollection<Move> PawnMoveForward(IReadOnlyDictionary<Square,IPiece> position) =>
             this.Attack(Through.Ranks, Color, position, 1)
                 .Where(m => m.Type is MoveType.Normal)
                 .ToList();
@@ -60,7 +60,7 @@ namespace Core.Elements.Pieces
         /// <returns>Either a read-only collection containg <paramref name="move"/> or a list of
         /// updated moves.</returns>
         private IReadOnlyCollection<Move> UpdateToPromotions(Move move) => 
-            move.ToSquare.Rank != (Color ? Ranks.eigth :  Ranks.one) ? 
+            move.ToSquare.Rank != (Color ? Ranks.eight :  Ranks.one) ? 
                 new List<Move>(){move} :
                 new MoveType[]{
                     MoveType.PromoteToKnight, 

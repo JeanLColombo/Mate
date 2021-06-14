@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Abstractions;
+using Core.Elements.Pieces;
 
 namespace Core.Extensions
 {
@@ -27,6 +28,33 @@ namespace Core.Extensions
             var s = ((Piece)piece).GetSquareFrom(position);
             
             return !((moveEntries.Count == 0) || (s is null) || (moveEntries.Select(me => me.Move).FirstOrDefault(m => m.ToSquare.IsSameSquareAs(s)) is null));
+        }
+
+        public static Move EnPassant(
+            this IPiece piece, 
+            IReadOnlyDictionary<Square,IPiece> position, 
+            IReadOnlyCollection<MoveEntry> moveEntries)
+        {
+            if (piece is not Pawn) return null;
+
+            throw new NotImplementedException();
+        }
+
+        public static Move PawnRush(
+            this Piece piece, 
+            IReadOnlyDictionary<Square,IPiece> position, 
+            IReadOnlyCollection<MoveEntry> moveEntries)
+        {
+            var square = piece.GetSquareFrom(position);    
+
+            if (
+                piece is Pawn && 
+                !piece.HasMoved(position, moveEntries) &&
+                square.Rank == (piece.Color ? Ranks.two : Ranks.seven))
+                return piece.AttackSquare(square.Maneuver(Through.Ranks, 2), position);
+
+            return null;
+
         }
 
     }

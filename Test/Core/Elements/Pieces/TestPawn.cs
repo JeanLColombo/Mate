@@ -118,7 +118,7 @@ namespace Tests.Core.Elements.Pieces
 
             Assert.All(moves, (m) => Assert.True(m.FromSquare.IsSameSquareAs(pawnData.Item1)));
 
-            Assert.All(moves, (m) => Assert.Equal((pawnData.Item2 ? Ranks.eigth : Ranks.one), m.ToSquare.Rank));
+            Assert.All(moves, (m) => Assert.Equal((pawnData.Item2 ? Ranks.eight : Ranks.one), m.ToSquare.Rank));
             
             var distinctToFiles = moves.Select(m => m.ToSquare.File).Distinct().ToList();
 
@@ -214,7 +214,7 @@ namespace Tests.Core.Elements.Pieces
             new object[]
             {
                 new Tuple<Square, bool>(new Square(Files.c, Ranks.seven), true),
-                new Tuple<Square, bool>(new Square(Files.d, Ranks.eigth), false)
+                new Tuple<Square, bool>(new Square(Files.d, Ranks.eight), false)
             },
         };
     }

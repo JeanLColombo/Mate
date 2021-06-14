@@ -38,7 +38,7 @@ namespace Tests.Core.Extensions
         }
 
         [Fact]
-        public void TestAttackOnSquareOcuppiedBySameColor()
+        public void TestAttackOnSquareOccupiedBySameColor()
         {
             var piece = new MockedPiece(true);
             
@@ -92,7 +92,7 @@ namespace Tests.Core.Extensions
         }
 
         [Fact]
-        public void TestAttackThroughOcuppiedFiles()
+        public void TestAttackThroughOccupiedFiles()
         {
             var pos = CreatePositionB(new Square(Files.h, Ranks.four));
 
@@ -143,7 +143,7 @@ namespace Tests.Core.Extensions
         }
 
         [Fact]
-        public void TestAttackThroughOcuppiedRanks()
+        public void TestAttackThroughOccupiedRanks()
         {
             var pos = CreatePositionB(new Square(Files.e, Ranks.seven));
 
@@ -159,7 +159,7 @@ namespace Tests.Core.Extensions
         [Fact]
         public void TestAttackThroughEnemyRanks()
         {
-            var pos = CreatePositionB(SquareEFour, new Square(Files.e, Ranks.eigth));
+            var pos = CreatePositionB(SquareEFour, new Square(Files.e, Ranks.eight));
 
             var moves = ((Piece)pos[SquareEFour]).Attack(Through.Ranks, true, pos);
             
@@ -169,7 +169,7 @@ namespace Tests.Core.Extensions
             Assert.Contains(new Square(Files.e, Ranks.five), toSquares);  
             Assert.Contains(new Square(Files.e, Ranks.six), toSquares);    
             Assert.Contains(new Square(Files.e, Ranks.seven), toSquares);  
-            Assert.Contains(new Square(Files.e, Ranks.eigth), toSquares); 
+            Assert.Contains(new Square(Files.e, Ranks.eight), toSquares); 
 
             Assert.All(moves, m => Assert.Equal(SquareEFour, m.FromSquare));
             Assert.Single(moves.Where(m => m.Type == MoveType.Capture).ToList());
@@ -194,7 +194,7 @@ namespace Tests.Core.Extensions
         }
 
         [Fact]
-        public void TestAttackThroughOcuppiedMainDiagonal()
+        public void TestAttackThroughOccupiedMainDiagonal()
         {
             var pos = CreatePositionB(new Square(Files.f, Ranks.five));
 
@@ -233,7 +233,7 @@ namespace Tests.Core.Extensions
             Assert.Contains(new Square(Files.d, Ranks.five), toSquares);  
             Assert.Contains(new Square(Files.c, Ranks.six), toSquares);
             Assert.Contains(new Square(Files.b, Ranks.seven), toSquares); 
-            Assert.Contains(new Square(Files.a, Ranks.eigth), toSquares);
+            Assert.Contains(new Square(Files.a, Ranks.eight), toSquares);
 
             Assert.All(moves, m => Assert.Equal(MoveType.Normal, m.Type));
             Assert.All(moves, m => Assert.Equal(SquareEFour, m.FromSquare));     
@@ -242,7 +242,7 @@ namespace Tests.Core.Extensions
         [Fact]
         public void TestAttackThroughOcuppiedOppositeDiagonal()
         {
-            var pos = CreatePositionB(new Square(Files.a, Ranks.eigth));
+            var pos = CreatePositionB(new Square(Files.a, Ranks.eight));
 
             var moves = ((Piece)pos[SquareEFour]).Attack(Through.OppositeDiagonal, true, pos);
             

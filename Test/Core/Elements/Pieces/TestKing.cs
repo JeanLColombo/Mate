@@ -25,7 +25,7 @@ namespace Tests.Core.Elements.Pieces
             board.AddPiece<MockedPiece>(new Square(Files.e, Ranks.two), true);
             board.AddPiece<MockedPiece>(new Square(Files.a, Ranks.one), false);
             board.AddPiece<MockedPiece>(new Square(Files.d, Ranks.five), true);
-            board.AddPiece<MockedPiece>(new Square(Files.b, Ranks.eigth), false);
+            board.AddPiece<MockedPiece>(new Square(Files.b, Ranks.eight), false);
 
             var moves = board.Position[SquareEFive].AvailableMoves(board.Position);
 

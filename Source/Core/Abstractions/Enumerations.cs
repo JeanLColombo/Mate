@@ -29,7 +29,7 @@ namespace Core.Abstractions
         five = 5,
         six = 6,
         seven = 7,
-        eigth = 8
+        eight = 8
     }
 
 
