@@ -30,7 +30,7 @@ namespace Core.Elements.Pieces
             .ToList();
 
         /// <summary>
-        /// Given a <paramref name="position"/>, attacks adjacent diagnals, 
+        /// Given a <paramref name="position"/>, attacks adjacent diagonals, 
         /// according to <see cref="IPiece.Color"/>.
         /// </summary>
         /// <param name="position">A given <see cref="Board.Position"/>.</param>
@@ -57,7 +57,7 @@ namespace Core.Elements.Pieces
         /// depending on their <see cref="Move.ToSquare"/> and <see cref="IPiece.Color"/>.
         /// </summary>
         /// <param name="move"></param>
-        /// <returns>Either a read-only collection containg <paramref name="move"/> or a list of
+        /// <returns>Either a read-only collection containing <paramref name="move"/> or a list of
         /// updated moves.</returns>
         private IReadOnlyCollection<Move> UpdateToPromotions(Move move) => 
             move.ToSquare.Rank != (Color ? Ranks.eight :  Ranks.one) ? 

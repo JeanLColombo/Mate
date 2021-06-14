@@ -30,6 +30,14 @@ namespace Core.Extensions
             return !((moveEntries.Count == 0) || (s is null) || (moveEntries.Select(me => me.Move).FirstOrDefault(m => m.ToSquare.IsSameSquareAs(s)) is null));
         }
 
+        /// <summary>
+        /// <see cref="Pawn"/>'s En Passant move.
+        /// </summary>
+        /// <param name="piece">Must inherit from <see cref="Pawn"/>.</param>
+        /// <param name="position">A given <see cref="Board.Position"/>.</param>
+        /// <param name="moveEntries">A read-only <see cref="MoveEntry"/> collection of 
+        /// previously proccessed moves.</param>
+        /// <returns></returns>
         public static Move EnPassant(
             this IPiece piece, 
             IReadOnlyDictionary<Square,IPiece> position, 
@@ -40,21 +48,43 @@ namespace Core.Extensions
             throw new NotImplementedException();
         }
 
-        public static Move PawnRush(
+        /// <summary>
+        /// <see cref="Pawn"/>'s first move is doubled.
+        /// </summary>
+        /// <param name="piece">Must inherit from <see cref="Pawn"/>.</param>
+        /// <param name="position">A given <see cref="Board.Position"/>.</param>
+        /// <param name="moveEntries">A read-only <see cref="MoveEntry"/> collection of 
+        /// previously proccessed moves.</param>
+        /// <returns></returns>
+        public static Move PawnFirstMove(
             this Piece piece, 
             IReadOnlyDictionary<Square,IPiece> position, 
             IReadOnlyCollection<MoveEntry> moveEntries)
         {
-            var square = piece.GetSquareFrom(position);    
+            var square = piece.GetSquareFrom(position);     
 
-            if (
-                piece is Pawn && 
-                !piece.HasMoved(position, moveEntries) &&
-                square.Rank == (piece.Color ? Ranks.two : Ranks.seven))
-                return piece.AttackSquare(square.Maneuver(Through.Ranks, 2), position);
-
-            return null;
-
+            return (
+                    piece is Pawn && 
+                    !piece.HasMoved(position, moveEntries) &&
+                    square.Rank == (piece.Color ? Ranks.two : Ranks.seven) &&
+                    !position.TryGetValue(
+                        square.Maneuver(
+                            Through.Ranks, 
+                            piece.Color ? 1 : -1), 
+                            out IPiece fp)) 
+                ?
+                    new []{
+                        piece
+                        .AttackSquare(
+                            square
+                            .Maneuver(
+                                Through.Ranks, 
+                                piece.Color ? 2 : -2), 
+                                position)}
+                        .FirstOrDefault(
+                            m => m.Type == MoveType.Normal)
+                : 
+                    null;
         }
 
     }
