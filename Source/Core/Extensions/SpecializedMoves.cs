@@ -54,13 +54,15 @@ namespace Core.Extensions
         /// <param name="piece">Must inherit from <see cref="Pawn"/>.</param>
         /// <param name="position">A given <see cref="Board.Position"/>.</param>
         /// <returns></returns>
-        public static Move PawnFirstMove(
+        public static IReadOnlyCollection<Move> PawnFirstMove(
             this IPiece piece, 
             IReadOnlyDictionary<Square,IPiece> position)
         {
             var square = ((Piece)piece).GetSquareFrom(position);     
 
-            var move = (
+            var moves = new HashSet<Move>();
+
+            moves.AddNonNull((
                     piece is Pawn && 
                     square.Rank == (piece.Color ? Ranks.two : Ranks.seven) &&
                     !position.TryGetValue(
@@ -77,11 +79,9 @@ namespace Core.Extensions
                                     piece.Color ? 2 : -2), 
                                     position)
                 : 
-                    null;
+                    null);
 
-            if (move is not null && move.Type != MoveType.Normal) move = null;
-
-            return move;
+            return moves.Where(m => m.Type == MoveType.Normal).ToList();
         }
 
     }

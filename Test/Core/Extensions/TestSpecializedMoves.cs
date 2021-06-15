@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 using Core.Abstractions;
 using Core.Elements;
@@ -74,15 +75,15 @@ namespace Tests.Core.Extensions
                 new []{movePawn1, movePawn2}, 
                 m => 
                     {
-                        Assert.NotNull(m);
-                        Assert.Equal(MoveType.Normal, m.Type);
+                        Assert.Single(m);
+                        Assert.Equal(MoveType.Normal, m.First().Type);
                     });
             
-            Assert.True(new Square(Files.a, Ranks.two).IsSameSquareAs(movePawn1.FromSquare));
-            Assert.True(new Square(Files.h, Ranks.seven).IsSameSquareAs(movePawn2.FromSquare));
+            Assert.True(new Square(Files.a, Ranks.two).IsSameSquareAs(movePawn1.First().FromSquare));
+            Assert.True(new Square(Files.h, Ranks.seven).IsSameSquareAs(movePawn2.First().FromSquare));
 
-            Assert.True(new Square(Files.a, Ranks.four).IsSameSquareAs(movePawn1.ToSquare));
-            Assert.True(new Square(Files.h, Ranks.five).IsSameSquareAs(movePawn2.ToSquare));
+            Assert.True(new Square(Files.a, Ranks.four).IsSameSquareAs(movePawn1.First().ToSquare));
+            Assert.True(new Square(Files.h, Ranks.five).IsSameSquareAs(movePawn2.First().ToSquare));
         }
 
         [Fact]
@@ -92,7 +93,7 @@ namespace Tests.Core.Extensions
 
             board.AddPiece<MockedPiece>(new Square(Files.a, Ranks.two), true);
 
-            Assert.Null(board.Position[new Square(Files.a, Ranks.two)].PawnFirstMove(board.Position));
+            Assert.Empty(board.Position[new Square(Files.a, Ranks.two)].PawnFirstMove(board.Position));
         }
 
         [Fact]
@@ -103,8 +104,8 @@ namespace Tests.Core.Extensions
             board.AddPiece<Pawn>(new Square(Files.a, Ranks.three), true);
             board.AddPiece<Pawn>(new Square(Files.h, Ranks.six), false);
 
-            Assert.Null(board.Position[new Square(Files.a, Ranks.three)].PawnFirstMove(board.Position));
-            Assert.Null(board.Position[new Square(Files.h, Ranks.six)].PawnFirstMove(board.Position));
+            Assert.Empty(board.Position[new Square(Files.a, Ranks.three)].PawnFirstMove(board.Position));
+            Assert.Empty(board.Position[new Square(Files.h, Ranks.six)].PawnFirstMove(board.Position));
         }
 
         [Fact] 
@@ -118,8 +119,8 @@ namespace Tests.Core.Extensions
             board.AddPiece<MockedPiece>(new Square(Files.a, Ranks.three), true);
             board.AddPiece<MockedPiece>(new Square(Files.h, Ranks.six), true);
 
-            Assert.Null(board.Position[new Square(Files.a, Ranks.two)].PawnFirstMove(board.Position));
-            Assert.Null(board.Position[new Square(Files.h, Ranks.seven)].PawnFirstMove(board.Position));
+            Assert.Empty(board.Position[new Square(Files.a, Ranks.two)].PawnFirstMove(board.Position));
+            Assert.Empty(board.Position[new Square(Files.h, Ranks.seven)].PawnFirstMove(board.Position));
         }
 
         [Fact]
@@ -133,8 +134,8 @@ namespace Tests.Core.Extensions
             board.AddPiece<MockedPiece>(new Square(Files.a, Ranks.four), true);
             board.AddPiece<MockedPiece>(new Square(Files.h, Ranks.five), true);
 
-            Assert.Null(board.Position[new Square(Files.a, Ranks.two)].PawnFirstMove(board.Position));
-            Assert.Null(board.Position[new Square(Files.h, Ranks.seven)].PawnFirstMove(board.Position));
+            Assert.Empty(board.Position[new Square(Files.a, Ranks.two)].PawnFirstMove(board.Position));
+            Assert.Empty(board.Position[new Square(Files.h, Ranks.seven)].PawnFirstMove(board.Position));
         }
 
     }

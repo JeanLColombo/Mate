@@ -145,6 +145,7 @@
     class SpecializedMoves{
         <<static>>
         +HasMoved(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ bool 
+        +PawnFirstMove(this IPiece, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
     }
     Ranks --* "1"  Square
     Files --* "1"  Square
