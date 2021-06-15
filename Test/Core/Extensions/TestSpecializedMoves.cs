@@ -67,8 +67,8 @@ namespace Tests.Core.Extensions
             board.AddPiece<Pawn>(new Square(Files.a, Ranks.two), true);
             board.AddPiece<Pawn>(new Square(Files.h, Ranks.seven), false);
 
-            var movePawn1 = board.Position[new Square(Files.a, Ranks.two)].PawnFirstMove(board.Position, new List<MoveEntry>());
-            var movePawn2 = board.Position[new Square(Files.h, Ranks.seven)].PawnFirstMove(board.Position, new List<MoveEntry>());
+            var movePawn1 = board.Position[new Square(Files.a, Ranks.two)].PawnFirstMove(board.Position);
+            var movePawn2 = board.Position[new Square(Files.h, Ranks.seven)].PawnFirstMove(board.Position);
 
             Assert.All(
                 new []{movePawn1, movePawn2}, 
@@ -92,13 +92,50 @@ namespace Tests.Core.Extensions
 
             board.AddPiece<MockedPiece>(new Square(Files.a, Ranks.two), true);
 
-            Assert.Null(board.Position[new Square(Files.a, Ranks.two)].PawnFirstMove(board.Position, new List<MoveEntry>()));
+            Assert.Null(board.Position[new Square(Files.a, Ranks.two)].PawnFirstMove(board.Position));
         }
 
         [Fact]
-        public void TestPawnFirstMoveWhereHasMoved()
+        public void TestPawnFirstNotOnPosition()
         {
-            
+            var board = new Board();
+
+            board.AddPiece<Pawn>(new Square(Files.a, Ranks.three), true);
+            board.AddPiece<Pawn>(new Square(Files.h, Ranks.six), false);
+
+            Assert.Null(board.Position[new Square(Files.a, Ranks.three)].PawnFirstMove(board.Position));
+            Assert.Null(board.Position[new Square(Files.h, Ranks.six)].PawnFirstMove(board.Position));
         }
+
+        [Fact] 
+        public void TestPawnFirstMovePawnIsBlocked()
+        {
+            var board = new Board();
+
+            board.AddPiece<Pawn>(new Square(Files.a, Ranks.two), true);
+            board.AddPiece<Pawn>(new Square(Files.h, Ranks.seven), false);
+
+            board.AddPiece<MockedPiece>(new Square(Files.a, Ranks.three), true);
+            board.AddPiece<MockedPiece>(new Square(Files.h, Ranks.six), true);
+
+            Assert.Null(board.Position[new Square(Files.a, Ranks.two)].PawnFirstMove(board.Position));
+            Assert.Null(board.Position[new Square(Files.h, Ranks.seven)].PawnFirstMove(board.Position));
+        }
+
+        [Fact]
+        public void TestPawnFirstMoveIsOccupied()
+        {
+            var board = new Board();
+
+            board.AddPiece<Pawn>(new Square(Files.a, Ranks.two), true);
+            board.AddPiece<Pawn>(new Square(Files.h, Ranks.seven), false);
+
+            board.AddPiece<MockedPiece>(new Square(Files.a, Ranks.four), true);
+            board.AddPiece<MockedPiece>(new Square(Files.h, Ranks.five), true);
+
+            Assert.Null(board.Position[new Square(Files.a, Ranks.two)].PawnFirstMove(board.Position));
+            Assert.Null(board.Position[new Square(Files.h, Ranks.seven)].PawnFirstMove(board.Position));
+        }
+
     }
 }

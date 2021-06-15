@@ -53,19 +53,15 @@ namespace Core.Extensions
         /// </summary>
         /// <param name="piece">Must inherit from <see cref="Pawn"/>.</param>
         /// <param name="position">A given <see cref="Board.Position"/>.</param>
-        /// <param name="moveEntries">A read-only <see cref="MoveEntry"/> collection of 
-        /// previously proccessed moves.</param>
         /// <returns></returns>
         public static Move PawnFirstMove(
             this IPiece piece, 
-            IReadOnlyDictionary<Square,IPiece> position, 
-            IReadOnlyCollection<MoveEntry> moveEntries)
+            IReadOnlyDictionary<Square,IPiece> position)
         {
             var square = ((Piece)piece).GetSquareFrom(position);     
 
-            return (
+            var move = (
                     piece is Pawn && 
-                    !piece.HasMoved(position, moveEntries) &&
                     square.Rank == (piece.Color ? Ranks.two : Ranks.seven) &&
                     !position.TryGetValue(
                         square.Maneuver(
@@ -73,18 +69,19 @@ namespace Core.Extensions
                             piece.Color ? 1 : -1), 
                             out IPiece fp)) 
                 ?
-                    new []{
-                        ((Piece)piece)
-                        .AttackSquare(
-                            square
-                            .Maneuver(
-                                Through.Ranks, 
-                                piece.Color ? 2 : -2), 
-                                position)}
-                        .FirstOrDefault(
-                            m => m.Type == MoveType.Normal)
+                    ((Piece)piece)
+                            .AttackSquare(
+                                square
+                                .Maneuver(
+                                    Through.Ranks, 
+                                    piece.Color ? 2 : -2), 
+                                    position)
                 : 
                     null;
+
+            if (move is not null && move.Type != MoveType.Normal) move = null;
+
+            return move;
         }
 
     }
