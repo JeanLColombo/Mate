@@ -57,11 +57,11 @@ namespace Core.Extensions
         /// previously proccessed moves.</param>
         /// <returns></returns>
         public static Move PawnFirstMove(
-            this Piece piece, 
+            this IPiece piece, 
             IReadOnlyDictionary<Square,IPiece> position, 
             IReadOnlyCollection<MoveEntry> moveEntries)
         {
-            var square = piece.GetSquareFrom(position);     
+            var square = ((Piece)piece).GetSquareFrom(position);     
 
             return (
                     piece is Pawn && 
@@ -74,7 +74,7 @@ namespace Core.Extensions
                             out IPiece fp)) 
                 ?
                     new []{
-                        piece
+                        ((Piece)piece)
                         .AttackSquare(
                             square
                             .Maneuver(

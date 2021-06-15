@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Xunit;
 using Core.Abstractions;
 using Core.Elements;
+using Core.Elements.Pieces;
 using Core.Extensions;
 using Tests.Core.Mocks;
 
@@ -56,6 +57,48 @@ namespace Tests.Core.Extensions
             };
 
             Assert.True(board.Position[new Square(Files.c, Ranks.two)].HasMoved(board.Position, entries));
+        }
+
+        [Fact]
+        public void TestPawnFirstMove()
+        {
+            var board = new Board();
+
+            board.AddPiece<Pawn>(new Square(Files.a, Ranks.two), true);
+            board.AddPiece<Pawn>(new Square(Files.h, Ranks.seven), false);
+
+            var movePawn1 = board.Position[new Square(Files.a, Ranks.two)].PawnFirstMove(board.Position, new List<MoveEntry>());
+            var movePawn2 = board.Position[new Square(Files.h, Ranks.seven)].PawnFirstMove(board.Position, new List<MoveEntry>());
+
+            Assert.All(
+                new []{movePawn1, movePawn2}, 
+                m => 
+                    {
+                        Assert.NotNull(m);
+                        Assert.Equal(MoveType.Normal, m.Type);
+                    });
+            
+            Assert.True(new Square(Files.a, Ranks.two).IsSameSquareAs(movePawn1.FromSquare));
+            Assert.True(new Square(Files.h, Ranks.seven).IsSameSquareAs(movePawn2.FromSquare));
+
+            Assert.True(new Square(Files.a, Ranks.four).IsSameSquareAs(movePawn1.ToSquare));
+            Assert.True(new Square(Files.h, Ranks.five).IsSameSquareAs(movePawn2.ToSquare));
+        }
+
+        [Fact]
+        public void TestPawnFirstMoveNotOnPawn()
+        {
+            var board = new Board();
+
+            board.AddPiece<MockedPiece>(new Square(Files.a, Ranks.two), true);
+
+            Assert.Null(board.Position[new Square(Files.a, Ranks.two)].PawnFirstMove(board.Position, new List<MoveEntry>()));
+        }
+
+        [Fact]
+        public void TestPawnFirstMoveWhereHasMoved()
+        {
+            
         }
     }
 }
