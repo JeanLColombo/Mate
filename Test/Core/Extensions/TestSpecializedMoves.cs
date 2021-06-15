@@ -148,5 +148,100 @@ namespace Tests.Core.Extensions
             var v = pawn.PawnFirstMove(board.Position);
         }
 
+        [Fact]
+        public void TestEnPassantOnNotPawn() =>
+            Assert.Empty(
+                new MockedPiece(true)
+                .EnPassant(
+                    new Board().Position, 
+                    new List<MoveEntry>(){
+                        new MoveEntry(
+                            new Move(
+                                new Square(Files.a, Ranks.one), 
+                                new Square(Files.a, Ranks.two), 
+                                MoveType.Normal),
+                            new Board().Position)
+                        }));
+        
+        [Fact]
+        public void TestEnPassantWithNoMoveEntries() =>
+            Assert.Empty(
+                new Pawn(true).EnPassant(
+                    new Board().Position,
+                    Enumerable.Empty<MoveEntry>().ToList()));
+
+        [Fact]
+        public void TestEnPassantLastPieceMovedIsNotPawn()
+        {
+            var board = new Board();
+
+            board.AddPiece<Pawn>(new Square(Files.a, Ranks.two), true);
+            board.AddPiece<MockedPiece>(new Square(Files.c, Ranks.one), false);
+
+            var moveEntries = new List<MoveEntry>() {
+                new MoveEntry(
+                    new Move(
+                        new Square(Files.c, Ranks.two), 
+                        new Square(Files.c, Ranks.one), 
+                        MoveType.Normal), 
+                    board.Position)};
+            
+            Assert.Empty(
+                board.Position[new Square(Files.a, Ranks.two)]
+                .EnPassant(board.Position, moveEntries));
+        }
+
+        [Fact]
+        public void TestEnPassantFromOffTheBoard()
+        {
+            var board = new Board();
+
+            board.AddPiece<MockedPiece>(new Square(Files.c, Ranks.one), false);
+
+            var moveEntries = new List<MoveEntry>() {
+                new MoveEntry(
+                    new Move(
+                        new Square(Files.c, Ranks.two), 
+                        new Square(Files.c, Ranks.one), 
+                        MoveType.Normal), 
+                    board.Position)};
+            
+            Assert.Empty(
+                new Pawn(true)
+                .EnPassant(board.Position, moveEntries));
+        }
+
+        [Fact]
+        public void TestEnPassantPawnNotOnCorrectRank()
+        {
+            var board = new Board();
+
+            board.AddPiece<Pawn>(new Square(Files.a, Ranks.two), true);
+            board.AddPiece<Pawn>(new Square(Files.b, Ranks.three), false);
+
+            var moveEntries = new List<MoveEntry>() {
+                new MoveEntry(
+                    new Move(
+                        new Square(Files.b, Ranks.four), 
+                        new Square(Files.b, Ranks.three), 
+                        MoveType.Normal), 
+                    board.Position)};    
+
+            Assert.Empty(
+                board.Position[new Square(Files.a, Ranks.two)]
+                .EnPassant(board.Position, moveEntries));
+            
+            moveEntries.Add(
+                new MoveEntry(
+                    new Move(
+                        new Square(Files.a, Ranks.one),
+                        new Square(Files.a, Ranks.two),
+                        MoveType.Normal),
+                    board.Position));
+
+            Assert.Empty(
+                board.Position[new Square(Files.b, Ranks.three)]
+                .EnPassant(board.Position, moveEntries));
+        }    
     }
 }
