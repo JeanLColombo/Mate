@@ -80,9 +80,9 @@ namespace Tests.Core.Elements.Pieces
                 .Select(d => d.Item1)
                 .ToList();
 
-            var fowardIsEmpty = centerMock is null;
+            var forwardIsEmpty = centerMock is null;
 
-            Assert.Equal((fowardIsEmpty ? 1 : 0) + attackedSquares.Count, moves.Count);
+            Assert.Equal((forwardIsEmpty ? 1 : 0) + attackedSquares.Count, moves.Count);
 
             Assert.Equal(attackedSquares.Count, 
                 moves.Where(m => m.Type is MoveType.Capture).ToList().Count);
