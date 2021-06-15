@@ -88,11 +88,28 @@ namespace Core.Extensions
 
             if (position[lastMove.ToSquare] is not Pawn) return move;
 
-            var adjacentSquares = ((Piece)piece).GetSquareFrom(position);
+            var square = ((Piece)piece).GetSquareFrom(position);
 
-            //TODO: Implement adjacentSquares.
+            if (
+                square is null || 
+                square.Rank != (piece.Color ? Ranks.five : Ranks.four)) 
+                return move;
 
-            throw new NotImplementedException();
+            var adjacentSquares = new []{1, -1}.Select(nr => square.Maneuver(Through.Files, nr)).ToList();
+
+            if (
+                !(adjacentSquares.Contains(lastMove.ToSquare)) || 
+                lastMove.FromSquare.Rank != (piece.Color ? Ranks.seven : Ranks.two))
+                return move;
+
+            move.Add(new Move(
+                new Square(square), 
+                new Square(
+                    lastMove.ToSquare.File, 
+                    (Ranks)((int)lastMove.ToSquare.Rank + (piece.Color ? 1 : -1))), 
+                MoveType.Passant));
+
+            return move;
         }    
 
     }
