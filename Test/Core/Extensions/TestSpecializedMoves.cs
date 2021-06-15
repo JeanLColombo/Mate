@@ -138,5 +138,15 @@ namespace Tests.Core.Extensions
             Assert.Empty(board.Position[new Square(Files.h, Ranks.seven)].PawnFirstMove(board.Position));
         }
 
+        [Fact]
+        public void TestPawnFirstMoveWhenNotInPosition()
+        {
+            var board = new Board();
+
+            var pawn = new Pawn(true);
+
+            var v = pawn.PawnFirstMove(board.Position);
+        }
+
     }
 }

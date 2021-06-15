@@ -31,24 +31,6 @@ namespace Core.Extensions
         }
 
         /// <summary>
-        /// <see cref="Pawn"/>'s En Passant move.
-        /// </summary>
-        /// <param name="piece">Must inherit from <see cref="Pawn"/>.</param>
-        /// <param name="position">A given <see cref="Board.Position"/>.</param>
-        /// <param name="moveEntries">A read-only <see cref="MoveEntry"/> collection of 
-        /// previously proccessed moves.</param>
-        /// <returns></returns>
-        public static Move EnPassant(
-            this IPiece piece, 
-            IReadOnlyDictionary<Square,IPiece> position, 
-            IReadOnlyCollection<MoveEntry> moveEntries)
-        {
-            if (piece is not Pawn) return null;
-
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// <see cref="Pawn"/>'s first move is doubled.
         /// </summary>
         /// <param name="piece">Must inherit from <see cref="Pawn"/>.</param>
@@ -60,10 +42,11 @@ namespace Core.Extensions
         {
             var square = ((Piece)piece).GetSquareFrom(position);     
 
-            var moves = new HashSet<Move>();
+            var move = new HashSet<Move>();
 
-            moves.AddNonNull((
+            move.AddNonNull((
                     piece is Pawn && 
+                    square is not null &&
                     square.Rank == (piece.Color ? Ranks.two : Ranks.seven) &&
                     !position.TryGetValue(
                         square.Maneuver(
@@ -81,8 +64,36 @@ namespace Core.Extensions
                 : 
                     null);
 
-            return moves.Where(m => m.Type == MoveType.Normal).ToList();
+            return move.Where(m => m.Type == MoveType.Normal).ToList();
         }
+
+        /// <summary>
+        /// <see cref="Pawn"/>'s En Passant move.
+        /// </summary>
+        /// <param name="piece">Must inherit from <see cref="Pawn"/>.</param>
+        /// <param name="position">A given <see cref="Board.Position"/>.</param>
+        /// <param name="moveEntries">A read-only <see cref="MoveEntry"/> collection of 
+        /// previously proccessed moves.</param>
+        /// <returns></returns>
+        public static IReadOnlyCollection<Move> EnPassant(
+            this IPiece piece, 
+            IReadOnlyDictionary<Square,IPiece> position, 
+            IReadOnlyCollection<MoveEntry> moveEntries)
+        {
+            var move = new HashSet<Move>();
+
+            if (piece is not Pawn || moveEntries.Count == 0) return move;
+
+            var lastMove = moveEntries.Last().Move;
+
+            if (position[lastMove.ToSquare] is not Pawn) return move;
+
+            var adjacentSquares = ((Piece)piece).GetSquareFrom(position);
+
+            //TODO: Implement adjacentSquares.
+
+            throw new NotImplementedException();
+        }    
 
     }
 }
