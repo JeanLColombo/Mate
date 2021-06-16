@@ -5,11 +5,12 @@ using Core.Abstractions;
 using Core.Elements;
 using Core.Elements.Pieces;
 using Core.Extensions;
+using Core.Extensions.SpecializedMoves;
 using Tests.Core.Mocks;
 
 namespace Tests.Core.Extensions
 {
-    public class TestSpecializedMoves
+    public class TestPawnPassant
     {
         [Fact]
         public void TestEnPassantOnNotPawn() =>

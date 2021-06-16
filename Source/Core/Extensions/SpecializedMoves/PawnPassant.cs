@@ -1,19 +1,16 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Abstractions;
 using Core.Elements.Pieces;
 
-namespace Core.Extensions
+namespace Core.Extensions.SpecializedMoves
 {
     /// <summary>
-    /// Provides extension methods for special <see cref="Move"/> instances 
-    /// that requires additional information, such as en passant, and castles 
+    /// Provides extension methods for special <see cref="Pawn"/>'s
+    /// En Passant logic.
     /// </summary>
-    public static class SpecializedMoves
+    public static class PawnPassant
     {   
-        
-
         /// <summary>
         /// <see cref="Pawn"/>'s En Passant move.
         /// </summary>
