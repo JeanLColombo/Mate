@@ -3,7 +3,7 @@ using System.Linq;
 using Core.Abstractions;
 using Core.Elements.Pieces;
 
-namespace Core.Extensions.SM
+namespace Core.Extensions.SpecializedMoves
 {
     /// <summary>
     /// Provides extension methods for <see cref="Pawn"/> first move.
