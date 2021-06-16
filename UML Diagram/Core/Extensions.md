@@ -40,14 +40,20 @@
         <<static>>
         +AddNonNull(this List~T~, T)$ bool
         +Unify(this IReadOnlyCollection~T~, IReadOnlyCollection~T~)$ IReadOnlyCollection~T~
+        +HasMoved(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ bool 
     }
 ```
 ```mermaid
     classDiagram
-    class SpecializedMoves{
+    class PawnPassant{
         <<static>>
-        +HasMoved(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ bool 
-        +PawnFirstMove(this IPiece, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
         +EnPassant(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
+    }
+```
+```mermaid
+    classDiagram
+    class PawnRush{
+        <<static>>
+        +PawnFirstMove(this IPiece, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
     }
 ```

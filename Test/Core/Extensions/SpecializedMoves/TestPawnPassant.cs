@@ -180,7 +180,7 @@ namespace Tests.Core.Extensions
             Assert.Equal(new Square(Files.a, Ranks.five), passant1.First().FromSquare);
             Assert.Equal(new Square(Files.b, Ranks.six), passant1.First().ToSquare);
 
-                        moveEntries.Add(
+            moveEntries.Add(
                 SimpleMoveEntry(
                     new Square(Files.g, Ranks.two), 
                     new Square(Files.g, Ranks.four), 

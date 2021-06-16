@@ -134,6 +134,7 @@
         <<static>>
         +AddNonNull(this List~T~, T)$ bool
         +Unify(this IReadOnlyCollection~T~, IReadOnlyCollection~T~)$ IReadOnlyCollection~T~
+        +HasMoved(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ bool 
     }
     class MoveEntry{
         +Move Move
@@ -142,11 +143,13 @@
         +MoveEntry(Move, IReadOnlyDictionary~Square,IPiece~)
         +MoveEntry(Move, Board)
     }
-    class SpecializedMoves{
+    class PawnPassant{
         <<static>>
-        +HasMoved(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ bool 
-        +PawnFirstMove(this IPiece, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
         +EnPassant(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
+    }
+    class PawnRush{
+        <<static>>
+        +PawnFirstMove(this IPiece, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
     }
     Ranks --* "1"  Square
     Files --* "1"  Square
