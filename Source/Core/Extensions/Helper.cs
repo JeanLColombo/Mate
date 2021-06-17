@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Abstractions;
@@ -48,6 +49,31 @@ namespace Core.Extensions
             var s = ((Piece)piece).GetSquareFrom(position);
             
             return !((moveEntries.Count == 0) || (s is null) || (moveEntries.Select(me => me.Move).FirstOrDefault(m => m.ToSquare.IsSameSquareAs(s)) is null));
+        }
+
+        /// <summary>
+        /// Returns all <see cref="Square"/>'s on the same rank between two files.
+        /// </summary>
+        /// <param name="s1"></param>
+        /// <param name="s2"></param>
+        /// <returns></returns>
+        /// <exception  cref="ArgumentException">Throws an exception when s1 are s2
+        /// ar on the different <see cref="Ranks"/> or when they are the same 
+        /// <see cref="Square"/>.</exception >
+        public static IReadOnlyCollection<Square> SquaresInBetweenFiles(
+            this Square s1, 
+            Square s2)
+        {
+            if (!s1.IsSameRankAs(s2) || s1.IsSameSquareAs(s2)) 
+                throw new ArgumentException(
+                    "Squares are either on different ranks or ar the same", 
+                    nameof(s2)); 
+
+            return Enumerable
+                .Range(1, (Math.Abs((int)s1.File - (int)s2.File) - 1))
+                .Select(i => (s1.File < s2.File) ? i : - i)
+                .Select(nf => s1.Maneuver(Through.Files, nf))
+                .ToList();
         }
     }
 }

@@ -49,19 +49,5 @@ namespace Core.Extensions.SpecializedMoves
 
             throw new NotImplementedException();
         }
-
-        /// <summary>
-        /// Returns all <see cref="Square"/>'s on the same rank between two files.
-        /// </summary>
-        /// <param name="s1"></param>
-        /// <param name="s2"></param>
-        /// <returns></returns>
-        private static IReadOnlyCollection<Square> SquaresInBetweenFiles(
-            this Square s1, 
-            Square s2)
-        {
-            //(s1.IsSameRankAs(s2)) ? s1.Maneuver(Through.Files, (int)s2.Rank - (int)s1.Rank);
-            throw new NotImplementedException();
-        }
     }
 }
