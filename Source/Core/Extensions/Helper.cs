@@ -60,7 +60,7 @@ namespace Core.Extensions
         /// <exception  cref="ArgumentException">Throws an exception when s1 are s2
         /// ar on the different <see cref="Ranks"/> or when they are the same 
         /// <see cref="Square"/>.</exception >
-        public static IReadOnlyCollection<Square> SquaresInBetweenFiles(
+        public static IReadOnlyCollection<Square> InBetweenSquares(
             this Square s1, 
             Square s2)
         {

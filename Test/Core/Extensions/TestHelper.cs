@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -157,5 +158,54 @@ namespace Tests.Core.Extensions
 
             Assert.True(board.Position[new Square(Files.c, Ranks.two)].HasMoved(board.Position, entries));
         }
+
+        [Fact]
+        public void TestInBetweenSquaresOnDifferentRanks() =>
+            Assert.Throws<ArgumentException>(() =>
+                new Square(Files.a, Ranks.one)
+                .InBetweenSquares(
+                    new Square(Files.h, Ranks.eight)
+                ));
+
+        [Fact]
+        public void TestInBetweenSquaresAreTheSame() =>
+            Assert.Throws<ArgumentException>(() =>
+                new Square(Files.a, Ranks.one)
+                .InBetweenSquares(
+                    new Square(Files.a, Ranks.one)
+                ));
+
+        [Theory]
+        [MemberData(nameof(SquareData))]
+        public void TestInBetweenSquares(
+            Square sk,
+            Square sr,
+            IReadOnlyCollection<Square> squares
+        )
+        {
+            var squaresKing = sk.InBetweenSquares(sr); 
+            var squaresRook = sk.InBetweenSquares(sr);
+
+            Assert.Equal(squares.Count, squaresKing.Count);
+            Assert.Equal(squares.Count, squaresRook.Count);
+
+            Assert.All(squares, (s) => 
+                Assert.Contains(s, squaresKing));
+
+            Assert.All(squaresKing, (s) => 
+                Assert.Contains(s, squaresRook));
+        }
+
+        public static IEnumerable<object[]> SquareData => new []{
+            new object[]
+            {
+                new Square(Files.a, Ranks.one),
+                new Square(Files.d, Ranks.one),
+                new List<Square>() {
+                    new Square(Files.b, Ranks.one),
+                    new Square(Files.c, Ranks.one)
+                }               
+            }
+        };
     }
 }
