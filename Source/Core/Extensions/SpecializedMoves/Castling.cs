@@ -22,20 +22,19 @@ namespace Core.Extensions.SpecializedMoves
         /// <param name="moveEntries">A read-only <see cref="MoveEntry"/> collection of 
         /// previously proccessed moves.</param>
         /// <returns></returns>
-        public static IReadOnlyCollection<Move> Castle(
+        public static IReadOnlyCollection<Move> Castles(
             this IPiece king, 
             IReadOnlyDictionary<Square,IPiece> position, 
             IReadOnlyCollection<MoveEntry> moveEntries)
         {
-            var moves = new HashSet<Move>();
-
-            var square = ((Piece)king).GetSquareFrom(position);    
+            var kingSquare = ((Piece)king).GetSquareFrom(position);    
 
             if (
                 king is not King || 
-                square is null  ||
+                kingSquare is null  ||
+                kingSquare.Rank != (king.Color ? Ranks.one : Ranks.eight) ||
                 king.HasMoved(position, moveEntries)) 
-                return moves;
+                return Enumerable.Empty<Move>().ToList();
 
             var rookSquares = position
                 .Where(kv => kv.Value.Color == king.Color && kv.Value is Rook)
@@ -43,11 +42,22 @@ namespace Core.Extensions.SpecializedMoves
                 .Select(kv => kv.Key)
                 .ToList();    
 
-            if (rookSquares.Count == 0) return moves;
-
-
-
-            throw new NotImplementedException();
+            return rookSquares
+                .Where(
+                    rs => kingSquare
+                        .InBetweenSquares(rs)
+                        .All(s => !position.TryGetValue(s, out IPiece piece)))
+                .Select(rs =>                    
+                    (rs.File < kingSquare.File) ? 
+                        new Move(
+                            new Square(kingSquare),
+                            new Square(Files.c, kingSquare.Rank),
+                            MoveType.Castle) :
+                        new Move(
+                            new Square(kingSquare),
+                            new Square(Files.g, kingSquare.Rank),
+                            MoveType.Castle))
+                .ToList();
         }
     }
 }

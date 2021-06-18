@@ -58,3 +58,10 @@
         +PawnFirstMove(this IPiece, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
     }
 ```
+```mermaid
+    classDiagram
+    class Castling{
+        <<static>>
+        +Castles(this IPiece, IReadOnlyDictionary~Square,IPiece, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
+    }
+```

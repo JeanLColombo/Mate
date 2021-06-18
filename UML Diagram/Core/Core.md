@@ -152,6 +152,10 @@
         <<static>>
         +PawnFirstMove(this IPiece, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
     }
+    class Castling{
+        <<static>>
+        +Castles(this IPiece, IReadOnlyDictionary~Square,IPiece, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
+    }
     Ranks --* "1"  Square
     Files --* "1"  Square
     Square --* "0..64" Board
