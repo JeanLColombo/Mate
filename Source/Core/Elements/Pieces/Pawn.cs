@@ -8,7 +8,7 @@ namespace Core.Elements.Pieces
     /// <summary>
     /// Implements the <see cref="Pawn"/> piece.
     /// </summary>
-    public class Pawn : Royalty
+    public class Pawn : Piece
     {
         /// <summary>
         /// Creates a <see cref="Pawn"/> piece of given <paramref name="color"/>.
