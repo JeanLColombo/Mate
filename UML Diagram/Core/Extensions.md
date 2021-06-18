@@ -41,7 +41,7 @@
         +AddNonNull(this List~T~, T)$ bool
         +Unify(this IReadOnlyCollection~T~, IReadOnlyCollection~T~)$ IReadOnlyCollection~T~
         +HasMoved(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ bool 
-        +SquaresInBetweenFiles(this Square, Square)$ IReadOnlyCollection~Square~
+        +InBetweenSquares(this Square, Square)$ IReadOnlyCollection~Square~
     }
 ```
 ```mermaid

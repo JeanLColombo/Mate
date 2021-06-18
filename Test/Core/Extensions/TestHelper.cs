@@ -190,7 +190,10 @@ namespace Tests.Core.Extensions
             Assert.Equal(squares.Count, squaresRook.Count);
 
             Assert.All(squares, (s) => 
-                Assert.Contains(s, squaresKing));
+                {
+                    Assert.Contains(s, squaresKing);
+                    Assert.True(sk.IsSameRankAs(s));
+                });
 
             Assert.All(squaresKing, (s) => 
                 Assert.Contains(s, squaresRook));
@@ -205,6 +208,23 @@ namespace Tests.Core.Extensions
                     new Square(Files.b, Ranks.one),
                     new Square(Files.c, Ranks.one)
                 }               
+            },
+            new object[]
+            {
+                new Square(Files.d, Ranks.two),
+                new Square(Files.e, Ranks.two),
+                new List<Square>() {
+                }               
+            },
+            new object[]
+            {
+                new Square(Files.d, Ranks.eight),
+                new Square(Files.h, Ranks.eight),   
+                new List<Square>() {
+                    new Square(Files.e, Ranks.eight),
+                    new Square(Files.f, Ranks.eight),
+                    new Square(Files.g, Ranks.eight)
+                } 
             }
         };
     }
