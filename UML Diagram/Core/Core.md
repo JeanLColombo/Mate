@@ -107,7 +107,11 @@
         +King(bool)
         +AvailableMoves(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
     }
+    class IChess{
+        <<Interface>>
+    }
     class Chess{
+        <<Abstract>>
         -Board Board
         +List~MoveEntry~ MoveEntries
         +Chess()
@@ -163,6 +167,7 @@
     Square --* Move
     IPiece --* "0..64" Board
     Piece ..|> IPiece
+    Chess ..|> IChess
     Piece <|-- Pawn
     Piece <|-- Knight
     Piece <|-- Bishop
@@ -172,6 +177,6 @@
     Royalty <|-- King
     Move --* MoveEntry
     Board --* MoveEntry
-    Board --* "1" Chess
-    MoveEntry --* "*" Chess
+    Board --* "1" IChess
+    MoveEntry --* "*" IChess
 ```
