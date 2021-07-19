@@ -109,13 +109,16 @@
     }
     class IChess{
         <<Interface>>
+        -Board Board
+        +List~MoveEntry~ MoveEntries
+        +AvailableMoves(bool)* IReadOnlyCollection~Move~
     }
     class Chess{
         <<Abstract>>
         -Board Board
         +List~MoveEntry~ MoveEntries
-        +Chess()
-        +AvailableMoves() IReadOnlyCollection~Move~
+        +Chess(+IReadOnlyDictionary~Square,IPiece~)
+        +AvailableMoves(bool)* IReadOnlyCollection~Move~
     }
     class Maneuverability{
         <<static>>
