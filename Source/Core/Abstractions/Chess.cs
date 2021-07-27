@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using Core.Abstractions;
 using Core.Elements;
-
 
 namespace Core.Abstractions
 {
@@ -43,7 +41,7 @@ namespace Core.Abstractions
         /// <summary>
         /// Creates a new <see cref="Chess"/> object, with no pieces.
         /// </summary>
-        public Chess() : this(default(Dictionary<Square, IPiece>)) {}
+        public Chess() : this(new Dictionary<Square,IPiece>()) {}
 
         /// <summary>
         /// Creates a new <see cref="Chess"/> object with a given 
