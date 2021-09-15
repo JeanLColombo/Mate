@@ -2,9 +2,16 @@
     classDiagram
     class IChess{
         <<Interface>>
-        +IReadOnlyDictionary~Square,IPiece~ Position
-        +IReadOnlyCollection~MoveEntry~ MoveEntries
-        +AvailableMoves(bool)* IReadOnlyCollection~Move~
+        IReadOnlyDictionary~Square,IPiece~ Position
+        IReadOnlyCollection~MoveEntry~ MoveEntries
+        AvailableMoves(bool)* IReadOnlyCollection~Move~
+    }
+    class IGame{
+        <<Interface>>
+        int CurrentMove
+        bool CurrentPlayer
+        IChess Chess
+        ProcessMove(Move) bool
     }
     class Chess{
         <<Abstract>>
@@ -32,4 +39,5 @@
     Board --* "1" IChess
     MoveEntry --* "*" IChess
     Chess ..|> IChess
+    IChess --* "1" IGame
 ```
