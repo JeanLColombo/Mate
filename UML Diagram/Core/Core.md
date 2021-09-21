@@ -173,6 +173,11 @@
         <<static>>
         +Castles(this IPiece, IReadOnlyDictionary~Square,IPiece, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
     }
+    class Legality{
+        <<static>>
+        +IsChecked(this IChess, bool)$ bool
+        +IsLegal(this IChess, Move)$ bool 
+    }
     Ranks --* "1"  Square
     Files --* "1"  Square
     Square --* "0..64" Board

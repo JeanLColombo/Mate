@@ -1,7 +1,7 @@
 namespace Core.Abstractions
 {
     /// <summary>
-    /// Implements 
+    /// Abstract implementation of a game of <see cref="Chess"/>.
     /// </summary>
     public abstract class Game : IGame
     {

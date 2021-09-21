@@ -65,3 +65,11 @@
         +Castles(this IPiece, IReadOnlyDictionary~Square,IPiece, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
     }
 ```
+```mermaid
+    classDiagram
+    class Legality{
+        <<static>>
+        +IsChecked(this IChess, bool)$ bool
+        +IsLegal(this IChess, Move)$ bool 
+    }
+```
