@@ -6,7 +6,8 @@
 
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <DocumentationFile>README.xml</DocumentationFile>
+    <DocumentationFile>bin\$(MSBuildProjectName).xml</DocumentationFile>
+    <DocumentationMarkdown>README.md</DocumentationMarkdown>
   </PropertyGroup>
 
   <ItemGroup>

@@ -264,4 +264,3 @@ FakesAssemblies/
 
 # Additional Ignores
 out/
-*.xml
