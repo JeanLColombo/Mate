@@ -6,13 +6,37 @@ namespace Core.Abstractions
     /// </summary>
     public enum Files
     {
+        /// <summary>
+        /// A File.
+        /// </summary>
         a = 1,
+        /// <summary>
+        /// B File 
+        /// </summary>
         b = 2,
+        /// <summary>
+        /// C File
+        /// </summary>
         c = 3,
+        /// <summary>
+        /// D File 
+        /// </summary>
         d = 4,
+        /// <summary>
+        /// E File
+        /// </summary>
         e = 5,
+        /// <summary>
+        /// F File
+        /// </summary>
         f = 6,
+        /// <summary>
+        /// G File
+        /// </summary>
         g = 7,
+        /// <summary>
+        /// H File
+        /// </summary>
         h = 8
     }
 
@@ -22,13 +46,37 @@ namespace Core.Abstractions
     /// </summary>
     public enum Ranks
     {
+        /// <summary>
+        /// First Rank
+        /// </summary>
         one = 1,
+        /// <summary>
+        /// Second Rank
+        /// </summary>
         two = 2,
+        /// <summary>
+        /// Third Rank
+        /// </summary>
         three = 3,
+        /// <summary>
+        /// Forth Rank
+        /// </summary>
         four = 4,
+        /// <summary>
+        /// Fifth Rank
+        /// </summary>
         five = 5,
+        /// <summary>
+        /// Sixth Rank
+        /// </summary>
         six = 6,
+        /// <summary>
+        /// Seventh Rank
+        /// </summary>
         seven = 7,
+        /// <summary>
+        /// Eighth Rank
+        /// </summary>
         eight = 8
     }
 
@@ -48,7 +96,7 @@ namespace Core.Abstractions
     }
 
     /// <summary>
-    /// Defines all possible orientations of moviment through the board.
+    /// Defines all possible orientations of movements through the board.
     /// </summary>
     public enum Through{
         Files = 1,

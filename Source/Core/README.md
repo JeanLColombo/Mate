@@ -29,7 +29,17 @@
   - [_moveEntries](#P-Core-Abstractions-Chess-_moveEntries 'Core.Abstractions.Chess._moveEntries')
   - [AvailableMoves(color)](#M-Core-Abstractions-Chess-AvailableMoves-System-Boolean- 'Core.Abstractions.Chess.AvailableMoves(System.Boolean)')
   - [Core#Abstractions#IChess#AvailableMoves(c)](#M-Core-Abstractions-Chess-Core#Abstractions#IChess#AvailableMoves-System-Boolean- 'Core.Abstractions.Chess.Core#Abstractions#IChess#AvailableMoves(System.Boolean)')
+- [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom')
+  - [BannedMoves](#F-Core-Elements-Rules-Custom-BannedMoves 'Core.Elements.Rules.Custom.BannedMoves')
 - [Files](#T-Core-Abstractions-Files 'Core.Abstractions.Files')
+  - [a](#F-Core-Abstractions-Files-a 'Core.Abstractions.Files.a')
+  - [b](#F-Core-Abstractions-Files-b 'Core.Abstractions.Files.b')
+  - [c](#F-Core-Abstractions-Files-c 'Core.Abstractions.Files.c')
+  - [d](#F-Core-Abstractions-Files-d 'Core.Abstractions.Files.d')
+  - [e](#F-Core-Abstractions-Files-e 'Core.Abstractions.Files.e')
+  - [f](#F-Core-Abstractions-Files-f 'Core.Abstractions.Files.f')
+  - [g](#F-Core-Abstractions-Files-g 'Core.Abstractions.Files.g')
+  - [h](#F-Core-Abstractions-Files-h 'Core.Abstractions.Files.h')
 - [Game](#T-Core-Abstractions-Game 'Core.Abstractions.Game')
 - [Helper](#T-Core-Extensions-Helper 'Core.Extensions.Helper')
   - [AddNonNull\`\`1(list,value)](#M-Core-Extensions-Helper-AddNonNull``1-System-Collections-Generic-HashSet{``0},``0- 'Core.Extensions.Helper.AddNonNull``1(System.Collections.Generic.HashSet{``0},``0)')
@@ -93,6 +103,14 @@
   - [#ctor(color)](#M-Core-Elements-Pieces-Queen-#ctor-System-Boolean- 'Core.Elements.Pieces.Queen.#ctor(System.Boolean)')
   - [AvailableMoves(position)](#M-Core-Elements-Pieces-Queen-AvailableMoves-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Elements.Pieces.Queen.AvailableMoves(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})')
 - [Ranks](#T-Core-Abstractions-Ranks 'Core.Abstractions.Ranks')
+  - [eight](#F-Core-Abstractions-Ranks-eight 'Core.Abstractions.Ranks.eight')
+  - [five](#F-Core-Abstractions-Ranks-five 'Core.Abstractions.Ranks.five')
+  - [four](#F-Core-Abstractions-Ranks-four 'Core.Abstractions.Ranks.four')
+  - [one](#F-Core-Abstractions-Ranks-one 'Core.Abstractions.Ranks.one')
+  - [seven](#F-Core-Abstractions-Ranks-seven 'Core.Abstractions.Ranks.seven')
+  - [six](#F-Core-Abstractions-Ranks-six 'Core.Abstractions.Ranks.six')
+  - [three](#F-Core-Abstractions-Ranks-three 'Core.Abstractions.Ranks.three')
+  - [two](#F-Core-Abstractions-Ranks-two 'Core.Abstractions.Ranks.two')
 - [Rook](#T-Core-Elements-Pieces-Rook 'Core.Elements.Pieces.Rook')
   - [#ctor(color)](#M-Core-Elements-Pieces-Rook-#ctor-System-Boolean- 'Core.Elements.Pieces.Rook.#ctor(System.Boolean)')
   - [AvailableMoves(position)](#M-Core-Elements-Pieces-Rook-AvailableMoves-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Elements.Pieces.Rook.AvailableMoves(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})')
@@ -430,12 +448,6 @@ game.
 
 
 
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| MoveEntry |  |
-
 <a name='P-Core-Abstractions-Chess-Position'></a>
 ### Position `property`
 
@@ -453,12 +465,6 @@ List of [MoveEntry](#T-Core-Abstractions-MoveEntry 'Core.Abstractions.MoveEntry'
 ##### Returns
 
 
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| MoveEntry |  |
 
 <a name='M-Core-Abstractions-Chess-AvailableMoves-System-Boolean-'></a>
 ### AvailableMoves(color) `method`
@@ -495,6 +501,27 @@ Associates [AvailableMoves](#M-Core-Abstractions-IChess-AvailableMoves-System-Bo
 | ---- | ---- | ----------- |
 | c | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') |  |
 
+<a name='T-Core-Elements-Rules-Custom'></a>
+## Custom `type`
+
+##### Namespace
+
+Core.Elements.Rules
+
+##### Summary
+
+Defines a fully customizable game of chess. Special moves can be enabled and / or disabled and 
+pieces can be set to any given configuration. 
+
+Configuration are passed through via constructor.
+
+<a name='F-Core-Elements-Rules-Custom-BannedMoves'></a>
+### BannedMoves `constants`
+
+##### Summary
+
+List of banned moves. Instanced on construction. [MoveType](#T-Core-Abstractions-MoveType 'Core.Abstractions.MoveType')'s on this list are not allowed.
+
 <a name='T-Core-Abstractions-Files'></a>
 ## Files `type`
 
@@ -505,6 +532,62 @@ Core.Abstractions
 ##### Summary
 
 Defines all Files within a Chess board.
+
+<a name='F-Core-Abstractions-Files-a'></a>
+### a `constants`
+
+##### Summary
+
+A File.
+
+<a name='F-Core-Abstractions-Files-b'></a>
+### b `constants`
+
+##### Summary
+
+B File
+
+<a name='F-Core-Abstractions-Files-c'></a>
+### c `constants`
+
+##### Summary
+
+C File
+
+<a name='F-Core-Abstractions-Files-d'></a>
+### d `constants`
+
+##### Summary
+
+D File
+
+<a name='F-Core-Abstractions-Files-e'></a>
+### e `constants`
+
+##### Summary
+
+E File
+
+<a name='F-Core-Abstractions-Files-f'></a>
+### f `constants`
+
+##### Summary
+
+F File
+
+<a name='F-Core-Abstractions-Files-g'></a>
+### g `constants`
+
+##### Summary
+
+G File
+
+<a name='F-Core-Abstractions-Files-h'></a>
+### h `constants`
+
+##### Summary
+
+H File
 
 <a name='T-Core-Abstractions-Game'></a>
 ## Game `type`
@@ -1377,6 +1460,62 @@ Core.Abstractions
 
 Defines all Ranks within a Chess board.
 
+<a name='F-Core-Abstractions-Ranks-eight'></a>
+### eight `constants`
+
+##### Summary
+
+Eighth Rank
+
+<a name='F-Core-Abstractions-Ranks-five'></a>
+### five `constants`
+
+##### Summary
+
+Fifth Rank
+
+<a name='F-Core-Abstractions-Ranks-four'></a>
+### four `constants`
+
+##### Summary
+
+Forth Rank
+
+<a name='F-Core-Abstractions-Ranks-one'></a>
+### one `constants`
+
+##### Summary
+
+First Rank
+
+<a name='F-Core-Abstractions-Ranks-seven'></a>
+### seven `constants`
+
+##### Summary
+
+Seventh Rank
+
+<a name='F-Core-Abstractions-Ranks-six'></a>
+### six `constants`
+
+##### Summary
+
+Sixth Rank
+
+<a name='F-Core-Abstractions-Ranks-three'></a>
+### three `constants`
+
+##### Summary
+
+Third Rank
+
+<a name='F-Core-Abstractions-Ranks-two'></a>
+### two `constants`
+
+##### Summary
+
+Second Rank
+
 <a name='T-Core-Elements-Pieces-Rook'></a>
 ## Rook `type`
 
@@ -1670,4 +1809,4 @@ Core.Abstractions
 
 ##### Summary
 
-Defines all possible orientations of moviment through the board.
+Defines all possible orientations of movements through the board.

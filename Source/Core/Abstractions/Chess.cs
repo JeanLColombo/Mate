@@ -18,7 +18,6 @@ namespace Core.Abstractions
         /// <summary>
         /// List of <see cref="MoveEntry"/> objects, invisible to users.
         /// </summary>
-        /// <typeparam name="MoveEntry"></typeparam>
         /// <returns></returns>
         private List<MoveEntry> _moveEntries { get; } = new List<MoveEntry>();
 
@@ -34,7 +33,6 @@ namespace Core.Abstractions
         /// <see cref="Move"/> instances processed by the <see cref="Chess"/>
         /// game.
         /// </summary>
-        /// <typeparam name="MoveEntry"></typeparam>
         /// <returns></returns>
         public IReadOnlyCollection<MoveEntry> MoveEntries {get => _moveEntries; }
 
