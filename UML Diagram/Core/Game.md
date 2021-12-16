@@ -36,8 +36,15 @@
         +MoveEntry(Move, IReadOnlyDictionary~Square,IPiece~)
         +MoveEntry(Move, Board)
     }
+    class Custom{
+        +IEnumerable~MoveType~
+        +Custom(IReadOnlyDictionary~Square,IPiece~)
+        +Custom(IReadOnlyDictionary~Square,IPiece~, HashSet~MoveType~)
+        +AvailableMoves(bool) IReadOnlyCollection~Move~
+    }
     Board --* "1" IChess
     MoveEntry --* "*" IChess
     Chess ..|> IChess
     IChess --* "1" IGame
+    Custom ..|> Chess
 ```
