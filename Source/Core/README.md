@@ -30,7 +30,10 @@
   - [AvailableMoves(color)](#M-Core-Abstractions-Chess-AvailableMoves-System-Boolean- 'Core.Abstractions.Chess.AvailableMoves(System.Boolean)')
   - [Core#Abstractions#IChess#AvailableMoves(c)](#M-Core-Abstractions-Chess-Core#Abstractions#IChess#AvailableMoves-System-Boolean- 'Core.Abstractions.Chess.Core#Abstractions#IChess#AvailableMoves(System.Boolean)')
 - [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom')
+  - [#ctor(position)](#M-Core-Elements-Rules-Custom-#ctor-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Elements.Rules.Custom.#ctor(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})')
+  - [#ctor(position,bannedMoves)](#M-Core-Elements-Rules-Custom-#ctor-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece},System-Collections-Generic-HashSet{Core-Abstractions-MoveType}- 'Core.Elements.Rules.Custom.#ctor(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece},System.Collections.Generic.HashSet{Core.Abstractions.MoveType})')
   - [BannedMoves](#F-Core-Elements-Rules-Custom-BannedMoves 'Core.Elements.Rules.Custom.BannedMoves')
+  - [AvailableMoves(color)](#M-Core-Elements-Rules-Custom-AvailableMoves-System-Boolean- 'Core.Elements.Rules.Custom.AvailableMoves(System.Boolean)')
 - [Files](#T-Core-Abstractions-Files 'Core.Abstractions.Files')
   - [a](#F-Core-Abstractions-Files-a 'Core.Abstractions.Files.a')
   - [b](#F-Core-Abstractions-Files-b 'Core.Abstractions.Files.b')
@@ -41,6 +44,10 @@
   - [g](#F-Core-Abstractions-Files-g 'Core.Abstractions.Files.g')
   - [h](#F-Core-Abstractions-Files-h 'Core.Abstractions.Files.h')
 - [Game](#T-Core-Abstractions-Game 'Core.Abstractions.Game')
+  - [Chess](#P-Core-Abstractions-Game-Chess 'Core.Abstractions.Game.Chess')
+  - [CurrentMove](#P-Core-Abstractions-Game-CurrentMove 'Core.Abstractions.Game.CurrentMove')
+  - [CurrentPlayer](#P-Core-Abstractions-Game-CurrentPlayer 'Core.Abstractions.Game.CurrentPlayer')
+  - [ProcessMove(move)](#M-Core-Abstractions-Game-ProcessMove-Core-Abstractions-Move- 'Core.Abstractions.Game.ProcessMove(Core.Abstractions.Move)')
 - [Helper](#T-Core-Extensions-Helper 'Core.Extensions.Helper')
   - [AddNonNull\`\`1(list,value)](#M-Core-Extensions-Helper-AddNonNull``1-System-Collections-Generic-HashSet{``0},``0- 'Core.Extensions.Helper.AddNonNull``1(System.Collections.Generic.HashSet{``0},``0)')
   - [HasMoved(piece,position,moveEntries)](#M-Core-Extensions-Helper-HasMoved-Core-Abstractions-IPiece,System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece},System-Collections-Generic-IReadOnlyCollection{Core-Abstractions-MoveEntry}- 'Core.Extensions.Helper.HasMoved(Core.Abstractions.IPiece,System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece},System.Collections.Generic.IReadOnlyCollection{Core.Abstractions.MoveEntry})')
@@ -77,11 +84,19 @@
   - [Type](#P-Core-Abstractions-Move-Type 'Core.Abstractions.Move.Type')
 - [MoveEntry](#T-Core-Abstractions-MoveEntry 'Core.Abstractions.MoveEntry')
   - [#ctor(move,position)](#M-Core-Abstractions-MoveEntry-#ctor-Core-Abstractions-Move,System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Abstractions.MoveEntry.#ctor(Core.Abstractions.Move,System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})')
-  - [#ctor(move,board)](#M-Core-Abstractions-MoveEntry-#ctor-Core-Abstractions-Move,Core-Elements-Board- 'Core.Abstractions.MoveEntry.#ctor(Core.Abstractions.Move,Core.Elements.Board)')
+  - [#ctor(move)](#M-Core-Abstractions-MoveEntry-#ctor-Core-Abstractions-Move,Core-Elements-Board- 'Core.Abstractions.MoveEntry.#ctor(Core.Abstractions.Move,Core.Elements.Board)')
   - [Move](#P-Core-Abstractions-MoveEntry-Move 'Core.Abstractions.MoveEntry.Move')
   - [Position](#P-Core-Abstractions-MoveEntry-Position 'Core.Abstractions.MoveEntry.Position')
   - [board](#P-Core-Abstractions-MoveEntry-board 'Core.Abstractions.MoveEntry.board')
 - [MoveType](#T-Core-Abstractions-MoveType 'Core.Abstractions.MoveType')
+  - [Capture](#F-Core-Abstractions-MoveType-Capture 'Core.Abstractions.MoveType.Capture')
+  - [Castle](#F-Core-Abstractions-MoveType-Castle 'Core.Abstractions.MoveType.Castle')
+  - [Normal](#F-Core-Abstractions-MoveType-Normal 'Core.Abstractions.MoveType.Normal')
+  - [Passant](#F-Core-Abstractions-MoveType-Passant 'Core.Abstractions.MoveType.Passant')
+  - [PromotToBishop](#F-Core-Abstractions-MoveType-PromotToBishop 'Core.Abstractions.MoveType.PromotToBishop')
+  - [PromoteToKnight](#F-Core-Abstractions-MoveType-PromoteToKnight 'Core.Abstractions.MoveType.PromoteToKnight')
+  - [PromoteToQueen](#F-Core-Abstractions-MoveType-PromoteToQueen 'Core.Abstractions.MoveType.PromoteToQueen')
+  - [PromoteToRook](#F-Core-Abstractions-MoveType-PromoteToRook 'Core.Abstractions.MoveType.PromoteToRook')
 - [Pawn](#T-Core-Elements-Pieces-Pawn 'Core.Elements.Pieces.Pawn')
   - [#ctor(color)](#M-Core-Elements-Pieces-Pawn-#ctor-System-Boolean- 'Core.Elements.Pieces.Pawn.#ctor(System.Boolean)')
   - [AvailableMoves(position)](#M-Core-Elements-Pieces-Pawn-AvailableMoves-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Elements.Pieces.Pawn.AvailableMoves(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})')
@@ -131,6 +146,10 @@
   - [IsSameRankAs(p)](#M-Core-Abstractions-Square-IsSameRankAs-Core-Abstractions-Square- 'Core.Abstractions.Square.IsSameRankAs(Core.Abstractions.Square)')
   - [IsSameSquareAs(p)](#M-Core-Abstractions-Square-IsSameSquareAs-Core-Abstractions-Square- 'Core.Abstractions.Square.IsSameSquareAs(Core.Abstractions.Square)')
 - [Through](#T-Core-Abstractions-Through 'Core.Abstractions.Through')
+  - [Files](#F-Core-Abstractions-Through-Files 'Core.Abstractions.Through.Files')
+  - [MainDiagonal](#F-Core-Abstractions-Through-MainDiagonal 'Core.Abstractions.Through.MainDiagonal')
+  - [OppositeDiagonal](#F-Core-Abstractions-Through-OppositeDiagonal 'Core.Abstractions.Through.OppositeDiagonal')
+  - [Ranks](#F-Core-Abstractions-Through-Ranks 'Core.Abstractions.Through.Ranks')
 
 <a name='T-Core-Extensions-Attacking'></a>
 ## Attacking `type`
@@ -217,7 +236,9 @@ this attack.
 
 ##### Summary
 
-Internal logic for [AttackSquare](#M-Core-Extensions-Attacking-AttackSquare-Core-Abstractions-Piece,Core-Abstractions-Square,System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Extensions.Attacking.AttackSquare(Core.Abstractions.Piece,Core.Abstractions.Square,System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})').
+Internal logic for determing the corresponding [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') for an attack being mounted
+from  to , based on the given
+.
 
 ##### Returns
 
@@ -315,7 +336,7 @@ copy of given `position`.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| position | [System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyDictionary 'System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}') | A read-only dictionary of [](#!-IPieces 'IPieces') instances
+| position | [System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyDictionary 'System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}') | A read-only dictionary of [IPiece](#T-Core-Abstractions-IPiece 'Core.Abstractions.IPiece') instances
 placed in [Square](#T-Core-Abstractions-Square 'Core.Abstractions.Square') instances. |
 
 <a name='P-Core-Elements-Board-Pieces'></a>
@@ -329,15 +350,6 @@ The Dictionary of [IPiece](#T-Core-Abstractions-IPiece 'Core.Abstractions.IPiece
 ##### Returns
 
 
-
-##### Generic Types
-
-| Name | Description |
-| ---- | ----------- |
-| Square | Used as a `Key` 
-to access pieces. |
-| IPiece | The piece on the `Square`. 
-Can be `null`. |
 
 <a name='P-Core-Elements-Board-Position'></a>
 ### Position `property`
@@ -515,12 +527,64 @@ pieces can be set to any given configuration.
 
 Configuration are passed through via constructor.
 
+<a name='M-Core-Elements-Rules-Custom-#ctor-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}-'></a>
+### #ctor(position) `constructor`
+
+##### Summary
+
+Instantiate a new [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom') game of chess with the give  on the board.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| position | [System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyDictionary 'System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}') | A read-only dictionary of pieces. |
+
+<a name='M-Core-Elements-Rules-Custom-#ctor-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece},System-Collections-Generic-HashSet{Core-Abstractions-MoveType}-'></a>
+### #ctor(position,bannedMoves) `constructor`
+
+##### Summary
+
+Instantiate a new [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom') game of chess with the give  on the board,
+as well as a given list of banned  entries.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| position | [System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyDictionary 'System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}') | A read-only dictionary of pieces. |
+| bannedMoves | [System.Collections.Generic.HashSet{Core.Abstractions.MoveType}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.HashSet 'System.Collections.Generic.HashSet{Core.Abstractions.MoveType}') | A list of banned [MoveType](#T-Core-Abstractions-MoveType 'Core.Abstractions.MoveType') entries. |
+
 <a name='F-Core-Elements-Rules-Custom-BannedMoves'></a>
 ### BannedMoves `constants`
 
 ##### Summary
 
 List of banned moves. Instanced on construction. [MoveType](#T-Core-Abstractions-MoveType 'Core.Abstractions.MoveType')'s on this list are not allowed.
+
+<a name='M-Core-Elements-Rules-Custom-AvailableMoves-System-Boolean-'></a>
+### AvailableMoves(color) `method`
+
+##### Summary
+
+Currently available moves for player with pieces of the given , based on the
+list of banned moves.
+
+##### Returns
+
+A read-only collection of [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') instances.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| color | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | `true` for white, `false for black` for black. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.NotImplementedException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.NotImplementedException 'System.NotImplementedException') | This method is not yet implemented. |
 
 <a name='T-Core-Abstractions-Files'></a>
 ## Files `type`
@@ -600,6 +664,44 @@ Core.Abstractions
 
 Abstract implementation of a game of [Chess](#P-Core-Abstractions-Game-Chess 'Core.Abstractions.Game.Chess').
 
+<a name='P-Core-Abstractions-Game-Chess'></a>
+### Chess `property`
+
+##### Summary
+
+
+
+<a name='P-Core-Abstractions-Game-CurrentMove'></a>
+### CurrentMove `property`
+
+##### Summary
+
+
+
+<a name='P-Core-Abstractions-Game-CurrentPlayer'></a>
+### CurrentPlayer `property`
+
+##### Summary
+
+
+
+<a name='M-Core-Abstractions-Game-ProcessMove-Core-Abstractions-Move-'></a>
+### ProcessMove(move) `method`
+
+##### Summary
+
+
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') |  |
+
 <a name='T-Core-Extensions-Helper'></a>
 ## Helper `type`
 
@@ -647,7 +749,7 @@ Checks if `piece` has moved.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | piece | [Core.Abstractions.IPiece](#T-Core-Abstractions-IPiece 'Core.Abstractions.IPiece') |  |
-| position | [System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyDictionary 'System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}') | A given [](#!-Board-Position 'Board.Position'). |
+| position | [System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyDictionary 'System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}') | A given [Position](#P-Core-Elements-Board-Position 'Core.Elements.Board.Position'). |
 | moveEntries | [System.Collections.Generic.IReadOnlyCollection{Core.Abstractions.MoveEntry}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyCollection 'System.Collections.Generic.IReadOnlyCollection{Core.Abstractions.MoveEntry}') | A read-only [MoveEntry](#T-Core-Abstractions-MoveEntry 'Core.Abstractions.MoveEntry') collection of 
 previously proccessed moves. |
 
@@ -682,7 +784,7 @@ ar on the different [Ranks](#T-Core-Abstractions-Ranks 'Core.Abstractions.Ranks'
 
 ##### Summary
 
-Creates a new [](#!-IReadOnlyCollection 'IReadOnlyCollection'), containing all 
+Creates a new read-only collection containing all 
 `T` items in `firstCollection` and 
 in `secondCollection`, while excluding duplicates.
 
@@ -1106,7 +1208,7 @@ a given `position`.
 | position | [System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyDictionary 'System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}') | A given [Position](#P-Core-Elements-Board-Position 'Core.Elements.Board.Position'). |
 
 <a name='M-Core-Abstractions-MoveEntry-#ctor-Core-Abstractions-Move,Core-Elements-Board-'></a>
-### #ctor(move,board) `constructor`
+### #ctor(move) `constructor`
 
 ##### Summary
 
@@ -1122,8 +1224,7 @@ a given `board`.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A [Move](#P-Core-Abstractions-MoveEntry-Move 'Core.Abstractions.MoveEntry.Move') applied to 
-`position`. |
-| board | [Core.Elements.Board](#T-Core-Elements-Board 'Core.Elements.Board') | A given [Board](#T-Core-Elements-Board 'Core.Elements.Board'). |
+A given [Board](#T-Core-Elements-Board 'Core.Elements.Board'). |
 
 <a name='P-Core-Abstractions-MoveEntry-Move'></a>
 ### Move `property`
@@ -1156,6 +1257,64 @@ Core.Abstractions
 ##### Summary
 
 Defines all types of moves in a Chess game.
+
+<a name='F-Core-Abstractions-MoveType-Capture'></a>
+### Capture `constants`
+
+##### Summary
+
+When a [Piece](#T-Core-Abstractions-Piece 'Core.Abstractions.Piece') moves to an [Square](#T-Core-Abstractions-Square 'Core.Abstractions.Square') occupied another [Piece](#T-Core-Abstractions-Piece 'Core.Abstractions.Piece') of opposite 
+[Color](#P-Core-Abstractions-Piece-Color 'Core.Abstractions.Piece.Color').
+
+<a name='F-Core-Abstractions-MoveType-Castle'></a>
+### Castle `constants`
+
+##### Summary
+
+A [King](#T-Core-Elements-Pieces-King 'Core.Elements.Pieces.King') move hides behind a 
+[Rook](#T-Core-Elements-Pieces-Rook 'Core.Elements.Pieces.Rook') of same [Color](#P-Core-Abstractions-Piece-Color 'Core.Abstractions.Piece.Color').
+
+<a name='F-Core-Abstractions-MoveType-Normal'></a>
+### Normal `constants`
+
+##### Summary
+
+When a [Piece](#T-Core-Abstractions-Piece 'Core.Abstractions.Piece') moves to an unoccupied [Square](#T-Core-Abstractions-Square 'Core.Abstractions.Square').
+
+<a name='F-Core-Abstractions-MoveType-Passant'></a>
+### Passant `constants`
+
+##### Summary
+
+A [Pawn](#T-Core-Elements-Pieces-Pawn 'Core.Elements.Pieces.Pawn') move executed under special circumstances.
+
+<a name='F-Core-Abstractions-MoveType-PromotToBishop'></a>
+### PromotToBishop `constants`
+
+##### Summary
+
+A move where a [Pawn](#T-Core-Elements-Pieces-Pawn 'Core.Elements.Pieces.Pawn') promotes to a [Bishop](#T-Core-Elements-Pieces-Bishop 'Core.Elements.Pieces.Bishop').
+
+<a name='F-Core-Abstractions-MoveType-PromoteToKnight'></a>
+### PromoteToKnight `constants`
+
+##### Summary
+
+A move where a [Pawn](#T-Core-Elements-Pieces-Pawn 'Core.Elements.Pieces.Pawn') promotes to a [Knight](#T-Core-Elements-Pieces-Knight 'Core.Elements.Pieces.Knight').
+
+<a name='F-Core-Abstractions-MoveType-PromoteToQueen'></a>
+### PromoteToQueen `constants`
+
+##### Summary
+
+A move where a [Pawn](#T-Core-Elements-Pieces-Pawn 'Core.Elements.Pieces.Pawn') promotes to a [Queen](#T-Core-Elements-Pieces-Queen 'Core.Elements.Pieces.Queen').
+
+<a name='F-Core-Abstractions-MoveType-PromoteToRook'></a>
+### PromoteToRook `constants`
+
+##### Summary
+
+A move where a [Pawn](#T-Core-Elements-Pieces-Pawn 'Core.Elements.Pieces.Pawn') promotes to a [Rook](#T-Core-Elements-Pieces-Rook 'Core.Elements.Pieces.Rook').
 
 <a name='T-Core-Elements-Pieces-Pawn'></a>
 ## Pawn `type`
@@ -1285,7 +1444,7 @@ En Passant logic.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | piece | [Core.Abstractions.IPiece](#T-Core-Abstractions-IPiece 'Core.Abstractions.IPiece') | Must inherit from [Pawn](#T-Core-Elements-Pieces-Pawn 'Core.Elements.Pieces.Pawn'). |
-| position | [System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyDictionary 'System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}') | A given [](#!-Board-Position 'Board.Position'). |
+| position | [System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyDictionary 'System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}') | A given [Position](#P-Core-Elements-Board-Position 'Core.Elements.Board.Position'). |
 | moveEntries | [System.Collections.Generic.IReadOnlyCollection{Core.Abstractions.MoveEntry}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyCollection 'System.Collections.Generic.IReadOnlyCollection{Core.Abstractions.MoveEntry}') | A read-only [MoveEntry](#T-Core-Abstractions-MoveEntry 'Core.Abstractions.MoveEntry') collection of 
 previously proccessed moves. |
 
@@ -1316,7 +1475,7 @@ Provides extension methods for [Pawn](#T-Core-Elements-Pieces-Pawn 'Core.Element
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | piece | [Core.Abstractions.IPiece](#T-Core-Abstractions-IPiece 'Core.Abstractions.IPiece') | Must inherit from [Pawn](#T-Core-Elements-Pieces-Pawn 'Core.Elements.Pieces.Pawn'). |
-| position | [System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyDictionary 'System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}') | A given [](#!-Board-Position 'Board.Position'). |
+| position | [System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyDictionary 'System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}') | A given [Position](#P-Core-Elements-Board-Position 'Core.Elements.Board.Position'). |
 
 <a name='T-Core-Abstractions-Piece'></a>
 ## Piece `type`
@@ -1340,7 +1499,7 @@ Creates a new [Piece](#T-Core-Abstractions-Piece 'Core.Abstractions.Piece') obje
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| color | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | White if [](#!-true 'true'). Black otherwise. |
+| color | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | White if `true`. Black otherwise. |
 
 <a name='P-Core-Abstractions-Piece-Color'></a>
 ### Color `property`
@@ -1810,3 +1969,31 @@ Core.Abstractions
 ##### Summary
 
 Defines all possible orientations of movements through the board.
+
+<a name='F-Core-Abstractions-Through-Files'></a>
+### Files `constants`
+
+##### Summary
+
+Along the [Files](#F-Core-Abstractions-Through-Files 'Core.Abstractions.Through.Files').
+
+<a name='F-Core-Abstractions-Through-MainDiagonal'></a>
+### MainDiagonal `constants`
+
+##### Summary
+
+Advancing through [Files](#F-Core-Abstractions-Through-Files 'Core.Abstractions.Through.Files') and [Ranks](#F-Core-Abstractions-Through-Ranks 'Core.Abstractions.Through.Ranks') simultaneously.
+
+<a name='F-Core-Abstractions-Through-OppositeDiagonal'></a>
+### OppositeDiagonal `constants`
+
+##### Summary
+
+Retreating through [Files](#F-Core-Abstractions-Through-Files 'Core.Abstractions.Through.Files') and advancing through [Ranks](#F-Core-Abstractions-Through-Ranks 'Core.Abstractions.Through.Ranks') simultaneously.
+
+<a name='F-Core-Abstractions-Through-Ranks'></a>
+### Ranks `constants`
+
+##### Summary
+
+Along the [Ranks](#F-Core-Abstractions-Through-Ranks 'Core.Abstractions.Through.Ranks').

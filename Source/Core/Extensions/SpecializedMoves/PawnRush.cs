@@ -14,7 +14,7 @@ namespace Core.Extensions.SpecializedMoves
         /// <see cref="Pawn"/>'s first move is doubled.
         /// </summary>
         /// <param name="piece">Must inherit from <see cref="Pawn"/>.</param>
-        /// <param name="position">A given <see cref="Board.Position"/>.</param>
+        /// <param name="position">A given <see cref="Core.Elements.Board.Position"/>.</param>
         /// <returns></returns>
         public static IReadOnlyCollection<Move> PawnFirstMove(
             this IPiece piece, 

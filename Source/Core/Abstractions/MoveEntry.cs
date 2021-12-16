@@ -45,8 +45,7 @@ namespace Core.Abstractions
         /// a given <paramref name="board"/>.
         /// </summary>
         /// <param name="move">A <see cref="Move"/> applied to 
-        /// <paramref name="position"/>.</param>
-        /// <param name="board">A given <see cref="Board"/>.</param>
+        /// <param name="board"/>A given <see cref="Board"/>.</param>
         /// <returns></returns>
         public MoveEntry(Move move, Board board) : this(move, board.Position) {}
     }

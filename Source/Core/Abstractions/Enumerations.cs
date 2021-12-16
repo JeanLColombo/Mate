@@ -85,13 +85,39 @@ namespace Core.Abstractions
     /// Defines all types of moves in a Chess game.
     /// </summary>
     public enum MoveType{
+        /// <summary>
+        /// When a <see cref="Piece"/> moves to an unoccupied <see cref="Square"/>. 
+        /// </summary>
         Normal = 1,
+        /// <summary>
+        /// When a <see cref="Piece"/> moves to an <see cref="Square"/> occupied another <see cref="Piece"/> of opposite 
+        /// <see cref="Piece.Color"/>. 
+        /// </summary>
         Capture = 2,
+        /// <summary>
+        /// A <see cref="Core.Elements.Pieces.Pawn"/> move executed under special circumstances. 
+        /// </summary>
         Passant = 3,
+        /// <summary>
+        /// A <see cref="Core.Elements.Pieces.King"/> move hides behind a 
+        /// <see cref="Core.Elements.Pieces.Rook"/> of same <see cref="Piece.Color"/>. 
+        /// </summary>
         Castle = 4,
+        /// <summary>
+        /// A move where a <see cref="Core.Elements.Pieces.Pawn"/> promotes to a <see cref="Core.Elements.Pieces.Knight"/>. 
+        /// </summary>
         PromoteToKnight = 5,
+        /// <summary>
+        /// A move where a <see cref="Core.Elements.Pieces.Pawn"/> promotes to a <see cref="Core.Elements.Pieces.Bishop"/>. 
+        /// </summary>
         PromotToBishop = 6,
+        /// <summary>
+        /// A move where a <see cref="Core.Elements.Pieces.Pawn"/> promotes to a <see cref="Core.Elements.Pieces.Rook"/>. 
+        /// </summary>
         PromoteToRook = 7,
+        /// <summary>
+        /// A move where a <see cref="Core.Elements.Pieces.Pawn"/> promotes to a <see cref="Core.Elements.Pieces.Queen"/>. 
+        /// </summary>
         PromoteToQueen = 8
     }
 
@@ -99,9 +125,21 @@ namespace Core.Abstractions
     /// Defines all possible orientations of movements through the board.
     /// </summary>
     public enum Through{
+        /// <summary>
+        /// Along the <see cref="Files"/>. 
+        /// </summary>
         Files = 1,
+        /// <summary>
+        /// Along the <see cref="Ranks"/>. 
+        /// </summary>
         Ranks = 2,
+        /// <summary>
+        /// Advancing through <see cref="Files"/> and <see cref="Ranks"/> simultaneously. 
+        /// </summary>
         MainDiagonal = 3,
+        /// <summary>
+        /// Retreating through <see cref="Files"/> and advancing through <see cref="Ranks"/> simultaneously. 
+        /// </summary>
         OppositeDiagonal = 4
     }
 }
