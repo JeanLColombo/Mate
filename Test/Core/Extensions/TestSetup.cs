@@ -44,6 +44,23 @@ namespace Tests.Core.Extensions
         }
 
         [Fact]
+        public void TestAddPieceChessOverload()
+        {
+            var chess = new MockedChess();
+            var piece = new MockedPiece(true);
+            var square = new Square(Files.a, Ranks.one);
+
+            Assert.True(chess.AddPiece(square, piece));
+
+            Assert.False(chess.AddPiece(square, piece));
+
+            Assert.Single(chess.Position);
+
+            Assert.Equal(piece, chess.Position[square]);
+
+        }
+
+        [Fact]
         public void TestCopyEmptyPosition()
         {
             var b1 = new Board();

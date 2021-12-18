@@ -337,10 +337,12 @@ It's chess, mate!
     Royalty <|-- King
 ```
 
-# Current Performance
+# Unit Testing Performance
 
 ```shell
-Passed!  - Failed:     0, Passed:   136, Skipped:     0, Total:   136, Duration: 75 ms - Core.dll (net5.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:   137, Skipped:     0, Total:   137, Duration: 69 ms - Core.dll (net5.0)
 
 Calculating coverage result...
   Generating report '..\.coverage\lcov.info'
@@ -348,14 +350,14 @@ Calculating coverage result...
 +--------+--------+--------+--------+
 | Module | Line   | Branch | Method |
 +--------+--------+--------+--------+
-| Mate   | 89,61% | 87,5%  | 91,13% |
+| Mate   | 90,82% | 89,16% | 92,4%  |
 +--------+--------+--------+--------+
 
 +---------+--------+--------+--------+
 |         | Line   | Branch | Method |
 +---------+--------+--------+--------+
-| Total   | 89,61% | 87,5%  | 91,13% |
+| Total   | 90,82% | 89,16% | 92,4%  |
 +---------+--------+--------+--------+
-| Average | 89,61% | 87,5%  | 91,13% |
+| Average | 90,82% | 89,16% | 92,4%  |
 +---------+--------+--------+--------+
 ```

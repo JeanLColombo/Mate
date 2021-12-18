@@ -4,6 +4,8 @@ using System.Linq;
 using Core.Abstractions;
 using Core.Elements;
 
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Core")]
+
 namespace Core.Extensions
 {
     /// <summary>
@@ -44,13 +46,13 @@ namespace Core.Extensions
         /// <param name="piece">A given <see cref="IPiece"/> instance.</param>
         /// <returns><see langword="true"/> if the piece was properly placed. 
         /// Otherwise, <see langword="false"/>.</returns>
-        private static bool AddPiece(this Chess chess, Square square, IPiece piece)
+        internal static bool AddPiece(this Chess chess, Square square, IPiece piece)
         {
             if (chess.Position.ContainsKey(square)) return false;
 
             chess.PlaceAt(square, piece);
 
-            return false;
+            return true;
         }
 
         /// <summary>
@@ -62,9 +64,8 @@ namespace Core.Extensions
         /// <param name="piece">A given <see cref="IPiece"/> instance.</param>
         /// <returns><see langword="true"/> if the piece was properly removed. 
         /// Otherwise, <see langword="false"/>.</returns>
-        private static bool RemovePiece(this Chess chess, Square square, out IPiece piece)
+        internal static bool RemovePiece(this Chess chess, Square square, out IPiece piece)
         {
-            //TODO: implement this method.
             if (!chess.Position.ContainsKey(square))
             {
                 piece = null;
@@ -72,7 +73,10 @@ namespace Core.Extensions
             }
 
             piece = chess.Position[square];
-            return false;
+
+            chess.RemoveFrom(square);
+
+            return true;
         }
 
         /// <summary>
