@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Xunit;
 using Core.Abstractions;
@@ -50,5 +51,59 @@ namespace Tests.Core.Abstractions
                 }
             );
         }
+
+        [Fact]
+        public void TestPlaceAt()
+        {
+            Chess chess = new MockedChess();
+            IPiece piece = new MockedPiece(true);
+            Square square = new Square(Files.a, Ranks.one);
+
+            chess.PlaceAt(square, piece);
+
+            Assert.Single(chess.Position);
+            Assert.True(piece == chess.Position[square]);
+        }
+
+        [Fact]
+        public void TestPlaceAtOccupiedSquare()
+        {
+            Chess chess = new MockedChess();
+            IPiece occupyingPiece = new MockedPiece(true);
+            IPiece piece = new MockedPiece(false);
+            Square square = new Square(Files.a, Ranks.one);
+
+            chess.PlaceAt(square, occupyingPiece);
+
+            Assert.Throws<ArgumentException>(() => chess.PlaceAt(square, piece));
+
+            Assert.True(occupyingPiece == chess.Position[square]);
+        }
+
+        [Fact]
+        public void TestRemoveFrom()
+        {
+            Chess chess = new MockedChess();
+            IPiece piece = new MockedPiece(false);
+            Square square = new Square(Files.a, Ranks.one);
+
+            chess.PlaceAt(square, piece);
+
+            chess.RemoveFrom(square);
+
+            Assert.Empty(chess.Position);
+
+            Assert.Throws<System.Collections.Generic.KeyNotFoundException>(() => chess.Position[square]);
+        }
+
+        [Fact]
+        public void TestRemoveFromEmptySquare()
+        {
+            Chess chess = new MockedChess();
+            Square square = new Square(Files.a, Ranks.one);
+
+            Assert.Throws<ArgumentException>(() => chess.RemoveFrom(square));
+        }
+
     }
 }

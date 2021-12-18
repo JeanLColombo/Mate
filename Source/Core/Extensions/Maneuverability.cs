@@ -1,6 +1,7 @@
 using System;
 using Core.Abstractions;
 using Core.Elements;
+using Core.Elements.Rules;
 
 namespace Core.Extensions
 {
@@ -50,10 +51,64 @@ namespace Core.Extensions
                 Through.Ranks               => square.MovePlus(0, numberOfSquares),
                 Through.MainDiagonal        => square.MovePlus(numberOfSquares, numberOfSquares),
                 Through.OppositeDiagonal    => square.MovePlus(-numberOfSquares, numberOfSquares),
-                _                           => throw new 
-                    ArgumentException(
+                _                           => 
+                    throw new ArgumentException(
                         message: "Invalid enum parameter", 
                         paramName: nameof(orientation))
             };     
+
+    
+        /// <summary>
+        /// Process the given <see paramrefname="move"/>, according to the rules of a given 
+        /// game of <see paramrefname="chess"/>.
+        /// </summary>
+        /// <param name="chess">The <see cref="Chess"/> game rules.</param>
+        /// <param name="move">A given <see cref="Move"/>.</param>
+        /// <returns><see langword="true"/> if the move was processed correctly. Otherwise, 
+        /// returns <see langword="false"/>.</returns>
+        public static bool Process(this Chess chess, Move move)
+        {
+            //TODO: test/implement this method.
+            switch (move.Type)
+            {
+                case MoveType.Normal:
+                    break;
+                case MoveType.Capture:
+                    break;
+                case MoveType.Passant:
+                    break;
+                case MoveType.Castle:
+                    break;
+                case MoveType.PromoteToKnight:
+                    break;
+                case MoveType.PromotToBishop:
+                    break;
+                case MoveType.PromoteToRook:
+                    break;
+                case MoveType.PromoteToQueen:
+                    break;
+                default:
+                    break;
+            } 
+            return false;
+        }
+
+        /// <summary>
+        /// Process a <see cref="MoveType.Normal"/> <see paramrefname="move"/>, according to the
+        /// given <see paramrefname="chess"/> rules. 
+        /// </summary>
+        /// <param name="chess">The <see cref="Chess"/> game rules.</param>
+        /// <param name="move">A given <see cref="Move"/>.</param>
+        /// <returns><see langword="true"/> if the move was processed correctly. Otherwise, 
+        /// returns <see langword="false"/>.</returns>
+        private static bool NormalMove(this Chess chess, Move move)
+        {
+            if (chess.Position.ContainsKey(move.ToSquare))
+                return false;
+
+            //TODO: Test/implement this method.
+            return true;
+        }
+
     }
 }

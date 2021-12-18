@@ -21,6 +21,8 @@
         +IReadOnlyCollection~MoveEntry~ MoveEntries
         +Chess()
         +Chess(+IReadOnlyDictionary~Square,IPiece~)
+        ~PlaceAt(Square, IPiece) 
+        ~RemoveFrom(Square)
         +AvailableMoves(bool)* IReadOnlyCollection~Move~
     }
     class Board{

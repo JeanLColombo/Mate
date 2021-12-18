@@ -28,10 +28,6 @@
         +MoveType Type
         +Move(Square, Square, MoveTye)
     }
-    class Tuple~Move,Board~{
-        +Move Item1
-        +Board Item2    
-    }
     class Board{
         -Dictionary~Square,IPiece~ Pieces
         +IReadOnlyDictionary~Square,IPiece~ Position 

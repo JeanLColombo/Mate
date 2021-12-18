@@ -1,5 +1,9 @@
+using System;
 using System.Collections.Generic;
 using Core.Elements;
+
+
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Core")]
 
 namespace Core.Abstractions
 {
@@ -20,7 +24,6 @@ namespace Core.Abstractions
         /// </summary>
         /// <returns></returns>
         private List<MoveEntry> _moveEntries { get; } = new List<MoveEntry>();
-
 
         /// <summary>
         /// The current position on the <see cref="Board"/>.
@@ -46,8 +49,43 @@ namespace Core.Abstractions
         /// <paramref name="position"/>
         /// </summary>
         /// <param name="position">A given position.</param>
-        public Chess(IReadOnlyDictionary<Square, IPiece> position) 
-            { Board = new Board(position); }
+        public Chess(IReadOnlyDictionary<Square, IPiece> position)
+        { Board = new Board(position); }
+
+
+        /// <summary>
+        /// Places a given <see paramrefname="piece"/> at a given 
+        /// <see paramrefname="square"/>. 
+        /// </summary>
+        /// <param name="square">A given <see cref="Square"/>.</param>
+        /// <param name="piece">A given <see cref="IPiece"/> instance.</param>
+        /// <exception cref="ArgumentException">If the given <see paramrefname="square"/>
+        /// is taken, an exception is thrown.</exception>
+        internal void PlaceAt(Square square, IPiece piece)
+        {
+            if (Position.ContainsKey(square))
+                throw new ArgumentException(
+                    message: "Cannot place a piece at occupied square",
+                    paramName: nameof(square));
+
+            Board.Pieces[square] = piece;
+        }
+
+        /// <summary>
+        /// Clears the given <see paramrefname="square"/> from its <see cref="IPiece"/>.
+        /// </summary>
+        /// <param name="square">A given <see cref="Square"/>.</param>
+        /// <exception cref="ArgumentException">If the given <see paramrefname="square"/>
+        /// is unoccupied, an exception is thrown.</exception>
+        internal void RemoveFrom(Square square)
+        {
+            if (!Position.ContainsKey(square))
+                throw new ArgumentException(
+                    message: "Cannot remove a piece from an unoccupied square",
+                    paramName: nameof(square));
+
+            Board.Pieces.Remove(square);
+        }
 
         /// <summary>
         /// Currently available moves to a player, based on the given 
