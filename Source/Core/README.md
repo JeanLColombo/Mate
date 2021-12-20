@@ -601,7 +601,7 @@ Configuration are passed through via constructor.
 
 ##### Summary
 
-Instantiate a new [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom') game of chess with the give `position` on the board.
+Instantiate a new [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom') game of chess with the give  on the board.
 
 ##### Parameters
 
@@ -614,8 +614,8 @@ Instantiate a new [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Cu
 
 ##### Summary
 
-Instantiate a new [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom') game of chess with the give `position` on the board,
-as well as a given list of banned `bannedMoves` entries.
+Instantiate a new [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom') game of chess with the give  on the board,
+as well as a given list of banned  entries.
 
 ##### Parameters
 
@@ -649,18 +649,12 @@ A read-only collection of [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Mo
 | ---- | ---- | ----------- |
 | color | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | `true` for white, `false for black` for black. |
 
-##### Exceptions
-
-| Name | Description |
-| ---- | ----------- |
-| [System.NotImplementedException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.NotImplementedException 'System.NotImplementedException') | This method is not yet implemented. |
-
 <a name='M-Core-Elements-Rules-Custom-AvailableMoves-System-Boolean-'></a>
 ### AvailableMoves(color) `method`
 
 ##### Summary
 
-Currently available moves for player with pieces of the given `color`, based on the
+Currently available moves for player with pieces of the given , based on the
 list of banned moves.
 
 ##### Returns

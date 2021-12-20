@@ -84,7 +84,7 @@ namespace Tests.Core.Extensions
 
             Assert.True(boardPiece is MockedPiece);
 
-            Assert.Equal(false, boardPiece.Color);
+            Assert.False(boardPiece.Color);
 
             Assert.Empty(chess.Position);
 
