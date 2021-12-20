@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using Core.Elements;
 
 
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Core")]
-
 namespace Core.Abstractions
 {
     /// <summary>
@@ -52,7 +50,6 @@ namespace Core.Abstractions
         public Chess(IReadOnlyDictionary<Square, IPiece> position)
         { Board = new Board(position); }
 
-
         /// <summary>
         /// Places a given <see paramrefname="piece"/> at a given 
         /// <see paramrefname="square"/>. 
@@ -61,7 +58,7 @@ namespace Core.Abstractions
         /// <param name="piece">A given <see cref="IPiece"/> instance.</param>
         /// <exception cref="ArgumentException">If the given <see paramrefname="square"/>
         /// is taken, an exception is thrown.</exception>
-        internal void PlaceAt(Square square, IPiece piece)
+        public void PlaceAt(Square square, IPiece piece)
         {
             if (Position.ContainsKey(square))
                 throw new ArgumentException(
@@ -77,7 +74,7 @@ namespace Core.Abstractions
         /// <param name="square">A given <see cref="Square"/>.</param>
         /// <exception cref="ArgumentException">If the given <see paramrefname="square"/>
         /// is unoccupied, an exception is thrown.</exception>
-        internal void RemoveFrom(Square square)
+        public void Clear(Square square)
         {
             if (!Position.ContainsKey(square))
                 throw new ArgumentException(

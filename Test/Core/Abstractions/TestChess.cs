@@ -81,7 +81,7 @@ namespace Tests.Core.Abstractions
         }
 
         [Fact]
-        public void TestRemoveFrom()
+        public void TestClear()
         {
             Chess chess = new MockedChess();
             IPiece piece = new MockedPiece(false);
@@ -89,7 +89,7 @@ namespace Tests.Core.Abstractions
 
             chess.PlaceAt(square, piece);
 
-            chess.RemoveFrom(square);
+            chess.Clear(square);
 
             Assert.Empty(chess.Position);
 
@@ -97,12 +97,12 @@ namespace Tests.Core.Abstractions
         }
 
         [Fact]
-        public void TestRemoveFromEmptySquare()
+        public void TestClearEmptySquare()
         {
             Chess chess = new MockedChess();
             Square square = new Square(Files.a, Ranks.one);
 
-            Assert.Throws<ArgumentException>(() => chess.RemoveFrom(square));
+            Assert.Throws<ArgumentException>(() => chess.Clear(square));
         }
 
     }

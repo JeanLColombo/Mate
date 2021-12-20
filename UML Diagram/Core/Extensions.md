@@ -1,3 +1,7 @@
+# Extensions
+
+## Extensions Enumerations
+
 ```mermaid
     classDiagram
     class Through{
@@ -8,14 +12,9 @@
         OppositeDiagonal
     }
 ```
-```mermaid
-    classDiagram
-    class Maneuverability{
-        <<static>>
-        +MovePlus(this Square, int, int)$ Square
-        +Maneuver(this Square, Through, int)$ Square
-    }
-```
+
+## Attacking
+
 ```mermaid
     classDiagram
     class Attacking{
@@ -26,14 +25,9 @@
         -Attack(this Square, Through, bool, int, IReadOnlyDictionary~Square,IPiece~)$ HashSet~Move~
     }
 ```
-```mermaid
-    classDiagram
-    class Setup{
-        <<static>>
-        +AddPiece(this Board, Square, bool)$ bool
-        +Copy(this Board, IReadOnlyDictionary~Square,IPiece~)$
-    }
-```
+
+## Helper
+
 ```mermaid
     classDiagram
     class Helper{
@@ -44,6 +38,45 @@
         +InBetweenSquares(this Square, Square)$ IReadOnlyCollection~Square~
     }
 ```
+
+## Legality 
+
+```mermaid
+    classDiagram
+    class Legality{
+        <<static>>
+        +IsChecked(this IChess, bool)$ bool
+        +IsLegal(this IChess, Move)$ bool 
+    }
+```
+## Maneuverability
+
+```mermaid
+    classDiagram
+    class Maneuverability{
+        <<static>>
+        +MovePlus(this Square, int, int)$ Square
+        +Maneuver(this Square, Through, int)$ Square
+    }
+```
+
+## Setup
+
+```mermaid
+    classDiagram
+    class Setup{
+        <<static>>
+        +AddPiece(this Board, Square, bool)$ bool
+        +AddPiece(this Chess, Square, IPiece)$ bool
+        +RemovePiece(this Chess, Square, out IPiece)$ bool
+        +Copy(this Board, IReadOnlyDictionary~Square,IPiece~)$
+    }
+```
+
+# Specialized Moves
+
+## Pawn Passant
+
 ```mermaid
     classDiagram
     class PawnPassant{
@@ -51,6 +84,9 @@
         +EnPassant(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
     }
 ```
+
+## Pawn Rush
+
 ```mermaid
     classDiagram
     class PawnRush{
@@ -58,18 +94,13 @@
         +PawnFirstMove(this IPiece, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
     }
 ```
+
+## Castling
+
 ```mermaid
     classDiagram
     class Castling{
         <<static>>
         +Castles(this IPiece, IReadOnlyDictionary~Square,IPiece, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
-    }
-```
-```mermaid
-    classDiagram
-    class Legality{
-        <<static>>
-        +IsChecked(this IChess, bool)$ bool
-        +IsLegal(this IChess, Move)$ bool 
     }
 ```

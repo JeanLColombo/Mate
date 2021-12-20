@@ -28,9 +28,9 @@
   - [Position](#P-Core-Abstractions-Chess-Position 'Core.Abstractions.Chess.Position')
   - [_moveEntries](#P-Core-Abstractions-Chess-_moveEntries 'Core.Abstractions.Chess._moveEntries')
   - [AvailableMoves(color)](#M-Core-Abstractions-Chess-AvailableMoves-System-Boolean- 'Core.Abstractions.Chess.AvailableMoves(System.Boolean)')
+  - [Clear(square)](#M-Core-Abstractions-Chess-Clear-Core-Abstractions-Square- 'Core.Abstractions.Chess.Clear(Core.Abstractions.Square)')
   - [Core#Abstractions#IChess#AvailableMoves(c)](#M-Core-Abstractions-Chess-Core#Abstractions#IChess#AvailableMoves-System-Boolean- 'Core.Abstractions.Chess.Core#Abstractions#IChess#AvailableMoves(System.Boolean)')
   - [PlaceAt(square,piece)](#M-Core-Abstractions-Chess-PlaceAt-Core-Abstractions-Square,Core-Abstractions-IPiece- 'Core.Abstractions.Chess.PlaceAt(Core.Abstractions.Square,Core.Abstractions.IPiece)')
-  - [RemoveFrom(square)](#M-Core-Abstractions-Chess-RemoveFrom-Core-Abstractions-Square- 'Core.Abstractions.Chess.RemoveFrom(Core.Abstractions.Square)')
 - [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom')
   - [#ctor(position)](#M-Core-Elements-Rules-Custom-#ctor-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Elements.Rules.Custom.#ctor(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})')
   - [#ctor(position,bannedMoves)](#M-Core-Elements-Rules-Custom-#ctor-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece},System-Collections-Generic-HashSet{Core-Abstractions-MoveType}- 'Core.Elements.Rules.Custom.#ctor(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece},System.Collections.Generic.HashSet{Core.Abstractions.MoveType})')
@@ -502,6 +502,26 @@ A read-only collection of [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Mo
 | ---- | ---- | ----------- |
 | color | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | True for white, false for black. |
 
+<a name='M-Core-Abstractions-Chess-Clear-Core-Abstractions-Square-'></a>
+### Clear(square) `method`
+
+##### Summary
+
+Clears the given  from its [IPiece](#T-Core-Abstractions-IPiece 'Core.Abstractions.IPiece').
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| square | [Core.Abstractions.Square](#T-Core-Abstractions-Square 'Core.Abstractions.Square') | A given [Square](#T-Core-Abstractions-Square 'Core.Abstractions.Square'). |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') | If the given 
+is unoccupied, an exception is thrown. |
+
 <a name='M-Core-Abstractions-Chess-Core#Abstractions#IChess#AvailableMoves-System-Boolean-'></a>
 ### Core#Abstractions#IChess#AvailableMoves(c) `method`
 
@@ -540,26 +560,6 @@ Places a given  at a given
 | ---- | ----------- |
 | [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') | If the given 
 is taken, an exception is thrown. |
-
-<a name='M-Core-Abstractions-Chess-RemoveFrom-Core-Abstractions-Square-'></a>
-### RemoveFrom(square) `method`
-
-##### Summary
-
-Clears the given  from its [IPiece](#T-Core-Abstractions-IPiece 'Core.Abstractions.IPiece').
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| square | [Core.Abstractions.Square](#T-Core-Abstractions-Square 'Core.Abstractions.Square') | A given [Square](#T-Core-Abstractions-Square 'Core.Abstractions.Square'). |
-
-##### Exceptions
-
-| Name | Description |
-| ---- | ----------- |
-| [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') | If the given 
-is unoccupied, an exception is thrown. |
 
 <a name='T-Core-Elements-Rules-Custom'></a>
 ## Custom `type`

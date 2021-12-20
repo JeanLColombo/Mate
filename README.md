@@ -64,6 +64,7 @@ It's chess, mate!
 ```
 
 ## Extensions
+### Extensions Enumerations
 
 ```mermaid
     classDiagram
@@ -76,14 +77,8 @@ It's chess, mate!
     }
 ```
 
-```mermaid
-    classDiagram
-    class Maneuverability{
-        <<static>>
-        +MovePlus(this Square, int, int)$ Square
-        +Maneuver(this Square, Through, int)$ Square
-    }
-```
+### Attacking
+
 ```mermaid
     classDiagram
     class Attacking{
@@ -94,14 +89,9 @@ It's chess, mate!
         -Attack(this Square, Through, bool, int, IReadOnlyDictionary~Square,IPiece~)$ HashSet~Move~
     }
 ```
-```mermaid
-    classDiagram
-    class Setup{
-        <<static>>
-        +AddPiece(this Board, Square, bool)$ bool
-        +Copy(this Board, IReadOnlyDictionary~Square,IPiece~)$
-    }
-```
+
+### Helper
+
 ```mermaid
     classDiagram
     class Helper{
@@ -112,27 +102,9 @@ It's chess, mate!
         +InBetweenSquares(this Square, Square)$ IReadOnlyCollection~Square~
     }
 ```
-```mermaid
-    classDiagram
-    class PawnPassant{
-        <<static>>
-        +EnPassant(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
-    }
-```
-```mermaid
-    classDiagram
-    class PawnRush{
-        <<static>>
-        +PawnFirstMove(this IPiece, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
-    }
-```
-```mermaid
-    classDiagram
-    class Castling{
-        <<static>>
-        +Castles(this IPiece, IReadOnlyDictionary~Square,IPiece, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
-    }
-```
+
+### Legality 
+
 ```mermaid
     classDiagram
     class Legality{
@@ -141,9 +113,63 @@ It's chess, mate!
         +IsLegal(this IChess, Move)$ bool 
     }
 ```
+### Maneuverability
+
+```mermaid
+    classDiagram
+    class Maneuverability{
+        <<static>>
+        +MovePlus(this Square, int, int)$ Square
+        +Maneuver(this Square, Through, int)$ Square
+    }
+```
+
+### Setup
+
+```mermaid
+    classDiagram
+    class Setup{
+        <<static>>
+        +AddPiece(this Board, Square, bool)$ bool
+        +AddPiece(this Chess, Square, IPiece)$ bool
+        +RemovePiece(this Chess, Square, out IPiece)$ bool
+        +Copy(this Board, IReadOnlyDictionary~Square,IPiece~)$
+    }
+```
+
+## Specialized Moves
+
+### Pawn Passant
+
+```mermaid
+    classDiagram
+    class PawnPassant{
+        <<static>>
+        +EnPassant(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
+    }
+```
+
+### Pawn Rush
+
+```mermaid
+    classDiagram
+    class PawnRush{
+        <<static>>
+        +PawnFirstMove(this IPiece, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
+    }
+```
+
+### Castling
+
+```mermaid
+    classDiagram
+    class Castling{
+        <<static>>
+        +Castles(this IPiece, IReadOnlyDictionary~Square,IPiece, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
+    }
+```
 
 ## Game
-
 
 ```mermaid
     classDiagram
@@ -168,8 +194,8 @@ It's chess, mate!
         +IReadOnlyCollection~MoveEntry~ MoveEntries
         +Chess()
         +Chess(+IReadOnlyDictionary~Square,IPiece~)
-        ~PlaceAt(Square, IPiece) 
-        ~RemoveFrom(Square)
+        +PlaceAt(Square, IPiece) 
+        +Clear(Square)
         +AvailableMoves(bool)* IReadOnlyCollection~Move~
     }
     class Board{
@@ -342,7 +368,7 @@ It's chess, mate!
 ```shell
 A total of 1 test files matched the specified pattern.
 
-Passed!  - Failed:     0, Passed:   137, Skipped:     0, Total:   137, Duration: 69 ms - Core.dll (net5.0)
+Passed!  - Failed:     0, Passed:   138, Skipped:     0, Total:   138, Duration: 98 ms - Core.dll (net5.0)
 
 Calculating coverage result...
   Generating report '..\.coverage\lcov.info'
@@ -350,14 +376,14 @@ Calculating coverage result...
 +--------+--------+--------+--------+
 | Module | Line   | Branch | Method |
 +--------+--------+--------+--------+
-| Mate   | 90,82% | 89,16% | 92,4%  |
+| Mate   | 93,56% | 90,67% | 93,67% |
 +--------+--------+--------+--------+
 
 +---------+--------+--------+--------+
 |         | Line   | Branch | Method |
 +---------+--------+--------+--------+
-| Total   | 90,82% | 89,16% | 92,4%  |
+| Total   | 93,56% | 90,67% | 93,67% |
 +---------+--------+--------+--------+
-| Average | 90,82% | 89,16% | 92,4%  |
+| Average | 93,56% | 90,67% | 93,67% |
 +---------+--------+--------+--------+
 ```

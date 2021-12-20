@@ -46,11 +46,16 @@ namespace Core.Extensions
         /// <param name="piece">A given <see cref="IPiece"/> instance.</param>
         /// <returns><see langword="true"/> if the piece was properly placed. 
         /// Otherwise, <see langword="false"/>.</returns>
-        internal static bool AddPiece(this Chess chess, Square square, IPiece piece)
+        public static bool AddPiece(this Chess chess, Square square, IPiece piece)
         {
-            if (chess.Position.ContainsKey(square)) return false;
-
-            chess.PlaceAt(square, piece);
+            try
+            {
+                chess.PlaceAt(square, piece);
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
 
             return true;
         }
@@ -64,7 +69,7 @@ namespace Core.Extensions
         /// <param name="piece">A given <see cref="IPiece"/> instance.</param>
         /// <returns><see langword="true"/> if the piece was properly removed. 
         /// Otherwise, <see langword="false"/>.</returns>
-        internal static bool RemovePiece(this Chess chess, Square square, out IPiece piece)
+        public static bool RemovePiece(this Chess chess, Square square, out IPiece piece)
         {
             if (!chess.Position.ContainsKey(square))
             {
@@ -74,7 +79,7 @@ namespace Core.Extensions
 
             piece = chess.Position[square];
 
-            chess.RemoveFrom(square);
+            chess.Clear(square);
 
             return true;
         }
