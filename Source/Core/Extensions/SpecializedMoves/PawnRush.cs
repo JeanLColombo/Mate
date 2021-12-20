@@ -44,7 +44,10 @@ namespace Core.Extensions.SpecializedMoves
                 : 
                     null);
 
-            return move.Where(m => m.Type == MoveType.Normal).ToList();
+            return move
+                .Where(m => m.Type == MoveType.Normal)
+                .Select(m => new Move(m.FromSquare, m.ToSquare, MoveType.Rush))
+                .ToList();
         }
     }
 }

@@ -88,16 +88,21 @@ namespace Core.Abstractions
         /// <summary>
         /// When a <see cref="Piece"/> moves to an unoccupied <see cref="Square"/>. 
         /// </summary>
-        Normal = 1,
+        Normal = 0,
         /// <summary>
         /// When a <see cref="Piece"/> moves to an <see cref="Square"/> occupied another <see cref="Piece"/> of opposite 
         /// <see cref="Piece.Color"/>. 
         /// </summary>
-        Capture = 2,
+        Capture = 1,
         /// <summary>
         /// A <see cref="Core.Elements.Pieces.Pawn"/> move executed under special circumstances. 
         /// </summary>
-        Passant = 3,
+        Passant = 2,
+        /// <summary>
+        /// A <see cref="Core.Elements.Pieces.Pawn"/> rush move, available if the pawn has not yet
+        /// moved. 
+        /// </summary>
+        Rush = 3,
         /// <summary>
         /// A <see cref="Core.Elements.Pieces.King"/> move hides behind a 
         /// <see cref="Core.Elements.Pieces.Rook"/> of same <see cref="Piece.Color"/>. 

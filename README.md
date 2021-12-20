@@ -233,6 +233,7 @@ It's chess, mate!
         Normal
         Capture
         Passant
+        Rush
         Castle
         PromoteToKnight
         PromoteToBishop

@@ -101,6 +101,7 @@
   - [PromoteToKnight](#F-Core-Abstractions-MoveType-PromoteToKnight 'Core.Abstractions.MoveType.PromoteToKnight')
   - [PromoteToQueen](#F-Core-Abstractions-MoveType-PromoteToQueen 'Core.Abstractions.MoveType.PromoteToQueen')
   - [PromoteToRook](#F-Core-Abstractions-MoveType-PromoteToRook 'Core.Abstractions.MoveType.PromoteToRook')
+  - [Rush](#F-Core-Abstractions-MoveType-Rush 'Core.Abstractions.MoveType.Rush')
 - [Pawn](#T-Core-Elements-Pieces-Pawn 'Core.Elements.Pieces.Pawn')
   - [#ctor(color)](#M-Core-Elements-Pieces-Pawn-#ctor-System-Boolean- 'Core.Elements.Pieces.Pawn.#ctor(System.Boolean)')
   - [AvailableMoves(position)](#M-Core-Elements-Pieces-Pawn-AvailableMoves-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Elements.Pieces.Pawn.AvailableMoves(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})')
@@ -1403,6 +1404,14 @@ A move where a [Pawn](#T-Core-Elements-Pieces-Pawn 'Core.Elements.Pieces.Pawn') 
 ##### Summary
 
 A move where a [Pawn](#T-Core-Elements-Pieces-Pawn 'Core.Elements.Pieces.Pawn') promotes to a [Rook](#T-Core-Elements-Pieces-Rook 'Core.Elements.Pieces.Rook').
+
+<a name='F-Core-Abstractions-MoveType-Rush'></a>
+### Rush `constants`
+
+##### Summary
+
+A [Pawn](#T-Core-Elements-Pieces-Pawn 'Core.Elements.Pieces.Pawn') rush move, available if the pawn has not yet
+moved.
 
 <a name='T-Core-Elements-Pieces-Pawn'></a>
 ## Pawn `type`

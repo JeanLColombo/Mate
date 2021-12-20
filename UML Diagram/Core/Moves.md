@@ -5,6 +5,7 @@
         Normal
         Capture
         Passant
+        Rush
         Castle
         PromoteToKnight
         PromoteToBishop
