@@ -38,8 +38,8 @@ namespace Core.Extensions
         }
 
         /// <summary>
-        /// Places an existing <see paramrefname="piece"/> at a given <see paramrefname="square"/>,
-        /// according to the given <see paramrefname="chess"/> rules.
+        /// Places an existing <paramref name="piece"/> at a given <paramref name="square"/>,
+        /// according to the given <paramref name="chess"/> rules.
         /// </summary>
         /// <param name="chess">The <see cref="Chess"/> game rules.</param>
         /// <param name="square">A given <see cref="Square"/>.</param>
@@ -61,8 +61,8 @@ namespace Core.Extensions
         }
 
         /// <summary>
-        /// Removes <see paramrefname="piece"/> from the given <see paramrefname="square"/>,
-        /// according to the given <see paramrefname="chess"/> rules.
+        /// Removes <paramref name="piece"/> from the given <paramref name="square"/>,
+        /// according to the given <paramref name="chess"/> rules.
         /// </summary>
         /// <param name="chess">The <see cref="Chess"/> game rules.</param>
         /// <param name="square">A given <see cref="Square"/>.</param>

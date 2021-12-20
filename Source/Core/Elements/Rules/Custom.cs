@@ -19,7 +19,7 @@ namespace Core.Elements.Rules
         public readonly IEnumerable<MoveType> BannedMoves;
 
         /// <summary>
-        /// Instantiate a new <see cref="Custom"/> game of chess with the give <see paramrefname="position"/> on the board. 
+        /// Instantiate a new <see cref="Custom"/> game of chess with the give <paramref name="position"/> on the board. 
         /// </summary>
         /// <param name="position">A read-only dictionary of pieces.</param>
         public Custom(IReadOnlyDictionary<Square, IPiece> position) : this(
@@ -27,8 +27,8 @@ namespace Core.Elements.Rules
             new HashSet<MoveType>(Enumerable.Empty<MoveType>())) {}
 
         /// <summary>
-        /// Instantiate a new <see cref="Custom"/> game of chess with the give <see paramrefname="position"/> on the board,
-        /// as well as a given list of banned <see paramrefname="bannedMoves"/> entries.
+        /// Instantiate a new <see cref="Custom"/> game of chess with the give <paramref name="position"/> on the board,
+        /// as well as a given list of banned <paramref name="bannedMoves"/> entries.
         /// </summary>
         /// <param name="position">A read-only dictionary of pieces.</param>
         /// <param name="bannedMoves">A list of banned <see cref="Core.Abstractions.MoveType"/> entries.</param>
@@ -41,13 +41,26 @@ namespace Core.Elements.Rules
         }
 
         /// <summary>
-        /// Currently available moves for player with pieces of the given <see paramrefname="color"/>, based on the
+        /// Currently available moves for player with pieces of the given <paramref name="color"/>, based on the
         /// list of banned moves.
         /// </summary>
         /// <param name="color"><see langword="true"/> for white, <see langword="false for black"/> for black.</param>
         /// <returns>A read-only collection of <see cref="Move"/> instances.</returns>
         /// <exception cref="System.NotImplementedException">This method is not yet implemented.</exception>
         public override IReadOnlyCollection<Move> AvailableMoves(bool color)
+        {
+            throw new System.NotImplementedException();
+        }
+
+
+        /// <summary>
+        /// All possible moves for player with pieces of the given <paramref name="color"/>, whether or not their are
+        /// legal. 
+        /// </summary>
+        /// <param name="color"><see langword="true"/> for white, <see langword="false for black"/> for black.</param>
+        /// <returns>A read-only collection of <see cref="Move"/> instances.</returns>
+        /// <exception cref="System.NotImplementedException">This method is not yet implemented.</exception>
+        public override IReadOnlyCollection<Move> AllMoves(bool color)
         {
             throw new System.NotImplementedException();
         }

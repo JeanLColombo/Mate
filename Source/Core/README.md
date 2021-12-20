@@ -27,6 +27,7 @@
   - [MoveEntries](#P-Core-Abstractions-Chess-MoveEntries 'Core.Abstractions.Chess.MoveEntries')
   - [Position](#P-Core-Abstractions-Chess-Position 'Core.Abstractions.Chess.Position')
   - [_moveEntries](#P-Core-Abstractions-Chess-_moveEntries 'Core.Abstractions.Chess._moveEntries')
+  - [AllMoves(color)](#M-Core-Abstractions-Chess-AllMoves-System-Boolean- 'Core.Abstractions.Chess.AllMoves(System.Boolean)')
   - [AvailableMoves(color)](#M-Core-Abstractions-Chess-AvailableMoves-System-Boolean- 'Core.Abstractions.Chess.AvailableMoves(System.Boolean)')
   - [Clear(square)](#M-Core-Abstractions-Chess-Clear-Core-Abstractions-Square- 'Core.Abstractions.Chess.Clear(Core.Abstractions.Square)')
   - [Core#Abstractions#IChess#AvailableMoves(c)](#M-Core-Abstractions-Chess-Core#Abstractions#IChess#AvailableMoves-System-Boolean- 'Core.Abstractions.Chess.Core#Abstractions#IChess#AvailableMoves(System.Boolean)')
@@ -35,6 +36,7 @@
   - [#ctor(position)](#M-Core-Elements-Rules-Custom-#ctor-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Elements.Rules.Custom.#ctor(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})')
   - [#ctor(position,bannedMoves)](#M-Core-Elements-Rules-Custom-#ctor-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece},System-Collections-Generic-HashSet{Core-Abstractions-MoveType}- 'Core.Elements.Rules.Custom.#ctor(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece},System.Collections.Generic.HashSet{Core.Abstractions.MoveType})')
   - [BannedMoves](#F-Core-Elements-Rules-Custom-BannedMoves 'Core.Elements.Rules.Custom.BannedMoves')
+  - [AllMoves(color)](#M-Core-Elements-Rules-Custom-AllMoves-System-Boolean- 'Core.Elements.Rules.Custom.AllMoves(System.Boolean)')
   - [AvailableMoves(color)](#M-Core-Elements-Rules-Custom-AvailableMoves-System-Boolean- 'Core.Elements.Rules.Custom.AvailableMoves(System.Boolean)')
 - [Files](#T-Core-Abstractions-Files 'Core.Abstractions.Files')
   - [a](#F-Core-Abstractions-Files-a 'Core.Abstractions.Files.a')
@@ -244,8 +246,8 @@ this attack.
 ##### Summary
 
 Internal logic for determing the corresponding [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') for an attack being mounted
-from  to , based on the given
-.
+from `originSquare` to `square`, based on the given
+`position`.
 
 ##### Returns
 
@@ -485,6 +487,24 @@ List of [MoveEntry](#T-Core-Abstractions-MoveEntry 'Core.Abstractions.MoveEntry'
 
 
 
+<a name='M-Core-Abstractions-Chess-AllMoves-System-Boolean-'></a>
+### AllMoves(color) `method`
+
+##### Summary
+
+All moves, legal or illegal, currently available to a player, based on
+the given `color` of their pieces.
+
+##### Returns
+
+A read-only collection of [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') instances.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| color | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | `true` for white, `false` for black. |
+
 <a name='M-Core-Abstractions-Chess-AvailableMoves-System-Boolean-'></a>
 ### AvailableMoves(color) `method`
 
@@ -495,20 +515,20 @@ Currently available moves to a player, based on the given
 
 ##### Returns
 
-A read-only collection of [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') objects.
+A read-only collection of [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') instances.
 
 ##### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| color | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | True for white, false for black. |
+| color | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | `true` for white, `false` for black. |
 
 <a name='M-Core-Abstractions-Chess-Clear-Core-Abstractions-Square-'></a>
 ### Clear(square) `method`
 
 ##### Summary
 
-Clears the given  from its [IPiece](#T-Core-Abstractions-IPiece 'Core.Abstractions.IPiece').
+Clears the given `square` from its [IPiece](#T-Core-Abstractions-IPiece 'Core.Abstractions.IPiece').
 
 ##### Parameters
 
@@ -520,7 +540,7 @@ Clears the given  from its [IPiece](#T-Core-Abstractions-IPiece 'Core.Abstractio
 
 | Name | Description |
 | ---- | ----------- |
-| [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') | If the given 
+| [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') | If the given `square`
 is unoccupied, an exception is thrown. |
 
 <a name='M-Core-Abstractions-Chess-Core#Abstractions#IChess#AvailableMoves-System-Boolean-'></a>
@@ -545,8 +565,8 @@ Associates [AvailableMoves](#M-Core-Abstractions-IChess-AvailableMoves-System-Bo
 
 ##### Summary
 
-Places a given  at a given 
-.
+Places a given `piece` at a given 
+`square`.
 
 ##### Parameters
 
@@ -559,7 +579,7 @@ Places a given  at a given
 
 | Name | Description |
 | ---- | ----------- |
-| [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') | If the given 
+| [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') | If the given `square`
 is taken, an exception is thrown. |
 
 <a name='T-Core-Elements-Rules-Custom'></a>
@@ -581,7 +601,7 @@ Configuration are passed through via constructor.
 
 ##### Summary
 
-Instantiate a new [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom') game of chess with the give  on the board.
+Instantiate a new [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom') game of chess with the give `position` on the board.
 
 ##### Parameters
 
@@ -594,8 +614,8 @@ Instantiate a new [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Cu
 
 ##### Summary
 
-Instantiate a new [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom') game of chess with the give  on the board,
-as well as a given list of banned  entries.
+Instantiate a new [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom') game of chess with the give `position` on the board,
+as well as a given list of banned `bannedMoves` entries.
 
 ##### Parameters
 
@@ -611,12 +631,36 @@ as well as a given list of banned  entries.
 
 List of banned moves. Instanced on construction. [MoveType](#T-Core-Abstractions-MoveType 'Core.Abstractions.MoveType')'s on this list are not allowed.
 
+<a name='M-Core-Elements-Rules-Custom-AllMoves-System-Boolean-'></a>
+### AllMoves(color) `method`
+
+##### Summary
+
+All possible moves for player with pieces of the given `color`, whether or not their are
+legal.
+
+##### Returns
+
+A read-only collection of [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') instances.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| color | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | `true` for white, `false for black` for black. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.NotImplementedException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.NotImplementedException 'System.NotImplementedException') | This method is not yet implemented. |
+
 <a name='M-Core-Elements-Rules-Custom-AvailableMoves-System-Boolean-'></a>
 ### AvailableMoves(color) `method`
 
 ##### Summary
 
-Currently available moves for player with pieces of the given , based on the
+Currently available moves for player with pieces of the given `color`, based on the
 list of banned moves.
 
 ##### Returns
@@ -1180,8 +1224,8 @@ in sense. |
 
 ##### Summary
 
-Process a [Normal](#F-Core-Abstractions-MoveType-Normal 'Core.Abstractions.MoveType.Normal'), according to the
-given  rules.
+Process a [Normal](#F-Core-Abstractions-MoveType-Normal 'Core.Abstractions.MoveType.Normal')`move`, according to the
+given `chess` rules.
 
 ##### Returns
 
@@ -1200,8 +1244,8 @@ returns `false`.
 
 ##### Summary
 
-Process the given , according to the rules of a given 
-game of .
+Process the given `move`, according to the rules of a given 
+game of `chess`.
 
 ##### Returns
 
@@ -1880,8 +1924,8 @@ Provide extension methods for setting up new pieces on the [Board](#T-Core-Eleme
 
 ##### Summary
 
-Places an existing  at a given ,
-according to the given  rules.
+Places an existing `piece` at a given `square`,
+according to the given `chess` rules.
 
 ##### Returns
 
@@ -1944,8 +1988,8 @@ Copies the give `position` to `board`.
 
 ##### Summary
 
-Removes  from the given ,
-according to the given  rules.
+Removes `piece` from the given `square`,
+according to the given `chess` rules.
 
 ##### Returns
 

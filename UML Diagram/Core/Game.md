@@ -24,6 +24,7 @@
         +PlaceAt(Square, IPiece) 
         +Clear(Square)
         +AvailableMoves(bool)* IReadOnlyCollection~Move~
+        +AllMoves(bool)* IReadOnlyCollection~Move~
     }
     class Board{
         -Dictionary~Square,IPiece~ Pieces

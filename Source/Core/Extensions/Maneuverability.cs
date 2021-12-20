@@ -59,8 +59,8 @@ namespace Core.Extensions
 
     
         /// <summary>
-        /// Process the given <see paramrefname="move"/>, according to the rules of a given 
-        /// game of <see paramrefname="chess"/>.
+        /// Process the given <paramref name="move"/>, according to the rules of a given 
+        /// game of <paramref name="chess"/>.
         /// </summary>
         /// <param name="chess">The <see cref="Chess"/> game rules.</param>
         /// <param name="move">A given <see cref="Move"/>.</param>
@@ -94,8 +94,8 @@ namespace Core.Extensions
         }
 
         /// <summary>
-        /// Process a <see cref="MoveType.Normal"/> <see paramrefname="move"/>, according to the
-        /// given <see paramrefname="chess"/> rules. 
+        /// Process a <see cref="MoveType.Normal"/> <paramref name="move"/>, according to the
+        /// given <paramref name="chess"/> rules. 
         /// </summary>
         /// <param name="chess">The <see cref="Chess"/> game rules.</param>
         /// <param name="move">A given <see cref="Move"/>.</param>

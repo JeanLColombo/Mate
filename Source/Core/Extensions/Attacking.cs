@@ -65,8 +65,8 @@ namespace Core.Extensions
 
         /// <summary>
         /// Internal logic for determing the corresponding <see cref="Move"/> for an attack being mounted
-        /// from <see paramrefname="originSquare"/> to <see paramrefname="square"/>, based on the given
-        /// <see paramrefname="position"/>. 
+        /// from <paramref name="originSquare"/> to <paramref name="square"/>, based on the given
+        /// <paramref name="position"/>. 
         /// </summary>
         /// <param name="originSquare">Attacker square, based on 
         /// <paramref name="position"/>.</param>

@@ -15,7 +15,17 @@ namespace Tests.Core.Abstractions
 
             Assert.Empty(chess.MoveEntries);
             Assert.Empty(chess.Position);
+        }
+
+        [Fact]
+        public void TestMockedChessOverrides()
+        {
+            var chess = new MockedChess();
+
             Assert.Empty(chess.AvailableMoves(true));
+            Assert.Empty(chess.AvailableMoves(false));
+            Assert.Empty(chess.AllMoves(true));
+            Assert.Empty(chess.AllMoves(false));
         }
 
         [Fact]

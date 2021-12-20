@@ -51,12 +51,12 @@ namespace Core.Abstractions
         { Board = new Board(position); }
 
         /// <summary>
-        /// Places a given <see paramrefname="piece"/> at a given 
-        /// <see paramrefname="square"/>. 
+        /// Places a given <paramref name="piece"/> at a given 
+        /// <paramref name="square"/>. 
         /// </summary>
         /// <param name="square">A given <see cref="Square"/>.</param>
         /// <param name="piece">A given <see cref="IPiece"/> instance.</param>
-        /// <exception cref="ArgumentException">If the given <see paramrefname="square"/>
+        /// <exception cref="ArgumentException">If the given <paramref name="square"/>
         /// is taken, an exception is thrown.</exception>
         public void PlaceAt(Square square, IPiece piece)
         {
@@ -69,10 +69,10 @@ namespace Core.Abstractions
         }
 
         /// <summary>
-        /// Clears the given <see paramrefname="square"/> from its <see cref="IPiece"/>.
+        /// Clears the given <paramref name="square"/> from its <see cref="IPiece"/>.
         /// </summary>
         /// <param name="square">A given <see cref="Square"/>.</param>
-        /// <exception cref="ArgumentException">If the given <see paramrefname="square"/>
+        /// <exception cref="ArgumentException">If the given <paramref name="square"/>
         /// is unoccupied, an exception is thrown.</exception>
         public void Clear(Square square)
         {
@@ -88,9 +88,19 @@ namespace Core.Abstractions
         /// Currently available moves to a player, based on the given 
         /// <paramref name="color"/> of their pieces.
         /// </summary>
-        /// <param name="color">True for white, false for black.</param>
-        /// <returns>A read-only collection of <see cref="Move"/> objects.</returns>
+        /// <param name="color"><see langword="true"/> for white, <see langword="false"/> for black.</param>
+        /// <returns>A read-only collection of <see cref="Move"/> instances.</returns>
         public abstract IReadOnlyCollection<Move> AvailableMoves(bool color);
+
+        //TODO: Chess.AllMoves, private or public?
+
+        /// <summary>
+        /// All moves, legal or illegal, currently available to a player, based on
+        /// the given <paramref name="color"/> of their pieces.
+        /// </summary>
+        /// <param name="color"><see langword="true"/> for white, <see langword="false"/> for black.</param>
+        /// <returns>A read-only collection of <see cref="Move"/> instances.</returns>
+        public abstract IReadOnlyCollection<Move> AllMoves(bool color);
 
         /// <summary>
         /// Associates <see cref="IChess.Position"/> with <see cref="Position"/>.
