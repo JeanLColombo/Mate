@@ -1,7 +1,8 @@
 using System;
+using System.Linq;
 using Core.Abstractions;
 using Core.Elements;
-using Core.Elements.Rules;
+using Core.Extensions;
 
 namespace Core.Extensions
 {
@@ -64,11 +65,23 @@ namespace Core.Extensions
         /// </summary>
         /// <param name="chess">The <see cref="Chess"/> game rules.</param>
         /// <param name="move">A given <see cref="Move"/>.</param>
+        /// <param name="piece">A reference to a possibly captured piece.</param>
         /// <returns><see langword="true"/> if the move was processed correctly. Otherwise, 
         /// returns <see langword="false"/>.</returns>
-        public static bool Process(this IChess chess, Move move)
+        public static bool Process(this Chess chess, Move move, out IPiece piece)
         {
             //TODO: test/implement this method.
+            //TODO: Thrown exception on not available move?
+            piece = null;
+
+            // If move is not available, return
+            if (!(new bool[]{true, false}
+                .SelectMany(c => chess.AvailableMoves(c)).ToList())
+                .Contains(move))
+                return false;
+
+            chess.Add(new MoveEntry(move, chess.Position));
+
             switch (move.Type)
             {
                 case MoveType.Capture:
@@ -86,7 +99,8 @@ namespace Core.Extensions
                 case MoveType.PromoteToQueen:
                     break;
                 default:
-                    // Normal moves.
+                    // Proccess Normal and Rush moves
+                    chess.ProcessNormal(move);
                     break;
             } 
             return false;
@@ -100,13 +114,16 @@ namespace Core.Extensions
         /// <param name="move">A given <see cref="Move"/>.</param>
         /// <returns><see langword="true"/> if the move was processed correctly. Otherwise, 
         /// returns <see langword="false"/>.</returns>
-        private static bool NormalMove(this IChess chess, Move move)
+        private static void ProcessNormal(this Chess chess, Move move)
         {
-            if (chess.Position.ContainsKey(move.ToSquare))
-                return false;
+            // Sets reference to moved piece
+            IPiece piece;
 
-            //TODO: Test/implement this method.
-            return true;
+            // Removes piece from one square...
+            chess.RemovePiece(move.FromSquare, out piece);
+
+            // ... to another square.
+            chess.AddPiece(move.ToSquare, piece);
         }
 
     }

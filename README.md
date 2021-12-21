@@ -110,7 +110,7 @@ It's chess, mate!
     class Legality{
         <<static>>
         +IsChecked(this IChess, bool)$ bool
-        +IsLegal(this IChess, Move)$ bool 
+        +IsLegal(this Chess, Move)$ bool 
     }
 ```
 ### Maneuverability
@@ -121,6 +121,8 @@ It's chess, mate!
         <<static>>
         +MovePlus(this Square, int, int)$ Square
         +Maneuver(this Square, Through, int)$ Square
+        +Process(this IChess, Move)$ bool
+        -ProcessNormal(this IChess, Move)$ bool;
     }
 ```
 
@@ -178,6 +180,7 @@ It's chess, mate!
         IReadOnlyDictionary~Square,IPiece~ Position
         IReadOnlyCollection~MoveEntry~ MoveEntries
         AvailableMoves(bool)* IReadOnlyCollection~Move~
+        Add(MoveEntry)*
     }
     class IGame{
         <<Interface>>
@@ -196,6 +199,7 @@ It's chess, mate!
         +Chess(+IReadOnlyDictionary~Square,IPiece~)
         +PlaceAt(Square, IPiece) 
         +Clear(Square)
+        +Add(MoveEntry) 
         +AvailableMoves(bool)* IReadOnlyCollection~Move~
         +AllMoves(bool)* IReadOnlyCollection~Move~
     }
@@ -370,7 +374,7 @@ It's chess, mate!
 ```shell
 A total of 1 test files matched the specified pattern.
 
-Passed!  - Failed:     0, Passed:   155, Skipped:     0, Total:   155, Duration: 99 ms - Core.dll (net5.0)
+Passed!  - Failed:     0, Passed:   155, Skipped:     0, Total:   156, Duration: 99 ms - Core.dll (net5.0)
 
 Calculating coverage result...
   Generating report '..\.coverage\lcov.info'
@@ -378,14 +382,14 @@ Calculating coverage result...
 +--------+--------+--------+--------+
 | Module | Line   | Branch | Method |
 +--------+--------+--------+--------+
-| Mate   | 94,94% | 90,08% | 96,25% |
+| Mate   | 93,73% | 90,83% | 96,34% |
 +--------+--------+--------+--------+
 
 +---------+--------+--------+--------+
 |         | Line   | Branch | Method |
 +---------+--------+--------+--------+
-| Total   | 94,94% | 90,08% | 96,25% |
+| Total   | 93,73% | 90,83% | 96,34% |
 +---------+--------+--------+--------+
-| Average | 94,94% | 90,08% | 96,25% |
+| Average | 93,73% | 90,83% | 96,34% |
 +---------+--------+--------+--------+
 ```

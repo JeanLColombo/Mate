@@ -84,8 +84,8 @@
 - [Maneuverability](#T-Core-Extensions-Maneuverability 'Core.Extensions.Maneuverability')
   - [Maneuver(square,orientation,numberOfSquares)](#M-Core-Extensions-Maneuverability-Maneuver-Core-Abstractions-Square,Core-Abstractions-Through,System-Int32- 'Core.Extensions.Maneuverability.Maneuver(Core.Abstractions.Square,Core.Abstractions.Through,System.Int32)')
   - [MovePlus(square,numberOfFiles,numberOfRanks)](#M-Core-Extensions-Maneuverability-MovePlus-Core-Abstractions-Square,System-Int32,System-Int32- 'Core.Extensions.Maneuverability.MovePlus(Core.Abstractions.Square,System.Int32,System.Int32)')
-  - [NormalMove(chess,move)](#M-Core-Extensions-Maneuverability-NormalMove-Core-Abstractions-IChess,Core-Abstractions-Move- 'Core.Extensions.Maneuverability.NormalMove(Core.Abstractions.IChess,Core.Abstractions.Move)')
-  - [Process(chess,move)](#M-Core-Extensions-Maneuverability-Process-Core-Abstractions-IChess,Core-Abstractions-Move- 'Core.Extensions.Maneuverability.Process(Core.Abstractions.IChess,Core.Abstractions.Move)')
+  - [Process(chess,move,piece)](#M-Core-Extensions-Maneuverability-Process-Core-Abstractions-Chess,Core-Abstractions-Move,Core-Abstractions-IPiece@- 'Core.Extensions.Maneuverability.Process(Core.Abstractions.Chess,Core.Abstractions.Move,Core.Abstractions.IPiece@)')
+  - [ProcessNormal(chess,move)](#M-Core-Extensions-Maneuverability-ProcessNormal-Core-Abstractions-Chess,Core-Abstractions-Move- 'Core.Extensions.Maneuverability.ProcessNormal(Core.Abstractions.Chess,Core.Abstractions.Move)')
 - [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move')
   - [#ctor(origin,destination,type)](#M-Core-Abstractions-Move-#ctor-Core-Abstractions-Square,Core-Abstractions-Square,Core-Abstractions-MoveType- 'Core.Abstractions.Move.#ctor(Core.Abstractions.Square,Core.Abstractions.Square,Core.Abstractions.MoveType)')
   - [FromSquare](#P-Core-Abstractions-Move-FromSquare 'Core.Abstractions.Move.FromSquare')
@@ -1267,28 +1267,8 @@ in sense. |
 | numberOfRanks | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Number of [Ranks](#T-Core-Abstractions-Ranks 'Core.Abstractions.Ranks'). A negative number indicates a change
 in sense. |
 
-<a name='M-Core-Extensions-Maneuverability-NormalMove-Core-Abstractions-IChess,Core-Abstractions-Move-'></a>
-### NormalMove(chess,move) `method`
-
-##### Summary
-
-Process a [Normal](#F-Core-Abstractions-MoveType-Normal 'Core.Abstractions.MoveType.Normal')`move`, according to the
-given `chess` rules.
-
-##### Returns
-
-`true` if the move was processed correctly. Otherwise, 
-returns `false`.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| chess | [Core.Abstractions.IChess](#T-Core-Abstractions-IChess 'Core.Abstractions.IChess') | The [Chess](#T-Core-Abstractions-Chess 'Core.Abstractions.Chess') game rules. |
-| move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A given [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move'). |
-
-<a name='M-Core-Extensions-Maneuverability-Process-Core-Abstractions-IChess,Core-Abstractions-Move-'></a>
-### Process(chess,move) `method`
+<a name='M-Core-Extensions-Maneuverability-Process-Core-Abstractions-Chess,Core-Abstractions-Move,Core-Abstractions-IPiece@-'></a>
+### Process(chess,move,piece) `method`
 
 ##### Summary
 
@@ -1304,7 +1284,28 @@ returns `false`.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| chess | [Core.Abstractions.IChess](#T-Core-Abstractions-IChess 'Core.Abstractions.IChess') | The [Chess](#T-Core-Abstractions-Chess 'Core.Abstractions.Chess') game rules. |
+| chess | [Core.Abstractions.Chess](#T-Core-Abstractions-Chess 'Core.Abstractions.Chess') | The [Chess](#T-Core-Abstractions-Chess 'Core.Abstractions.Chess') game rules. |
+| move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A given [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move'). |
+| piece | [Core.Abstractions.IPiece@](#T-Core-Abstractions-IPiece@ 'Core.Abstractions.IPiece@') | A reference to a possibly captured piece. |
+
+<a name='M-Core-Extensions-Maneuverability-ProcessNormal-Core-Abstractions-Chess,Core-Abstractions-Move-'></a>
+### ProcessNormal(chess,move) `method`
+
+##### Summary
+
+Process a [Normal](#F-Core-Abstractions-MoveType-Normal 'Core.Abstractions.MoveType.Normal')`move`, according to the
+given `chess` rules.
+
+##### Returns
+
+`true` if the move was processed correctly. Otherwise, 
+returns `false`.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| chess | [Core.Abstractions.Chess](#T-Core-Abstractions-Chess 'Core.Abstractions.Chess') | The [Chess](#T-Core-Abstractions-Chess 'Core.Abstractions.Chess') game rules. |
 | move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A given [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move'). |
 
 <a name='T-Core-Abstractions-Move'></a>
