@@ -25,7 +25,7 @@ namespace Test.Core.Elements.Rules
         [Fact]
         public void TestDefaultConstructorWithPieces()
         {
-            var chess = new Custom(CustomPositionA());
+            var chess = new Custom(CustomPositionA);
 
             Assert.NotEmpty(chess.Position);
         }
@@ -57,7 +57,7 @@ namespace Test.Core.Elements.Rules
             var banned = Enum.GetValues(typeof(MoveType)).Cast<MoveType>()
                 .Where(mt => !allowedMoves.Contains(mt)).ToHashSet();
 
-            var chess = new Custom(CustomPositionA(), banned);
+            var chess = new Custom(CustomPositionA, banned);
 
             var whiteMoves = chess.AllMoves(true);
             var blackMoves = chess.AllMoves(false);
@@ -67,7 +67,21 @@ namespace Test.Core.Elements.Rules
 
         }
 
-        private IReadOnlyDictionary<Square, IPiece> CustomPositionA() =>
+        [Fact]
+        public void TestProcessInvalidMove()
+        {
+            IChess chess = new Custom(CustomPositionB);
+            var move = new Move(
+                new Square(Files.a, Ranks.one),
+                new Square(Files.b, Ranks.two),
+                MoveType.Normal);
+
+            Assert.False(chess.Process(move, out IPiece piece));
+
+            Assert.Empty(chess.MoveEntries);
+        }
+
+        private IReadOnlyDictionary<Square, IPiece> CustomPositionA =>
             new Dictionary<Square, IPiece>() {
                 {new Square(Files.a, Ranks.one),        new Rook(true)},
                 {new Square(Files.a, Ranks.seven),      new Pawn(true)},
@@ -85,6 +99,12 @@ namespace Test.Core.Elements.Rules
                 {new Square(Files.g, Ranks.two),        new Pawn(true)},
                 {new Square(Files.h, Ranks.two),        new Pawn(false)},
                 {new Square(Files.h, Ranks.eight),      new Rook(false)}
+            };
+
+
+        private IReadOnlyDictionary<Square, IPiece> CustomPositionB => 
+            new Dictionary<Square, IPiece>() {
+                {new Square(Files.a, Ranks.one), new Knight(true)}
             };
 
         public static IEnumerable<object[]> BannedDataA => new []{

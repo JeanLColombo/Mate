@@ -44,19 +44,6 @@ namespace Core.Elements.Rules
         }
 
         /// <summary>
-        /// Currently available moves for player with pieces of the given <see paramrefname="color"/>, based on the
-        /// list of banned moves.
-        /// </summary>
-        /// <param name="color"><see langword="true"/> for white, <see langword="false for black"/> for black.</param>
-        /// <returns>A read-only collection of <see cref="Move"/> instances.</returns>
-        /// <exception cref="System.NotImplementedException">This method is not yet implemented.</exception>
-        public override IReadOnlyCollection<Move> AvailableMoves(bool color)
-        {
-            // TODO: Implement this method - this is just a simple overload.
-            return AllMoves(color);
-        }
-
-        /// <summary>
         /// All possible moves for player with pieces of the given <paramref name="color"/>, whether or not their are
         /// legal. 
         /// </summary>
@@ -93,5 +80,75 @@ namespace Core.Elements.Rules
                 .Where(m => !BannedMoves.Contains(m.Type))
                 .ToList();
         }
+
+        /// <summary>
+        /// Currently available moves for player with pieces of the given <see paramrefname="color"/>, based on the
+        /// list of banned moves.
+        /// </summary>
+        /// <param name="color"><see langword="true"/> for white, <see langword="false for black"/> for black.</param>
+        /// <returns>A read-only collection of <see cref="Move"/> instances.</returns>
+        /// <exception cref="System.NotImplementedException">This method is not yet implemented.</exception>
+        public override IReadOnlyCollection<Move> AvailableMoves(bool color)
+        {
+            // TODO: Implement this method - this is just a simple overload.
+            return AllMoves(color);
+        }
+
+        /// <summary>
+        /// Process the given <paramref name="move"/>.
+        /// </summary>
+        /// <param name="move">A given <see cref="Move"/>.</param>
+        /// <param name="piece">A reference to a possibly captured piece.</param>
+        /// <returns><see langword="true"/> if the move was processed correctly. Otherwise, 
+        /// returns <see langword="false"/>.</returns>
+        public override bool Process(Move move, out IPiece piece)
+        {
+            //TODO: test/implement this method.
+            //TODO: Thrown exception on not available move?
+            // Adds a null reference to piece
+            piece = null;
+
+            switch (move.Type)
+            {
+                case MoveType.Capture:
+                    break;
+                case MoveType.Passant:
+                    break;
+                case MoveType.Castle:
+                    break;
+                case MoveType.PromoteToKnight:
+                    break;
+                case MoveType.PromotToBishop:
+                    break;
+                case MoveType.PromoteToRook:
+                    break;
+                case MoveType.PromoteToQueen:
+                    break;
+                default:
+                    // Proccess Normal and Rush moves
+                    ProcessNormal(move);
+                    break;
+            } 
+            return false;
+        }
+
+        /// <summary>
+        /// Process a <see cref="MoveType.Normal"/> <paramref name="move"/>. 
+        /// </summary>
+        /// <param name="move">A given <see cref="Move"/>.</param>
+        /// <returns><see langword="true"/> if the move was processed correctly. Otherwise, 
+        /// returns <see langword="false"/>.</returns>
+        private void ProcessNormal(Move move)
+        {
+            // Sets reference to moved piece
+            IPiece piece;
+
+            // Removes piece from one square...
+            this.RemovePiece(move.FromSquare, out piece);
+
+            // ... to another square.
+            this.AddPiece(move.ToSquare, piece);
+        }
+
     }
 }

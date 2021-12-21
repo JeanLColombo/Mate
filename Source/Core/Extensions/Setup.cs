@@ -4,8 +4,6 @@ using System.Linq;
 using Core.Abstractions;
 using Core.Elements;
 
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Core")]
-
 namespace Core.Extensions
 {
     /// <summary>

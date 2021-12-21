@@ -121,8 +121,6 @@ It's chess, mate!
         <<static>>
         +MovePlus(this Square, int, int)$ Square
         +Maneuver(this Square, Through, int)$ Square
-        +Process(this IChess, Move)$ bool
-        -ProcessNormal(this IChess, Move)$ bool;
     }
 ```
 
@@ -180,7 +178,7 @@ It's chess, mate!
         IReadOnlyDictionary~Square,IPiece~ Position
         IReadOnlyCollection~MoveEntry~ MoveEntries
         AvailableMoves(bool)* IReadOnlyCollection~Move~
-        Add(MoveEntry)*
+        Process(Move, out IPiece)* bool
     }
     class IGame{
         <<Interface>>
@@ -200,8 +198,9 @@ It's chess, mate!
         +PlaceAt(Square, IPiece) 
         +Clear(Square)
         +Add(MoveEntry) 
-        +AvailableMoves(bool)* IReadOnlyCollection~Move~
         +AllMoves(bool)* IReadOnlyCollection~Move~
+        +AvailableMoves(bool)* IReadOnlyCollection~Move~
+        +Process(Move, out IPiece)* bool
     }
     class Board{
         -Dictionary~Square,IPiece~ Pieces
@@ -217,10 +216,13 @@ It's chess, mate!
         +MoveEntry(Move, Board)
     }
     class Custom{
-        +IEnumerable~MoveType~
+        +IEnumerable~MoveType~ BannedMoves
         +Custom(IReadOnlyDictionary~Square,IPiece~)
         +Custom(IReadOnlyDictionary~Square,IPiece~, HashSet~MoveType~)
+        +AllMoves(bool) IReadOnlyCollection~Move~
         +AvailableMoves(bool) IReadOnlyCollection~Move~
+        +Process(Move, out IPiece) bool
+        -ProcessNormal(Move)
     }
     Board --* "1" IChess
     MoveEntry --* "*" IChess
@@ -374,7 +376,7 @@ It's chess, mate!
 ```shell
 A total of 1 test files matched the specified pattern.
 
-Passed!  - Failed:     0, Passed:   155, Skipped:     0, Total:   156, Duration: 99 ms - Core.dll (net5.0)
+Passed!  - Failed:     0, Passed:   157, Skipped:     0, Total:   156, Duration: 99 ms - Core.dll (net5.0)
 
 Calculating coverage result...
   Generating report '..\.coverage\lcov.info'
@@ -382,14 +384,14 @@ Calculating coverage result...
 +--------+--------+--------+--------+
 | Module | Line   | Branch | Method |
 +--------+--------+--------+--------+
-| Mate   | 93,73% | 90,83% | 96,34% |
+| Mate   | 94,55% | 91,66% | 96,34% |
 +--------+--------+--------+--------+
 
 +---------+--------+--------+--------+
 |         | Line   | Branch | Method |
 +---------+--------+--------+--------+
-| Total   | 93,73% | 90,83% | 96,34% |
+| Total   | 94,55% | 91,66% | 96,34% |
 +---------+--------+--------+--------+
-| Average | 93,73% | 90,83% | 96,34% |
+| Average | 94,55% | 91,66% | 96,34% |
 +---------+--------+--------+--------+
 ```

@@ -5,7 +5,7 @@
         IReadOnlyDictionary~Square,IPiece~ Position
         IReadOnlyCollection~MoveEntry~ MoveEntries
         AvailableMoves(bool)* IReadOnlyCollection~Move~
-        Add(MoveEntry)*
+        Process(Move, out IPiece)* bool
     }
     class IGame{
         <<Interface>>
@@ -25,8 +25,9 @@
         +PlaceAt(Square, IPiece) 
         +Clear(Square)
         +Add(MoveEntry) 
-        +AvailableMoves(bool)* IReadOnlyCollection~Move~
         +AllMoves(bool)* IReadOnlyCollection~Move~
+        +AvailableMoves(bool)* IReadOnlyCollection~Move~
+        +Process(Move, out IPiece)* bool
     }
     class Board{
         -Dictionary~Square,IPiece~ Pieces
@@ -42,10 +43,13 @@
         +MoveEntry(Move, Board)
     }
     class Custom{
-        +IEnumerable~MoveType~
+        +IEnumerable~MoveType~ BannedMoves
         +Custom(IReadOnlyDictionary~Square,IPiece~)
         +Custom(IReadOnlyDictionary~Square,IPiece~, HashSet~MoveType~)
+        +AllMoves(bool) IReadOnlyCollection~Move~
         +AvailableMoves(bool) IReadOnlyCollection~Move~
+        +Process(Move, out IPiece) bool
+        -ProcessNormal(Move)
     }
     Board --* "1" IChess
     MoveEntry --* "*" IChess

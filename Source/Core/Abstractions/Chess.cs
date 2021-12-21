@@ -1,7 +1,7 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using Core.Elements;
-
 
 namespace Core.Abstractions
 {
@@ -92,6 +92,14 @@ namespace Core.Abstractions
         public void Add(MoveEntry entry) => _moveEntries.Add(entry);
 
         /// <summary>
+        /// All moves, legal or illegal, currently available to a player, based on
+        /// the given <paramref name="color"/> of their pieces.
+        /// </summary>
+        /// <param name="color"><see langword="true"/> for white, <see langword="false"/> for black.</param>
+        /// <returns>A read-only collection of <see cref="Move"/> instances.</returns>
+        public abstract IReadOnlyCollection<Move> AllMoves(bool color);
+
+        /// <summary>
         /// Currently available moves to a player, based on the given 
         /// <paramref name="color"/> of their pieces.
         /// </summary>
@@ -99,16 +107,20 @@ namespace Core.Abstractions
         /// <returns>A read-only collection of <see cref="Move"/> instances.</returns>
         public abstract IReadOnlyCollection<Move> AvailableMoves(bool color);
 
+        /// <summary>
+        /// Process a given <paramref name="move"/>, if it is available to the player. 
+        /// </summary>
+        /// <param name="move">A given <see cref="Move"/> instance.</param>
+        /// <param name="piece">If the processed <paramref name="move"/> removes a piece
+        /// from the game, <see langword="out"/> a reference to it.</param>
+        /// <returns><see langword="true"/> if the move is processed properly.
+        /// Otherwise, <see langword="false"/>.</returns>
+        public abstract bool Process(Move move, out IPiece piece);
+
+
         //TODO: Chess.AllMoves, private or public?
         //TODO: Test AvailableMoves
 
-        /// <summary>
-        /// All moves, legal or illegal, currently available to a player, based on
-        /// the given <paramref name="color"/> of their pieces.
-        /// </summary>
-        /// <param name="color"><see langword="true"/> for white, <see langword="false"/> for black.</param>
-        /// <returns>A read-only collection of <see cref="Move"/> instances.</returns>
-        public abstract IReadOnlyCollection<Move> AllMoves(bool color);
 
         /// <summary>
         /// Associates <see cref="IChess.Position"/> with <see cref="Position"/>.
@@ -128,10 +140,28 @@ namespace Core.Abstractions
         IReadOnlyCollection<Move> IChess.AvailableMoves(bool c) => AvailableMoves(c);
 
         /// <summary>
-        /// Associates <see cref="IChess.Add(MoveEntry)"/> with <see cref="Add"/>. 
+        /// Associates <see cref="IChess.Process(Move, out IPiece)"/> with <see cref="Process"/>. 
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="m"></param>
+        /// <param name="p"></param>
         /// <returns></returns>
-        void IChess.Add(MoveEntry e) => Add(e);
+        bool IChess.Process(Move m, out IPiece p)
+        {
+            // Adds null reference to p
+            p = null;
+
+            // If move is not available, return false
+            if (!(new bool[]{true, false}
+                .SelectMany(c => AvailableMoves(c)).ToList())
+                .Contains(m))
+                return false;
+
+            // Adds current move and position to historical entries
+            Add(new MoveEntry(m, Position));
+
+            // Call move processing overload
+            return Process(m, out p);
+        }
+
     }
 }

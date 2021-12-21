@@ -57,8 +57,6 @@
         <<static>>
         +MovePlus(this Square, int, int)$ Square
         +Maneuver(this Square, Through, int)$ Square
-        +Process(this IChess, Move)$ bool
-        -ProcessNormal(this IChess, Move)$ bool;
     }
 ```
 

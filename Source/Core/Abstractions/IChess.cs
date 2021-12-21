@@ -28,11 +28,15 @@ namespace Core.Abstractions
         /// <returns>A read-only collection of <see cref="Move"/> objects.</returns>
         IReadOnlyCollection<Move> AvailableMoves(bool color);
 
+
         /// <summary>
-        /// Adds historic <paramref name="entry"/> instances to <see cref="MoveEntries"/>. 
+        /// Process a given <paramref name="move"/>. 
         /// </summary>
-        /// <param name="entry">A <see cref="MoveEntry"/> instance.</param>
-        /// <returns></returns>
-        void Add(MoveEntry entry);
+        /// <param name="move">A given <see cref="Move"/> instance. </param>
+        /// <param name="piece">If the given <paramref name="move"/> removes a
+        ///  piece from the game, <see langword="out"/> a reference to it.</param>
+        /// <returns><see langword="true"/> if move is processed. 
+        /// Otherwise, <see langword="false"/>.</returns>
+        bool Process(Move move, out IPiece piece);
     }
 }

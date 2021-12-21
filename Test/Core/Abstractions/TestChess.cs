@@ -23,10 +23,19 @@ namespace Tests.Core.Abstractions
         {
             var chess = new MockedChess();
 
-            Assert.Empty(chess.AvailableMoves(true));
-            Assert.Empty(chess.AvailableMoves(false));
             Assert.Empty(chess.AllMoves(true));
             Assert.Empty(chess.AllMoves(false));
+
+            Assert.Empty(chess.AvailableMoves(true));
+            Assert.Empty(chess.AvailableMoves(false));
+
+            Assert.False(chess.Process(
+                new Move(
+                    new Square(Files.a, Ranks.one), 
+                    new Square(Files.a, Ranks.one), 
+                    MoveType.Normal), 
+                out IPiece piece));
+            Assert.Null(piece);
         }
 
         [Fact]
@@ -127,7 +136,7 @@ namespace Tests.Core.Abstractions
                 new Square(Files.b, Ranks.two), 
                 MoveType.Normal);
             var entry = new MoveEntry(move, chess.Position);
-            chess.Add(entry);
+            ((Chess)chess).Add(entry);
 
             Assert.Single(chess.MoveEntries);
             Assert.Equal(chess.Position.Keys, chess.MoveEntries.Last().Position.Keys);

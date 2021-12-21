@@ -24,7 +24,7 @@ namespace Tests.Core.Mocks
         /// </summary>
         /// <param name="color">Player color.</param>
         /// <returns></returns>
-        public override IReadOnlyCollection<Move> AvailableMoves(bool color) 
+        public override IReadOnlyCollection<Move> AllMoves(bool color)
             => Enumerable.Empty<Move>().ToArray();
 
         /// <summary>
@@ -32,8 +32,20 @@ namespace Tests.Core.Mocks
         /// </summary>
         /// <param name="color">Player color.</param>
         /// <returns></returns>
-        public override IReadOnlyCollection<Move> AllMoves(bool color)
+        public override IReadOnlyCollection<Move> AvailableMoves(bool color) 
             => Enumerable.Empty<Move>().ToArray();
 
+        /// <summary>
+        /// Returns false, with external reference to null. 
+        /// </summary>
+        /// <param name="move"></param>
+        /// <param name="piece"></param>
+        /// <returns></returns>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public override bool Process(Move move, out IPiece piece)
+        {
+            piece = null;
+            return false;
+        }
     }
 }
