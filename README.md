@@ -370,7 +370,7 @@ It's chess, mate!
 ```shell
 A total of 1 test files matched the specified pattern.
 
-Passed!  - Failed:     0, Passed:   152, Skipped:     0, Total:   152, Duration: 94 ms - Core.dll (net5.0)
+Passed!  - Failed:     0, Passed:   155, Skipped:     0, Total:   155, Duration: 99 ms - Core.dll (net5.0)
 
 Calculating coverage result...
   Generating report '..\.coverage\lcov.info'
@@ -378,14 +378,14 @@ Calculating coverage result...
 +--------+--------+--------+--------+
 | Module | Line   | Branch | Method |
 +--------+--------+--------+--------+
-| Mate   | 93,98% | 89,91% | 93,75% |
+| Mate   | 94,94% | 90,08% | 96,25% |
 +--------+--------+--------+--------+
 
 +---------+--------+--------+--------+
 |         | Line   | Branch | Method |
 +---------+--------+--------+--------+
-| Total   | 93,98% | 89,91% | 93,75% |
+| Total   | 94,94% | 90,08% | 96,25% |
 +---------+--------+--------+--------+
-| Average | 93,98% | 89,91% | 93,75% |
+| Average | 94,94% | 90,08% | 96,25% |
 +---------+--------+--------+--------+
 ```

@@ -52,7 +52,8 @@ namespace Core.Elements.Rules
         /// <exception cref="System.NotImplementedException">This method is not yet implemented.</exception>
         public override IReadOnlyCollection<Move> AvailableMoves(bool color)
         {
-            throw new System.NotImplementedException();
+            // TODO: Implement this method - this is just a simple overload.
+            return AllMoves(color);
         }
 
         /// <summary>

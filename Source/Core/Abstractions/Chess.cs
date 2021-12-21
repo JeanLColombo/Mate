@@ -93,6 +93,7 @@ namespace Core.Abstractions
         public abstract IReadOnlyCollection<Move> AvailableMoves(bool color);
 
         //TODO: Chess.AllMoves, private or public?
+        //TODO: Test AvailableMoves
 
         /// <summary>
         /// All moves, legal or illegal, currently available to a player, based on

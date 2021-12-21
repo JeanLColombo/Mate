@@ -48,14 +48,9 @@ namespace Core.Extensions
         /// Otherwise, <see langword="false"/>.</returns>
         public static bool AddPiece(this Chess chess, Square square, IPiece piece)
         {
-            try
-            {
-                chess.PlaceAt(square, piece);
-            }
-            catch (ArgumentException)
-            {
-                return false;
-            }
+            if (chess.Position.ContainsKey(square)) return false;
+
+            chess.PlaceAt(square, piece);
 
             return true;
         }
