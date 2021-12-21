@@ -109,6 +109,22 @@ namespace Test.Core.Elements.Rules
             Assert.Equal(move, chess.MoveEntries.Last().Move);
         }
 
+        [Fact]
+        public void TestProcessPawnRush()
+        {
+            var fromSquare = new Square(Files.h, Ranks.seven);
+            var toSquare = new Square(Files.h, Ranks.five);
+
+            IChess chess = new Custom(CustomPositionB);
+
+            var move = new Move(fromSquare, toSquare, MoveType.Rush);
+
+            Assert.True(chess.Process(move, out IPiece piece));
+
+            Assert.False(chess.Position[toSquare].Color);
+            Assert.True(chess.Position[toSquare] is Pawn);
+        }
+
         private IReadOnlyDictionary<Square, IPiece> CustomPositionA =>
             new Dictionary<Square, IPiece>() {
                 {new Square(Files.a, Ranks.one),        new Rook(true)},
@@ -132,7 +148,8 @@ namespace Test.Core.Elements.Rules
 
         private IReadOnlyDictionary<Square, IPiece> CustomPositionB => 
             new Dictionary<Square, IPiece>() {
-                {new Square(Files.a, Ranks.one), new Knight(true)}
+                {new Square(Files.a, Ranks.one  ), new Knight(true)},
+                {new Square(Files.h, Ranks.seven), new Pawn(false)}
             };
 
         public static IEnumerable<object[]> BannedDataA => new []{

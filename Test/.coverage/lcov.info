@@ -1,69 +1,69 @@
 SF:H:\source\repos\Mate\Source\Core\Extensions\Attacking.cs
 FN:28,Core.Abstractions.Move Core.Extensions.Attacking::AttackSquare(Core.Abstractions.Piece,Core.Abstractions.Square,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-FNDA:223,Core.Abstractions.Move Core.Extensions.Attacking::AttackSquare(Core.Abstractions.Piece,Core.Abstractions.Square,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-DA:29,223
-DA:30,223
-DA:32,224
-DA:34,222
-DA:35,223
+FNDA:234,Core.Abstractions.Move Core.Extensions.Attacking::AttackSquare(Core.Abstractions.Piece,Core.Abstractions.Square,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
+DA:29,234
+DA:30,234
+DA:32,235
+DA:34,233
+DA:35,234
 BRDA:32,15,0,1
-BRDA:32,15,1,222
+BRDA:32,15,1,233
 FN:54,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Extensions.Attacking::Attack(Core.Abstractions.Piece,Core.Abstractions.Through,System.Boolean,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>,System.UInt32)
-FNDA:832,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Extensions.Attacking::Attack(Core.Abstractions.Piece,Core.Abstractions.Through,System.Boolean,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>,System.UInt32)
-DA:55,832
-DA:56,832
-DA:58,832
-DA:59,832
-DA:60,832
-DA:61,832
-DA:62,832
-DA:63,832
-DA:64,832
-BRDA:58,10,0,831
+FNDA:841,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Extensions.Attacking::Attack(Core.Abstractions.Piece,Core.Abstractions.Through,System.Boolean,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>,System.UInt32)
+DA:55,841
+DA:56,841
+DA:58,841
+DA:59,841
+DA:60,841
+DA:61,841
+DA:62,841
+DA:63,841
+DA:64,841
+BRDA:58,10,0,840
 BRDA:58,10,1,1
 FN:79,Core.Abstractions.Move Core.Extensions.Attacking::AttackSquare(Core.Abstractions.Square,Core.Abstractions.Square,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-FNDA:1731,Core.Abstractions.Move Core.Extensions.Attacking::AttackSquare(Core.Abstractions.Square,Core.Abstractions.Square,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-DA:80,1731
-DA:81,2121
-DA:83,1341
-DA:84,1075
+FNDA:1751,Core.Abstractions.Move Core.Extensions.Attacking::AttackSquare(Core.Abstractions.Square,Core.Abstractions.Square,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
+DA:80,1751
+DA:81,2150
+DA:83,1352
+DA:84,1086
 DA:86,266
 DA:87,120
 DA:89,146
-DA:90,1731
-BRDA:81,7,0,390
-BRDA:81,7,1,1341
-BRDA:83,27,0,1075
+DA:90,1751
+BRDA:81,7,0,399
+BRDA:81,7,1,1352
+BRDA:83,27,0,1086
 BRDA:83,27,1,266
 BRDA:86,67,0,120
 BRDA:86,67,1,146
 FN:108,System.Boolean Core.Extensions.Attacking/<Attack>d__3::MoveNext()
-FNDA:831,System.Boolean Core.Extensions.Attacking/<Attack>d__3::MoveNext()
-DA:109,831
-DA:110,831
-DA:112,831
-DA:114,831
-DA:115,831
-DA:116,831
-DA:117,831
-DA:119,1509
-DA:120,1083
-DA:121,1083
+FNDA:840,System.Boolean Core.Extensions.Attacking/<Attack>d__3::MoveNext()
+DA:109,840
+DA:110,840
+DA:112,840
+DA:114,840
+DA:115,840
+DA:116,840
+DA:117,840
+DA:119,1518
+DA:120,1089
+DA:121,1089
 DA:123,808
 DA:125,678
 DA:126,678
 DA:127,678
 DA:128,678
 DA:129,678
-DA:130,426
-BRDA:114,75,0,409
+DA:130,429
+BRDA:114,75,0,418
 BRDA:114,75,1,422
-BRDA:119,264,1,1083
+BRDA:119,264,1,1089
 BRDA:123,163,0,65
 BRDA:123,163,1,678
 BRDA:125,192,0,346
 BRDA:125,192,1,332
-BRDA:119,264,0,426
+BRDA:119,264,0,429
 LF:39
 LH:39
 BRF:18
@@ -73,23 +73,23 @@ FNH:4
 end_of_record
 SF:H:\source\repos\Mate\Source\Core\Extensions\Helper.cs
 FN:18,System.Boolean Core.Extensions.Helper::AddNonNull(System.Collections.Generic.HashSet`1<T>,T)
-FNDA:61,System.Boolean Core.Extensions.Helper::AddNonNull(System.Collections.Generic.HashSet`1<T>,T)
-DA:19,61
-BRDA:19,6,0,18
+FNDA:64,System.Boolean Core.Extensions.Helper::AddNonNull(System.Collections.Generic.HashSet`1<T>,T)
+DA:19,64
+BRDA:19,6,0,21
 BRDA:19,6,1,43
 FN:33,System.Collections.Generic.IReadOnlyCollection`1<T> Core.Extensions.Helper::Unify(System.Collections.Generic.IReadOnlyCollection`1<T>,System.Collections.Generic.IReadOnlyCollection`1<T>)
-FNDA:66,System.Collections.Generic.IReadOnlyCollection`1<T> Core.Extensions.Helper::Unify(System.Collections.Generic.IReadOnlyCollection`1<T>,System.Collections.Generic.IReadOnlyCollection`1<T>)
-DA:34,66
+FNDA:69,System.Collections.Generic.IReadOnlyCollection`1<T> Core.Extensions.Helper::Unify(System.Collections.Generic.IReadOnlyCollection`1<T>,System.Collections.Generic.IReadOnlyCollection`1<T>)
+DA:34,69
 FN:47,System.Boolean Core.Extensions.Helper::HasMoved(Core.Abstractions.IPiece,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.MoveEntry>)
-FNDA:114,System.Boolean Core.Extensions.Helper::HasMoved(Core.Abstractions.IPiece,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.MoveEntry>)
-DA:48,114
-DA:49,114
-DA:51,128
-DA:52,114
+FNDA:117,System.Boolean Core.Extensions.Helper::HasMoved(Core.Abstractions.IPiece,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.MoveEntry>)
+DA:48,117
+DA:49,117
+DA:51,131
+DA:52,117
 BRDA:51,31,0,5
 BRDA:51,39,0,5
-BRDA:51,31,1,109
-BRDA:51,39,1,109
+BRDA:51,31,1,112
+BRDA:51,39,1,112
 FN:65,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Square> Core.Extensions.Helper::InBetweenSquares(Core.Abstractions.Square,Core.Abstractions.Square)
 FNDA:37,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Square> Core.Extensions.Helper::InBetweenSquares(Core.Abstractions.Square,Core.Abstractions.Square)
 DA:66,37
@@ -145,37 +145,37 @@ FNH:1
 end_of_record
 SF:H:\source\repos\Mate\Source\Core\Extensions\Maneuverability.cs
 FN:22,Core.Abstractions.Square Core.Extensions.Maneuverability::MovePlus(Core.Abstractions.Square,System.Int32,System.Int32)
-FNDA:1871,Core.Abstractions.Square Core.Extensions.Maneuverability::MovePlus(Core.Abstractions.Square,System.Int32,System.Int32)
-DA:23,1871
-DA:24,1871
-DA:25,1871
-DA:27,1871
-DA:28,400
-DA:30,1471
-DA:31,1471
-DA:32,1471
-DA:33,1871
-BRDA:27,40,0,1716
-BRDA:27,40,1,155
-BRDA:27,71,0,400
-BRDA:27,71,1,1471
+FNDA:1894,Core.Abstractions.Square Core.Extensions.Maneuverability::MovePlus(Core.Abstractions.Square,System.Int32,System.Int32)
+DA:23,1894
+DA:24,1894
+DA:25,1894
+DA:27,1894
+DA:28,409
+DA:30,1485
+DA:31,1485
+DA:32,1485
+DA:33,1894
+BRDA:27,40,0,1732
+BRDA:27,40,1,162
+BRDA:27,71,0,409
+BRDA:27,71,1,1485
 FN:46,Core.Abstractions.Square Core.Extensions.Maneuverability::Maneuver(Core.Abstractions.Square,Core.Abstractions.Through,System.Int32)
-FNDA:1666,Core.Abstractions.Square Core.Extensions.Maneuverability::Maneuver(Core.Abstractions.Square,Core.Abstractions.Through,System.Int32)
-DA:47,1666
-DA:48,1666
+FNDA:1681,Core.Abstractions.Square Core.Extensions.Maneuverability::Maneuver(Core.Abstractions.Square,Core.Abstractions.Through,System.Int32)
+DA:47,1681
+DA:48,1681
 DA:49,396
-DA:50,492
-DA:51,392
-DA:52,385
-DA:53,1666
+DA:50,501
+DA:51,395
+DA:52,388
+DA:53,1681
 DA:54,1
 DA:55,1
 DA:56,1
-DA:57,1666
+DA:57,1681
 BRDA:47,7,1,396
-BRDA:47,7,2,492
-BRDA:47,7,3,392
-BRDA:47,7,4,385
+BRDA:47,7,2,501
+BRDA:47,7,3,395
+BRDA:47,7,4,388
 BRDA:47,7,0,1
 LF:20
 LH:20
@@ -199,36 +199,36 @@ BRDA:28,7,1,137
 BRDA:30,29,0,1
 BRDA:30,29,1,136
 FN:47,System.Boolean Core.Extensions.Setup::AddPiece(Core.Abstractions.Chess,Core.Abstractions.Square,Core.Abstractions.IPiece)
-FNDA:3,System.Boolean Core.Extensions.Setup::AddPiece(Core.Abstractions.Chess,Core.Abstractions.Square,Core.Abstractions.IPiece)
-DA:48,3
-DA:49,4
-DA:51,2
-DA:53,2
-DA:54,3
+FNDA:4,System.Boolean Core.Extensions.Setup::AddPiece(Core.Abstractions.Chess,Core.Abstractions.Square,Core.Abstractions.IPiece)
+DA:48,4
+DA:49,5
+DA:51,3
+DA:53,3
+DA:54,4
 BRDA:49,15,0,1
-BRDA:49,15,1,2
+BRDA:49,15,1,3
 FN:65,System.Boolean Core.Extensions.Setup::RemovePiece(Core.Abstractions.Chess,Core.Abstractions.Square,Core.Abstractions.IPiece&)
-FNDA:3,System.Boolean Core.Extensions.Setup::RemovePiece(Core.Abstractions.Chess,Core.Abstractions.Square,Core.Abstractions.IPiece&)
-DA:66,3
-DA:67,3
+FNDA:4,System.Boolean Core.Extensions.Setup::RemovePiece(Core.Abstractions.Chess,Core.Abstractions.Square,Core.Abstractions.IPiece&)
+DA:66,4
+DA:67,4
 DA:68,1
 DA:69,1
 DA:70,1
-DA:73,2
-DA:75,2
-DA:77,2
-DA:78,3
+DA:73,3
+DA:75,3
+DA:77,3
+DA:78,4
 BRDA:67,18,0,1
-BRDA:67,18,1,2
+BRDA:67,18,1,3
 FN:85,System.Void Core.Extensions.Setup::Copy(Core.Elements.Board,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-FNDA:58,System.Void Core.Extensions.Setup::Copy(Core.Elements.Board,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-DA:86,58
-DA:87,58
-DA:88,231
-DA:89,231
-DA:90,231
-DA:91,231
-DA:92,58
+FNDA:60,System.Void Core.Extensions.Setup::Copy(Core.Elements.Board,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
+DA:86,60
+DA:87,60
+DA:88,238
+DA:89,238
+DA:90,238
+DA:91,238
+DA:92,60
 LF:28
 LH:28
 BRF:8
@@ -294,10 +294,10 @@ FNH:1
 end_of_record
 SF:H:\source\repos\Mate\Source\Core\Extensions\SpecializedMoves\PawnPassant.cs
 FN:25,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Extensions.SpecializedMoves.PawnPassant::EnPassant(Core.Abstractions.IPiece,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.MoveEntry>)
-FNDA:61,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Extensions.SpecializedMoves.PawnPassant::EnPassant(Core.Abstractions.IPiece,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.MoveEntry>)
-DA:26,61
-DA:27,61
-DA:29,112
+FNDA:64,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Extensions.SpecializedMoves.PawnPassant::EnPassant(Core.Abstractions.IPiece,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.MoveEntry>)
+DA:26,64
+DA:27,64
+DA:29,118
 DA:31,10
 DA:33,11
 DA:35,9
@@ -317,10 +317,10 @@ DA:52,2
 DA:53,2
 DA:54,2
 DA:56,2
-DA:57,61
-BRDA:29,19,0,60
+DA:57,64
+BRDA:29,19,0,63
 BRDA:29,19,1,1
-BRDA:29,37,0,51
+BRDA:29,37,0,54
 BRDA:29,37,1,10
 BRDA:33,86,0,1
 BRDA:33,86,1,9
@@ -347,47 +347,47 @@ FNH:1
 end_of_record
 SF:H:\source\repos\Mate\Source\Core\Extensions\SpecializedMoves\PawnRush.cs
 FN:21,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Extensions.SpecializedMoves.PawnRush::PawnFirstMove(Core.Abstractions.IPiece,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-FNDA:59,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Extensions.SpecializedMoves.PawnRush::PawnFirstMove(Core.Abstractions.IPiece,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-DA:22,59
-DA:23,59
-DA:25,59
-DA:27,59
-DA:28,59
-DA:29,59
-DA:30,59
-DA:31,59
-DA:32,59
-DA:33,59
-DA:34,59
-DA:35,59
-DA:36,59
-DA:37,59
-DA:38,59
-DA:39,59
-DA:40,59
-DA:41,59
-DA:42,59
-DA:43,59
-DA:44,59
-DA:45,59
-DA:47,59
-DA:48,17
-DA:49,16
-DA:50,59
-DA:51,59
-BRDA:27,27,0,58
-BRDA:27,30,0,57
-BRDA:27,44,0,28
+FNDA:62,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Extensions.SpecializedMoves.PawnRush::PawnFirstMove(Core.Abstractions.IPiece,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
+DA:22,62
+DA:23,62
+DA:25,62
+DA:27,62
+DA:28,62
+DA:29,62
+DA:30,62
+DA:31,62
+DA:32,62
+DA:33,62
+DA:34,62
+DA:35,62
+DA:36,62
+DA:37,62
+DA:38,62
+DA:39,62
+DA:40,62
+DA:41,62
+DA:42,62
+DA:43,62
+DA:44,62
+DA:45,62
+DA:47,62
+DA:48,20
+DA:49,19
+DA:50,62
+DA:51,62
+BRDA:27,27,0,61
+BRDA:27,30,0,60
+BRDA:27,44,0,31
 BRDA:27,44,1,29
-BRDA:27,50,0,20
-BRDA:27,61,0,10
+BRDA:27,50,0,23
+BRDA:27,61,0,13
 BRDA:27,61,1,10
 BRDA:27,27,1,41
 BRDA:27,30,1,41
 BRDA:27,50,1,41
 BRDA:27,79,0,41
-BRDA:27,79,1,18
-BRDA:27,98,0,9
+BRDA:27,79,1,21
+BRDA:27,98,0,12
 BRDA:27,98,1,9
 LF:27
 LH:27
@@ -398,18 +398,18 @@ FNH:1
 end_of_record
 SF:H:\source\repos\Mate\Source\Core\Elements\Board.cs
 FN:15,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece> Core.Elements.Board::get_Position()
-FNDA:829,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece> Core.Elements.Board::get_Position()
-DA:16,829
+FNDA:852,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece> Core.Elements.Board::get_Position()
+DA:16,852
 FN:22,System.Collections.Generic.Dictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece> Core.Elements.Board::get_Pieces()
-FNDA:1336,System.Collections.Generic.Dictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece> Core.Elements.Board::get_Pieces()
-DA:23,1336
+FNDA:1370,System.Collections.Generic.Dictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece> Core.Elements.Board::get_Pieces()
+DA:23,1370
 FN:28,System.Void Core.Elements.Board::.ctor()
 FNDA:225,System.Void Core.Elements.Board::.ctor()
 DA:29,225
 FN:36,System.Void Core.Elements.Board::.ctor(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-FNDA:57,System.Void Core.Elements.Board::.ctor(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-DA:37,57
-DA:38,171
+FNDA:59,System.Void Core.Elements.Board::.ctor(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
+DA:37,59
+DA:38,177
 LF:5
 LH:5
 BRF:0
@@ -419,39 +419,39 @@ FNH:4
 end_of_record
 SF:H:\source\repos\Mate\Source\Core\Elements\Rules\Custom.cs
 FN:52,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Rules.Custom::AllMoves(System.Boolean)
-FNDA:34,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Rules.Custom::AllMoves(System.Boolean)
-DA:53,34
-DA:55,368
-DA:58,201
-DA:61,34
-DA:62,167
-DA:63,49
-DA:64,34
-DA:65,49
-DA:66,49
-DA:67,34
-DA:70,34
-DA:71,167
-DA:72,34
+FNDA:36,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Rules.Custom::AllMoves(System.Boolean)
+DA:53,36
+DA:55,378
+DA:58,207
+DA:61,36
+DA:62,171
+DA:63,52
+DA:64,36
+DA:65,52
+DA:66,52
+DA:67,36
+DA:70,36
+DA:71,171
+DA:72,36
 DA:73,29
-DA:74,34
-DA:77,34
-DA:78,34
-DA:79,34
-DA:80,965
-DA:81,34
-DA:82,34
+DA:74,36
+DA:77,36
+DA:78,36
+DA:79,36
+DA:80,973
+DA:81,36
+DA:82,36
 FN:91,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Rules.Custom::AvailableMoves(System.Boolean)
-FNDA:20,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Rules.Custom::AvailableMoves(System.Boolean)
-DA:92,20
-DA:94,20
-DA:95,20
+FNDA:22,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Rules.Custom::AvailableMoves(System.Boolean)
+DA:92,22
+DA:94,22
+DA:95,22
 FN:104,System.Boolean Core.Elements.Rules.Custom::Process(Core.Abstractions.Move,Core.Abstractions.IPiece&)
-FNDA:1,System.Boolean Core.Elements.Rules.Custom::Process(Core.Abstractions.Move,Core.Abstractions.IPiece&)
-DA:105,1
-DA:109,1
-DA:111,1
-DA:113,1
+FNDA:2,System.Boolean Core.Elements.Rules.Custom::Process(Core.Abstractions.Move,Core.Abstractions.IPiece&)
+DA:105,2
+DA:109,2
+DA:111,2
+DA:113,2
 DA:116,0
 DA:118,0
 DA:120,0
@@ -459,37 +459,37 @@ DA:122,0
 DA:124,0
 DA:126,0
 DA:128,0
-DA:131,1
-DA:132,1
-DA:133,1
-DA:135,1
-DA:136,1
-BRDA:113,18,0,1
-BRDA:113,18,3,1
-BRDA:113,18,1,1
-BRDA:113,18,2,1
-BRDA:113,18,4,1
-BRDA:113,18,5,1
-BRDA:113,18,6,1
-BRDA:113,18,7,1
-BRDA:113,18,8,1
+DA:131,2
+DA:132,2
+DA:133,2
+DA:135,2
+DA:136,2
+BRDA:113,18,0,2
+BRDA:113,18,3,2
+BRDA:113,18,1,2
+BRDA:113,18,2,2
+BRDA:113,18,4,2
+BRDA:113,18,5,2
+BRDA:113,18,6,2
+BRDA:113,18,7,2
+BRDA:113,18,8,2
 FN:144,System.Void Core.Elements.Rules.Custom::ProcessNormal(Core.Abstractions.Move)
-FNDA:1,System.Void Core.Elements.Rules.Custom::ProcessNormal(Core.Abstractions.Move)
-DA:145,1
-DA:150,1
-DA:153,1
-DA:154,1
+FNDA:2,System.Void Core.Elements.Rules.Custom::ProcessNormal(Core.Abstractions.Move)
+DA:145,2
+DA:150,2
+DA:153,2
+DA:154,2
 FN:27,System.Void Core.Elements.Rules.Custom::.ctor(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-FNDA:12,System.Void Core.Elements.Rules.Custom::.ctor(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-DA:28,12
-DA:29,12
-DA:30,36
+FNDA:13,System.Void Core.Elements.Rules.Custom::.ctor(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
+DA:28,13
+DA:29,13
+DA:30,39
 FN:40,System.Void Core.Elements.Rules.Custom::.ctor(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>,System.Collections.Generic.HashSet`1<Core.Abstractions.MoveType>)
-FNDA:24,System.Void Core.Elements.Rules.Custom::.ctor(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>,System.Collections.Generic.HashSet`1<Core.Abstractions.MoveType>)
-DA:41,24
-DA:42,24
-DA:43,24
-DA:44,24
+FNDA:25,System.Void Core.Elements.Rules.Custom::.ctor(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>,System.Collections.Generic.HashSet`1<Core.Abstractions.MoveType>)
+DA:41,25
+DA:42,25
+DA:43,25
+DA:44,25
 LF:51
 LH:44
 BRF:9
@@ -531,20 +531,20 @@ FNH:2
 end_of_record
 SF:H:\source\repos\Mate\Source\Core\Elements\Pieces\Knight.cs
 FN:25,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Pieces.Knight::AvailableMoves(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-FNDA:25,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Pieces.Knight::AvailableMoves(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-DA:26,25
-DA:27,25
-DA:29,25
-DA:30,50
-DA:31,150
-DA:32,200
-DA:33,200
-DA:34,200
-DA:35,25
-DA:36,25
+FNDA:26,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Pieces.Knight::AvailableMoves(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
+DA:26,26
+DA:27,26
+DA:29,26
+DA:30,52
+DA:31,156
+DA:32,208
+DA:33,208
+DA:34,208
+DA:35,26
+DA:36,26
 FN:17,System.Void Core.Elements.Pieces.Knight::.ctor(System.Boolean)
-FNDA:168,System.Void Core.Elements.Pieces.Knight::.ctor(System.Boolean)
-DA:18,168
+FNDA:177,System.Void Core.Elements.Pieces.Knight::.ctor(System.Boolean)
+DA:18,177
 LF:11
 LH:11
 BRF:0
@@ -554,43 +554,43 @@ FNH:2
 end_of_record
 SF:H:\source\repos\Mate\Source\Core\Elements\Pieces\Pawn.cs
 FN:25,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Pieces.Pawn::AvailableMoves(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-FNDA:61,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Pieces.Pawn::AvailableMoves(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-DA:26,61
-DA:27,61
-DA:28,61
-DA:29,75
-DA:30,61
+FNDA:64,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Pieces.Pawn::AvailableMoves(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
+DA:26,64
+DA:27,64
+DA:28,64
+DA:29,78
+DA:30,64
 FN:38,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Pieces.Pawn::PawnAttack(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-FNDA:61,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Pieces.Pawn::PawnAttack(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-DA:39,61
-DA:40,122
-DA:41,107
-DA:42,61
+FNDA:64,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Pieces.Pawn::PawnAttack(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
+DA:39,64
+DA:40,128
+DA:41,110
+DA:42,64
 FN:50,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Pieces.Pawn::PawnMoveForward(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-FNDA:61,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Pieces.Pawn::PawnMoveForward(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-DA:51,61
-DA:52,58
-DA:53,61
+FNDA:64,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Pieces.Pawn::PawnMoveForward(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
+DA:51,64
+DA:52,61
+DA:53,64
 FN:62,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Pieces.Pawn::UpdateToPromotions(Core.Abstractions.Move)
-FNDA:75,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Pieces.Pawn::UpdateToPromotions(Core.Abstractions.Move)
-DA:63,75
-DA:64,75
-DA:65,75
-DA:66,75
-DA:67,75
-DA:68,75
-DA:69,75
-DA:70,75
-DA:71,75
+FNDA:78,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Elements.Pieces.Pawn::UpdateToPromotions(Core.Abstractions.Move)
+DA:63,78
+DA:64,78
+DA:65,78
+DA:66,78
+DA:67,78
+DA:68,78
+DA:69,78
+DA:70,78
+DA:71,78
 DA:72,120
-DA:73,75
-BRDA:63,35,0,39
+DA:73,78
+BRDA:63,35,0,42
 BRDA:63,35,1,36
 BRDA:63,41,0,30
-BRDA:63,41,1,45
+BRDA:63,41,1,48
 FN:17,System.Void Core.Elements.Pieces.Pawn::.ctor(System.Boolean)
-FNDA:540,System.Void Core.Elements.Pieces.Pawn::.ctor(System.Boolean)
-DA:18,540
+FNDA:564,System.Void Core.Elements.Pieces.Pawn::.ctor(System.Boolean)
+DA:18,564
 LF:24
 LH:24
 BRF:4
@@ -632,45 +632,45 @@ FNH:2
 end_of_record
 SF:H:\source\repos\Mate\Source\Core\Abstractions\Chess.cs
 FN:17,Core.Elements.Board Core.Abstractions.Chess::get_Board()
-FNDA:515,Core.Elements.Board Core.Abstractions.Chess::get_Board()
-DA:18,515
+FNDA:540,Core.Elements.Board Core.Abstractions.Chess::get_Board()
+DA:18,540
 FN:23,System.Collections.Generic.List`1<Core.Abstractions.MoveEntry> Core.Abstractions.Chess::get__moveEntries()
-FNDA:175,System.Collections.Generic.List`1<Core.Abstractions.MoveEntry> Core.Abstractions.Chess::get__moveEntries()
-DA:24,175
+FNDA:183,System.Collections.Generic.List`1<Core.Abstractions.MoveEntry> Core.Abstractions.Chess::get__moveEntries()
+DA:24,183
 FN:29,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece> Core.Abstractions.Chess::get_Position()
-FNDA:507,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece> Core.Abstractions.Chess::get_Position()
-DA:30,507
+FNDA:530,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece> Core.Abstractions.Chess::get_Position()
+DA:30,530
 FN:37,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.MoveEntry> Core.Abstractions.Chess::get_MoveEntries()
-FNDA:139,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.MoveEntry> Core.Abstractions.Chess::get_MoveEntries()
-DA:38,139
+FNDA:145,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.MoveEntry> Core.Abstractions.Chess::get_MoveEntries()
+DA:38,145
 FN:61,System.Void Core.Abstractions.Chess::PlaceAt(Core.Abstractions.Square,Core.Abstractions.IPiece)
-FNDA:6,System.Void Core.Abstractions.Chess::PlaceAt(Core.Abstractions.Square,Core.Abstractions.IPiece)
-DA:62,6
-DA:63,6
+FNDA:7,System.Void Core.Abstractions.Chess::PlaceAt(Core.Abstractions.Square,Core.Abstractions.IPiece)
+DA:62,7
+DA:63,7
 DA:64,1
 DA:65,1
 DA:66,1
-DA:68,5
-DA:69,5
+DA:68,6
+DA:69,6
 BRDA:63,15,0,1
-BRDA:63,15,1,5
+BRDA:63,15,1,6
 FN:77,System.Void Core.Abstractions.Chess::Clear(Core.Abstractions.Square)
-FNDA:4,System.Void Core.Abstractions.Chess::Clear(Core.Abstractions.Square)
-DA:78,4
-DA:79,4
+FNDA:5,System.Void Core.Abstractions.Chess::Clear(Core.Abstractions.Square)
+DA:78,5
+DA:79,5
 DA:80,1
 DA:81,1
 DA:82,1
-DA:84,3
-DA:85,3
+DA:84,4
+DA:85,4
 BRDA:79,18,0,1
-BRDA:79,18,1,3
+BRDA:79,18,1,4
 FN:91,System.Void Core.Abstractions.Chess::Add(Core.Abstractions.MoveEntry)
-FNDA:2,System.Void Core.Abstractions.Chess::Add(Core.Abstractions.MoveEntry)
-DA:92,2
+FNDA:3,System.Void Core.Abstractions.Chess::Add(Core.Abstractions.MoveEntry)
+DA:92,3
 FN:127,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece> Core.Abstractions.Chess::Core.Abstractions.IChess.get_Position()
-FNDA:99,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece> Core.Abstractions.Chess::Core.Abstractions.IChess.get_Position()
-DA:128,99
+FNDA:101,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece> Core.Abstractions.Chess::Core.Abstractions.IChess.get_Position()
+DA:128,101
 FN:132,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.MoveEntry> Core.Abstractions.Chess::Core.Abstractions.IChess.get_MoveEntries()
 FNDA:12,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.MoveEntry> Core.Abstractions.Chess::Core.Abstractions.IChess.get_MoveEntries()
 DA:133,12
@@ -678,25 +678,25 @@ FN:139,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> 
 FNDA:17,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Abstractions.Chess::Core.Abstractions.IChess.AvailableMoves(System.Boolean)
 DA:140,17
 FN:148,System.Boolean Core.Abstractions.Chess::Core.Abstractions.IChess.Process(Core.Abstractions.Move,Core.Abstractions.IPiece&)
-FNDA:2,System.Boolean Core.Abstractions.Chess::Core.Abstractions.IChess.Process(Core.Abstractions.Move,Core.Abstractions.IPiece&)
-DA:149,2
-DA:151,2
-DA:154,2
-DA:155,6
-DA:158,2
+FNDA:3,System.Boolean Core.Abstractions.Chess::Core.Abstractions.IChess.Process(Core.Abstractions.Move,Core.Abstractions.IPiece&)
+DA:149,3
+DA:151,3
+DA:154,3
+DA:155,9
+DA:158,3
 DA:159,1
-DA:162,1
-DA:165,1
-DA:166,2
+DA:162,2
+DA:165,2
+DA:166,3
 BRDA:158,49,0,1
-BRDA:158,49,1,1
+BRDA:158,49,1,2
 FN:42,System.Void Core.Abstractions.Chess::.ctor()
 FNDA:21,System.Void Core.Abstractions.Chess::.ctor()
 DA:43,21
 FN:49,System.Void Core.Abstractions.Chess::.ctor(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-FNDA:34,System.Void Core.Abstractions.Chess::.ctor(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-DA:50,34
-DA:51,102
+FNDA:35,System.Void Core.Abstractions.Chess::.ctor(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
+DA:50,35
+DA:51,105
 LF:34
 LH:34
 BRF:6
@@ -706,44 +706,44 @@ FNH:13
 end_of_record
 SF:H:\source\repos\Mate\Source\Core\Abstractions\Move.cs
 FN:11,Core.Abstractions.Square Core.Abstractions.Move::get_FromSquare()
-FNDA:428,Core.Abstractions.Square Core.Abstractions.Move::get_FromSquare()
-DA:12,428
+FNDA:444,Core.Abstractions.Square Core.Abstractions.Move::get_FromSquare()
+DA:12,444
 FN:17,Core.Abstractions.Square Core.Abstractions.Move::get_ToSquare()
-FNDA:619,Core.Abstractions.Square Core.Abstractions.Move::get_ToSquare()
-DA:18,619
+FNDA:630,Core.Abstractions.Square Core.Abstractions.Move::get_ToSquare()
+DA:18,630
 FN:23,Core.Abstractions.MoveType Core.Abstractions.Move::get_Type()
-FNDA:2596,Core.Abstractions.MoveType Core.Abstractions.Move::get_Type()
-DA:24,2596
+FNDA:2616,Core.Abstractions.MoveType Core.Abstractions.Move::get_Type()
+DA:24,2616
 FN:49,System.Boolean Core.Abstractions.Move::Equals(System.Object)
-FNDA:17,System.Boolean Core.Abstractions.Move::Equals(System.Object)
-DA:50,17
-DA:53,17
-DA:56,17
-DA:59,17
-DA:60,17
-DA:61,17
-DA:62,17
-BRDA:53,2,0,17
+FNDA:23,System.Boolean Core.Abstractions.Move::Equals(System.Object)
+DA:50,23
+DA:53,23
+DA:56,23
+DA:59,23
+DA:60,23
+DA:61,23
+DA:62,23
+BRDA:53,2,0,23
 BRDA:53,2,1,0
 BRDA:53,21,0,0
-BRDA:53,21,1,17
-BRDA:59,51,0,13
-BRDA:59,70,0,8
-BRDA:59,51,1,9
-BRDA:59,70,1,9
+BRDA:53,21,1,23
+BRDA:59,51,0,15
+BRDA:59,70,0,9
+BRDA:59,51,1,14
+BRDA:59,70,1,14
 FN:68,System.Int32 Core.Abstractions.Move::GetHashCode()
-FNDA:1078,System.Int32 Core.Abstractions.Move::GetHashCode()
-DA:69,1078
-DA:70,1078
-DA:71,1078
+FNDA:1095,System.Int32 Core.Abstractions.Move::GetHashCode()
+DA:69,1095
+DA:70,1095
+DA:71,1095
 FN:34,System.Void Core.Abstractions.Move::.ctor(Core.Abstractions.Square,Core.Abstractions.Square,Core.Abstractions.MoveType)
-FNDA:1401,System.Void Core.Abstractions.Move::.ctor(Core.Abstractions.Square,Core.Abstractions.Square,Core.Abstractions.MoveType)
-DA:35,1401
-DA:36,1401
-DA:37,1401
-DA:38,1401
-DA:39,1401
-DA:40,1401
+FNDA:1416,System.Void Core.Abstractions.Move::.ctor(Core.Abstractions.Square,Core.Abstractions.Square,Core.Abstractions.MoveType)
+DA:35,1416
+DA:36,1416
+DA:37,1416
+DA:38,1416
+DA:39,1416
+DA:40,1416
 LF:19
 LH:19
 BRF:8
@@ -762,12 +762,12 @@ FN:26,Core.Elements.Board Core.Abstractions.MoveEntry::get_board()
 FNDA:7,Core.Elements.Board Core.Abstractions.MoveEntry::get_board()
 DA:27,7
 FN:36,System.Void Core.Abstractions.MoveEntry::.ctor(Core.Abstractions.Move,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-FNDA:21,System.Void Core.Abstractions.MoveEntry::.ctor(Core.Abstractions.Move,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-DA:37,21
-DA:38,21
-DA:39,21
-DA:40,21
-DA:41,21
+FNDA:22,System.Void Core.Abstractions.MoveEntry::.ctor(Core.Abstractions.Move,System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
+DA:37,22
+DA:38,22
+DA:39,22
+DA:40,22
+DA:41,22
 FN:49,System.Void Core.Abstractions.MoveEntry::.ctor(Core.Abstractions.Move,Core.Elements.Board)
 FNDA:3,System.Void Core.Abstractions.MoveEntry::.ctor(Core.Abstractions.Move,Core.Elements.Board)
 DA:50,3
@@ -780,31 +780,31 @@ FNH:5
 end_of_record
 SF:H:\source\repos\Mate\Source\Core\Abstractions\Piece.cs
 FN:14,System.Boolean Core.Abstractions.Piece::get_Color()
-FNDA:2126,System.Boolean Core.Abstractions.Piece::get_Color()
-DA:15,2126
+FNDA:2163,System.Boolean Core.Abstractions.Piece::get_Color()
+DA:15,2163
 FN:41,Core.Abstractions.Square Core.Abstractions.Piece::GetSquareFrom(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-FNDA:1502,Core.Abstractions.Square Core.Abstractions.Piece::GetSquareFrom(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-DA:42,1502
-DA:43,8980
-DA:44,10482
+FNDA:1533,Core.Abstractions.Square Core.Abstractions.Piece::GetSquareFrom(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
+DA:42,1533
+DA:43,9032
+DA:44,10565
 FN:49,System.Boolean Core.Abstractions.Piece::Core.Abstractions.IPiece.get_Color()
-FNDA:1868,System.Boolean Core.Abstractions.Piece::Core.Abstractions.IPiece.get_Color()
-DA:50,1868
+FNDA:1893,System.Boolean Core.Abstractions.Piece::Core.Abstractions.IPiece.get_Color()
+DA:50,1893
 FN:55,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Abstractions.Piece::Core.Abstractions.IPiece.AvailableMoves(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-FNDA:194,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Abstractions.Piece::Core.Abstractions.IPiece.AvailableMoves(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
-DA:56,194
-DA:57,194
+FNDA:198,System.Collections.Generic.IReadOnlyCollection`1<Core.Abstractions.Move> Core.Abstractions.Piece::Core.Abstractions.IPiece.AvailableMoves(System.Collections.Generic.IReadOnlyDictionary`2<Core.Abstractions.Square,Core.Abstractions.IPiece>)
+DA:56,198
+DA:57,198
 DA:58,1
-DA:60,193
-DA:61,194
+DA:60,197
+DA:61,198
 BRDA:57,13,0,1
-BRDA:57,13,1,193
+BRDA:57,13,1,197
 FN:20,System.Void Core.Abstractions.Piece::.ctor(System.Boolean)
-FNDA:674,System.Void Core.Abstractions.Piece::.ctor(System.Boolean)
-DA:21,674
-DA:22,674
-DA:23,674
-DA:24,674
+FNDA:685,System.Void Core.Abstractions.Piece::.ctor(System.Boolean)
+DA:21,685
+DA:22,685
+DA:23,685
+DA:24,685
 LF:14
 LH:14
 BRF:2
@@ -832,32 +832,32 @@ FNH:2
 end_of_record
 SF:H:\source\repos\Mate\Source\Core\Abstractions\Square.cs
 FN:13,Core.Abstractions.Files Core.Abstractions.Square::get_File()
-FNDA:2494,Core.Abstractions.Files Core.Abstractions.Square::get_File()
-DA:14,2494
+FNDA:2533,Core.Abstractions.Files Core.Abstractions.Square::get_File()
+DA:14,2533
 FN:19,Core.Abstractions.Ranks Core.Abstractions.Square::get_Rank()
-FNDA:2412,Core.Abstractions.Ranks Core.Abstractions.Square::get_Rank()
-DA:20,2412
+FNDA:2449,Core.Abstractions.Ranks Core.Abstractions.Square::get_Rank()
+DA:20,2449
 FN:25,System.Boolean Core.Abstractions.Square::get_Color()
 FNDA:2,System.Boolean Core.Abstractions.Square::get_Color()
 DA:26,2
 FN:49,System.Boolean Core.Abstractions.Square::IsSameFileAs(Core.Abstractions.Square)
-FNDA:142,System.Boolean Core.Abstractions.Square::IsSameFileAs(Core.Abstractions.Square)
-DA:50,142
+FNDA:150,System.Boolean Core.Abstractions.Square::IsSameFileAs(Core.Abstractions.Square)
+DA:50,150
 FN:56,System.Boolean Core.Abstractions.Square::IsSameRankAs(Core.Abstractions.Square)
-FNDA:136,System.Boolean Core.Abstractions.Square::IsSameRankAs(Core.Abstractions.Square)
-DA:57,136
+FNDA:140,System.Boolean Core.Abstractions.Square::IsSameRankAs(Core.Abstractions.Square)
+DA:57,140
 FN:63,System.Boolean Core.Abstractions.Square::IsSameSquareAs(Core.Abstractions.Square)
-FNDA:141,System.Boolean Core.Abstractions.Square::IsSameSquareAs(Core.Abstractions.Square)
-DA:64,141
-BRDA:64,7,0,93
-BRDA:64,7,1,48
+FNDA:149,System.Boolean Core.Abstractions.Square::IsSameSquareAs(Core.Abstractions.Square)
+DA:64,149
+BRDA:64,7,0,97
+BRDA:64,7,1,52
 FN:70,System.Boolean Core.Abstractions.Square::GetColor()
 FNDA:2,System.Boolean Core.Abstractions.Square::GetColor()
 DA:71,2
 DA:72,2
 FN:33,System.Void Core.Abstractions.Square::.ctor(Core.Abstractions.Files,Core.Abstractions.Ranks)
-FNDA:7821,System.Void Core.Abstractions.Square::.ctor(Core.Abstractions.Files,Core.Abstractions.Ranks)
-DA:34,7821
+FNDA:7881,System.Void Core.Abstractions.Square::.ctor(Core.Abstractions.Files,Core.Abstractions.Ranks)
+DA:34,7881
 FN:42,System.Void Core.Abstractions.Square::.ctor(Core.Abstractions.Square)
 FNDA:78,System.Void Core.Abstractions.Square::.ctor(Core.Abstractions.Square)
 DA:43,78
