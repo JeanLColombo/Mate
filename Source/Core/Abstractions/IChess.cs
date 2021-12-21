@@ -27,5 +27,12 @@ namespace Core.Abstractions
         /// <param name="color">True for white, false for black.</param>
         /// <returns>A read-only collection of <see cref="Move"/> objects.</returns>
         IReadOnlyCollection<Move> AvailableMoves(bool color);
+
+        /// <summary>
+        /// Adds historic <paramref name="entry"/> instances to <see cref="MoveEntries"/>. 
+        /// </summary>
+        /// <param name="entry">A <see cref="MoveEntry"/> instance.</param>
+        /// <returns></returns>
+        void Add(MoveEntry entry);
     }
 }

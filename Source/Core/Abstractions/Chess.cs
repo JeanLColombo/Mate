@@ -27,7 +27,7 @@ namespace Core.Abstractions
         /// The current position on the <see cref="Board"/>.
         /// </summary>
         /// <value></value>
-        public IReadOnlyDictionary<Square,IPiece> Position {get => Board.Position; }
+        public IReadOnlyDictionary<Square, IPiece> Position { get => Board.Position; }
 
         /// <summary>
         /// A <see cref="MoveEntry"/> read-only collection of all past 
@@ -35,12 +35,12 @@ namespace Core.Abstractions
         /// game.
         /// </summary>
         /// <returns></returns>
-        public IReadOnlyCollection<MoveEntry> MoveEntries {get => _moveEntries; }
+        public IReadOnlyCollection<MoveEntry> MoveEntries { get => _moveEntries; }
 
         /// <summary>
         /// Creates a new <see cref="Chess"/> object, with no pieces.
         /// </summary>
-        public Chess() : this(new Dictionary<Square,IPiece>()) {}
+        public Chess() : this(new Dictionary<Square, IPiece>()) { }
 
         /// <summary>
         /// Creates a new <see cref="Chess"/> object with a given 
@@ -85,6 +85,13 @@ namespace Core.Abstractions
         }
 
         /// <summary>
+        /// Adds a new <paramref name="entry"/> to current game of <see cref="Chess"/>. 
+        /// </summary>
+        /// <param name="entry">A pre-processed <see cref="MoveEntry"/>.</param>
+        /// <returns><see langword="true"/> if the move entry was properly added.</returns>
+        public void Add(MoveEntry entry) => _moveEntries.Add(entry);
+
+        /// <summary>
         /// Currently available moves to a player, based on the given 
         /// <paramref name="color"/> of their pieces.
         /// </summary>
@@ -106,7 +113,7 @@ namespace Core.Abstractions
         /// <summary>
         /// Associates <see cref="IChess.Position"/> with <see cref="Position"/>.
         /// </summary>
-        IReadOnlyDictionary<Square,IPiece> IChess.Position => Position;
+        IReadOnlyDictionary<Square, IPiece> IChess.Position => Position;
 
         /// <summary>
         /// Associates <see cref="IChess.MoveEntries"/> with <see cref="MoveEntries"/>.
@@ -119,5 +126,12 @@ namespace Core.Abstractions
         /// <param name="c"></param>
         /// <returns></returns>
         IReadOnlyCollection<Move> IChess.AvailableMoves(bool c) => AvailableMoves(c);
+
+        /// <summary>
+        /// Associates <see cref="IChess.Add(MoveEntry)"/> with <see cref="Add"/>. 
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        void IChess.Add(MoveEntry e) => Add(e);
     }
 }

@@ -46,7 +46,7 @@
     class Legality{
         <<static>>
         +IsChecked(this IChess, bool)$ bool
-        +IsLegal(this IChess, Move)$ bool 
+        +IsLegal(this Chess, Move)$ bool 
     }
 ```
 ## Maneuverability
@@ -57,6 +57,8 @@
         <<static>>
         +MovePlus(this Square, int, int)$ Square
         +Maneuver(this Square, Through, int)$ Square
+        +Process(this IChess, Move)$ bool
+        -ProcessNormal(this IChess, Move)$ bool;
     }
 ```
 

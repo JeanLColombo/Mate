@@ -5,6 +5,7 @@
         IReadOnlyDictionary~Square,IPiece~ Position
         IReadOnlyCollection~MoveEntry~ MoveEntries
         AvailableMoves(bool)* IReadOnlyCollection~Move~
+        Add(MoveEntry)*
     }
     class IGame{
         <<Interface>>
@@ -23,6 +24,7 @@
         +Chess(+IReadOnlyDictionary~Square,IPiece~)
         +PlaceAt(Square, IPiece) 
         +Clear(Square)
+        +Add(MoveEntry) 
         +AvailableMoves(bool)* IReadOnlyCollection~Move~
         +AllMoves(bool)* IReadOnlyCollection~Move~
     }

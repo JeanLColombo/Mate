@@ -66,13 +66,11 @@ namespace Core.Extensions
         /// <param name="move">A given <see cref="Move"/>.</param>
         /// <returns><see langword="true"/> if the move was processed correctly. Otherwise, 
         /// returns <see langword="false"/>.</returns>
-        public static bool Process(this Chess chess, Move move)
+        public static bool Process(this IChess chess, Move move)
         {
             //TODO: test/implement this method.
             switch (move.Type)
             {
-                case MoveType.Normal:
-                    break;
                 case MoveType.Capture:
                     break;
                 case MoveType.Passant:
@@ -88,6 +86,7 @@ namespace Core.Extensions
                 case MoveType.PromoteToQueen:
                     break;
                 default:
+                    // Normal moves.
                     break;
             } 
             return false;
@@ -101,7 +100,7 @@ namespace Core.Extensions
         /// <param name="move">A given <see cref="Move"/>.</param>
         /// <returns><see langword="true"/> if the move was processed correctly. Otherwise, 
         /// returns <see langword="false"/>.</returns>
-        private static bool NormalMove(this Chess chess, Move move)
+        private static bool NormalMove(this IChess chess, Move move)
         {
             if (chess.Position.ContainsKey(move.ToSquare))
                 return false;

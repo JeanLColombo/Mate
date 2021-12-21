@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 using Core.Abstractions;
 using Tests.Core.Mocks;
@@ -113,6 +114,29 @@ namespace Tests.Core.Abstractions
             Square square = new Square(Files.a, Ranks.one);
 
             Assert.Throws<ArgumentException>(() => chess.Clear(square));
+        }
+
+        [Fact]
+        public void TestAdd()
+        {
+            IChess chess = new MockedChess(new Dictionary<Square, IPiece>() {
+                {new Square(Files.a, Ranks.one), new MockedPiece(true)}
+            });
+            var move = new Move(
+                new Square(Files.a, Ranks.one), 
+                new Square(Files.b, Ranks.two), 
+                MoveType.Normal);
+            var entry = new MoveEntry(move, chess.Position);
+            chess.Add(entry);
+
+            Assert.Single(chess.MoveEntries);
+            Assert.Equal(chess.Position.Keys, chess.MoveEntries.Last().Position.Keys);
+            Assert.All(chess.Position.Keys, k =>
+            {
+                Assert.True(chess.MoveEntries.Last().Position[k] is MockedPiece);
+                Assert.True(chess.MoveEntries.Last().Position[k].Color);
+            });
+            Assert.Equal(move, chess.MoveEntries.Last().Move);
         }
 
     }

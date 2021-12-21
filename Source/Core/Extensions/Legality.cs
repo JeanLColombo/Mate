@@ -14,7 +14,7 @@ namespace Core.Extensions
         /// Checks if <paramref name="player"/> is currently under check.
         /// </summary>
         /// <param name="chess">A <see cref="Chess"/> board.</param>
-        /// <param name="player">True for player with white pieces. Otherwise, blank.</param>
+        /// <param name="player"><see langword="true"/> for player with white pieces. Otherwise, black.</param>
         /// <returns></returns>
         public static bool IsChecked(this IChess chess, bool player)
         {
@@ -38,6 +38,7 @@ namespace Core.Extensions
             return enemyMoves.Count > 0;
         }
 
+        //TODO: Implement IsLegal.
 
         /// <summary>
         /// Checks if a <paramref name="move"/> is legal (does not place own king under check).
@@ -45,7 +46,7 @@ namespace Core.Extensions
         /// <param name="chess">A <see cref="Chess"/> board.</param>
         /// <param name="move">A given <see cref="Move"/>.</param>
         /// <returns></returns>
-        public static bool IsLegal(this IChess chess, Move move)
+        public static bool IsLegal(this Chess chess, Move move)
             => true;
     }
 
