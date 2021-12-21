@@ -263,6 +263,8 @@ It's chess, mate!
         +Square ToSquare
         +MoveType Type
         +Move(Square, Square, MoveTye)
+        +Equals(object) bool
+        +GetHashCode() int
     }
     class Board{
         -Dictionary~Square,IPiece~ Pieces
@@ -376,7 +378,7 @@ It's chess, mate!
 ```shell
 A total of 1 test files matched the specified pattern.
 
-Passed!  - Failed:     0, Passed:   157, Skipped:     0, Total:   156, Duration: 99 ms - Core.dll (net5.0)
+Passed!  - Failed:     0, Passed:   164, Skipped:     0, Total:   156, Duration: 99 ms - Core.dll (net5.0)
 
 Calculating coverage result...
   Generating report '..\.coverage\lcov.info'
@@ -384,14 +386,14 @@ Calculating coverage result...
 +--------+--------+--------+--------+
 | Module | Line   | Branch | Method |
 +--------+--------+--------+--------+
-| Mate   | 94,55% | 91,66% | 96,34% |
+| Mate   | 97,98% | 98,43% | 98,8%  |
 +--------+--------+--------+--------+
 
 +---------+--------+--------+--------+
 |         | Line   | Branch | Method |
 +---------+--------+--------+--------+
-| Total   | 94,55% | 91,66% | 96,34% |
+| Total   | 97,98% | 98,43% | 98,8%  |
 +---------+--------+--------+--------+
-| Average | 94,55% | 91,66% | 96,34% |
+| Average | 97,98% | 98,43% | 98,8%  |
 +---------+--------+--------+--------+
 ```

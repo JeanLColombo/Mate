@@ -28,6 +28,8 @@
         +Square ToSquare
         +MoveType Type
         +Move(Square, Square, MoveTye)
+        +Equals(object) bool
+        +GetHashCode() int
     }
     class Board{
         -Dictionary~Square,IPiece~ Pieces

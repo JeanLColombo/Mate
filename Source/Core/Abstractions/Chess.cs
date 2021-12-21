@@ -150,10 +150,12 @@ namespace Core.Abstractions
             // Adds null reference to p
             p = null;
 
+            // List of available moves.
+            var available = new bool[] { true, false }
+                .SelectMany(c => AvailableMoves(c)).ToList();
+
             // If move is not available, return false
-            if (!(new bool[]{true, false}
-                .SelectMany(c => AvailableMoves(c)).ToList())
-                .Contains(m))
+            if (!available.Contains(m))
                 return false;
 
             // Adds current move and position to historical entries

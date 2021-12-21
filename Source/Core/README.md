@@ -92,6 +92,8 @@
   - [FromSquare](#P-Core-Abstractions-Move-FromSquare 'Core.Abstractions.Move.FromSquare')
   - [ToSquare](#P-Core-Abstractions-Move-ToSquare 'Core.Abstractions.Move.ToSquare')
   - [Type](#P-Core-Abstractions-Move-Type 'Core.Abstractions.Move.Type')
+  - [Equals(obj)](#M-Core-Abstractions-Move-Equals-System-Object- 'Core.Abstractions.Move.Equals(System.Object)')
+  - [GetHashCode()](#M-Core-Abstractions-Move-GetHashCode 'Core.Abstractions.Move.GetHashCode')
 - [MoveEntry](#T-Core-Abstractions-MoveEntry 'Core.Abstractions.MoveEntry')
   - [#ctor(move,position)](#M-Core-Abstractions-MoveEntry-#ctor-Core-Abstractions-Move,System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Abstractions.MoveEntry.#ctor(Core.Abstractions.Move,System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})')
   - [#ctor(move)](#M-Core-Abstractions-MoveEntry-#ctor-Core-Abstractions-Move,Core-Elements-Board- 'Core.Abstractions.MoveEntry.#ctor(Core.Abstractions.Move,Core.Elements.Board)')
@@ -1378,6 +1380,40 @@ Destination [Square](#T-Core-Abstractions-Square 'Core.Abstractions.Square').
 ##### Summary
 
 Associated [MoveType](#T-Core-Abstractions-MoveType 'Core.Abstractions.MoveType').
+
+<a name='M-Core-Abstractions-Move-Equals-System-Object-'></a>
+### Equals(obj) `method`
+
+##### Summary
+
+[Equals](#M-Core-Abstractions-Move-Equals-System-Object- 'Core.Abstractions.Move.Equals(System.Object)') override, comparing this instance to
+a given `obj`.
+
+##### Returns
+
+`true` if both are [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') instances
+with matching properties.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| obj | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | A given `object`. |
+
+<a name='M-Core-Abstractions-Move-GetHashCode'></a>
+### GetHashCode() `method`
+
+##### Summary
+
+[GetHashCode](#M-Core-Abstractions-Move-GetHashCode 'Core.Abstractions.Move.GetHashCode') override for [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move').
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
 
 <a name='T-Core-Abstractions-MoveEntry'></a>
 ## MoveEntry `type`

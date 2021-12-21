@@ -78,7 +78,35 @@ namespace Test.Core.Elements.Rules
 
             Assert.False(chess.Process(move, out IPiece piece));
 
+            Assert.Null(piece);
             Assert.Empty(chess.MoveEntries);
+        }
+
+        [Fact]
+        public void TestProcessNormal()
+        {
+            var fromSquare = new Square(Files.a, Ranks.one);
+            var toSquare = new Square(Files.b, Ranks.three);
+
+            IChess chess = new Custom(CustomPositionB);
+
+            var move = new Move(fromSquare, toSquare, MoveType.Normal);
+
+            Assert.True(chess.Process(move, out IPiece piece));
+
+            Assert.Null(piece);
+            Assert.Single(chess.MoveEntries);
+
+            Assert.False(chess.Position.ContainsKey(fromSquare));
+            Assert.True(chess.Position.ContainsKey(toSquare));
+
+            Assert.True(chess.Position[toSquare] is Knight);
+            Assert.True(chess.Position[toSquare].Color);
+
+            Assert.True(chess.MoveEntries.Last().Position.ContainsKey(fromSquare));
+            Assert.False(chess.MoveEntries.Last().Position.ContainsKey(toSquare));
+
+            Assert.Equal(move, chess.MoveEntries.Last().Move);
         }
 
         private IReadOnlyDictionary<Square, IPiece> CustomPositionA =>

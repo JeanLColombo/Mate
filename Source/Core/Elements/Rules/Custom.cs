@@ -107,6 +107,8 @@ namespace Core.Elements.Rules
             //TODO: Thrown exception on not available move?
             // Adds a null reference to piece
             piece = null;
+            
+            bool outcome = false;
 
             switch (move.Type)
             {
@@ -127,9 +129,10 @@ namespace Core.Elements.Rules
                 default:
                     // Proccess Normal and Rush moves
                     ProcessNormal(move);
+                    outcome = true;
                     break;
             } 
-            return false;
+            return outcome;
         }
 
         /// <summary>
