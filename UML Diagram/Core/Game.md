@@ -50,6 +50,7 @@
         +AvailableMoves(bool) IReadOnlyCollection~Move~
         +Process(Move, out IPiece) bool
         -ProcessNormal(Move)
+        -ProcessCapture(Move)
     }
     Board --* "1" IChess
     MoveEntry --* "*" IChess

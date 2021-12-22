@@ -5,8 +5,9 @@ using Xunit;
 using Core.Abstractions;
 using Core.Elements.Pieces;
 using Core.Elements.Rules;
+using Tests.Core.Mocks;
 
-namespace Test.Core.Elements.Rules
+namespace Tests.Core.Elements.Rules
 {
     public class TestCustom 
     {
@@ -119,10 +120,35 @@ namespace Test.Core.Elements.Rules
 
             var move = new Move(fromSquare, toSquare, MoveType.Rush);
 
-            Assert.True(chess.Process(move, out IPiece piece));
+            Assert.True(chess.Process(move, out IPiece piece)); 
+
+            Assert.Null(piece);
 
             Assert.False(chess.Position[toSquare].Color);
             Assert.True(chess.Position[toSquare] is Pawn);
+        }
+
+        [Fact]
+        public void TestProcessCapture()
+        {
+            var fromSquare = new Square(Files.a, Ranks.one);
+            var toSquare = new Square(Files.c, Ranks.two);
+
+            IChess chess = new Custom(CustomPositionB);
+
+            var move = new Move(fromSquare, toSquare, MoveType.Capture);
+
+            Assert.True(chess.Process(move, out IPiece piece));
+
+            Assert.NotNull(piece);
+            Assert.True(piece is MockedPiece);
+            Assert.False(piece.Color);
+            
+            Assert.True(chess.Position[toSquare] is Knight);
+            Assert.True(chess.Position[toSquare].Color);
+            Assert.NotSame(piece, chess.Position[toSquare]);
+
+            Assert.Empty(chess.Position.Values.Where(p => p == piece).ToList());
         }
 
         private IReadOnlyDictionary<Square, IPiece> CustomPositionA =>
@@ -148,8 +174,9 @@ namespace Test.Core.Elements.Rules
 
         private IReadOnlyDictionary<Square, IPiece> CustomPositionB => 
             new Dictionary<Square, IPiece>() {
-                {new Square(Files.a, Ranks.one  ), new Knight(true)},
-                {new Square(Files.h, Ranks.seven), new Pawn(false)}
+                {new Square(Files.a, Ranks.one  ), new Knight(true)         },
+                {new Square(Files.h, Ranks.seven), new Pawn(false)          },
+                {new Square(Files.c, Ranks.two  ), new MockedPiece(false)   }
             };
 
         public static IEnumerable<object[]> BannedDataA => new []{

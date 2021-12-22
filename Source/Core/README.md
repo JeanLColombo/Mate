@@ -42,6 +42,7 @@
   - [AllMoves(color)](#M-Core-Elements-Rules-Custom-AllMoves-System-Boolean- 'Core.Elements.Rules.Custom.AllMoves(System.Boolean)')
   - [AvailableMoves(color)](#M-Core-Elements-Rules-Custom-AvailableMoves-System-Boolean- 'Core.Elements.Rules.Custom.AvailableMoves(System.Boolean)')
   - [Process(move,piece)](#M-Core-Elements-Rules-Custom-Process-Core-Abstractions-Move,Core-Abstractions-IPiece@- 'Core.Elements.Rules.Custom.Process(Core.Abstractions.Move,Core.Abstractions.IPiece@)')
+  - [ProcessCapture(move)](#M-Core-Elements-Rules-Custom-ProcessCapture-Core-Abstractions-Move- 'Core.Elements.Rules.Custom.ProcessCapture(Core.Abstractions.Move)')
   - [ProcessNormal(move)](#M-Core-Elements-Rules-Custom-ProcessNormal-Core-Abstractions-Move- 'Core.Elements.Rules.Custom.ProcessNormal(Core.Abstractions.Move)')
 - [Files](#T-Core-Abstractions-Files 'Core.Abstractions.Files')
   - [a](#F-Core-Abstractions-Files-a 'Core.Abstractions.Files.a')
@@ -753,17 +754,25 @@ returns `false`.
 | move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A given [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move'). |
 | piece | [Core.Abstractions.IPiece@](#T-Core-Abstractions-IPiece@ 'Core.Abstractions.IPiece@') | A reference to a possibly captured piece. |
 
+<a name='M-Core-Elements-Rules-Custom-ProcessCapture-Core-Abstractions-Move-'></a>
+### ProcessCapture(move) `method`
+
+##### Summary
+
+Process a [Capture](#F-Core-Abstractions-MoveType-Capture 'Core.Abstractions.MoveType.Capture')`move`.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A given [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move'). |
+
 <a name='M-Core-Elements-Rules-Custom-ProcessNormal-Core-Abstractions-Move-'></a>
 ### ProcessNormal(move) `method`
 
 ##### Summary
 
 Process a [Normal](#F-Core-Abstractions-MoveType-Normal 'Core.Abstractions.MoveType.Normal')`move`.
-
-##### Returns
-
-`true` if the move was processed correctly. Otherwise, 
-returns `false`.
 
 ##### Parameters
 

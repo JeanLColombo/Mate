@@ -113,6 +113,10 @@ namespace Core.Elements.Rules
             switch (move.Type)
             {
                 case MoveType.Capture:
+                    // Sets reference to captured piece
+                    piece = Position[move.ToSquare];
+                    ProcessCapture(move);
+                    outcome = true;
                     break;
                 case MoveType.Passant:
                     break;
@@ -139,18 +143,26 @@ namespace Core.Elements.Rules
         /// Process a <see cref="MoveType.Normal"/> <paramref name="move"/>. 
         /// </summary>
         /// <param name="move">A given <see cref="Move"/>.</param>
-        /// <returns><see langword="true"/> if the move was processed correctly. Otherwise, 
-        /// returns <see langword="false"/>.</returns>
         private void ProcessNormal(Move move)
         {
-            // Sets reference to moved piece
-            IPiece piece;
-
             // Removes piece from one square...
-            this.RemovePiece(move.FromSquare, out piece);
+            this.RemovePiece(move.FromSquare, out IPiece piece);
 
             // ... to another square.
             this.AddPiece(move.ToSquare, piece);
+        }
+
+        /// <summary>
+        /// Process a <see cref="MoveType.Capture"/> <paramref name="move"/>. 
+        /// </summary>
+        /// <param name="move">A given <see cref="Move"/>.</param>
+        private void ProcessCapture(Move move)
+        {
+            // Clears destination square... 
+            this.Clear(move.ToSquare);
+
+            // ... then process it like a normal move
+            ProcessNormal(move);
         }
 
     }
