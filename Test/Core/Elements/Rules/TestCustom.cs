@@ -98,6 +98,38 @@ namespace Tests.Core.Elements.Rules
         }
 
         [Fact]
+        public void TestEnPassantWrongTrigger()
+        {
+            var customBoard = new Dictionary<Square, IPiece>() {
+                {new Square(Files.a, Ranks.five ), new Pawn(true)},
+                {new Square(Files.b, Ranks.seven), new Pawn(false)},
+                {new Square(Files.h, Ranks.one  ), new King(true)},
+                {new Square(Files.h, Ranks.eight), new King(false)},
+            };
+
+            var chess = new Custom(customBoard);
+
+            var rushMove = chess.AllMoves(false).Where(m => m.Type == MoveType.Rush).Single();
+            var whiteKing = chess.AllMoves(true).Where(m => m.FromSquare.File == Files.h).ToList().First();
+            var blackKing = chess.AllMoves(false).Where(m => m.FromSquare.File == Files.h).ToList().First();
+
+            IPiece piece = null;
+
+            // Process a rush move - triggers En Passant
+            ((IChess)chess).Process(rushMove, out piece);
+
+            // Process a move with white king - abdicates En Passant
+            ((IChess)chess).Process(whiteKing, out piece);
+
+            // Process a move with black king - Rushed pawn on the same square
+            // This is a wrong trigger, as En Passant was abdicated
+            ((IChess)chess).Process(blackKing, out piece);
+
+            Assert.Empty(chess.AllMoves(true).Where(m => m.Type == MoveType.Passant).ToList());
+        }
+
+
+        [Fact]
         public void TestProcessInvalidMove()
         {
             IChess chess = new Custom(CustomPositionB);
