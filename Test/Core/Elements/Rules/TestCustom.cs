@@ -69,6 +69,35 @@ namespace Tests.Core.Elements.Rules
         }
 
         [Fact]
+        public void TestAllMovesWithEnPassant()
+        {
+            var customBoard = new Dictionary<Square, IPiece>() {
+                {new Square(Files.a, Ranks.five), new Pawn(true)},
+                {new Square(Files.b, Ranks.seven), new Pawn(false)}
+            };
+
+            var withPassant = new Custom(customBoard);
+            var bansPassant = new Custom(customBoard, 
+                new HashSet<MoveType>() { MoveType.Passant });
+
+            var rushMove = withPassant.AllMoves(false).Where(m => m.Type == MoveType.Rush).Single();
+
+            ((IChess)withPassant).Process(rushMove, out IPiece withPiece);
+            ((IChess)bansPassant).Process(rushMove, out IPiece bansPiece);
+
+            var allWithMoves = withPassant.AllMoves(true);
+            var allBansMoves = bansPassant.AllMoves(true);
+
+            Assert.Equal(2, allWithMoves.Count());
+            Assert.Single(allBansMoves);
+
+            var passantMove = allWithMoves.Where(m => m.Type == MoveType.Passant).Single();
+
+            Assert.True(passantMove.FromSquare.IsSameSquareAs(new Square(Files.a, Ranks.five)));
+            Assert.True(passantMove.ToSquare.IsSameRankAs(new Square(Files.b, Ranks.six)));
+        }
+
+        [Fact]
         public void TestProcessInvalidMove()
         {
             IChess chess = new Custom(CustomPositionB);
