@@ -39,9 +39,15 @@ namespace Core.Elements.Rules
             IReadOnlyDictionary<Square, IPiece> position, 
             HashSet<MoveType> bannedMoves) 
             : base(position)
-        {
-            BannedMoves = bannedMoves;
-        }
+            => BannedMoves = bannedMoves;
+
+        /// <summary>
+        /// Copy constructor for <see cref="Custom"/> class. 
+        /// </summary>
+        /// <param name="custom">A given <see cref="Custom"/> instance.</param>
+        public Custom(Custom custom) 
+            : base(custom.Position, custom.MoveEntries) 
+            => BannedMoves = custom.BannedMoves;
 
         /// <summary>
         /// All possible moves for player with pieces of the given <paramref name="color"/>, whether or not their are

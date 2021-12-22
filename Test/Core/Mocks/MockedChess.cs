@@ -20,6 +20,13 @@ namespace Tests.Core.Mocks
         public MockedChess(IReadOnlyDictionary<Square,IPiece> position) : base(position) {}
 
         /// <summary>
+        /// Mock for <see cref="Chess"/> constructor 
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="moveEntries"></param>
+        public MockedChess(IReadOnlyDictionary<Square, IPiece> position, IReadOnlyCollection<MoveEntry> moveEntries) : base(position, moveEntries) {}
+
+        /// <summary>
         /// Returns an empty collection of <see cref="Move"/>s.
         /// </summary>
         /// <param name="color">Player color.</param>

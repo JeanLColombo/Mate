@@ -21,6 +21,7 @@
 - [Chess](#T-Core-Abstractions-Chess 'Core.Abstractions.Chess')
   - [#ctor()](#M-Core-Abstractions-Chess-#ctor 'Core.Abstractions.Chess.#ctor')
   - [#ctor(position)](#M-Core-Abstractions-Chess-#ctor-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Abstractions.Chess.#ctor(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})')
+  - [#ctor(position,moveEntries)](#M-Core-Abstractions-Chess-#ctor-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece},System-Collections-Generic-IReadOnlyCollection{Core-Abstractions-MoveEntry}- 'Core.Abstractions.Chess.#ctor(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece},System.Collections.Generic.IReadOnlyCollection{Core.Abstractions.MoveEntry})')
   - [Board](#P-Core-Abstractions-Chess-Board 'Core.Abstractions.Chess.Board')
   - [Core#Abstractions#IChess#MoveEntries](#P-Core-Abstractions-Chess-Core#Abstractions#IChess#MoveEntries 'Core.Abstractions.Chess.Core#Abstractions#IChess#MoveEntries')
   - [Core#Abstractions#IChess#Position](#P-Core-Abstractions-Chess-Core#Abstractions#IChess#Position 'Core.Abstractions.Chess.Core#Abstractions#IChess#Position')
@@ -38,6 +39,7 @@
 - [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom')
   - [#ctor(position)](#M-Core-Elements-Rules-Custom-#ctor-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Elements.Rules.Custom.#ctor(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})')
   - [#ctor(position,bannedMoves)](#M-Core-Elements-Rules-Custom-#ctor-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece},System-Collections-Generic-HashSet{Core-Abstractions-MoveType}- 'Core.Elements.Rules.Custom.#ctor(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece},System.Collections.Generic.HashSet{Core.Abstractions.MoveType})')
+  - [#ctor(custom)](#M-Core-Elements-Rules-Custom-#ctor-Core-Elements-Rules-Custom- 'Core.Elements.Rules.Custom.#ctor(Core.Elements.Rules.Custom)')
   - [BannedMoves](#F-Core-Elements-Rules-Custom-BannedMoves 'Core.Elements.Rules.Custom.BannedMoves')
   - [AllMoves(color)](#M-Core-Elements-Rules-Custom-AllMoves-System-Boolean- 'Core.Elements.Rules.Custom.AllMoves(System.Boolean)')
   - [AvailableMoves(color)](#M-Core-Elements-Rules-Custom-AvailableMoves-System-Boolean- 'Core.Elements.Rules.Custom.AvailableMoves(System.Boolean)')
@@ -87,7 +89,7 @@
   - [AvailableMoves(position)](#M-Core-Elements-Pieces-Knight-AvailableMoves-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Elements.Pieces.Knight.AvailableMoves(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})')
 - [Legality](#T-Core-Extensions-Legality 'Core.Extensions.Legality')
   - [IsChecked(chess,player)](#M-Core-Extensions-Legality-IsChecked-Core-Abstractions-IChess,System-Boolean- 'Core.Extensions.Legality.IsChecked(Core.Abstractions.IChess,System.Boolean)')
-  - [IsLegal(chess,move)](#M-Core-Extensions-Legality-IsLegal-Core-Abstractions-Chess,Core-Abstractions-Move- 'Core.Extensions.Legality.IsLegal(Core.Abstractions.Chess,Core.Abstractions.Move)')
+  - [IsLegal\`\`1(chess,move)](#M-Core-Extensions-Legality-IsLegal``1-Core-Abstractions-IChess,Core-Abstractions-Move- 'Core.Extensions.Legality.IsLegal``1(Core.Abstractions.IChess,Core.Abstractions.Move)')
 - [Maneuverability](#T-Core-Extensions-Maneuverability 'Core.Extensions.Maneuverability')
   - [Maneuver(square,orientation,numberOfSquares)](#M-Core-Extensions-Maneuverability-Maneuver-Core-Abstractions-Square,Core-Abstractions-Through,System-Int32- 'Core.Extensions.Maneuverability.Maneuver(Core.Abstractions.Square,Core.Abstractions.Through,System.Int32)')
   - [MovePlus(square,numberOfFiles,numberOfRanks)](#M-Core-Extensions-Maneuverability-MovePlus-Core-Abstractions-Square,System-Int32,System-Int32- 'Core.Extensions.Maneuverability.MovePlus(Core.Abstractions.Square,System.Int32,System.Int32)')
@@ -445,6 +447,21 @@ Creates a new [Chess](#T-Core-Abstractions-Chess 'Core.Abstractions.Chess') obje
 | ---- | ---- | ----------- |
 | position | [System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyDictionary 'System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}') | A given position. |
 
+<a name='M-Core-Abstractions-Chess-#ctor-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece},System-Collections-Generic-IReadOnlyCollection{Core-Abstractions-MoveEntry}-'></a>
+### #ctor(position,moveEntries) `constructor`
+
+##### Summary
+
+Creates a new instance with given `position`, containing the
+given `moveEntries`.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| position | [System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyDictionary 'System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}') | A read-only [IPiece](#T-Core-Abstractions-IPiece 'Core.Abstractions.IPiece') dictionary. |
+| moveEntries | [System.Collections.Generic.IReadOnlyCollection{Core.Abstractions.MoveEntry}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyCollection 'System.Collections.Generic.IReadOnlyCollection{Core.Abstractions.MoveEntry}') | A read-only collection of [MoveEntry](#T-Core-Abstractions-MoveEntry 'Core.Abstractions.MoveEntry') instances. |
+
 <a name='P-Core-Abstractions-Chess-Board'></a>
 ### Board `property`
 
@@ -688,6 +705,19 @@ as well as a given list of banned  entries.
 | ---- | ---- | ----------- |
 | position | [System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyDictionary 'System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}') | A read-only dictionary of pieces. |
 | bannedMoves | [System.Collections.Generic.HashSet{Core.Abstractions.MoveType}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.HashSet 'System.Collections.Generic.HashSet{Core.Abstractions.MoveType}') | A list of banned [MoveType](#T-Core-Abstractions-MoveType 'Core.Abstractions.MoveType') entries. |
+
+<a name='M-Core-Elements-Rules-Custom-#ctor-Core-Elements-Rules-Custom-'></a>
+### #ctor(custom) `constructor`
+
+##### Summary
+
+Copy constructor for [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom') class.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| custom | [Core.Elements.Rules.Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom') | A given [Custom](#T-Core-Elements-Rules-Custom 'Core.Elements.Rules.Custom') instance. |
 
 <a name='F-Core-Elements-Rules-Custom-BannedMoves'></a>
 ### BannedMoves `constants`
@@ -1315,8 +1345,8 @@ Checks if `player` is currently under check.
 | chess | [Core.Abstractions.IChess](#T-Core-Abstractions-IChess 'Core.Abstractions.IChess') | A [Chess](#T-Core-Abstractions-Chess 'Core.Abstractions.Chess') board. |
 | player | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | `true` for player with white pieces. Otherwise, black. |
 
-<a name='M-Core-Extensions-Legality-IsLegal-Core-Abstractions-Chess,Core-Abstractions-Move-'></a>
-### IsLegal(chess,move) `method`
+<a name='M-Core-Extensions-Legality-IsLegal``1-Core-Abstractions-IChess,Core-Abstractions-Move-'></a>
+### IsLegal\`\`1(chess,move) `method`
 
 ##### Summary
 
@@ -1324,14 +1354,29 @@ Checks if a `move` is legal (does not place own king under check).
 
 ##### Returns
 
-
+`true` if the move is legal. 
+Otherwise, `false`.
 
 ##### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| chess | [Core.Abstractions.Chess](#T-Core-Abstractions-Chess 'Core.Abstractions.Chess') | A [Chess](#T-Core-Abstractions-Chess 'Core.Abstractions.Chess') board. |
+| chess | [Core.Abstractions.IChess](#T-Core-Abstractions-IChess 'Core.Abstractions.IChess') | A given set of [Chess](#T-Core-Abstractions-Chess 'Core.Abstractions.Chess') rules. |
 | move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A given [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move'). |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TChess | Derived type. `chess` 
+must be `TChess`. |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [System.ArgumentException](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.ArgumentException 'System.ArgumentException') | `chess` must
+be a `TChess` instance. |
 
 <a name='T-Core-Extensions-Maneuverability'></a>
 ## Maneuverability `type`

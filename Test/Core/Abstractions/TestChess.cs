@@ -39,6 +39,37 @@ namespace Tests.Core.Abstractions
         }
 
         [Fact]
+        public void TestConstructorOverload()
+        {
+            var move = new Move(
+                new Square(Files.a, Ranks.one),
+                new Square(Files.b, Ranks.two),
+                MoveType.Normal
+            );
+
+            IReadOnlyDictionary<Square, IPiece> pastPosition = 
+                new Dictionary<Square, IPiece>() { 
+                    { new Square(Files.a, Ranks.one), new MockedPiece(true) } };
+
+            IReadOnlyDictionary<Square, IPiece> position = 
+                new Dictionary<Square, IPiece>() { 
+                    { new Square(Files.a, Ranks.two), new MockedPiece(true) } };
+
+            IReadOnlyCollection<MoveEntry> moveEntries =
+                new List<MoveEntry>() {
+                    new MoveEntry(move, pastPosition)};
+
+            IChess chess = new MockedChess(position, moveEntries);
+
+            Assert.Equal(moveEntries, chess.MoveEntries);
+
+            Assert.Equal(position.Keys, chess.Position.Keys);
+
+            Assert.True(chess.Position.Values.Single() is MockedPiece);
+            Assert.True(chess.MoveEntries.Single().Position.Values.Single() is MockedPiece);
+        }
+
+        [Fact]
         public void TestChessBoard()
         {
             IReadOnlyDictionary<Square,IPiece> position = new Dictionary<Square,IPiece>() 

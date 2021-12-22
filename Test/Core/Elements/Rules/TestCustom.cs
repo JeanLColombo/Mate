@@ -31,6 +31,28 @@ namespace Tests.Core.Elements.Rules
             Assert.NotEmpty(chess.Position);
         }
 
+        [Fact]
+        public void TestCopyConstructor()
+        {
+            IChess chess = new Custom(CustomPositionA, new HashSet<MoveType>() { MoveType.Passant });
+
+            IPiece piece;
+
+            chess.Process(((Custom)chess).AllMoves(true).First(), out piece);
+            chess.Process(((Custom)chess).AllMoves(false).First(), out piece);
+            chess.Process(((Custom)chess).AllMoves(true).Last(), out piece);
+            chess.Process(((Custom)chess).AllMoves(false).Last(), out piece);
+
+            IChess copy = new Custom((Custom)chess);
+
+            Assert.Equal(chess.Position.Keys, copy.Position.Keys);
+            Assert.Equal(chess.MoveEntries, copy.MoveEntries);
+            Assert.Equal(chess.AvailableMoves(true), copy.AvailableMoves(true));
+            Assert.Equal(chess.AvailableMoves(false), copy.AvailableMoves(false));
+            Assert.Equal(((Custom)chess).BannedMoves, ((Custom)copy).BannedMoves);
+
+        }
+
         [Theory]
         [MemberData(nameof(BannedDataA))]
         public void TestBannedList(

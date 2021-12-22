@@ -39,6 +39,7 @@ namespace Core.Extensions.SpecializedMoves
             var rookSquares = position
                 .Where(kv => kv.Value.Color == king.Color && kv.Value is Rook)
                 .Where(kv => !kv.Value.HasMoved(position, moveEntries))
+                .Where(kv => kv.Key.IsSameRankAs(kingSquare))
                 .Select(kv => kv.Key)
                 .ToList();    
 

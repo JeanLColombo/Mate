@@ -51,6 +51,18 @@ namespace Core.Abstractions
         { Board = new Board(position); }
 
         /// <summary>
+        /// Creates a new instance with given <paramref name="position"/>, containing the
+        /// given <paramref name="moveEntries"/>. 
+        /// </summary>
+        /// <param name="position">A read-only <see cref="IPiece"/> dictionary.</param>
+        /// <param name="moveEntries">A read-only collection of <see cref="MoveEntry"/> instances.</param>
+        public Chess(
+            IReadOnlyDictionary<Square, IPiece> position, 
+            IReadOnlyCollection<MoveEntry> moveEntries) 
+            : this(position) 
+            => _moveEntries = moveEntries.ToList();
+
+        /// <summary>
         /// Places a given <paramref name="piece"/> at a given 
         /// <paramref name="square"/>. 
         /// </summary>
