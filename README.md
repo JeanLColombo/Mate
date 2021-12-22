@@ -225,6 +225,8 @@ It's chess, mate!
         -ProcessNormal(Move)
         -ProcessCapture(Move)
         -ProcessEnPassant(Move, out IPiece)
+        -ProcessCastle(Move)
+        -ProcessPromotion(Move, out IPiece)
     }
     Board --* "1" IChess
     MoveEntry --* "*" IChess
@@ -391,7 +393,7 @@ It's chess, mate!
 ```shell
 A total of 1 test files matched the specified pattern.
 
-Passed!  - Failed:     0, Passed:   169, Skipped:     0, Total:   156, Duration: 99 ms - Core.dll (net5.0)
+Passed!  - Failed:     0, Passed:   183, Skipped:     0, Total:   156, Duration: 99 ms - Core.dll (net5.0)
 
 Calculating coverage result...
   Generating report '..\.coverage\lcov.info'
@@ -399,14 +401,14 @@ Calculating coverage result...
 +--------+--------+--------+--------+
 | Module | Line   | Branch | Method |
 +--------+--------+--------+--------+
-| Mate   | 98,54% | 98,43% | 98,83% |
+| Mate   | 99,77% | 98,56% | 98,86% |
 +--------+--------+--------+--------+
 
 +---------+--------+--------+--------+
 |         | Line   | Branch | Method |
 +---------+--------+--------+--------+
-| Total   | 98,54% | 98,43% | 98,83% |
+| Total   | 99,77% | 98,56% | 98,86% |
 +---------+--------+--------+--------+
-| Average | 98,54% | 98,43% | 98,83% |
+| Average | 99,77% | 98,56% | 98,86% |
 +---------+--------+--------+--------+
 ```

@@ -23,7 +23,7 @@ namespace Core.Extensions
             var threateningMoves = new MoveType[] {
                 MoveType.Capture,
                 MoveType.PromoteToKnight,
-                MoveType.PromotToBishop,
+                MoveType.PromoteToBishop,
                 MoveType.PromoteToRook,
                 MoveType.PromoteToQueen }.ToList();
 

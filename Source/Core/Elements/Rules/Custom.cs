@@ -103,42 +103,35 @@ namespace Core.Elements.Rules
         /// returns <see langword="false"/>.</returns>
         public override bool Process(Move move, out IPiece piece)
         {
-            //TODO: test/implement this method.
-            //TODO: Thrown exception on not available move?
-            // Adds a null reference to piece
             piece = null;
             
-            bool outcome = false;
-
             switch (move.Type)
             {
                 case MoveType.Capture:
                     // Sets reference to captured piece
                     piece = Position[move.ToSquare];
                     ProcessCapture(move);
-                    outcome = true;
                     break;
                 case MoveType.Passant:
                     ProcessEnPassant(move, out piece);
-                    outcome = true;
                     break;
                 case MoveType.Castle:
+                    ProcessCastle(move);
                     break;
                 case MoveType.PromoteToKnight:
-                    break;
-                case MoveType.PromotToBishop:
-                    break;
+                case MoveType.PromoteToBishop:
                 case MoveType.PromoteToRook:
-                    break;
                 case MoveType.PromoteToQueen:
+                    // Process all promotions simultaneously
+                    ProcessPromotion(move, out piece);
                     break;
                 default:
                     // Proccess Normal and Rush moves
                     ProcessNormal(move);
-                    outcome = true;
                     break;
-            } 
-            return outcome;
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -183,6 +176,76 @@ namespace Core.Elements.Rules
 
             // Now, process the remaining piece like normal
             ProcessNormal(move);
+        }
+
+        /// <summary>
+        /// Process a <see cref="MoveType.Castle"/> <paramref name="move"/>.
+        /// </summary>
+        /// <param name="move">A given <see cref="Move"/>.</param>
+        private void ProcessCastle(Move move)
+        {
+            // Define the type of castle 
+            var kingSideCastle = move.ToSquare.File == Files.g;
+
+            // Determines the rook squares
+            var rookFromSquare = new Square(
+                kingSideCastle ? Files.h : Files.a,
+                move.FromSquare.Rank
+            );
+            var rookToSquare = new Square(
+                kingSideCastle ? Files.f : Files.d,
+                move.ToSquare.Rank
+            );
+
+            // Reposition the rook
+            ProcessNormal(new Move(rookFromSquare, rookToSquare, MoveType.Normal));
+
+            // Castle the king
+            ProcessNormal(move);
+        }
+
+        /// <summary>
+        /// Process any promotion <paramref name="move"/>.
+        /// </summary>
+        /// <param name="move">A given <see cref="Move"/> whose <see cref="Move.Type"/>
+        /// is either <see cref="MoveType.PromoteToKnight"/>, <see cref="MoveType.PromoteToBishop"/>,
+        /// <see cref="MoveType.PromoteToRook"/> or <see cref="MoveType.PromoteToQueen"/>.</param>
+        /// <param name="piece">Returns a reference to the captured <see cref="IPiece"/>.</param>
+        private void ProcessPromotion(Move move, out IPiece piece)
+        {
+            // Checks if promotion yields a capture... 
+            if (Position.TryGetValue(move.ToSquare, out piece))
+            {
+                // ... and clears destination square
+                this.Clear(move.ToSquare);
+            }
+
+            // Defines pawn new form
+            bool color = Position[move.FromSquare].Color;
+            IPiece promotedPiece = null;
+
+            switch (move.Type)
+            {
+                case MoveType.PromoteToKnight:
+                    promotedPiece = new Knight(color);
+                    break;
+                case MoveType.PromoteToBishop:
+                    promotedPiece = new Bishop(color);
+                    break;
+                case MoveType.PromoteToRook:
+                    promotedPiece = new Rook(color);
+                    break;
+                case MoveType.PromoteToQueen:
+                    promotedPiece = new Queen(color);
+                    break;
+            }
+
+
+            // Erases pawn from existence...
+            this.Clear(move.FromSquare);
+
+            // ... and promotes it to new form
+            this.AddPiece(move.ToSquare, promotedPiece);
         }
 
     }

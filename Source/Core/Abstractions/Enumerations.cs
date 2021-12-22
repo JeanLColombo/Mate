@@ -115,7 +115,7 @@ namespace Core.Abstractions
         /// <summary>
         /// A move where a <see cref="Core.Elements.Pieces.Pawn"/> promotes to a <see cref="Core.Elements.Pieces.Bishop"/>. 
         /// </summary>
-        PromotToBishop = 6,
+        PromoteToBishop = 6,
         /// <summary>
         /// A move where a <see cref="Core.Elements.Pieces.Pawn"/> promotes to a <see cref="Core.Elements.Pieces.Rook"/>. 
         /// </summary>

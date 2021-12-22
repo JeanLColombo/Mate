@@ -128,7 +128,7 @@ namespace Tests.Core.Elements.Pieces
 
             Assert.All(new MoveType[]{
                 MoveType.PromoteToKnight, 
-                MoveType.PromotToBishop, 
+                MoveType.PromoteToBishop, 
                 MoveType.PromoteToRook, 
                 MoveType.PromoteToQueen}, 
                 (mt) => 

@@ -43,8 +43,10 @@
   - [AvailableMoves(color)](#M-Core-Elements-Rules-Custom-AvailableMoves-System-Boolean- 'Core.Elements.Rules.Custom.AvailableMoves(System.Boolean)')
   - [Process(move,piece)](#M-Core-Elements-Rules-Custom-Process-Core-Abstractions-Move,Core-Abstractions-IPiece@- 'Core.Elements.Rules.Custom.Process(Core.Abstractions.Move,Core.Abstractions.IPiece@)')
   - [ProcessCapture(move)](#M-Core-Elements-Rules-Custom-ProcessCapture-Core-Abstractions-Move- 'Core.Elements.Rules.Custom.ProcessCapture(Core.Abstractions.Move)')
+  - [ProcessCastle(move)](#M-Core-Elements-Rules-Custom-ProcessCastle-Core-Abstractions-Move- 'Core.Elements.Rules.Custom.ProcessCastle(Core.Abstractions.Move)')
   - [ProcessEnPassant(move,rushedPawn)](#M-Core-Elements-Rules-Custom-ProcessEnPassant-Core-Abstractions-Move,Core-Abstractions-IPiece@- 'Core.Elements.Rules.Custom.ProcessEnPassant(Core.Abstractions.Move,Core.Abstractions.IPiece@)')
   - [ProcessNormal(move)](#M-Core-Elements-Rules-Custom-ProcessNormal-Core-Abstractions-Move- 'Core.Elements.Rules.Custom.ProcessNormal(Core.Abstractions.Move)')
+  - [ProcessPromotion(move,piece)](#M-Core-Elements-Rules-Custom-ProcessPromotion-Core-Abstractions-Move,Core-Abstractions-IPiece@- 'Core.Elements.Rules.Custom.ProcessPromotion(Core.Abstractions.Move,Core.Abstractions.IPiece@)')
 - [Files](#T-Core-Abstractions-Files 'Core.Abstractions.Files')
   - [a](#F-Core-Abstractions-Files-a 'Core.Abstractions.Files.a')
   - [b](#F-Core-Abstractions-Files-b 'Core.Abstractions.Files.b')
@@ -107,7 +109,7 @@
   - [Castle](#F-Core-Abstractions-MoveType-Castle 'Core.Abstractions.MoveType.Castle')
   - [Normal](#F-Core-Abstractions-MoveType-Normal 'Core.Abstractions.MoveType.Normal')
   - [Passant](#F-Core-Abstractions-MoveType-Passant 'Core.Abstractions.MoveType.Passant')
-  - [PromotToBishop](#F-Core-Abstractions-MoveType-PromotToBishop 'Core.Abstractions.MoveType.PromotToBishop')
+  - [PromoteToBishop](#F-Core-Abstractions-MoveType-PromoteToBishop 'Core.Abstractions.MoveType.PromoteToBishop')
   - [PromoteToKnight](#F-Core-Abstractions-MoveType-PromoteToKnight 'Core.Abstractions.MoveType.PromoteToKnight')
   - [PromoteToQueen](#F-Core-Abstractions-MoveType-PromoteToQueen 'Core.Abstractions.MoveType.PromoteToQueen')
   - [PromoteToRook](#F-Core-Abstractions-MoveType-PromoteToRook 'Core.Abstractions.MoveType.PromoteToRook')
@@ -768,6 +770,19 @@ Process a [Capture](#F-Core-Abstractions-MoveType-Capture 'Core.Abstractions.Mov
 | ---- | ---- | ----------- |
 | move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A given [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move'). |
 
+<a name='M-Core-Elements-Rules-Custom-ProcessCastle-Core-Abstractions-Move-'></a>
+### ProcessCastle(move) `method`
+
+##### Summary
+
+Process a [Castle](#F-Core-Abstractions-MoveType-Castle 'Core.Abstractions.MoveType.Castle')`move`.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A given [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move'). |
+
 <a name='M-Core-Elements-Rules-Custom-ProcessEnPassant-Core-Abstractions-Move,Core-Abstractions-IPiece@-'></a>
 ### ProcessEnPassant(move,rushedPawn) `method`
 
@@ -794,6 +809,22 @@ Process a [Normal](#F-Core-Abstractions-MoveType-Normal 'Core.Abstractions.MoveT
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A given [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move'). |
+
+<a name='M-Core-Elements-Rules-Custom-ProcessPromotion-Core-Abstractions-Move,Core-Abstractions-IPiece@-'></a>
+### ProcessPromotion(move,piece) `method`
+
+##### Summary
+
+Process any promotion `move`.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A given [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') whose [Type](#P-Core-Abstractions-Move-Type 'Core.Abstractions.Move.Type')
+is either [PromoteToKnight](#F-Core-Abstractions-MoveType-PromoteToKnight 'Core.Abstractions.MoveType.PromoteToKnight'), [PromoteToBishop](#F-Core-Abstractions-MoveType-PromoteToBishop 'Core.Abstractions.MoveType.PromoteToBishop'),
+[PromoteToRook](#F-Core-Abstractions-MoveType-PromoteToRook 'Core.Abstractions.MoveType.PromoteToRook') or [PromoteToQueen](#F-Core-Abstractions-MoveType-PromoteToQueen 'Core.Abstractions.MoveType.PromoteToQueen'). |
+| piece | [Core.Abstractions.IPiece@](#T-Core-Abstractions-IPiece@ 'Core.Abstractions.IPiece@') | Returns a reference to the captured [IPiece](#T-Core-Abstractions-IPiece 'Core.Abstractions.IPiece'). |
 
 <a name='T-Core-Abstractions-Files'></a>
 ## Files `type`
@@ -1551,8 +1582,8 @@ When a [Piece](#T-Core-Abstractions-Piece 'Core.Abstractions.Piece') moves to an
 
 A [Pawn](#T-Core-Elements-Pieces-Pawn 'Core.Elements.Pieces.Pawn') move executed under special circumstances.
 
-<a name='F-Core-Abstractions-MoveType-PromotToBishop'></a>
-### PromotToBishop `constants`
+<a name='F-Core-Abstractions-MoveType-PromoteToBishop'></a>
+### PromoteToBishop `constants`
 
 ##### Summary
 

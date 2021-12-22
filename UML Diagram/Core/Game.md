@@ -52,6 +52,8 @@
         -ProcessNormal(Move)
         -ProcessCapture(Move)
         -ProcessEnPassant(Move, out IPiece)
+        -ProcessCastle(Move)
+        -ProcessPromotion(Move, out IPiece)
     }
     Board --* "1" IChess
     MoveEntry --* "*" IChess
