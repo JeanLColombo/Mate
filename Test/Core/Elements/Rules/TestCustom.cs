@@ -128,7 +128,6 @@ namespace Tests.Core.Elements.Rules
             Assert.Empty(chess.AllMoves(true).Where(m => m.Type == MoveType.Passant).ToList());
         }
 
-
         [Fact]
         public void TestProcessInvalidMove()
         {
@@ -212,6 +211,37 @@ namespace Tests.Core.Elements.Rules
             Assert.Empty(chess.Position.Values.Where(p => p == piece).ToList());
         }
 
+        [Fact]
+        public void TestProcessEnPassant()
+        {
+            var fromSquare = new Square(Files.g, Ranks.five);
+            var toSquare = new Square(Files.h, Ranks.six);
+
+            IChess chess = new Custom(CustomPositionB);
+
+            var rushed = chess.AvailableMoves(false).Where(m => m.Type == MoveType.Rush).Single();
+            var passant = new Move(fromSquare, toSquare, MoveType.Passant);
+
+            IPiece piece = null;
+
+            // Triggers En Passant
+            chess.Process(rushed, out piece);
+
+            // Executes it
+            Assert.True(chess.Process(passant, out piece));
+
+            Assert.NotNull(piece);
+            Assert.True(piece is Pawn);
+            Assert.False(piece.Color);
+
+            Assert.True(chess.Position[toSquare] is Pawn);
+            Assert.True(chess.Position[toSquare].Color);
+            Assert.NotSame(piece, chess.Position[toSquare]);
+
+            Assert.Empty(chess.Position.Values.Where(p => p == piece).ToList());
+            Assert.DoesNotContain(new Square(Files.h, Ranks.five), chess.Position.Keys);
+        }
+
         private IReadOnlyDictionary<Square, IPiece> CustomPositionA =>
             new Dictionary<Square, IPiece>() {
                 {new Square(Files.a, Ranks.one),        new Rook(true)},
@@ -232,12 +262,12 @@ namespace Tests.Core.Elements.Rules
                 {new Square(Files.h, Ranks.eight),      new Rook(false)}
             };
 
-
         private IReadOnlyDictionary<Square, IPiece> CustomPositionB => 
             new Dictionary<Square, IPiece>() {
                 {new Square(Files.a, Ranks.one  ), new Knight(true)         },
                 {new Square(Files.h, Ranks.seven), new Pawn(false)          },
-                {new Square(Files.c, Ranks.two  ), new MockedPiece(false)   }
+                {new Square(Files.c, Ranks.two  ), new MockedPiece(false)   },
+                {new Square(Files.g, Ranks.five ), new Pawn(true)           }
             };
 
         public static IEnumerable<object[]> BannedDataA => new []{

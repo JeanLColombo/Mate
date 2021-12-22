@@ -51,6 +51,7 @@
         +Process(Move, out IPiece) bool
         -ProcessNormal(Move)
         -ProcessCapture(Move)
+        -ProcessEnPassant(Move, out IPiece)
     }
     Board --* "1" IChess
     MoveEntry --* "*" IChess

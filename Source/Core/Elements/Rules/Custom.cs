@@ -119,6 +119,8 @@ namespace Core.Elements.Rules
                     outcome = true;
                     break;
                 case MoveType.Passant:
+                    ProcessEnPassant(move, out piece);
+                    outcome = true;
                     break;
                 case MoveType.Castle:
                     break;
@@ -162,6 +164,24 @@ namespace Core.Elements.Rules
             this.Clear(move.ToSquare);
 
             // ... then process it like a normal move
+            ProcessNormal(move);
+        }
+
+        /// <summary>
+        /// Process a <see cref="MoveType.Passant"/> <paramref name="move"/>.
+        /// </summary>
+        /// <param name="move">A given <see cref="Move"/>.</param>
+        /// <param name="rushedPawn">The captured <see cref="Pawn"/>.</param>
+        private void ProcessEnPassant(Move move, out IPiece rushedPawn)
+        {
+            // Determines the rushedPawn square...
+            var rushedToSquare = new Square(move.ToSquare.File, move.FromSquare.Rank);
+
+            // ... and removes it from the board 
+            // into its reference
+            this.RemovePiece(rushedToSquare, out rushedPawn);
+
+            // Now, process the remaining piece like normal
             ProcessNormal(move);
         }
 

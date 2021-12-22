@@ -43,6 +43,7 @@
   - [AvailableMoves(color)](#M-Core-Elements-Rules-Custom-AvailableMoves-System-Boolean- 'Core.Elements.Rules.Custom.AvailableMoves(System.Boolean)')
   - [Process(move,piece)](#M-Core-Elements-Rules-Custom-Process-Core-Abstractions-Move,Core-Abstractions-IPiece@- 'Core.Elements.Rules.Custom.Process(Core.Abstractions.Move,Core.Abstractions.IPiece@)')
   - [ProcessCapture(move)](#M-Core-Elements-Rules-Custom-ProcessCapture-Core-Abstractions-Move- 'Core.Elements.Rules.Custom.ProcessCapture(Core.Abstractions.Move)')
+  - [ProcessEnPassant(move,rushedPawn)](#M-Core-Elements-Rules-Custom-ProcessEnPassant-Core-Abstractions-Move,Core-Abstractions-IPiece@- 'Core.Elements.Rules.Custom.ProcessEnPassant(Core.Abstractions.Move,Core.Abstractions.IPiece@)')
   - [ProcessNormal(move)](#M-Core-Elements-Rules-Custom-ProcessNormal-Core-Abstractions-Move- 'Core.Elements.Rules.Custom.ProcessNormal(Core.Abstractions.Move)')
 - [Files](#T-Core-Abstractions-Files 'Core.Abstractions.Files')
   - [a](#F-Core-Abstractions-Files-a 'Core.Abstractions.Files.a')
@@ -766,6 +767,20 @@ Process a [Capture](#F-Core-Abstractions-MoveType-Capture 'Core.Abstractions.Mov
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A given [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move'). |
+
+<a name='M-Core-Elements-Rules-Custom-ProcessEnPassant-Core-Abstractions-Move,Core-Abstractions-IPiece@-'></a>
+### ProcessEnPassant(move,rushedPawn) `method`
+
+##### Summary
+
+Process a [Passant](#F-Core-Abstractions-MoveType-Passant 'Core.Abstractions.MoveType.Passant')`move`.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A given [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move'). |
+| rushedPawn | [Core.Abstractions.IPiece@](#T-Core-Abstractions-IPiece@ 'Core.Abstractions.IPiece@') | The captured [Pawn](#T-Core-Elements-Pieces-Pawn 'Core.Elements.Pieces.Pawn'). |
 
 <a name='M-Core-Elements-Rules-Custom-ProcessNormal-Core-Abstractions-Move-'></a>
 ### ProcessNormal(move) `method`

@@ -223,6 +223,8 @@ It's chess, mate!
         +AvailableMoves(bool) IReadOnlyCollection~Move~
         +Process(Move, out IPiece) bool
         -ProcessNormal(Move)
+        -ProcessCapture(Move)
+        -ProcessEnPassant(Move, out IPiece)
     }
     Board --* "1" IChess
     MoveEntry --* "*" IChess
@@ -287,6 +289,8 @@ It's chess, mate!
 
 ## Pieces
 
+### Abstract Piece Definition
+
 ```mermaid
     classDiagram
     class IPiece{
@@ -303,6 +307,9 @@ It's chess, mate!
     }
     Piece ..|> IPiece
 ```
+
+### Pawn and Knight
+
 ```mermaid
     classDiagram
     class Piece{
@@ -326,6 +333,9 @@ It's chess, mate!
     Piece <|-- Pawn
     Piece <|-- Knight
 ```
+
+### Bishop and Rook
+
 ```mermaid
     classDiagram
     class Piece{
@@ -346,6 +356,9 @@ It's chess, mate!
     Piece <|-- Bishop
     Piece <|-- Rook
 ```
+
+### King and Queen
+
 ```mermaid
     classDiagram
     class Piece{
@@ -378,7 +391,7 @@ It's chess, mate!
 ```shell
 A total of 1 test files matched the specified pattern.
 
-Passed!  - Failed:     0, Passed:   164, Skipped:     0, Total:   156, Duration: 99 ms - Core.dll (net5.0)
+Passed!  - Failed:     0, Passed:   169, Skipped:     0, Total:   156, Duration: 99 ms - Core.dll (net5.0)
 
 Calculating coverage result...
   Generating report '..\.coverage\lcov.info'
@@ -386,14 +399,14 @@ Calculating coverage result...
 +--------+--------+--------+--------+
 | Module | Line   | Branch | Method |
 +--------+--------+--------+--------+
-| Mate   | 97,98% | 98,43% | 98,8%  |
+| Mate   | 98,54% | 98,43% | 98,83% |
 +--------+--------+--------+--------+
 
 +---------+--------+--------+--------+
 |         | Line   | Branch | Method |
 +---------+--------+--------+--------+
-| Total   | 97,98% | 98,43% | 98,8%  |
+| Total   | 98,54% | 98,43% | 98,83% |
 +---------+--------+--------+--------+
-| Average | 97,98% | 98,43% | 98,8%  |
+| Average | 98,54% | 98,43% | 98,83% |
 +---------+--------+--------+--------+
 ```
