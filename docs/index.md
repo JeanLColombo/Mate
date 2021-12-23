@@ -415,3 +415,7 @@ Calculating coverage result...
 | Average | 100% | 100%   | 100%   |
 +---------+------+--------+--------+
 ```
+
+# About Me
+
+Please, find out about me [here](./contact.md).
