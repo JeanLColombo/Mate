@@ -20,7 +20,7 @@ namespace Core.Extensions
             
 
         /// <summary>
-        /// Creates a new <see cref="IReadOnlyCollection"/>, containing all 
+        /// Creates a new read-only collection containing all 
         /// <typeparamref name="T"/> items in <paramref name="firstCollection"/> and 
         /// in <paramref name="secondCollection"/>, while excluding duplicates.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Core.Extensions
         /// Checks if <paramref name="piece" /> has moved.
         /// </summary>
         /// <param name="piece"></param>
-        /// <param name="position">A given <see cref="Board.Position"/>.</param>
+        /// <param name="position">A given <see cref="Core.Elements.Board.Position"/>.</param>
         /// <param name="moveEntries">A read-only <see cref="MoveEntry"/> collection of 
         /// previously proccessed moves.</param>
         /// <returns></returns>

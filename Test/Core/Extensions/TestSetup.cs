@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 using Core.Abstractions;
@@ -42,6 +42,54 @@ namespace Tests.Core.Extensions
             Assert.False(board.AddPiece<MockedPiece>(null, true));
             Assert.Empty(board.Position.Values.Where(p=> p is not null).ToList());
         }
+
+        [Fact]
+        public void TestAddPieceInChess()
+        {
+            var chess = new MockedChess();
+            var piece = new MockedPiece(true);
+            var square = new Square(Files.a, Ranks.one);
+
+            Assert.True(chess.AddPiece(square, piece));
+
+            Assert.False(chess.AddPiece(square, piece));
+
+            Assert.Single(chess.Position);
+
+            Assert.Equal(piece, chess.Position[square]);
+
+        }
+
+        [Fact]
+        public void TestRemovePieceFromChess()
+        {
+            var occupiedSquare = new Square(Files.a, Ranks.one);
+            var emptySquare = new Square(Files.b, Ranks.two);
+            var chess = new MockedChess(new Dictionary<Square, IPiece>() {
+                {occupiedSquare, new MockedPiece(false)}
+                });
+
+            IPiece nullPiece;
+            IPiece boardPiece;
+
+            Assert.False(chess.RemovePiece(emptySquare, out nullPiece));
+
+            Assert.Null(nullPiece);
+
+            Assert.True(chess.Position.ContainsKey(occupiedSquare));
+
+            Assert.True(chess.RemovePiece(occupiedSquare, out boardPiece));
+
+            Assert.NotNull(boardPiece);
+
+            Assert.True(boardPiece is MockedPiece);
+
+            Assert.False(boardPiece.Color);
+
+            Assert.Empty(chess.Position);
+
+        }
+
 
         [Fact]
         public void TestCopyEmptyPosition()

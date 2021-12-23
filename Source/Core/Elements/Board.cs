@@ -19,10 +19,6 @@ namespace Core.Elements
         /// The Dictionary of <see cref="IPiece"/>'s on the board, based on their
         /// <see cref="Square"/>.
         /// </summary>
-        /// <typeparam name="Square">Used as a <c>Key</c> 
-        /// to access pieces.</typeparam>
-        /// <typeparam name="IPiece">The piece on the <c>Square</c>. 
-        /// Can be <c>null</c>.</typeparam>
         /// <returns></returns>
         internal Dictionary<Square,IPiece> Pieces {get; set;} = new  Dictionary<Square,IPiece>();
 
@@ -36,7 +32,7 @@ namespace Core.Elements
         /// Creates a new instance of <see cref="Board"/>, containing a complete 
         /// copy of given <paramref name="position"/>.
         /// </summary>
-        /// <param name="position">A read-only dictionary of <see cref="IPieces"/> instances
+        /// <param name="position">A read-only dictionary of <see cref="IPiece"/> instances
         /// placed in <see cref="Square"/> instances.</param>    
         public Board(IReadOnlyDictionary<Square,IPiece> position) 
         {this.Copy(position);}

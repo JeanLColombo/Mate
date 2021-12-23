@@ -27,5 +27,16 @@ namespace Core.Abstractions
         /// <param name="color">True for white, false for black.</param>
         /// <returns>A read-only collection of <see cref="Move"/> objects.</returns>
         IReadOnlyCollection<Move> AvailableMoves(bool color);
+
+
+        /// <summary>
+        /// Process a given <paramref name="move"/>. 
+        /// </summary>
+        /// <param name="move">A given <see cref="Move"/> instance. </param>
+        /// <param name="piece">If the given <paramref name="move"/> removes a
+        ///  piece from the game, <see langword="out"/> a reference to it.</param>
+        /// <returns><see langword="true"/> if move is processed. 
+        /// Otherwise, <see langword="false"/>.</returns>
+        bool Process(Move move, out IPiece piece);
     }
 }

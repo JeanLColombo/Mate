@@ -64,7 +64,7 @@ namespace Core.Elements.Pieces
                 new List<Move>(){move} :
                 new MoveType[]{
                     MoveType.PromoteToKnight, 
-                    MoveType.PromotToBishop, 
+                    MoveType.PromoteToBishop, 
                     MoveType.PromoteToRook, 
                     MoveType.PromoteToQueen}
                     .Select(

@@ -69,7 +69,6 @@ namespace Tests.Core.Extensions
         public void TestManeuverThrowsException() =>
             Assert.Throws<ArgumentException>(
                 () => squareAOne.Maneuver((Through)(-1), 0));
-        
 
         private static Square squareAOne => new Square(Files.a, Ranks.one);
 

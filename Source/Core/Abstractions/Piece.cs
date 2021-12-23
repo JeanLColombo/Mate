@@ -17,7 +17,7 @@ namespace Core.Abstractions
         /// <summary>
         /// Creates a new <see cref="Piece"/> object, of a given <paramref name="color"/>.
         /// </summary>
-        /// <param name="color">White if <see cref="true"/>. Black otherwise.</param>
+        /// <param name="color">White if <see langword="true"/>. Black otherwise.</param>
         public Piece(bool color)
         {
             Color = color;
