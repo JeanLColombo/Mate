@@ -28,7 +28,6 @@ namespace Core.Abstractions
         /// <returns>A read-only collection of <see cref="Move"/> objects.</returns>
         IReadOnlyCollection<Move> AvailableMoves(bool color);
 
-
         /// <summary>
         /// Process a given <paramref name="move"/>. 
         /// </summary>

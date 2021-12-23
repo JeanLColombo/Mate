@@ -147,7 +147,5 @@ namespace Core.Extensions
 
             return true;
         }
-
     }
-
 }

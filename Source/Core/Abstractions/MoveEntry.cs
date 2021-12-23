@@ -41,12 +41,11 @@ namespace Core.Abstractions
         }
 
         /// <summary>
-        /// Creates a new <paramref name="move"/> entry applied to 
-        /// a given <paramref name="board"/>.
+        /// Generates a new instance from a given <paramref name="move"/>
+        /// and a given <paramref name="board"/>, based on <see cref="Board.Position"/>. 
         /// </summary>
-        /// <param name="move">A <see cref="Move"/> applied to 
-        /// <param name="board"/>A given <see cref="Board"/>.</param>
-        /// <returns></returns>
+        /// <param name="move">A given <see cref="Move"/>.</param>
+        /// <param name="board">A given <see cref="Board"/>.</param>
         public MoveEntry(Move move, Board board) : this(move, board.Position) {}
     }
 }

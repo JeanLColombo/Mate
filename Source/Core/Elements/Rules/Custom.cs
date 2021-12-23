@@ -246,7 +246,6 @@ namespace Core.Elements.Rules
                     break;
             }
 
-
             // Erases pawn from existence...
             this.Clear(move.FromSquare);
 
