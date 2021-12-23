@@ -103,7 +103,7 @@
   - [GetHashCode()](#M-Core-Abstractions-Move-GetHashCode 'Core.Abstractions.Move.GetHashCode')
 - [MoveEntry](#T-Core-Abstractions-MoveEntry 'Core.Abstractions.MoveEntry')
   - [#ctor(move,position)](#M-Core-Abstractions-MoveEntry-#ctor-Core-Abstractions-Move,System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Abstractions.MoveEntry.#ctor(Core.Abstractions.Move,System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})')
-  - [#ctor(move)](#M-Core-Abstractions-MoveEntry-#ctor-Core-Abstractions-Move,Core-Elements-Board- 'Core.Abstractions.MoveEntry.#ctor(Core.Abstractions.Move,Core.Elements.Board)')
+  - [#ctor(move,board)](#M-Core-Abstractions-MoveEntry-#ctor-Core-Abstractions-Move,Core-Elements-Board- 'Core.Abstractions.MoveEntry.#ctor(Core.Abstractions.Move,Core.Elements.Board)')
   - [Move](#P-Core-Abstractions-MoveEntry-Move 'Core.Abstractions.MoveEntry.Move')
   - [Position](#P-Core-Abstractions-MoveEntry-Position 'Core.Abstractions.MoveEntry.Position')
   - [board](#P-Core-Abstractions-MoveEntry-board 'Core.Abstractions.MoveEntry.board')
@@ -1582,23 +1582,19 @@ a given `position`.
 | position | [System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IReadOnlyDictionary 'System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece}') | A given [Position](#P-Core-Elements-Board-Position 'Core.Elements.Board.Position'). |
 
 <a name='M-Core-Abstractions-MoveEntry-#ctor-Core-Abstractions-Move,Core-Elements-Board-'></a>
-### #ctor(move) `constructor`
+### #ctor(move,board) `constructor`
 
 ##### Summary
 
-Creates a new `move` entry applied to 
-a given `board`.
-
-##### Returns
-
-
+Generates a new instance from a given `move`
+and a given `board`, based on [Position](#P-Core-Elements-Board-Position 'Core.Elements.Board.Position').
 
 ##### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A [Move](#P-Core-Abstractions-MoveEntry-Move 'Core.Abstractions.MoveEntry.Move') applied to 
-A given [Board](#T-Core-Elements-Board 'Core.Elements.Board'). |
+| move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A given [Move](#P-Core-Abstractions-MoveEntry-Move 'Core.Abstractions.MoveEntry.Move'). |
+| board | [Core.Elements.Board](#T-Core-Elements-Board 'Core.Elements.Board') | A given [Board](#T-Core-Elements-Board 'Core.Elements.Board'). |
 
 <a name='P-Core-Abstractions-MoveEntry-Move'></a>
 ### Move `property`
