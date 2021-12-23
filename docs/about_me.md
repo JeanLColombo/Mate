@@ -1,5 +1,8 @@
+---
 layout: page
-title: "Contact"
+title: "About Me"
+permalink: /about_me.html
+---
 
 # About Me
 
