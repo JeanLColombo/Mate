@@ -4,5 +4,5 @@ It's chess, mate!
 
 # Contents
 
-* [UML Diagrams](/mate_uml.html)
-* [About Me](/about_me.html)
+* [UML Diagrams](/Mate/mate_uml.html)
+* [About Me](/Mate/about_me.html)

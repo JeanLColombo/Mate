@@ -1,5 +1,6 @@
 ---
 layout: page
+theme: jekyll-theme-slate
 title: "About Me"
 permalink: /about_me.html
 ---
