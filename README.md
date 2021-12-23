@@ -200,7 +200,7 @@ It's chess, mate!
         +PlaceAt(Square, IPiece) 
         +Clear(Square)
         +Add(MoveEntry) 
-        +AllMoves(bool)* IReadOnlyCollection~Move~
+        +AllMoves(bool) IReadOnlyCollection~Move~
         +AvailableMoves(bool)* IReadOnlyCollection~Move~
         +Process(Move, out IPiece)* bool
     }
@@ -396,7 +396,7 @@ It's chess, mate!
 ```shell
 A total of 1 test files matched the specified pattern.
 
-Passed!  - Failed:     0, Passed:   200, Skipped:     0, Total:   156, Duration: 99 ms - Core.dll (net5.0)
+Passed!  - Failed:     0, Passed:   202, Skipped:     0, Total:   156, Duration: 99 ms - Core.dll (net5.0)
 
 Calculating coverage result...
   Generating report '..\.coverage\lcov.info'
@@ -404,14 +404,14 @@ Calculating coverage result...
 +--------+--------+--------+--------+
 | Module | Line   | Branch | Method |
 +--------+--------+--------+--------+
-| Mate   | 99,79% | 98,06% | 100%   |
+| Mate   | 99,79% | 98,08% | 100%   |
 +--------+--------+--------+--------+
 
 +---------+--------+--------+--------+
 |         | Line   | Branch | Method |
 +---------+--------+--------+--------+
-| Total   | 99,79% | 98,06% | 100%   |
+| Total   | 99,79% | 98,08% | 100%   |
 +---------+--------+--------+--------+
-| Average | 99,79% | 98,06% | 100%   |
+| Average | 99,79% | 98,08% | 100%   |
 +---------+--------+--------+--------+
 ```

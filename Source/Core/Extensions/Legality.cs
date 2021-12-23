@@ -14,10 +14,13 @@ namespace Core.Extensions
         /// <summary>
         /// Checks if <paramref name="player"/> is currently under check.
         /// </summary>
+        /// <typeparam name="TChess">Derived type. <paramref name="chess"/> 
+        /// must be <typeparamref name="TChess"/>.</typeparam>
         /// <param name="chess">A <see cref="Chess"/> board.</param>
         /// <param name="player"><see langword="true"/> for player with white pieces. Otherwise, black.</param>
-        /// <returns></returns>
-        public static bool IsChecked(this IChess chess, bool player)
+        /// <returns><see langword="true"/> if <paramref name="player"/> is checked. 
+        /// Otherwise, <see langword="false"/>.</returns>
+        public static bool IsChecked<TChess>(this IChess chess, bool player) where TChess : Chess 
         {
             // Types of movements that might threaten a king.
             // A pawn may promote while threatening.
@@ -29,8 +32,8 @@ namespace Core.Extensions
                 MoveType.PromoteToQueen }.ToList();
 
             // List of opponent's moves that might threaten the king.
-            var enemyMoves = chess
-                .AvailableMoves(!player)
+            var enemyMoves = ((TChess)chess)
+                .AllMoves(!player)
                 .Where(m => threateningMoves.Contains(m.Type))
                 .Where(m => chess.Position.ContainsKey(m.ToSquare))
                 .Where(m => chess.Position[m.ToSquare] is King).ToList();
@@ -75,7 +78,7 @@ namespace Core.Extensions
             chessInstance.Process(move, out IPiece piece);
 
             // ... and returns wether own king is not checked  
-            return !chessInstance.IsChecked(color);
+            return !chessInstance.IsChecked<TChess>(color);
         }
 
         /// <summary>
@@ -94,7 +97,7 @@ namespace Core.Extensions
             var king = chess.Position[move.FromSquare];
             
             // Castle can't occur when king is checked
-            if (chess.IsChecked(king.Color)) return false;
+            if (chess.IsChecked<TChess>(king.Color)) return false;
 
             // Define the type of castle 
             var kingSideCastle = move.ToSquare.File == Files.g;
@@ -133,7 +136,7 @@ namespace Core.Extensions
                     return false;
 
                 // ... and check for checks.
-                if (chess.IsChecked(king.Color))
+                if (chess.IsChecked<TChess>(king.Color))
                     return false;
 
                 currentSquare = new Square(square);

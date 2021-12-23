@@ -109,7 +109,8 @@ namespace Core.Abstractions
         /// </summary>
         /// <param name="color"><see langword="true"/> for white, <see langword="false"/> for black.</param>
         /// <returns>A read-only collection of <see cref="Move"/> instances.</returns>
-        public abstract IReadOnlyCollection<Move> AllMoves(bool color);
+        public virtual IReadOnlyCollection<Move> AllMoves(bool color)
+            => Enumerable.Empty<Move>().ToList();
 
         /// <summary>
         /// Currently available moves to a player, based on the given 
@@ -159,15 +160,17 @@ namespace Core.Abstractions
         /// <returns></returns>
         bool IChess.Process(Move m, out IPiece p)
         {
-            // Adds null reference to p
+            // Checks if move is invalid
+            if (!Position.TryGetValue(m.FromSquare, out p))
+                return false;
+
             p = null;
 
             // List of available moves.
-            var available = new bool[] { true, false }
-                .SelectMany(c => AvailableMoves(c)).ToList();
+            var allMoves = AllMoves(Position[m.FromSquare].Color);
 
             // If move is not available, return false
-            if (!available.Contains(m))
+            if (!allMoves.Contains(m))
                 return false;
 
             // Adds current move and position to historical entries

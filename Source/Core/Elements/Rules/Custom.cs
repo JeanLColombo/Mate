@@ -95,10 +95,10 @@ namespace Core.Elements.Rules
         /// <returns>A read-only collection of <see cref="Move"/> instances.</returns>
         /// <exception cref="System.NotImplementedException">This method is not yet implemented.</exception>
         public override IReadOnlyCollection<Move> AvailableMoves(bool color)
-        {
-            // TODO: Implement this method - this is just a simple overload.
-            return AllMoves(color);
-        }
+            => AllMoves(color)
+                .Where(m => 
+                    this.IsLegal<Custom>(m))
+                .ToList();
 
         /// <summary>
         /// Process the given <paramref name="move"/>.

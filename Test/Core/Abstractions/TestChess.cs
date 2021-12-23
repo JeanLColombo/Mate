@@ -179,5 +179,24 @@ namespace Tests.Core.Abstractions
             Assert.Equal(move, chess.MoveEntries.Last().Move);
         }
 
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void TestInvalidMove(
+            bool withPiece
+        )
+        {
+            IChess chess = new MockedChess();
+
+            var invalid = new Move(
+                new Square(Files.a, Ranks.one),
+                new Square(Files.b, Ranks.two),
+                MoveType.Normal);
+
+            if (withPiece)
+                ((Chess)chess).PlaceAt(invalid.FromSquare, new MockedPiece(true));
+
+            Assert.False(chess.Process(invalid, out IPiece p));
+        }
     }
 }

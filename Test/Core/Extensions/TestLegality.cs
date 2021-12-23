@@ -22,8 +22,8 @@ namespace Tests.Core.Extensions
         {
             IChess chess = new Custom(position);
 
-            Assert.True(whiteIsChecked == chess.IsChecked(true));
-            Assert.True(blackIsChecked == chess.IsChecked(false));
+            Assert.True(whiteIsChecked == chess.IsChecked<Custom>(true));
+            Assert.True(blackIsChecked == chess.IsChecked<Custom>(false));
         }
 
         [Theory]

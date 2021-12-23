@@ -26,7 +26,7 @@
         +PlaceAt(Square, IPiece) 
         +Clear(Square)
         +Add(MoveEntry) 
-        +AllMoves(bool)* IReadOnlyCollection~Move~
+        +AllMoves(bool) IReadOnlyCollection~Move~
         +AvailableMoves(bool)* IReadOnlyCollection~Move~
         +Process(Move, out IPiece)* bool
     }

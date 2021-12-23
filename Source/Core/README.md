@@ -89,7 +89,7 @@
   - [AvailableMoves(position)](#M-Core-Elements-Pieces-Knight-AvailableMoves-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Elements.Pieces.Knight.AvailableMoves(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})')
 - [Legality](#T-Core-Extensions-Legality 'Core.Extensions.Legality')
   - [IsCastlingLegal\`\`1(chess,move)](#M-Core-Extensions-Legality-IsCastlingLegal``1-Core-Abstractions-IChess,Core-Abstractions-Move- 'Core.Extensions.Legality.IsCastlingLegal``1(Core.Abstractions.IChess,Core.Abstractions.Move)')
-  - [IsChecked(chess,player)](#M-Core-Extensions-Legality-IsChecked-Core-Abstractions-IChess,System-Boolean- 'Core.Extensions.Legality.IsChecked(Core.Abstractions.IChess,System.Boolean)')
+  - [IsChecked\`\`1(chess,player)](#M-Core-Extensions-Legality-IsChecked``1-Core-Abstractions-IChess,System-Boolean- 'Core.Extensions.Legality.IsChecked``1(Core.Abstractions.IChess,System.Boolean)')
   - [IsLegal\`\`1(chess,move)](#M-Core-Extensions-Legality-IsLegal``1-Core-Abstractions-IChess,Core-Abstractions-Move- 'Core.Extensions.Legality.IsLegal``1(Core.Abstractions.IChess,Core.Abstractions.Move)')
 - [Maneuverability](#T-Core-Extensions-Maneuverability 'Core.Extensions.Maneuverability')
   - [Maneuver(square,orientation,numberOfSquares)](#M-Core-Extensions-Maneuverability-Maneuver-Core-Abstractions-Square,Core-Abstractions-Through,System-Int32- 'Core.Extensions.Maneuverability.Maneuver(Core.Abstractions.Square,Core.Abstractions.Through,System.Int32)')
@@ -1354,8 +1354,8 @@ Otherwise, `false`.
 | TChess | Derived type. `chess` 
 must be `TChess`. |
 
-<a name='M-Core-Extensions-Legality-IsChecked-Core-Abstractions-IChess,System-Boolean-'></a>
-### IsChecked(chess,player) `method`
+<a name='M-Core-Extensions-Legality-IsChecked``1-Core-Abstractions-IChess,System-Boolean-'></a>
+### IsChecked\`\`1(chess,player) `method`
 
 ##### Summary
 
@@ -1363,7 +1363,8 @@ Checks if `player` is currently under check.
 
 ##### Returns
 
-
+`true` if `player` is checked. 
+Otherwise, `false`.
 
 ##### Parameters
 
@@ -1371,6 +1372,13 @@ Checks if `player` is currently under check.
 | ---- | ---- | ----------- |
 | chess | [Core.Abstractions.IChess](#T-Core-Abstractions-IChess 'Core.Abstractions.IChess') | A [Chess](#T-Core-Abstractions-Chess 'Core.Abstractions.Chess') board. |
 | player | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | `true` for player with white pieces. Otherwise, black. |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TChess | Derived type. `chess` 
+must be `TChess`. |
 
 <a name='M-Core-Extensions-Legality-IsLegal``1-Core-Abstractions-IChess,Core-Abstractions-Move-'></a>
 ### IsLegal\`\`1(chess,move) `method`
