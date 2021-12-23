@@ -50,8 +50,8 @@ namespace Core.Extensions
                 Through.Ranks               => square.MovePlus(0, numberOfSquares),
                 Through.MainDiagonal        => square.MovePlus(numberOfSquares, numberOfSquares),
                 Through.OppositeDiagonal    => square.MovePlus(-numberOfSquares, numberOfSquares),
-                _                           => throw new 
-                    ArgumentException(
+                _                           => 
+                    throw new ArgumentException(
                         message: "Invalid enum parameter", 
                         paramName: nameof(orientation))
             };     

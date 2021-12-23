@@ -15,7 +15,7 @@ namespace Core.Extensions.SpecializedMoves
         /// <see cref="Pawn"/>'s En Passant move.
         /// </summary>
         /// <param name="piece">Must inherit from <see cref="Pawn"/>.</param>
-        /// <param name="position">A given <see cref="Board.Position"/>.</param>
+        /// <param name="position">A given <see cref="Core.Elements.Board.Position"/>.</param>
         /// <param name="moveEntries">A read-only <see cref="MoveEntry"/> collection of 
         /// previously proccessed moves.</param>
         /// <returns></returns>

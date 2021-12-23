@@ -5,6 +5,7 @@
         Normal
         Capture
         Passant
+        Rush
         Castle
         PromoteToKnight
         PromoteToBishop
@@ -27,10 +28,8 @@
         +Square ToSquare
         +MoveType Type
         +Move(Square, Square, MoveTye)
-    }
-    class Tuple~Move,Board~{
-        +Move Item1
-        +Board Item2    
+        +Equals(object) bool
+        +GetHashCode() int
     }
     class Board{
         -Dictionary~Square,IPiece~ Pieces

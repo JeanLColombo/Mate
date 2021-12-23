@@ -107,11 +107,28 @@
         +King(bool)
         +AvailableMoves(IReadOnlyDictionary~Square,IPiece~) IReadOnlyCollection~Move~
     }
+    class IChess{
+        <<Interface>>
+        IReadOnlyDictionary~Square,IPiece~ Position
+        IReadOnlyCollection~MoveEntry~ MoveEntries
+        AvailableMoves(bool)* IReadOnlyCollection~Move~
+    }
     class Chess{
+        <<Abstract>>
         -Board Board
-        +List~MoveEntry~ MoveEntries
+        -List~MoveEntry~ _moveEntries
+        +IReadOnlyDictionary~Square,IPiece~ Position
+        +IReadOnlyCollection~MoveEntry~ MoveEntries
         +Chess()
-        +AvailableMoves() IReadOnlyCollection~Move~
+        +Chess(+IReadOnlyDictionary~Square,IPiece~)
+        +AvailableMoves(bool)* IReadOnlyCollection~Move~
+    }
+    class IGame{
+        <<Interface>>
+        int CurrentMove
+        bool CurrentPlayer
+        IChess Chess
+        ProcessMove(Move) bool
     }
     class Maneuverability{
         <<static>>
@@ -156,6 +173,11 @@
         <<static>>
         +Castles(this IPiece, IReadOnlyDictionary~Square,IPiece, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
     }
+    class Legality{
+        <<static>>
+        +IsChecked(this IChess, bool)$ bool
+        +IsLegal(this IChess, Move)$ bool 
+    }
     Ranks --* "1"  Square
     Files --* "1"  Square
     Square --* "0..64" Board
@@ -163,6 +185,7 @@
     Square --* Move
     IPiece --* "0..64" Board
     Piece ..|> IPiece
+    Chess ..|> IChess
     Piece <|-- Pawn
     Piece <|-- Knight
     Piece <|-- Bishop
@@ -172,6 +195,7 @@
     Royalty <|-- King
     Move --* MoveEntry
     Board --* MoveEntry
-    Board --* "1" Chess
-    MoveEntry --* "*" Chess
+    Board --* "1" IChess
+    MoveEntry --* "*" IChess
+    IChess --* "1" IGame
 ```

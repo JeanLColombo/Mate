@@ -27,7 +27,7 @@ namespace Tests.Core.Extensions.SpecializedMoves
                 m => 
                     {
                         Assert.Single(m);
-                        Assert.Equal(MoveType.Normal, m.First().Type);
+                        Assert.Equal(MoveType.Rush, m.First().Type);
                     });
             
             Assert.True(new Square(Files.a, Ranks.two).IsSameSquareAs(movePawn1.First().FromSquare));
@@ -97,6 +97,8 @@ namespace Tests.Core.Extensions.SpecializedMoves
             var pawn = new Pawn(true);
 
             var v = pawn.PawnFirstMove(board.Position);
+
+            Assert.Empty(v);
         }
     }
 }
