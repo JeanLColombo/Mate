@@ -1,6 +1,5 @@
 layout: page
 title: "Contact"
-permalink: /URL-PATH/author
 
 # About Me
 
