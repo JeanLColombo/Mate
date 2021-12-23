@@ -88,6 +88,7 @@
   - [#ctor(color)](#M-Core-Elements-Pieces-Knight-#ctor-System-Boolean- 'Core.Elements.Pieces.Knight.#ctor(System.Boolean)')
   - [AvailableMoves(position)](#M-Core-Elements-Pieces-Knight-AvailableMoves-System-Collections-Generic-IReadOnlyDictionary{Core-Abstractions-Square,Core-Abstractions-IPiece}- 'Core.Elements.Pieces.Knight.AvailableMoves(System.Collections.Generic.IReadOnlyDictionary{Core.Abstractions.Square,Core.Abstractions.IPiece})')
 - [Legality](#T-Core-Extensions-Legality 'Core.Extensions.Legality')
+  - [IsCastlingLegal\`\`1(chess,move)](#M-Core-Extensions-Legality-IsCastlingLegal``1-Core-Abstractions-IChess,Core-Abstractions-Move- 'Core.Extensions.Legality.IsCastlingLegal``1(Core.Abstractions.IChess,Core.Abstractions.Move)')
   - [IsChecked(chess,player)](#M-Core-Extensions-Legality-IsChecked-Core-Abstractions-IChess,System-Boolean- 'Core.Extensions.Legality.IsChecked(Core.Abstractions.IChess,System.Boolean)')
   - [IsLegal\`\`1(chess,move)](#M-Core-Extensions-Legality-IsLegal``1-Core-Abstractions-IChess,Core-Abstractions-Move- 'Core.Extensions.Legality.IsLegal``1(Core.Abstractions.IChess,Core.Abstractions.Move)')
 - [Maneuverability](#T-Core-Extensions-Maneuverability 'Core.Extensions.Maneuverability')
@@ -1326,6 +1327,32 @@ Core.Extensions
 
 Provides extension methods for check and [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') legality checking in 
 a [Game](#T-Core-Abstractions-Game 'Core.Abstractions.Game') of [Chess](#T-Core-Abstractions-Chess 'Core.Abstractions.Chess').
+
+<a name='M-Core-Extensions-Legality-IsCastlingLegal``1-Core-Abstractions-IChess,Core-Abstractions-Move-'></a>
+### IsCastlingLegal\`\`1(chess,move) `method`
+
+##### Summary
+
+Checks if castling is legal or not, for a given castles `move`.
+
+##### Returns
+
+`true` if the move is legal. 
+Otherwise, `false`.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| chess | [Core.Abstractions.IChess](#T-Core-Abstractions-IChess 'Core.Abstractions.IChess') | A given set of [Chess](#T-Core-Abstractions-Chess 'Core.Abstractions.Chess') rules. |
+| move | [Core.Abstractions.Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move') | A given [Move](#T-Core-Abstractions-Move 'Core.Abstractions.Move'). |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TChess | Derived type. `chess` 
+must be `TChess`. |
 
 <a name='M-Core-Extensions-Legality-IsChecked-Core-Abstractions-IChess,System-Boolean-'></a>
 ### IsChecked(chess,player) `method`

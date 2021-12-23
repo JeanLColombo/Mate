@@ -22,6 +22,7 @@
         +IReadOnlyCollection~MoveEntry~ MoveEntries
         +Chess()
         +Chess(+IReadOnlyDictionary~Square,IPiece~)
+        +Chess(IReadOnlyDictionary~Square,IPiece~,IReadOnlyCollection~MoveEntry~)
         +PlaceAt(Square, IPiece) 
         +Clear(Square)
         +Add(MoveEntry) 
@@ -46,6 +47,7 @@
         +IEnumerable~MoveType~ BannedMoves
         +Custom(IReadOnlyDictionary~Square,IPiece~)
         +Custom(IReadOnlyDictionary~Square,IPiece~, HashSet~MoveType~)
+        +Custom(Custom)
         +AllMoves(bool) IReadOnlyCollection~Move~
         +AvailableMoves(bool) IReadOnlyCollection~Move~
         +Process(Move, out IPiece) bool

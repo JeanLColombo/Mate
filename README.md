@@ -110,7 +110,8 @@ It's chess, mate!
     class Legality{
         <<static>>
         +IsChecked(this IChess, bool)$ bool
-        +IsLegal(this Chess, Move)$ bool 
+        +IsLegal<TChess>(this IChess, Move)$ bool 
+        +IsCastlingLegal<TChess>(this IChess, Move)$ bool 
     }
 ```
 ### Maneuverability
@@ -195,6 +196,7 @@ It's chess, mate!
         +IReadOnlyCollection~MoveEntry~ MoveEntries
         +Chess()
         +Chess(+IReadOnlyDictionary~Square,IPiece~)
+        +Chess(IReadOnlyDictionary~Square,IPiece~,IReadOnlyCollection~MoveEntry~)
         +PlaceAt(Square, IPiece) 
         +Clear(Square)
         +Add(MoveEntry) 
@@ -219,6 +221,7 @@ It's chess, mate!
         +IEnumerable~MoveType~ BannedMoves
         +Custom(IReadOnlyDictionary~Square,IPiece~)
         +Custom(IReadOnlyDictionary~Square,IPiece~, HashSet~MoveType~)
+        +Custom(Custom)
         +AllMoves(bool) IReadOnlyCollection~Move~
         +AvailableMoves(bool) IReadOnlyCollection~Move~
         +Process(Move, out IPiece) bool
@@ -393,7 +396,7 @@ It's chess, mate!
 ```shell
 A total of 1 test files matched the specified pattern.
 
-Passed!  - Failed:     0, Passed:   183, Skipped:     0, Total:   156, Duration: 99 ms - Core.dll (net5.0)
+Passed!  - Failed:     0, Passed:   200, Skipped:     0, Total:   156, Duration: 99 ms - Core.dll (net5.0)
 
 Calculating coverage result...
   Generating report '..\.coverage\lcov.info'
@@ -401,14 +404,14 @@ Calculating coverage result...
 +--------+--------+--------+--------+
 | Module | Line   | Branch | Method |
 +--------+--------+--------+--------+
-| Mate   | 99,77% | 98,56% | 98,86% |
+| Mate   | 99,79% | 98,06% | 100%   |
 +--------+--------+--------+--------+
 
 +---------+--------+--------+--------+
 |         | Line   | Branch | Method |
 +---------+--------+--------+--------+
-| Total   | 99,77% | 98,56% | 98,86% |
+| Total   | 99,79% | 98,06% | 100%   |
 +---------+--------+--------+--------+
-| Average | 99,77% | 98,56% | 98,86% |
+| Average | 99,79% | 98,06% | 100%   |
 +---------+--------+--------+--------+
 ```

@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 using Core.Abstractions;
 using Core.Elements.Pieces;
@@ -40,7 +42,16 @@ namespace Tests.Core.Extensions
             Assert.Equal(isLegal, chess.IsLegal<Custom>(move));
 
             Assert.Equal((prepareMove is null ? 0 : 1), chess.MoveEntries.Count);
+        }
 
+        [Fact]
+        public void TestLegalityOnWrongRules()
+        {
+            IChess chess = new Custom(CustomPosition);
+
+            var move = LegalData.Select(ld => (Move)ld.ToList().ElementAt(1)).ToList().First();
+
+            Assert.Throws<ArgumentException>(() => chess.IsLegal<MockedChess>(move));
         }
 
         private IReadOnlyDictionary<Square, IPiece> CustomPosition =>
@@ -107,6 +118,30 @@ namespace Tests.Core.Extensions
                     new Square(Files.g, Ranks.one),
                     MoveType.Castle),
                 true
+            },
+            new object[] {
+                new Move(
+                    new Square(Files.c, Ranks.three),
+                    new Square(Files.d, Ranks.two),
+                    MoveType.Capture
+                ),
+                new Move(
+                    new Square(Files.e, Ranks.one),
+                    new Square(Files.g, Ranks.one),
+                    MoveType.Castle),
+                false
+            },
+            new object[] {
+                new Move(
+                    new Square(Files.c, Ranks.three),
+                    new Square(Files.d, Ranks.four),
+                    MoveType.Normal
+                ),
+                new Move(
+                    new Square(Files.e, Ranks.one),
+                    new Square(Files.g, Ranks.one),
+                    MoveType.Castle),
+                false
             },
             new object[] {
                 null,
