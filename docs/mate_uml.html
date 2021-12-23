@@ -7,9 +7,6 @@
 <body>
     <div class="mermaid">graph LR# Core
 
-# Core
-
-## Board
 
 <div class="mermaid">
     classDiagram
@@ -66,10 +63,7 @@
     Tuple~Files,Ranks~ <|-- Square
     Square --* "0..64" Board
     IPiece --* "0..64" Board
-```
-
-## Extensions
-### Extensions Enumerations
+</div>
 
 <div class="mermaid">
     classDiagram
@@ -80,9 +74,7 @@
         MainDiagonal
         OppositeDiagonal
     }
-```
-
-### Attacking
+</div>
 
 <div class="mermaid">
     classDiagram
@@ -95,8 +87,6 @@
     }
 </div>
 
-### Helper
-
 <div class="mermaid">
     classDiagram
     class Helper{
@@ -108,8 +98,6 @@
     }
 </div>
 
-### Legality 
-
 
 <div class="mermaid">
     classDiagram
@@ -120,7 +108,6 @@
         +IsCastlingLegal<TChess>(this IChess, Move)$ bool 
     }
 </div>
-### Maneuverability
 
 <div class="mermaid">
     classDiagram
@@ -130,8 +117,6 @@
         +Maneuver(this Square, Through, int)$ Square
     }
 </div>
-
-### Setup
 
 <div class="mermaid">
     classDiagram
@@ -144,10 +129,6 @@
     }
 </div>
 
-## Specialized Moves
-
-### Pawn Passant
-
 <div class="mermaid">
     classDiagram
     class PawnPassant{
@@ -155,8 +136,6 @@
         +EnPassant(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
     }
 </div>
-
-### Pawn Rush
 
 <div class="mermaid">
     classDiagram
@@ -166,8 +145,6 @@
     }
 </div>
 
-### Castling
-
 <div class="mermaid">
     classDiagram
     class Castling{
@@ -175,8 +152,6 @@
         +Castles(this IPiece, IReadOnlyDictionary~Square,IPiece, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
     }
 </div>
-
-## Game
 
 <div class="mermaid">
     classDiagram
@@ -244,8 +219,6 @@
     Custom ..|> Chess
 </div>
 
-## Moves
-
 <div class="mermaid">
     classDiagram
     class MoveType{
@@ -298,10 +271,6 @@
     Board --* MoveEntry
 </div>
 
-## Pieces
-
-### Abstract Piece Definition
-
 <div class="mermaid">
     classDiagram
     class IPiece{
@@ -345,8 +314,6 @@
     Piece <|-- Knight
 </div>
 
-### Bishop and Rook
-
 <div class="mermaid">
     classDiagram
     class Piece{
@@ -367,8 +334,6 @@
     Piece <|-- Bishop
     Piece <|-- Rook
 </div>
-
-### King and Queen
 
 <div class="mermaid">
     classDiagram
