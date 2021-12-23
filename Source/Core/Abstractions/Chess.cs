@@ -130,11 +130,6 @@ namespace Core.Abstractions
         /// Otherwise, <see langword="false"/>.</returns>
         public abstract bool Process(Move move, out IPiece piece);
 
-
-        //TODO: Chess.AllMoves, private or public?
-        //TODO: Test AvailableMoves
-
-
         /// <summary>
         /// Associates <see cref="IChess.Position"/> with <see cref="Position"/>.
         /// </summary>

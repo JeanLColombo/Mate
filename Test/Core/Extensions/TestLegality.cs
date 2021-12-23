@@ -112,6 +112,17 @@ namespace Tests.Core.Extensions
                 false
             },
             new object[] {
+                new Move(
+                    new Square(Files.c, Ranks.two),
+                    new Square(Files.c, Ranks.one),
+                    MoveType.PromoteToBishop),
+                new Move(
+                    new Square(Files.e, Ranks.one),
+                    new Square(Files.c, Ranks.one),
+                    MoveType.Castle),
+                false
+            },
+            new object[] {
                 null,
                 new Move(
                     new Square(Files.e, Ranks.one),

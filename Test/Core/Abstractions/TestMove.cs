@@ -83,7 +83,17 @@ namespace Tests.Core.Abstractions
                     new Square(Files.a, Ranks.two),
                     MoveType.Capture),
                 false 
+            },
+            new object[]
+            {
+                new Move(
+                    new Square(Files.a, Ranks.one),
+                    new Square(Files.a, Ranks.two),
+                    MoveType.Normal),
+                null,
+                false 
             }
+            
         };
 
     }
