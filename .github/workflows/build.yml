@@ -9,7 +9,7 @@ on:
     branches: main
 
 jobs:
-  build:
+  build_and_test:
     runs-on: ubuntu-latest
     
     steps:
@@ -22,18 +22,12 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build
-  
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Code Coverage
-      run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=../.coverage/lcov
+    - name: Test 
+      run: dotnet test --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=../.coverage/lcov
   
   code_coverage:
     runs-on: ubuntu-latest
-    needs: test
+    needs: build_and_test
 
     steps:
     - name: Generate Code Coverage report 
@@ -42,6 +36,6 @@ jobs:
       with:
         barecheck-github-app-token: ${{ secrets.BARECHECK_GITHUB_APP_TOKEN }}
         lcov-file: "./Test/.coverage/lcov.info"
-        base-lcov-file: ".Test/.coverage/base-lcov.info"
+        base-lcov-file: "./Test/.coverage/base-lcov.info"
         send-summary-comment: true
         show-annotations: "warning"
