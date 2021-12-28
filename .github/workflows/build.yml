@@ -50,7 +50,7 @@ jobs:
       - name: Upload code coverage for ref branch
         uses: actions/upload-artifact@v2
         with:
-          name: ref-lcov.info
+          name: base_lcov.info
           path: ./Test/.coverage/base_lcov.info
 
   checks:
@@ -58,10 +58,16 @@ jobs:
     needs: base_branch_cov
 
     steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js v16.11.0
+        uses: actions/setup-node@v1
+        with:
+          node-version: v16.11.0
+
       - name: Download code coverage report from base branch
         uses: actions/download-artifact@v2
         with:
-          name: ref-lcov.info
+          name: base_lcov.info
 
       - name: Download code coverage report for incoming changes
         uses: actions/download-artifact@v2
@@ -74,6 +80,6 @@ jobs:
         with:
           barecheck-github-app-token: ${{ secrets.BARECHECK_GITHUB_APP_TOKEN }}
           lcov-file: "./lcov.info"
-          base-lcov-file: "./base-lcov.info"
+          base-lcov-file: "./base_lcov.info"
           send-summary-comment: true
           show-annotations: "warning"
