@@ -8,15 +8,16 @@ namespace Mate.Core.Abstractions
         /// <summary>
         ///  The current move being played on this <see cref="IGame"/> instance.
         /// </summary>
-        /// <value></value>
-        int CurrentMove { get; set; }
+        /// <value>A game move is a sequence of turns taken by players since the
+        /// start of the game.</value>
+        int CurrentMove { get; }
 
         /// <summary>
         /// The current player to make the next move.
         /// </summary>
-        /// <value>True for player with white pieces. Otherwise, 
+        /// <value><see langword="true"/> for player with white pieces. Otherwise, 
         /// player with black pieces.</value>
-        bool CurrentPlayer { get; set; }
+        bool CurrentPlayer { get; }
 
         /// <summary>
         /// The rules of <see cref="IChess"/> that are currently being played.
