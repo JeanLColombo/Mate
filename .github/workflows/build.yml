@@ -1,0 +1,47 @@
+# Build and Run Code Coverage on Main 
+
+name: .NET Build and Coverage
+
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build
+  
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Code Coverage
+      run: dotnet test --no-build --verbosity normal/p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=../.coverage/lcov
+  
+  code_coverage:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+    - name: Generate Code Coverage report 
+      id: code-coverage
+      uses: barecheck/code-coverage-action@v0.5.1
+      with:
+        barecheck-github-app-token: ${{ secrets.BARECHECK_GITHUB_APP_TOKEN }}
+        lcov-file: "./Test/.coverage/lcov.info"
+        base-lcov-file: ".Test/.coverage/base-lcov.info"
+        send-summary-comment: true
+        show-annotations: "warning"
