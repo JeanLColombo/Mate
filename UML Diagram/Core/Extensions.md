@@ -46,8 +46,8 @@
     class Legality{
         <<static>>
         +IsChecked(this IChess, bool)$ bool
-        +IsLegal<TChess>(this IChess, Move)$ bool 
-        +IsCastlingLegal<TChess>(this IChess, Move)$ bool 
+        +IsLegal(this IChess, Move)$ bool 
+        +IsCastlingLegal(this IChess, Move)$ bool 
     }
 ```
 ## Maneuverability
