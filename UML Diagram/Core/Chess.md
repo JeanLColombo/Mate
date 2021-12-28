@@ -9,10 +9,14 @@
     }
     class IGame{
         <<Interface>>
-        int CurrentMove
+        uint Move
         bool CurrentPlayer
-        IChess Chess
+        IReadOnlyDictionary~Square, IPiece~ Position
+        IReadOnlyCollection~MoveEntry~ MoveEntries
+        IReadOnlyList~IReadOnlyList~Move~~ Moves
+        IReadOnlyCollection~IPiece~ CapturedPieces
         ProcessMove(Move) bool
+        AvailableMoves() IReadOnlyCollection~Move~
     }
     class Chess{
         <<Abstract>>

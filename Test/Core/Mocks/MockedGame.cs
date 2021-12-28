@@ -14,20 +14,15 @@ namespace Mate.Tests.Core.Mocks
         /// <param name="currentMove"></param>
         /// <param name="currentPlayer"></param>
         /// <param name="rules"></param>
-        public MockedGame(int currentMove, bool currentPlayer, IChess rules)
+        public MockedGame(uint currentMove, bool currentPlayer, IChess rules)
             : base(currentMove, currentPlayer, rules) { }
 
         /// <summary>
-        /// Executes the given move for current player. 
+        /// If <paramref name="move"/> is available, return <see langword="true"/>. 
         /// </summary>
         /// <param name="move"></param>
         /// <returns></returns>
         public override bool ProcessMove(Move move)
-        {
-            if (!Chess.AvailableMoves(CurrentPlayer).Contains(move))
-                return false;
-                
-            return Chess.Process(move, out IPiece piece);
-        }
+            => ((IGame)this).AvailableMoves().Contains(move);
     }
 }

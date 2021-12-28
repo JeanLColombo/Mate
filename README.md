@@ -76,10 +76,14 @@ It's chess, mate!
     }
     class IGame{
         <<Interface>>
-        int CurrentMove
+        uint Move
         bool CurrentPlayer
-        IChess Chess
+        IReadOnlyDictionary~Square, IPiece~ Position
+        IReadOnlyCollection~MoveEntry~ MoveEntries
+        IReadOnlyList~IReadOnlyList~Move~~ Moves
+        IReadOnlyCollection~IPiece~ CapturedPieces
         ProcessMove(Move) bool
+        AvailableMoves() IReadOnlyCollection~Move~
     }
     class Chess{
         <<Abstract>>
@@ -244,16 +248,22 @@ It's chess, mate!
     classDiagram
     class IGame{
         <<Interface>>
-        int CurrentMove
+        uint Move
         bool CurrentPlayer
-        IChess Chess
+        IReadOnlyDictionary~Square, IPiece~ Position
+        IReadOnlyCollection~MoveEntry~ MoveEntries
+        IReadOnlyList~IReadOnlyList<Move>~ Moves
+        IReadOnlyCollection~IPiece~ CapturedPieces
         ProcessMove(Move) bool
+        AvailableMoves() IReadOnlyCollection~Move~
     }
     class Game{
         <<abstract>>
-        +int CurrentMove
+        +uint Move
         +bool CurrentPlayer
-        +IChess Chess
+        ~IChess Chess
+        ~List _moves
+        ~List _captured
         +Game(int, bool, IChess)
         +ProcessMove(Move)*
     }
@@ -411,29 +421,4 @@ It's chess, mate!
     Piece <|-- Royalty
     Royalty <|-- Queen
     Royalty <|-- King
-```
-
-# Unit Testing Performance
-
-```shell
-A total of 1 test files matched the specified pattern.
-
-Passed!  - Failed:     0, Passed:   203, Skipped:     0, Total:   156, Duration: 99 ms - Core.dll (net5.0)
-
-Calculating coverage result...
-  Generating report '..\.coverage\lcov.info'
-
-+--------+------+--------+--------+
-| Module | Line | Branch | Method |
-+--------+------+--------+--------+
-| Mate   | 100% | 100%   | 100%   |
-+--------+------+--------+--------+
-
-+---------+------+--------+--------+
-|         | Line | Branch | Method |
-+---------+------+--------+--------+
-| Total   | 100% | 100%   | 100%   |
-+---------+------+--------+--------+
-| Average | 100% | 100%   | 100%   |
-+---------+------+--------+--------+
 ```

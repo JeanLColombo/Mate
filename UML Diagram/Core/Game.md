@@ -2,16 +2,22 @@
     classDiagram
     class IGame{
         <<Interface>>
-        int CurrentMove
+        uint Move
         bool CurrentPlayer
-        IChess Chess
+        IReadOnlyDictionary~Square, IPiece~ Position
+        IReadOnlyCollection~MoveEntry~ MoveEntries
+        IReadOnlyList~IReadOnlyList<Move>~ Moves
+        IReadOnlyCollection~IPiece~ CapturedPieces
         ProcessMove(Move) bool
+        AvailableMoves() IReadOnlyCollection~Move~
     }
     class Game{
         <<abstract>>
-        +int CurrentMove
+        +uint Move
         +bool CurrentPlayer
-        +IChess Chess
+        ~IChess Chess
+        ~List _moves
+        ~List _captured
         +Game(int, bool, IChess)
         +ProcessMove(Move)*
     }
