@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Core.Elements;
-using Core.Extensions;
+using Mate.Core.Elements;
+using Mate.Core.Extensions;
 
-namespace Core.Abstractions
+namespace Mate.Core.Abstractions
 {
     /// <summary>
     /// Implements a <see cref="Piece"/> belonging to royalty.

@@ -1,4 +1,4 @@
-namespace Core.Abstractions
+namespace Mate.Core.Abstractions
 {
     /// <summary>
     /// Defines a Move available for a given <see cref="IPiece"/>.

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using Core.Abstractions;
-using Core.Elements.Pieces;
-using Core.Extensions;
-using Core.Extensions.SpecializedMoves;
+using Mate.Core.Abstractions;
+using Mate.Core.Elements.Pieces;
+using Mate.Core.Extensions;
+using Mate.Core.Extensions.SpecializedMoves;
 
-namespace Core.Elements.Rules
+namespace Mate.Core.Elements.Rules
 {
     /// <summary>
     /// Defines a fully customizable game of chess. Special moves can be enabled and / or disabled and 

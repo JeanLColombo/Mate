@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Core.Abstractions;
+using Mate.Core.Abstractions;
 
-namespace Tests.Core.Mocks
+namespace Mate.Tests.Core.Mocks
 {
     public class MockedChess : Chess
     {

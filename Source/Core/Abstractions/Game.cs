@@ -1,4 +1,4 @@
-namespace Core.Abstractions
+namespace Mate.Core.Abstractions
 {
     /// <summary>
     /// Abstract implementation of a game of <see cref="Chess"/>.

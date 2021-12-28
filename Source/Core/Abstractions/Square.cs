@@ -1,6 +1,6 @@
 using System;
 
-namespace Core.Abstractions
+namespace Mate.Core.Abstractions
 {
     /// <summary>
     /// Defines a <see cref="Square"/>, and its basic properties.

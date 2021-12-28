@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using Core.Abstractions;
-using Core.Elements;
-using Core.Elements.Pieces;
+using Mate.Core.Abstractions;
+using Mate.Core.Elements;
+using Mate.Core.Elements.Pieces;
 
-namespace Core.Extensions.SpecializedMoves
+namespace Mate.Core.Extensions.SpecializedMoves
 {
     /// <summary>
     /// Provides extension methods for castling, both king and queen side.

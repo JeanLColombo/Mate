@@ -1,8 +1,8 @@
-using Core.Abstractions;
+using Mate.Core.Abstractions;
 using Xunit;
 
 
-namespace Tests.Core.Abstractions
+namespace Mate.Tests.Core.Abstractions
 {
     public class TestSquare
     {
