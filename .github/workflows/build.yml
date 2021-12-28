@@ -29,7 +29,7 @@ jobs:
 
     steps:
     - name: Code Coverage
-      run: dotnet test --no-build --verbosity normal/p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=../.coverage/lcov
+      run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=../.coverage/lcov
   
   code_coverage:
     runs-on: ubuntu-latest
