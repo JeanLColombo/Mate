@@ -2,9 +2,7 @@
 
 name: .NET Build and Coverage
 
-on:
-  pull_request:
-    branches: main
+on: [pull_request]
 
 jobs:
   build_and_test:

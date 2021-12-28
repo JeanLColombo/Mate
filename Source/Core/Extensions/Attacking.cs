@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using Core.Abstractions;
-using Core.Elements;
+using Mate.Core.Abstractions;
+using Mate.Core.Elements;
 
 
-namespace Core.Extensions
+namespace Mate.Core.Extensions
 {
     /// <summary>
     /// Provide extension methods for <see cref="Piece"/> attack logic in a

@@ -1,4 +1,4 @@
-namespace Core.Abstractions
+namespace Mate.Core.Abstractions
 {
     /// <summary>
     /// <see cref="IGame"/> interface.

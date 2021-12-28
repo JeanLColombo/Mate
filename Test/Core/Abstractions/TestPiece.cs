@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using Xunit;
-using Core.Abstractions;
-using Tests.Core.Mocks;
+using Mate.Core.Abstractions;
+using Mate.Tests.Core.Mocks;
 
-namespace Tests.Core.Abstractions
+namespace Mate.Tests.Core.Abstractions
 {
     public class TestPiece
     {

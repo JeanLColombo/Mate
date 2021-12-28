@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Core.Abstractions;
-namespace Core.Extensions
+using Mate.Core.Abstractions;
+namespace Mate.Core.Extensions
 {
     /// <summary>
     /// Provide helper extensions for managing the core library.

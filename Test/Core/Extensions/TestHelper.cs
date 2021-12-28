@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
-using Core.Abstractions;
-using Core.Elements;
-using Core.Extensions;
-using Tests.Core.Mocks;
+using Mate.Core.Abstractions;
+using Mate.Core.Elements;
+using Mate.Core.Extensions;
+using Mate.Tests.Core.Mocks;
 
-namespace Tests.Core.Extensions
+namespace Mate.Tests.Core.Extensions
 {
     public class TestHelper 
     {

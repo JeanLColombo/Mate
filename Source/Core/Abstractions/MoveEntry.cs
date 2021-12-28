@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Core.Elements;
+using Mate.Core.Elements;
 
-namespace Core.Abstractions
+namespace Mate.Core.Abstractions
 {
     /// <summary>
     /// Records a <see cref="Move"/> entry applied to a <see cref="Board"/> state. 

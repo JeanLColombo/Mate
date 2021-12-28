@@ -264,3 +264,4 @@ FakesAssemblies/
 
 # Additional Ignores
 out/
+.coverage/

@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
-using Core.Abstractions;
-using Core.Elements.Pieces;
-using Core.Elements.Rules;
-using Tests.Core.Mocks;
+using Mate.Core.Abstractions;
+using Mate.Core.Elements.Pieces;
+using Mate.Core.Elements.Rules;
+using Mate.Tests.Core.Mocks;
 
-namespace Tests.Core.Elements.Rules
+namespace Mate.Tests.Core.Elements.Rules
 {
     public class TestCustom
     {

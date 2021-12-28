@@ -1,9 +1,9 @@
 
 using System.Collections.Generic;
 using Xunit;
-using Core.Abstractions;
+using Mate.Core.Abstractions;
 
-namespace Tests.Core.Abstractions
+namespace Mate.Tests.Core.Abstractions
 {
     public class TestMove
     {

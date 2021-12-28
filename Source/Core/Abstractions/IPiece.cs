@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Core.Abstractions
+namespace Mate.Core.Abstractions
 {
     /// <summary>
     /// <see cref="Piece"/> interface.

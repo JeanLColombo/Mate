@@ -1,8 +1,8 @@
 using System;
-using Core.Abstractions;
-using Core.Elements;
+using Mate.Core.Abstractions;
+using Mate.Core.Elements;
 
-namespace Core.Extensions
+namespace Mate.Core.Extensions
 {
     /// <summary>
     /// Provides extension methods for maneuvers in a chess <see cref="Board"/>. 

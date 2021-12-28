@@ -1,13 +1,13 @@
 using System;
 using System.Linq;
 using Xunit;
-using Core.Abstractions;
-using Core.Elements;
-using Core.Elements.Pieces;
-using Core.Extensions;
-using Tests.Core.Mocks;
+using Mate.Core.Abstractions;
+using Mate.Core.Elements;
+using Mate.Core.Elements.Pieces;
+using Mate.Core.Extensions;
+using Mate.Tests.Core.Mocks;
 
-namespace Tests.Core.Elements.Pieces
+namespace Mate.Tests.Core.Elements.Pieces
 {
     public class TestBishop
     {
