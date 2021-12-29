@@ -273,9 +273,14 @@ It's chess, mate!
         ~GetScore() int
         +ProcessMove(Move)*
     }
+    class Standard~TChess~{
+        +Standard()
+        +ProcessMove(Move)
+    }
     Outcome --* "1" IGame
     IChess --* "1" IGame
     Game ..|> IGame
+    Standard~TChess~ ..|> Game
 ```
 
 ## Moves

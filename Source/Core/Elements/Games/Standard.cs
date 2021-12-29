@@ -4,9 +4,11 @@ namespace Mate.Core.Elements.Games
 {
     /// <summary>
     /// Implements a standard, two players, <see cref="Game"/>, following the
-    /// given <see cref="IChess"/> rules. 
+    /// given <typeparamref name="TChess"/> rules. 
     /// </summary>
-    public class Standard : Game
+    /// <typeparam name="TChess">A given <see cref="Chess"/> rules implementation.
+    /// It must have a parameterless constructor.</typeparam>
+    public class Standard<TChess> : Game where TChess : Chess, new()
     {
         /// <summary>
         /// Creates a new <see cref="Standard"/> <see cref="Game"/> instance,
@@ -46,10 +48,18 @@ namespace Mate.Core.Elements.Games
         ///     </item>
         /// </list>
         /// </summary>
-        /// <param name="chess">The given <paramref name="chess"/> instance. It must have
-        /// a copy construct.</param>
-        public Standard(IChess chess) : base(0, true, chess) {}
+        public Standard() : base(0, true, new TChess()) {}
 
-        //TODO: find a way to implement templated constructors.
+        /// <summary>
+        /// Process a given <paramref name="move"/>, according to the 
+        /// <see cref="Game.CurrentPlayer"/>, the given <typeparamref name="TChess"/>. 
+        /// </summary>
+        /// <param name="move">A legal <see cref="Move"/>.</param>
+        /// <returns><see langword="true"/> if the <paramref name="move"/> was
+        /// processed. Otherwise, return <see langword="false"/>.</returns>
+        public override bool ProcessMove(Move move)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
