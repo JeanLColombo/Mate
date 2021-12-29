@@ -7,17 +7,6 @@
         AvailableMoves(bool)* IReadOnlyCollection~Move~
         Process(Move, out IPiece)* bool
     }
-    class IGame{
-        <<Interface>>
-        uint Move
-        bool CurrentPlayer
-        IReadOnlyDictionary~Square, IPiece~ Position
-        IReadOnlyCollection~MoveEntry~ MoveEntries
-        IReadOnlyList~IReadOnlyList~Move~~ Moves
-        IReadOnlyCollection~IPiece~ CapturedPieces
-        ProcessMove(Move) bool
-        AvailableMoves() IReadOnlyCollection~Move~
-    }
     class Chess{
         <<Abstract>>
         -Board Board
@@ -64,6 +53,5 @@
     Board --* "1" IChess
     MoveEntry --* "*" IChess
     Chess ..|> IChess
-    IChess --* "1" IGame
     Custom ..|> Chess
 ```

@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using Mate.Core.Elements.Pieces;
 
 namespace Mate.Core.Abstractions
 {
@@ -7,6 +9,11 @@ namespace Mate.Core.Abstractions
     /// </summary>
     public abstract class Game : IGame
     {
+        /// <summary>
+        /// The <see cref="Game.Outcome"/>. 
+        /// </summary>
+        internal Outcome Outcome { get; set; }
+
         /// <summary>
         /// The current move being played in the <see cref="Game"/>.
         /// </summary>
@@ -52,6 +59,62 @@ namespace Mate.Core.Abstractions
             Chess = rules;
         }
 
+        //TODO: test this getScore().
+
+        /// <summary>
+        /// Calculates the current score, based on the <see cref="_captured"/> pieces. 
+        /// Calculation is based on the <see cref="IPiece"/> implementation, as well 
+        /// as <see cref="IPiece.Color"/>. 
+        /// <list type="bullet">
+        ///     <listheader>
+        ///         <term><see cref="Game"/> <see langword="virtual"/> implementation</term>
+        ///         <description>The following implementation considers this
+        ///         scoring per <see cref="IPiece"/> implementation.</description>
+        ///     </listheader>
+        ///     <item>
+        ///         <term><see cref="Pawn"/></term>
+        ///         <description>1 point.</description>
+        ///     </item>
+        ///     <item>
+        ///         <term><see cref="Bishop"/> or <see cref="Knight"/></term>
+        ///         <description>3 points.</description>
+        ///     </item>
+        ///     <item>
+        ///         <term><see cref="Rook"/></term>
+        ///         <description>5 points.</description>
+        ///     </item>
+        ///     <item>
+        ///         <term><see cref="Queen"/></term>
+        ///         <description>9 points.</description>
+        ///     </item>
+        /// </list>
+        /// </summary>
+        /// <value>Based on current <see cref="Game"/> implementation.</value>
+        internal virtual int GetScore() =>
+            _captured.Select(p =>
+            {
+                int value = 0;
+                switch(p)
+                {
+                    case Pawn:
+                        value = 1;
+                        break;
+                    case Knight:
+                    case Bishop:
+                        value = 3;
+                        break;
+                    case Rook:
+                        value = 5;
+                        break;
+                    case Queen:
+                        value = 9;
+                        break;
+                    default:
+                        break;
+                }
+                return p.Color ? value : -value;
+            }).Sum();
+
         /// <summary>
         /// Process a given <paramref name="move"/>, depending on the
         /// <see cref="Game.Chess"/> rules, as well as the 
@@ -62,6 +125,8 @@ namespace Mate.Core.Abstractions
         /// <returns><see langword="true"/> if move was properly processed. 
         /// Otherwise, <see langword="false"/>.</returns>
         public abstract bool ProcessMove(Move move);
+
+        Outcome IGame.Outcome => Outcome;
 
         uint IGame.Move => Move;
 
@@ -74,6 +139,8 @@ namespace Mate.Core.Abstractions
         IReadOnlyList<IReadOnlyList<Move>> IGame.Moves => _moves;
 
         IReadOnlyCollection<IPiece> IGame.CapturedPieces => _captured;
+
+        int IGame.Score => GetScore();
 
         bool IGame.ProcessMove(Move m) => ProcessMove(m);
 

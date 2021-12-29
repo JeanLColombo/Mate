@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 
 namespace Mate.Core.Abstractions
@@ -8,6 +7,11 @@ namespace Mate.Core.Abstractions
     /// </summary>
     public interface IGame
     {
+        /// <summary>
+        /// The <see cref="IGame.Outcome"/>. 
+        /// </summary>
+        Outcome Outcome { get; }
+
         /// <summary>
         ///  The current move being played on this <see cref="IGame"/> instance,
         ///  starting at one.
@@ -48,6 +52,14 @@ namespace Mate.Core.Abstractions
         /// A collection of captured <see cref="IPiece"/> instances. 
         /// </summary>
         IReadOnlyCollection<IPiece> CapturedPieces { get; }
+
+        /// <summary>
+        /// The <see cref="IGame"/> current score, calculated based on the <see cref="CapturedPieces"/>.
+        /// </summary> 
+        /// <value>Positive values favor the player with the white pieces, while negative
+        /// values favor the player with black pieces. Piece value is set by the current
+        /// <see cref="IGame"/> class implementation.</value>
+        int Score { get; }
 
         /// <summary>
         /// List of <see cref="Move"/> instances available for <see cref="IGame.CurrentPlayer"/>. 
