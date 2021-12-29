@@ -379,8 +379,6 @@ namespace Mate.Tests.Core.Elements.Rules
                 {new Square(Files.g, Ranks.seven), new Pawn(true)           }
             };
 
-        //TODO: Potential bug found -- Pawn threat on Passant
-
         public static IEnumerable<object[]> BannedDataA => new[]{
             new object[] {
                 new List<MoveType>() {

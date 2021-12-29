@@ -14,7 +14,7 @@ namespace Mate.Tests.Core.Mocks
         /// <param name="currentMove"></param>
         /// <param name="currentPlayer"></param>
         /// <param name="rules"></param>
-        public MockedGame(uint currentMove, bool currentPlayer, IChess rules)
+        public MockedGame(int currentMove, bool currentPlayer, IChess rules)
             : base(currentMove, currentPlayer, rules) { }
 
         /// <summary>

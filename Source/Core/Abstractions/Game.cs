@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Mate.Core.Elements.Pieces;
@@ -12,7 +13,7 @@ namespace Mate.Core.Abstractions
         /// <summary>
         /// The <see cref="Game.Outcome"/>. 
         /// </summary>
-        internal Outcome Outcome { get; set; }
+        internal Outcome Outcome { get; set; } = Outcome.Game;
 
         /// <summary>
         /// The current move being played in the <see cref="Game"/>.
@@ -20,7 +21,7 @@ namespace Mate.Core.Abstractions
         /// <value>A game move is a sequence of turns taken by players since the
         /// start of the game.
         /// Differently then what's usual in chess,
-        /// it Will start at <see langword="0"/>.</value>
+        /// it will start at <see langword="0"/>.</value>
         public uint Move { get; protected set; }
 
         /// <summary>
@@ -52,9 +53,16 @@ namespace Mate.Core.Abstractions
         /// starting at <see langword="0"/>.</param>
         /// <param name="currentPlayer">Sets the <see cref="Game.CurrentPlayer"/>.</param>
         /// <param name="rules">A given <see cref="IChess"/> instance.</param>
-        public Game(uint currentMove, bool currentPlayer, IChess rules)
+        /// <exception cref="ArgumentOutOfRangeException">If 
+        /// <paramref name="currentMove"/> is negative.</exception>
+        public Game(int currentMove, bool currentPlayer, IChess rules)
         {
-            Move = currentMove;
+            if (currentMove < 0) 
+                throw new ArgumentOutOfRangeException(
+                    message: "Cannot have a negative currentMove",
+                    paramName: nameof(currentMove));
+
+            Move = (uint)currentMove;
             CurrentPlayer = currentPlayer;
             Chess = rules;
         }
