@@ -50,8 +50,13 @@
         -ProcessCastle(Move)
         -ProcessPromotion(Move, out IPiece)
     }
+    class Classical{
+        -IReadOnlyDictionary~Square, IPiece~ StandardPosition
+        +Classical()
+    }
     Board --* "1" IChess
     MoveEntry --* "*" IChess
     Chess ..|> IChess
-    Custom ..|> Chess
+    Custom --|> Chess
+    Classical --|> Custom
 ```

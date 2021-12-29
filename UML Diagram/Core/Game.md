@@ -46,5 +46,5 @@
     Outcome --* "1" IGame
     IChess --* "1" IGame
     Game ..|> IGame
-    Standard~TChess~ ..|> Game
+    Standard~TChess~ --|> Game
 ```

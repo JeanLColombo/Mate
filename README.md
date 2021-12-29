@@ -117,10 +117,15 @@ It's chess, mate!
         -ProcessCastle(Move)
         -ProcessPromotion(Move, out IPiece)
     }
+    class Classical{
+        -IReadOnlyDictionary~Square, IPiece~ StandardPosition
+        +Classical()
+    }
     Board --* "1" IChess
     MoveEntry --* "*" IChess
     Chess ..|> IChess
-    Custom ..|> Chess
+    Custom --|> Chess
+    Classical --|> Custom
 ```
 
 ## Extensions
@@ -280,7 +285,7 @@ It's chess, mate!
     Outcome --* "1" IGame
     IChess --* "1" IGame
     Game ..|> IGame
-    Standard~TChess~ ..|> Game
+    Standard~TChess~ --|> Game
 ```
 
 ## Moves
