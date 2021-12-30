@@ -11,11 +11,11 @@ namespace Mate.Core.Elements.Games
     public class Standard<TChess> : Game where TChess : Chess, new()
     {
         /// <summary>
-        /// Creates a new <see cref="Standard"/> <see cref="Game"/> instance,
-        /// to be played according to the given <paramref name="chess"/> rules.
+        /// Creates a new <see cref="Standard{TChess}"/> <see cref="Game"/> instance,
+        /// to be played according to the given <typeparamref name="TChess"/> rules.
         /// <list type="bullet">
         ///     <listheader>
-        ///         <term><see cref="Standard"/> <see cref="Game"/></term>
+        ///         <term><see cref="Standard{TChess}"/> <see cref="Game"/></term>
         ///         <description>Rules:</description>
         ///     </listheader>
         ///     <item>
@@ -44,7 +44,7 @@ namespace Mate.Core.Elements.Games
         ///     </item>
         ///     <item>
         ///         <description><see cref="IPiece"/> setup and maneuverability rules
-        ///         are set by the given <paramref name="chess"/> instance.</description>
+        ///         are set by the given <typeparamref name="TChess"/> instance.</description>
         ///     </item>
         /// </list>
         /// </summary>
