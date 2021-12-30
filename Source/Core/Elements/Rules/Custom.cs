@@ -64,20 +64,25 @@ namespace Mate.Core.Elements.Rules
             var moves = pieces.SelectMany(p => p.AvailableMoves(Position)).ToList();
 
             // Pawn's special moves
-            var pawnMoves = pieces
-                .Where(p => p is Pawn)
+            var pawns = pieces.Where(p => p is Pawn).ToList();
+
+            var firstMoves = pawns
                 .Where(p => !p.HasMoved(Position, MoveEntries))
-                .SelectMany(p => 
-                    p.PawnFirstMove(Position).Union(
-                    p.EnPassant(Position, MoveEntries)))
+                .SelectMany(p => p.PawnFirstMove(Position))
                 .ToList();
+
+            var enPassant = pawns
+                .SelectMany(p => p.EnPassant(Position, MoveEntries))
+                .ToList();
+
+            var pawnMoves = firstMoves.Union(enPassant);
 
             // King's special moves
             var kingMoves = pieces
                 .Where(p => p is King)
                 .SelectMany(p => 
                     p.Castles(Position, MoveEntries))
-            .ToList();
+                .ToList();
 
             // Append and query banned moves
             return moves

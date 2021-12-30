@@ -5,6 +5,7 @@ using Xunit;
 using Mate.Core.Abstractions;
 using Mate.Core.Elements.Pieces;
 using Mate.Core.Elements.Rules;
+using Mate.Core.Extensions;
 
 namespace Mate.Tests.Core.Elements.Rules
 {
@@ -106,9 +107,10 @@ namespace Mate.Tests.Core.Elements.Rules
                 chess.AvailableMoves(chess.MoveEntries.Last().Position[tuple.Item1.FromSquare].Color).Count);
                 Assert.Equal(tuple.Item4, chess.Position.Count);
             });
-        }
 
-        //TODO: Finish testing classical chess.
+            Assert.Empty(chess.AvailableMoves(true));
+            Assert.True(chess.IsChecked<Classical>(true));
+        }
 
         private IReadOnlyList<Tuple<Move, int, IPiece, int>> GameOfChessData 
             => new List<Tuple<Move, int, IPiece, int>>()
@@ -133,8 +135,217 @@ namespace Mate.Tests.Core.Elements.Rules
                             new Square(Files.d, Ranks.five), MoveType.Capture), 
                         30,
                         new Pawn(false),
-                        31)
-            };
-
+                        31),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.d, Ranks.eight), 
+                            new Square(Files.d, Ranks.five), MoveType.Capture), 
+                        47,
+                        new Pawn(true),
+                        30),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.f, Ranks.one), 
+                            new Square(Files.b, Ranks.five), MoveType.Normal), 
+                        34,
+                        null,
+                        30),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.c, Ranks.eight), 
+                            new Square(Files.d, Ranks.seven), MoveType.Normal), 
+                        38,
+                        null,
+                        30),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.d, Ranks.one), 
+                            new Square(Files.g, Ranks.four), MoveType.Normal), 
+                        48,
+                        null,
+                        30),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.a, Ranks.seven), 
+                            new Square(Files.a, Ranks.five), MoveType.Rush), 
+                        39,
+                        null,
+                        30),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.b, Ranks.one), 
+                            new Square(Files.c, Ranks.three), MoveType.Normal), 
+                        51,
+                        null,
+                        30),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.a, Ranks.five), 
+                            new Square(Files.a, Ranks.four), MoveType.Normal), 
+                        40,
+                        null,
+                        30),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.g, Ranks.one), 
+                            new Square(Files.e, Ranks.two), MoveType.Normal), 
+                        48,
+                        null,
+                        30),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.a, Ranks.eight), 
+                            new Square(Files.a, Ranks.five), MoveType.Normal), 
+                        41,
+                        null,
+                        30),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.e, Ranks.one), 
+                            new Square(Files.g, Ranks.one), MoveType.Castle), 
+                        45,
+                        null,
+                        30),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.d, Ranks.five), 
+                            new Square(Files.b, Ranks.five), MoveType.Capture), 
+                        40,
+                        new Bishop(true),
+                        29),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.b, Ranks.two), 
+                            new Square(Files.b, Ranks.four), MoveType.Rush), 
+                        39,
+                        null,
+                        29),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.a, Ranks.four), 
+                            new Square(Files.b, Ranks.three), MoveType.Passant), 
+                        44,
+                        new Pawn(true),
+                        28),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.c, Ranks.three), 
+                            new Square(Files.b, Ranks.five), MoveType.Capture), 
+                        46,
+                        new Queen(false),
+                        27),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.b, Ranks.three), 
+                            new Square(Files.b, Ranks.two), MoveType.Normal), 
+                        41,
+                        null,
+                        27),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.g, Ranks.four), 
+                            new Square(Files.d, Ranks.seven), MoveType.Capture), 
+                        41,
+                        new Bishop(false),
+                        26),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.e, Ranks.eight), 
+                            new Square(Files.d, Ranks.seven), MoveType.Capture), 
+                        39,
+                        new Queen(true),
+                        25),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.c, Ranks.two), 
+                            new Square(Files.c, Ranks.four), MoveType.Rush), 
+                        26,
+                        null,
+                        25),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.b, Ranks.two), 
+                            new Square(Files.c, Ranks.one), MoveType.PromoteToRook), 
+                        35,
+                        new Bishop(true),
+                        24),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.c, Ranks.four), 
+                            new Square(Files.c, Ranks.five), MoveType.Normal), 
+                        28,
+                        null,
+                        24),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.a, Ranks.five), 
+                            new Square(Files.a, Ranks.two), MoveType.Capture), 
+                        38,
+                        new Pawn(true),
+                        23),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.c, Ranks.five), 
+                            new Square(Files.c, Ranks.six), MoveType.Normal), 
+                        28,
+                        null, 
+                        23),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.d, Ranks.seven), 
+                            new Square(Files.e, Ranks.eight), MoveType.Normal), 
+                        36,
+                        null, 
+                        23),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.c, Ranks.six), 
+                            new Square(Files.b, Ranks.seven), MoveType.Capture), 
+                        26,
+                        new Pawn(false), 
+                        22),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.a, Ranks.two), 
+                            new Square(Files.a, Ranks.one), MoveType.Capture), 
+                        34,
+                        new Rook(true),
+                        21),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.b, Ranks.eight), 
+                            new Square(Files.c, Ranks.six), MoveType.Normal), 
+                        35,
+                        null,
+                        21),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.b, Ranks.seven), 
+                            new Square(Files.b, Ranks.eight), MoveType.PromoteToKnight), 
+                        26,
+                        null,
+                        21),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.c, Ranks.six), 
+                            new Square(Files.b, Ranks.eight), MoveType.Capture), 
+                        34,
+                        new Knight(true),
+                        20),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.d, Ranks.two), 
+                            new Square(Files.d, Ranks.three), MoveType.Normal), 
+                        22,
+                        null,
+                        20),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
+                            new Square(Files.c, Ranks.one), 
+                            new Square(Files.f, Ranks.one), MoveType.Capture), 
+                        34,
+                        new Rook(true),
+                        19)
+                };
     }
 }
