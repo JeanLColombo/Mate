@@ -256,7 +256,7 @@ It's chess, mate!
     class IGame{
         <<Interface>>
         Outcome Outcome
-        uint Move
+        uint MoveCount
         bool CurrentPlayer
         IReadOnlyDictionary~Square, IPiece~ Position
         IReadOnlyCollection~MoveEntry~ MoveEntries
@@ -269,7 +269,7 @@ It's chess, mate!
     class Game{
         <<abstract>>
         ~Outcome Outcome
-        +uint Move
+        +uint MoveCount
         +bool CurrentPlayer
         ~IChess Chess
         ~List _moves

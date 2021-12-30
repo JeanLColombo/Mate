@@ -112,7 +112,7 @@ namespace Mate.Tests.Core.Elements.Rules
             Assert.True(chess.IsChecked<Classical>(true));
         }
 
-        private IReadOnlyList<Tuple<Move, int, IPiece, int>> GameOfChessData 
+        public static IReadOnlyList<Tuple<Move, int, IPiece, int>> GameOfChessData 
             => new List<Tuple<Move, int, IPiece, int>>()
                 {
                     new Tuple<Move, int, IPiece, int>(

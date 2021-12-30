@@ -14,14 +14,14 @@ namespace Mate.Core.Abstractions
         Outcome Outcome { get; }
 
         /// <summary>
-        ///  The current move being played on this <see cref="IGame"/> instance,
-        ///  starting at one.
+        /// The current move count being played on this <see cref="IGame"/> instance,
+        /// starting at zero.
         /// </summary>
         /// <value>A game move is a sequence of turns taken by players since the
         /// start of the game.
         /// Differently then what's usual in chess,
-        /// it Will start at <see langword="0"/>.</value>
-        uint Move { get; }
+        /// it will start at <see langword="0"/>.</value>
+        uint MoveCount { get; }
 
         /// <summary>
         /// The current player to make the next move.
@@ -45,7 +45,7 @@ namespace Mate.Core.Abstractions
         IReadOnlyCollection<MoveEntry> MoveEntries { get; }
 
         /// <summary>
-        /// Notational list of moves, occuring at each chess <see cref="IGame.Move"/>. 
+        /// Notational list of moves, occuring at each chess <see cref="IGame.MoveCount"/>. 
         /// </summary>
         IReadOnlyList<IReadOnlyList<Move>> Moves { get; }
 
