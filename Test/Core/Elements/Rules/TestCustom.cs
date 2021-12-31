@@ -18,9 +18,6 @@ namespace Mate.Tests.Core.Elements.Rules
             Assert.Empty(chess.Position);
             Assert.Empty(chess.BannedMoves);
             Assert.Empty(chess.Position);
-            //TODO: Implement chess legality.
-            //TODO: Implement Process Move.
-            // Assert.All(new []{false, true}, c => Assert.Empty(chess.AvailableMoves(c)));
         }
 
         [Fact]

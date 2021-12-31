@@ -120,7 +120,7 @@ namespace Mate.Core.Abstractions
                     default:
                         break;
                 }
-                return p.Color ? value : -value;
+                return p.Color ? -value : +value;
             }).Sum();
 
         /// <summary>

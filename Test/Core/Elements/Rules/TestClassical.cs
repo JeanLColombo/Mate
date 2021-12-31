@@ -313,6 +313,13 @@ namespace Mate.Tests.Core.Elements.Rules
                         21),
                     new Tuple<Move, int, IPiece, int>(
                         new Move(
+                            new Square(Files.d, Ranks.two),
+                            new Square(Files.d, Ranks.three), MoveType.Normal),
+                        22,
+                        null,
+                        21),
+                    new Tuple<Move, int, IPiece, int>(
+                        new Move(
                             new Square(Files.b, Ranks.eight), 
                             new Square(Files.c, Ranks.six), MoveType.Normal), 
                         35,
@@ -322,7 +329,7 @@ namespace Mate.Tests.Core.Elements.Rules
                         new Move(
                             new Square(Files.b, Ranks.seven), 
                             new Square(Files.b, Ranks.eight), MoveType.PromoteToKnight), 
-                        26,
+                        25,
                         null,
                         21),
                     new Tuple<Move, int, IPiece, int>(
@@ -334,9 +341,9 @@ namespace Mate.Tests.Core.Elements.Rules
                         20),
                     new Tuple<Move, int, IPiece, int>(
                         new Move(
-                            new Square(Files.d, Ranks.two), 
-                            new Square(Files.d, Ranks.three), MoveType.Normal), 
-                        22,
+                            new Square(Files.d, Ranks.three), 
+                            new Square(Files.d, Ranks.four), MoveType.Normal), 
+                        20,
                         null,
                         20),
                     new Tuple<Move, int, IPiece, int>(
