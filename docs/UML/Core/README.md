@@ -183,7 +183,7 @@ class Program
         var board = new Dictionary<Square,int>();
         
         Console.WriteLine(
-            "\nCreate a board, in a dictionary storing ints");
+            "\nCreate a board, in a dictionary storing integers");
         
         int i = 1;
         
@@ -216,7 +216,7 @@ Test if s1 and s2 are equal
 False
 True
 
-Create a board, in a dictionary storing ints
+Create a board, in a dictionary storing integers
 
 Access all elements in the board
 	Square a1
@@ -266,14 +266,14 @@ public class Square : Tuple<Files, Ranks>
 }
 ```
 
-`Program.Main()` was executed, yilding the following output:
+`Program.Main()` was executed, yielding the following output:
 
 ```
 Test if s1 and s2 are equal
 False
 True
 
-Create a board, in a dictionary storing ints
+Create a board, in a dictionary storing integers.
 
 Access all elements in the board
 	Square a1
@@ -289,9 +289,9 @@ Access element via key
 3
 ```
 
-`Square`'s `s1` and `s2` were still not equals, because they are different objetcs, and the `==` operator was not overridden. 
+`Square`'s `s1` and `s2` were still not equals, because they are different objects, and the `==` operator was not overridden. 
 
-To further ilustrate, the following code was implemented:
+To further illustrate, the following code was implemented:
 
 ```csharp
 foreach (Files f in Enum.GetValues(typeof(Files)))
@@ -322,4 +322,4 @@ Which outputs:
 
 ## Testing the code 
 
-The previous code was implementd andd tested using [Conding Ground's C# online compiler (Mono v5.2.2)](https://www.tutorialspoint.com/compile_csharp_online.php).
+The previous code was implemented andd tested using [Coding Ground's C# online compiler (Mono v5.2.2)](https://www.tutorialspoint.com/compile_csharp_online.php).

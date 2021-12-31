@@ -15,6 +15,7 @@
         "startmermaid",
         "startuml",
         "stefanzweifel",
+        "typeof",
         "Xunit"
     ]
 }

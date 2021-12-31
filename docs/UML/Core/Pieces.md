@@ -20,7 +20,6 @@
 ```
 </details>
 
-
 ![Pawn and Knight Class Diagram](Figures/pawn_knight.svg)
 <details>
     <summary>Pawn and Knight Class Diagram</summary>
