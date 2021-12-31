@@ -1,0 +1,35 @@
+# Update docs\index.md on main
+
+name: Update Index.md
+on:
+  push:
+    branches: [ main ]
+    paths: 
+      - 'README.md'
+  
+jobs:
+  update_index:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Make README.md the new Index.md
+        run: |
+          cp README.md docs
+          cd docs
+          rm index.md
+          mv README.md index.md
+          cd ..
+
+      - name: Commit changes 
+        run: |
+          git config --local user.email "action@github.com" 
+          git config --local user.name "Github Action"
+          git commit -m "Update index.md" -a
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@main
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+

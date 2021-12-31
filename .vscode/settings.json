@@ -4,14 +4,17 @@
         "brightgreen",
         "cname",
         "cref",
+        "docit",
         "endmermaid",
         "enduml",
         "jeffreytse",
         "lcov",
         "mathjax",
+        "nielsvaneck",
         "plantuml",
         "startmermaid",
         "startuml",
+        "stefanzweifel",
         "Xunit"
     ]
 }
