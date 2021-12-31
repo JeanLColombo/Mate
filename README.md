@@ -1,11 +1,47 @@
 # Mate
 
-It's chess, mate!
+Mate is a passion project. It is my very own chess C# library and related API's. 
 
-# Core
+# Contents
+
+* [Core UML Class Diagrams](#core-uml-class-diagrams)
+    * [Board](#board)
+    * [Chess](#chess)
+    * [Game](#game)
+    * [Moves](#moves)
+    * [Pieces](#pieces)
+    * [Extensions](#extensions)
+
+# Core UML Class Diagrams
+
+The core library can be found in `Source\Core`. It implements a chess match between players. It contains several different classes, representing multiple aspects of a game o chess. Bellow is a subdivision of each specific design choices for this class:
+* Board;
+* Chess;
+* Game;
+* Moves;
+* Pieces.
+
+Afterwards, a brief description of all extension classes is presented.
 
 ## Board
 
+Represents a board of chess, containing several different pieces, placed at specific squares.
+
+### Classes
+
+* [Source\Core\Abstractions\Enumerations.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/Enumerations.cs);
+    * Implements `Files` and `Ranks` enums;
+* [Source\Core\Abstractions\IPiece.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/IPiece.cs);
+* [Source\Core\Abstractions\Square.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/Square.cs);
+    * Inherits from `Tuple`;
+* [Source\Core\Elements\Board.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Elements/Board.cs).
+
+### Diagrams
+
+![Board Class Diagram](docs/Figures/board.svg)
+<details>
+    <summary>Board Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Files{
@@ -62,9 +98,27 @@ It's chess, mate!
     Square --* "0..64" Board
     IPiece --* "0..64" Board
 ```
+</details>
 
 ## Chess
 
+Represents the chess rules.
+
+### Classes
+
+* [Source\Core\Abstractions\Chess.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/Chess.cs);
+* [Source\Core\Abstractions\IChess.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/IChess.cs);
+* [Source\Core\Abstractions\MoveEntry.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/MoveEntry.cs);
+* [Source\Core\Elements\Board.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Elements/Board.cs);
+* [Source\Core\Elements\Rules\Custom.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Elements/Rules/Custom.cs).
+* [Source\Core\Elements\Rules\Classical.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Elements/Rules/Classical.cs)
+
+### Diagrams
+
+![Chess Class Diagram](docs/Figures/chess.svg)
+<details>
+    <summary>Chess Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class IChess{
@@ -127,116 +181,26 @@ It's chess, mate!
     Custom --|> Chess
     Classical --|> Custom
 ```
-
-## Extensions
-### Extensions Enumerations
-
-```mermaid
-    classDiagram
-    class Through{
-        <<enumeration>>
-        Files
-        Ranks
-        MainDiagonal
-        OppositeDiagonal
-    }
-```
-
-### Attacking
-
-```mermaid
-    classDiagram
-    class Attacking{
-        <<static>>
-        +AttackSquare(this Piece, Square, IReadOnlyDictionary~Square,IPiece~)$ Move
-        +Attack(this Piece, Square, bool, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
-        -AttackSquare(this Square, Square, IReadOnlyDictionary~Square,IPiece~)$ Move
-        -Attack(this Square, Through, bool, int, IReadOnlyDictionary~Square,IPiece~)$ HashSet~Move~
-    }
-```
-
-### Helper
-
-```mermaid
-    classDiagram
-    class Helper{
-        <<static>>
-        +AddNonNull(this List~T~, T)$ bool
-        +Unify(this IReadOnlyCollection~T~, IReadOnlyCollection~T~)$ IReadOnlyCollection~T~
-        +HasMoved(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ bool 
-        +InBetweenSquares(this Square, Square)$ IReadOnlyCollection~Square~
-    }
-```
-
-### Legality 
-
-```mermaid
-    classDiagram
-    class Legality{
-        <<static>>
-        +IsChecked(this IChess, bool)$ bool
-        +IsLegal<TChess>(this IChess, Move)$ bool 
-        +IsCastlingLegal<TChess>(this IChess, Move)$ bool 
-    }
-```
-### Maneuverability
-
-```mermaid
-    classDiagram
-    class Maneuverability{
-        <<static>>
-        +MovePlus(this Square, int, int)$ Square
-        +Maneuver(this Square, Through, int)$ Square
-    }
-```
-
-### Setup
-
-```mermaid
-    classDiagram
-    class Setup{
-        <<static>>
-        +AddPiece(this Board, Square, bool)$ bool
-        +AddPiece(this Chess, Square, IPiece)$ bool
-        +RemovePiece(this Chess, Square, out IPiece)$ bool
-        +Copy(this Board, IReadOnlyDictionary~Square,IPiece~)$
-    }
-```
-
-## Specialized Moves
-
-### Pawn Passant
-
-```mermaid
-    classDiagram
-    class PawnPassant{
-        <<static>>
-        +EnPassant(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
-    }
-```
-
-### Pawn Rush
-
-```mermaid
-    classDiagram
-    class PawnRush{
-        <<static>>
-        +PawnFirstMove(this IPiece, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
-    }
-```
-
-### Castling
-
-```mermaid
-    classDiagram
-    class Castling{
-        <<static>>
-        +Castles(this IPiece, IReadOnlyDictionary~Square,IPiece, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
-    }
-```
+</details>
 
 ## Game
 
+Represents the game dynamics and outcome.
+
+### Classes
+
+* [Source\Core\Abstractions\Enumerations.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/Enumerations.cs);
+* [Source\Core\Abstractions\Game.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/Game.cs);
+* [Source\Core\Abstractions\IChess.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/IChess.cs);
+* [Source\Core\Abstractions\IGame.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/IGame.cs);
+* [Source\Core\Elements\Games\Standard.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Elements/Games/Standard.cs);
+
+### Diagrams
+
+![Game Class Diagram](docs/Figures/game.svg)
+<details>
+    <summary>Game Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Outcome{
@@ -287,9 +251,28 @@ It's chess, mate!
     Game ..|> IGame
     Standard~TChess~ --|> Game
 ```
+</details>
 
 ## Moves
 
+Describes piece maneuvers on the board, such as `MoveType.Capture` or `MoveType.Castle`.
+
+### Classes
+
+* [Source\Core\Abstractions\Enumerations.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/Enumerations.cs);
+    * Implements `Files` and `Ranks` enums;
+* [Source\Core\Abstractions\Move.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/Move.cs);
+* [Source\Core\Abstractions\MoveEntry.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/MoveEntry.cs);
+* [Source\Core\Abstractions\Square.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/Square.cs);
+    * Inherits from `Tuple`;
+* [Source\Core\Elements\Board.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Elements/Board.cs).
+
+### Diagrams
+
+![Move Class Diagram](docs/Figures/move.svg)
+<details>
+    <summary>Game Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class MoveType{
@@ -341,11 +324,30 @@ It's chess, mate!
     Move --* MoveEntry
     Board --* MoveEntry
 ```
+</details>
 
 ## Pieces
 
+Represents chess pieces.
+
+### Classes
+
+* [Source\Core\Abstractions\IPiece.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/IPiece.cs);
+* [Source\Core\Abstractions\Piece.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/Piece.cs);
+* [Source\Core\Abstractions\Royalty.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/Royalty.cs);
+* [Source\Core\Elements\Pieces\Bishop.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Elements/Pieces/Bishop.cs);
+* [Source\Core\Elements\Pieces\King.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Elements/Pieces/King.cs);
+* [Source\Core\Elements\Pieces\Knight.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Elements/Pieces/Knight.cs);
+* [Source\Core\Elements\Pieces\Pawn.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Elements/Pieces/Pawn.cs);
+* [Source\Core\Elements\Pieces\Queen.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Elements/Pieces/Queen.cs);
+* [Source\Core\Elements\Pieces\Rook.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Elements/Pieces/Rook.cs).
+
 ### Abstract Piece Definition
 
+![Abstract Piece Class Diagram](docs/Figures/abstract_piece.svg)
+<details>
+    <summary>Abstract Piece Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class IPiece{
@@ -362,9 +364,14 @@ It's chess, mate!
     }
     Piece ..|> IPiece
 ```
+</details>
 
 ### Pawn and Knight
 
+![Pawn and Knight Class Diagram](docs/Figures/pawn_knight.svg)
+<details>
+    <summary>Pawn and Knight Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Piece{
@@ -388,9 +395,14 @@ It's chess, mate!
     Piece <|-- Pawn
     Piece <|-- Knight
 ```
+</details>
 
 ### Bishop and Rook
 
+![Bishop and Rook Class Diagram](docs/Figures/bishop_rook.svg)
+<details>
+    <summary>Bishop and Rook Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Piece{
@@ -411,9 +423,14 @@ It's chess, mate!
     Piece <|-- Bishop
     Piece <|-- Rook
 ```
+</details>
 
 ### King and Queen
 
+![King and Queen Class Diagram](docs/Figures/king_queen.svg)
+<details>
+    <summary>King and Queen Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Piece{
@@ -440,3 +457,178 @@ It's chess, mate!
     Royalty <|-- Queen
     Royalty <|-- King
 ```
+</details>
+
+## Extensions
+
+### Classes
+
+* [Source\Core\Abstractions\Enumerations.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/Enumerations.cs);
+* [Source\Core\Extensions\Attacking.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Extensions/Attacking.cs);
+* [Source\Core\Extensions\Helper.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Extensions/Helper.cs);
+* [Source\Core\Extensions\Legality.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Extensions/Legality.cs);
+* [Source\Core\Extensions\Maneuverability.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Extensions/Maneuverability.cs);
+* [Source\Core\Extensions\Setup.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Extensions/Setup.cs);
+* [Source\Core\Extensions\SpecializedMoves\Castling.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Extensions/SpecializedMoves/Castling.cs);
+* [Source\Core\Extensions\SpecializedMoves\PawnPassant.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Extensions/SpecializedMoves/PawnPassant.cs);
+* [Source\Core\Extensions\SpecializedMoves\PawnRush.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Extensions/SpecializedMoves/PawnRush.cs).
+
+### Extensions Enumerations
+
+![Enumerations Class Diagram](docs/Figures/ext_enums.svg)
+<details>
+    <summary>Enumerations Class Diagram</summary>
+    
+```mermaid
+    classDiagram
+    class Through{
+        <<enumeration>>
+        Files
+        Ranks
+        MainDiagonal
+        OppositeDiagonal
+    }
+```
+</details>
+
+### Attacking
+
+![Attacking Class Diagram](docs/Figures/ext_attacking.svg)
+<details>
+    <summary>Attacking Class Diagram</summary>
+    
+```mermaid
+    classDiagram
+    class Attacking{
+        <<static>>
+        +AttackSquare(this Piece, Square, IReadOnlyDictionary~Square,IPiece~)$ Move
+        +Attack(this Piece, Square, bool, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
+        -AttackSquare(this Square, Square, IReadOnlyDictionary~Square,IPiece~)$ Move
+        -Attack(this Square, Through, bool, int, IReadOnlyDictionary~Square,IPiece~)$ HashSet~Move~
+    }
+```
+</details>
+
+### Helper
+
+![Helper Class Diagram](docs/Figures/ext_helper.svg)
+<details>
+    <summary>Helper Class Diagram</summary>
+    
+```mermaid
+    classDiagram
+    class Helper{
+        <<static>>
+        +AddNonNull(this List~T~, T)$ bool
+        +Unify(this IReadOnlyCollection~T~, IReadOnlyCollection~T~)$ IReadOnlyCollection~T~
+        +HasMoved(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ bool 
+        +InBetweenSquares(this Square, Square)$ IReadOnlyCollection~Square~
+    }
+```
+</details>
+
+### Legality 
+
+![Legality Class Diagram](docs/Figures/ext_legality.svg)
+<details>
+    <summary>Legality Class Diagram</summary>
+    
+```mermaid
+    classDiagram
+    class Legality{
+        <<static>>
+        +IsChecked(this IChess, bool)$ bool
+        +IsLegal<TChess>(this IChess, Move)$ bool 
+        +IsCastlingLegal<TChess>(this IChess, Move)$ bool 
+    }
+```
+</details>
+
+### Maneuverability
+
+![Maneuverability Class Diagram](docs/Figures/ext_maneuver.svg)
+<details>
+    <summary>Maneuverability Class Diagram</summary>
+    
+```mermaid
+    classDiagram
+    class Maneuverability{
+        <<static>>
+        +MovePlus(this Square, int, int)$ Square
+        +Maneuver(this Square, Through, int)$ Square
+    }
+```
+</details>
+
+### Setup
+
+![Setup Class Diagram](docs/Figures/ext_setup.svg)
+<details>
+    <summary>Setup Class Diagram</summary>
+    
+```mermaid
+    classDiagram
+    class Setup{
+        <<static>>
+        +AddPiece(this Board, Square, bool)$ bool
+        +AddPiece(this Chess, Square, IPiece)$ bool
+        +RemovePiece(this Chess, Square, out IPiece)$ bool
+        +Copy(this Board, IReadOnlyDictionary~Square,IPiece~)$
+    }
+```
+</details>
+
+## Specialized Moves
+
+Specialized moves are moves that requires additional information, that the piece might not have, such as historical `MoveEntry` data.
+
+### Pawn Passant
+
+Requires information regarding other pawns maneuvers on the board.
+
+![Passant Class Diagram](docs/Figures/ext_passant.svg)
+<details>
+    <summary>Passant Class Diagram</summary>
+    
+```mermaid
+    classDiagram
+    class PawnPassant{
+        <<static>>
+        +EnPassant(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
+    }
+```
+</details>
+
+### Pawn Rush
+
+Pawns must not have been moved.
+
+![Rush Class Diagram](docs/Figures/ext_rush.svg)
+<details>
+    <summary>Rush Class Diagram</summary>
+    
+```mermaid
+    classDiagram
+    class PawnRush{
+        <<static>>
+        +PawnFirstMove(this IPiece, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
+    }
+```
+</details>
+
+### Castling
+
+Castling rules must apply.
+
+![Castles Class Diagram](docs/Figures/ext_castles.svg)
+<details>
+    <summary>Castles Class Diagram</summary>
+    
+```mermaid
+    classDiagram
+    class Castling{
+        <<static>>
+        +Castles(this IPiece, IReadOnlyDictionary~Square,IPiece, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
+    }
+```
+</details>
