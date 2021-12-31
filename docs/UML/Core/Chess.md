@@ -1,3 +1,7 @@
+![Chess Class Diagram](Figures/chess.svg)
+<details>
+    <summary>Chess Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class IChess{
@@ -60,3 +64,4 @@
     Custom --|> Chess
     Classical --|> Custom
 ```
+</details>

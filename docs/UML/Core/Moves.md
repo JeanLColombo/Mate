@@ -1,3 +1,7 @@
+![Move Class Diagram](Figures/move.svg)
+<details>
+    <summary>Game Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class MoveType{
@@ -49,3 +53,4 @@
     Move --* MoveEntry
     Board --* MoveEntry
 ```
+</details>

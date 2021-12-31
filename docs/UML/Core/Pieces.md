@@ -1,3 +1,7 @@
+![Abstract Piece Class Diagram](Figures/abstract_piece.svg)
+<details>
+    <summary>Abstract Piece Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class IPiece{
@@ -14,6 +18,13 @@
     }
     Piece ..|> IPiece
 ```
+</details>
+
+
+![Pawn and Knight Class Diagram](Figures/pawn_knight.svg)
+<details>
+    <summary>Pawn and Knight Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Piece{
@@ -37,6 +48,12 @@
     Piece <|-- Pawn
     Piece <|-- Knight
 ```
+</details>
+
+![Bishop and Rook Class Diagram](Figures/bishop_rook.svg)
+<details>
+    <summary>Bishop and Rook Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Piece{
@@ -57,6 +74,12 @@
     Piece <|-- Bishop
     Piece <|-- Rook
 ```
+</details>
+
+![King and Queen Class Diagram](Figures/king_queen.svg)
+<details>
+    <summary>King and Queen Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Piece{
@@ -83,3 +106,4 @@
     Royalty <|-- Queen
     Royalty <|-- King
 ```
+</details>

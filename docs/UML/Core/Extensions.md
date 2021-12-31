@@ -1,7 +1,7 @@
-# Extensions
-
-## Extensions Enumerations
-
+![Enumerations Class Diagram](Figures/ext_enums.svg)
+<details>
+    <summary>Enumerations Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Through{
@@ -12,9 +12,12 @@
         OppositeDiagonal
     }
 ```
+</details>
 
-## Attacking
-
+![Attacking Class Diagram](Figures/ext_attacking.svg)
+<details>
+    <summary>Attacking Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Attacking{
@@ -25,9 +28,12 @@
         -Attack(this Square, Through, bool, int, IReadOnlyDictionary~Square,IPiece~)$ HashSet~Move~
     }
 ```
+</details>
 
-## Helper
-
+![Helper Class Diagram](Figures/ext_helper.svg)
+<details>
+    <summary>Helper Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Helper{
@@ -38,20 +44,27 @@
         +InBetweenSquares(this Square, Square)$ IReadOnlyCollection~Square~
     }
 ```
+</details>
 
-## Legality 
-
+![Legality Class Diagram](Figures/ext_legality.svg)
+<details>
+    <summary>Legality Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Legality{
         <<static>>
         +IsChecked(this IChess, bool)$ bool
-        +IsLegal(this IChess, Move)$ bool 
-        +IsCastlingLegal(this IChess, Move)$ bool 
+        +IsLegal<TChess>(this IChess, Move)$ bool 
+        +IsCastlingLegal<TChess>(this IChess, Move)$ bool 
     }
 ```
-## Maneuverability
+</details>
 
+![Maneuverability Class Diagram](Figures/ext_maneuver.svg)
+<details>
+    <summary>Maneuverability Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Maneuverability{
@@ -60,9 +73,12 @@
         +Maneuver(this Square, Through, int)$ Square
     }
 ```
+</details>
 
-## Setup
-
+![Setup Class Diagram](Figures/ext_setup.svg)
+<details>
+    <summary>Setup Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Setup{
@@ -73,11 +89,13 @@
         +Copy(this Board, IReadOnlyDictionary~Square,IPiece~)$
     }
 ```
+</details>
 
-# Specialized Moves
 
-## Pawn Passant
-
+![Passant Class Diagram](Figures/ext_passant.svg)
+<details>
+    <summary>Passant Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class PawnPassant{
@@ -85,9 +103,12 @@
         +EnPassant(this IPiece, IReadOnlyDictionary~Square,IPiece~, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
     }
 ```
+</details>
 
-## Pawn Rush
-
+![Rush Class Diagram](Figures/ext_rush.svg)
+<details>
+    <summary>Rush Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class PawnRush{
@@ -95,9 +116,12 @@
         +PawnFirstMove(this IPiece, IReadOnlyDictionary~Square,IPiece~)$ IReadOnlyCollection~Move~
     }
 ```
+</details>
 
-## Castling
-
+![Castles Class Diagram](Figures/ext_castles.svg)
+<details>
+    <summary>Castles Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Castling{
@@ -105,3 +129,4 @@
         +Castles(this IPiece, IReadOnlyDictionary~Square,IPiece, IReadOnlyCollection~MoveEntry~)$ IReadOnlyCollection~Move~
     }
 ```
+</details>

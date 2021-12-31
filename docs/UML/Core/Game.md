@@ -1,3 +1,7 @@
+![Game Class Diagram](Figures/game.svg)
+<details>
+    <summary>Game Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Outcome{
@@ -48,3 +52,4 @@
     Game ..|> IGame
     Standard~TChess~ --|> Game
 ```
+</details>

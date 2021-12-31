@@ -1,3 +1,7 @@
+![Board Class Diagram](Figures/board.svg)
+<details>
+    <summary>Board Class Diagram</summary>
+    
 ```mermaid
     classDiagram
     class Files{
@@ -54,3 +58,4 @@
     Square --* "0..64" Board
     IPiece --* "0..64" Board
 ```
+</details>
