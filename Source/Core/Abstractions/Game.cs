@@ -67,8 +67,6 @@ namespace Mate.Core.Abstractions
             Chess = rules;
         }
 
-        //TODO: test this getScore().
-
         /// <summary>
         /// Calculates the current score, based on the <see cref="_captured"/> pieces. 
         /// Calculation is based on the <see cref="IPiece"/> implementation, as well 

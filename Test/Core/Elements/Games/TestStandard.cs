@@ -157,7 +157,6 @@ namespace Mate.Tests.Core.Elements.Games
             });
         }
 
-        //TODO: Refactor MoveCounts
         [Fact]
         public void TestStalemate()
         {
@@ -340,6 +339,5 @@ namespace Mate.Tests.Core.Elements.Games
                     Outcome.Stalemate,
                     10)
             };
-
     }
 }
