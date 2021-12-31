@@ -1,0 +1,14 @@
+# Compiles mermaid markdown
+
+name: Compile Mermaid on .md files
+
+on: [pull-request]
+
+jobs:
+  mermaid:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: render-md-mermaid
+        uses: nielsvaneck/render-md-mermaid@v2
+  
