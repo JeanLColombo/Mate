@@ -22,7 +22,7 @@ namespace Mate.Core.Abstractions
         /// start of the game.
         /// Differently then what's usual in chess,
         /// it will start at <see langword="0"/>.</value>
-        public uint MoveCount { get; protected set; }
+        public int MoveCount { get; protected set; }
 
         /// <summary>
         /// The current player to make a move.
@@ -62,7 +62,7 @@ namespace Mate.Core.Abstractions
                     message: "Cannot have a negative currentMove",
                     paramName: nameof(currentMove));
 
-            MoveCount = (uint)currentMove;
+            MoveCount = currentMove;
             CurrentPlayer = currentPlayer;
             Chess = rules;
         }
@@ -117,8 +117,6 @@ namespace Mate.Core.Abstractions
                     case Queen:
                         value = 9;
                         break;
-                    default:
-                        break;
                 }
                 return p.Color ? -value : +value;
             }).Sum();
@@ -136,7 +134,7 @@ namespace Mate.Core.Abstractions
 
         Outcome IGame.Outcome => Outcome;
 
-        uint IGame.MoveCount => MoveCount;
+        int IGame.MoveCount => MoveCount;
 
         bool IGame.CurrentPlayer => CurrentPlayer;
 

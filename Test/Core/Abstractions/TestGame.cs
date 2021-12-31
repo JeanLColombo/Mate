@@ -30,7 +30,7 @@ namespace Mate.Tests.Core.Abstractions
                     MoveType.Normal);
 
                 Assert.Equal(Outcome.Game, game.Outcome);
-                Assert.Equal((uint)moveOrder, game.MoveCount);
+                Assert.Equal(moveOrder, game.MoveCount);
                 Assert.Equal(player, game.CurrentPlayer);
                 Assert.False(game.ProcessMove(move));
                 Assert.Empty(game.CapturedPieces);

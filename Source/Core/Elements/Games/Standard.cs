@@ -65,27 +65,41 @@ namespace Mate.Core.Elements.Games
         /// is empty yields an exception.</exception>
         public override bool ProcessMove(Move move)
         {
+            // Check if player is moving a piece that matches
+            // his own set...
             if (Chess.Position[move.FromSquare].Color != CurrentPlayer)
                 return false;
 
+            // ... and if the move is being processed correctly
             if (!Chess.Process(move, out IPiece captured))
                 return false;
 
+            // Update game._moves
             if (CurrentPlayer) 
                 _moves.Add(Enumerable.Empty<Move>().ToList());
 
-            _moves.ElementAt((int)MoveCount).Add(move);
+            _moves.Last().Add(move);
 
+            // Update_ the MoveCount 
+            MoveCount = _moves.Count;
+
+            // Update the captured pieces
             if(!(captured is null)) 
                 _captured.Add(captured);
 
+            // Pass the turn to the other player
             CurrentPlayer = !CurrentPlayer;
             
+            // Update the outcome according to the next 
+            // players condition...
+            
+            // ... if under check...
             if (Chess.IsChecked<TChess>(CurrentPlayer))
                 Outcome = Outcome.Checked;
             else
                 Outcome = Outcome.Game;
 
+            // ... or if there are any moves available 
             if (Chess.AvailableMoves(CurrentPlayer).Count == 0)
             {
                 if (Outcome == Outcome.Checked)
@@ -93,12 +107,8 @@ namespace Mate.Core.Elements.Games
                 else
                     Outcome = Outcome.Stalemate;
             }
-            else
-            {
-                if (CurrentPlayer) 
-                    MoveCount++;
-            }
 
+            // Update complete... return true
             return true;
         }
     }

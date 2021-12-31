@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -55,7 +56,7 @@ namespace Mate.Tests.Core.Elements.Games
             Assert.False(game.ProcessMove(invalidMove));
 
             // It is black's first turn - make some assertions
-            AssertGame(game, 0, 20, 0, false, Outcome.Game);
+            AssertGame(game, 0, 20, 1, false, Outcome.Game);
 
             Assert.Single(game.MoveEntries);
             Assert.Equal(validMove, game.MoveEntries.Last().Move);
@@ -74,8 +75,9 @@ namespace Mate.Tests.Core.Elements.Games
             int loop = 0;
             int score = 0;
             bool player = true;
-            uint moves = 0;
+            int moves = 0;
             Outcome outcome = Outcome.Game;
+            int counter = 0;
 
             // Play the game
             Assert.All(gameData, tuple => {
@@ -116,7 +118,7 @@ namespace Mate.Tests.Core.Elements.Games
 
                 player = !player;
 
-                if (player) moves++;
+                if (!player) moves++;
 
                 if (game.AvailableMoves().Count == 0) 
                     outcome = Outcome.Checkmate;
@@ -129,17 +131,69 @@ namespace Mate.Tests.Core.Elements.Games
                     outcome = Outcome.Checked;
             });
 
-            AssertGame(game, -17, 0, 16, true, outcome);
+            // Post-game assertions
+            AssertGame(game, -17, 0, 17, true, outcome);
             Assert.Equal(Outcome.Checkmate, outcome);
+
+            // Assert game.Moves
+            Assert.Equal((int)moves, game.Moves.Count);
+            Assert.All(game.Moves, moves =>
+            {
+                // Every player played each move
+                Assert.Equal(2, moves.Count);
+
+                Assert.All(moves, move =>
+                {
+                    // Assert every move
+                    var moveEntry = game.MoveEntries.ElementAt(counter);
+
+                    Assert.Equal(moveEntry.Move, move);
+                    Assert.Equal(player, moveEntry.Position[move.FromSquare].Color);
+
+                    // Update assertion metrics
+                    counter++;
+                    player = !player;
+                });
+            });
         }
 
-        //TODO: Test stalemate.
+        //TODO: Refactor MoveCounts
+        [Fact]
+        public void TestStalemate()
+        {
+            // Prepare a classical standard game
+            IGame game = new Standard<Classical>();
+
+            // Load stalemate game data
+            Assert.All(StalemateGameData, data =>
+            {
+
+                // Separate data
+                var move = data.Item1;
+                var outcome = data.Item2;
+                var score = data.Item3;
+
+                // Process move
+                Assert.True(game.ProcessMove(move));
+
+                // Make assertions
+                Assert.Equal(outcome, game.Outcome);
+                Assert.Equal(score, game.Score);
+            });
+
+            // Post-game assertions
+            Assert.Empty(game.AvailableMoves());
+            Assert.Equal(Outcome.Stalemate, game.Outcome);
+            Assert.Equal(10, (int)game.MoveCount);
+            Assert.Equal(10, game.Moves.Count);
+            Assert.Single(game.Moves.Last());
+        }
 
         private void AssertGame(
             IGame game,
             int score,
             int availableMoves,
-            uint numberOfMoves,
+            int numberOfMoves,
             bool player,
             Outcome outcome)
         {
@@ -149,5 +203,143 @@ namespace Mate.Tests.Core.Elements.Games
             Assert.Equal(player, game.CurrentPlayer);
             Assert.Equal(outcome, game.Outcome);
         }
+
+        public static IReadOnlyList<Tuple<Move, Outcome, int>> StalemateGameData 
+            => new List<Tuple<Move, Outcome, int>>() {
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.e, Ranks.two),
+                        new Square(Files.e, Ranks.three),
+                        MoveType.Normal),
+                    Outcome.Game,
+                    0),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.a, Ranks.seven),
+                        new Square(Files.a, Ranks.five),
+                        MoveType.Rush),
+                    Outcome.Game,
+                    0),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.d, Ranks.one),
+                        new Square(Files.h, Ranks.five),
+                        MoveType.Normal),
+                    Outcome.Game,
+                    0),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.a, Ranks.eight),
+                        new Square(Files.a, Ranks.six),
+                        MoveType.Normal),
+                    Outcome.Game,
+                    0),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.h, Ranks.five),
+                        new Square(Files.a, Ranks.five),
+                        MoveType.Capture),
+                    Outcome.Game,
+                    1),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.h, Ranks.seven),
+                        new Square(Files.h, Ranks.five),
+                        MoveType.Rush),
+                    Outcome.Game,
+                    1),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.h, Ranks.two),
+                        new Square(Files.h, Ranks.four),
+                        MoveType.Rush),
+                    Outcome.Game,
+                    1),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.a, Ranks.six),
+                        new Square(Files.h, Ranks.six),
+                        MoveType.Normal),
+                    Outcome.Game,
+                    1),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.a, Ranks.five),
+                        new Square(Files.c, Ranks.seven),
+                        MoveType.Capture),
+                    Outcome.Game,
+                    2),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.f, Ranks.seven),
+                        new Square(Files.f, Ranks.six),
+                        MoveType.Normal),
+                    Outcome.Game,
+                    2),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.c, Ranks.seven),
+                        new Square(Files.d, Ranks.seven),
+                        MoveType.Capture),
+                    Outcome.Checked,
+                    3),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.e, Ranks.eight),
+                        new Square(Files.f, Ranks.seven),
+                        MoveType.Normal),
+                    Outcome.Game,
+                    3),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.d, Ranks.seven),
+                        new Square(Files.b, Ranks.seven),
+                        MoveType.Capture),
+                    Outcome.Game,
+                    4),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.d, Ranks.eight),
+                        new Square(Files.d, Ranks.three),
+                        MoveType.Normal),
+                    Outcome.Game,
+                    4),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.b, Ranks.seven),
+                        new Square(Files.b, Ranks.eight),
+                        MoveType.Capture),
+                    Outcome.Game,
+                    7),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.d, Ranks.three),
+                        new Square(Files.h, Ranks.seven),
+                        MoveType.Normal),
+                    Outcome.Game,
+                    7),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.b, Ranks.eight),
+                        new Square(Files.c, Ranks.eight),
+                        MoveType.Capture),
+                    Outcome.Game,
+                    10),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.f, Ranks.seven),
+                        new Square(Files.g, Ranks.six),
+                        MoveType.Normal),
+                    Outcome.Game,
+                    10),
+                new Tuple<Move, Outcome, int>(
+                    new Move(
+                        new Square(Files.c, Ranks.eight),
+                        new Square(Files.e, Ranks.six),
+                        MoveType.Normal),
+                    Outcome.Stalemate,
+                    10)
+            };
+
     }
 }

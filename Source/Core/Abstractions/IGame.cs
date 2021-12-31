@@ -21,7 +21,7 @@ namespace Mate.Core.Abstractions
         /// start of the game.
         /// Differently then what's usual in chess,
         /// it will start at <see langword="0"/>.</value>
-        uint MoveCount { get; }
+        int MoveCount { get; }
 
         /// <summary>
         /// The current player to make the next move.
