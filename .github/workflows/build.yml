@@ -37,6 +37,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.base_ref }}
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
@@ -79,5 +81,6 @@ jobs:
           barecheck-github-app-token: ${{ secrets.BARECHECK_GITHUB_APP_TOKEN }}
           lcov-file: "./lcov.info"
           base-lcov-file: "./base_lcov.info"
+          minimum-ratio: 0 # Fails Github action once code coverage is decreasing
           send-summary-comment: true
           show-annotations: "warning"

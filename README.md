@@ -63,6 +63,71 @@ It's chess, mate!
     IPiece --* "0..64" Board
 ```
 
+## Chess
+
+```mermaid
+    classDiagram
+    class IChess{
+        <<Interface>>
+        IReadOnlyDictionary~Square,IPiece~ Position
+        IReadOnlyCollection~MoveEntry~ MoveEntries
+        AvailableMoves(bool)* IReadOnlyCollection~Move~
+        Process(Move, out IPiece)* bool
+    }
+    class Chess{
+        <<Abstract>>
+        -Board Board
+        -List~MoveEntry~ _moveEntries
+        +IReadOnlyDictionary~Square,IPiece~ Position
+        +IReadOnlyCollection~MoveEntry~ MoveEntries
+        +Chess()
+        +Chess(+IReadOnlyDictionary~Square,IPiece~)
+        +Chess(IReadOnlyDictionary~Square,IPiece~,IReadOnlyCollection~MoveEntry~)
+        +PlaceAt(Square, IPiece) 
+        +Clear(Square)
+        +Add(MoveEntry) 
+        +AllMoves(bool) IReadOnlyCollection~Move~
+        +AvailableMoves(bool)* IReadOnlyCollection~Move~
+        +Process(Move, out IPiece)* bool
+    }
+    class Board{
+        -Dictionary~Square,IPiece~ Pieces
+        +IReadOnlyDictionary~Square,IPiece~ Position 
+        +Board()
+        +Board(+IReadOnlyDictionary~Square,IPiece~)
+    }
+    class MoveEntry{
+        +Move Move
+        +IReadOnlyDictionary~Square,IPiece~ Position
+        -Board board
+        +MoveEntry(Move, IReadOnlyDictionary~Square,IPiece~)
+        +MoveEntry(Move, Board)
+    }
+    class Custom{
+        +IEnumerable~MoveType~ BannedMoves
+        +Custom(IReadOnlyDictionary~Square,IPiece~)
+        +Custom(IReadOnlyDictionary~Square,IPiece~, HashSet~MoveType~)
+        +Custom(Custom)
+        +AllMoves(bool) IReadOnlyCollection~Move~
+        +AvailableMoves(bool) IReadOnlyCollection~Move~
+        +Process(Move, out IPiece) bool
+        -ProcessNormal(Move)
+        -ProcessCapture(Move)
+        -ProcessEnPassant(Move, out IPiece)
+        -ProcessCastle(Move)
+        -ProcessPromotion(Move, out IPiece)
+    }
+    class Classical{
+        -IReadOnlyDictionary~Square, IPiece~ StandardPosition
+        +Classical()
+    }
+    Board --* "1" IChess
+    MoveEntry --* "*" IChess
+    Chess ..|> IChess
+    Custom --|> Chess
+    Classical --|> Custom
+```
+
 ## Extensions
 ### Extensions Enumerations
 
@@ -174,6 +239,13 @@ It's chess, mate!
 
 ```mermaid
     classDiagram
+    class Outcome{
+        <<enumeration>>
+        Game
+        Checked
+        Stalemate
+        Checkmate
+    }
     class IChess{
         <<Interface>>
         IReadOnlyDictionary~Square,IPiece~ Position
@@ -183,59 +255,37 @@ It's chess, mate!
     }
     class IGame{
         <<Interface>>
-        int CurrentMove
+        Outcome Outcome
+        int MoveCount
         bool CurrentPlayer
-        IChess Chess
+        IReadOnlyDictionary~Square, IPiece~ Position
+        IReadOnlyCollection~MoveEntry~ MoveEntries
+        IReadOnlyList~IReadOnlyList~Move~~ Moves
+        IReadOnlyCollection~IPiece~ CapturedPieces
+        int Score
         ProcessMove(Move) bool
+        AvailableMoves() IReadOnlyCollection~Move~
     }
-    class Chess{
-        <<Abstract>>
-        -Board Board
-        -List~MoveEntry~ _moveEntries
-        +IReadOnlyDictionary~Square,IPiece~ Position
-        +IReadOnlyCollection~MoveEntry~ MoveEntries
-        +Chess()
-        +Chess(+IReadOnlyDictionary~Square,IPiece~)
-        +Chess(IReadOnlyDictionary~Square,IPiece~,IReadOnlyCollection~MoveEntry~)
-        +PlaceAt(Square, IPiece) 
-        +Clear(Square)
-        +Add(MoveEntry) 
-        +AllMoves(bool) IReadOnlyCollection~Move~
-        +AvailableMoves(bool)* IReadOnlyCollection~Move~
-        +Process(Move, out IPiece)* bool
+    class Game{
+        <<abstract>>
+        ~Outcome Outcome
+        +int MoveCount
+        +bool CurrentPlayer
+        ~IChess Chess
+        ~List _moves
+        ~List _captured
+        +Game(int, bool, IChess)
+        ~GetScore() int
+        +ProcessMove(Move)*
     }
-    class Board{
-        -Dictionary~Square,IPiece~ Pieces
-        +IReadOnlyDictionary~Square,IPiece~ Position 
-        +Board()
-        +Board(+IReadOnlyDictionary~Square,IPiece~)
+    class Standard~TChess~{
+        +Standard()
+        +ProcessMove(Move)
     }
-    class MoveEntry{
-        +Move Move
-        +IReadOnlyDictionary~Square,IPiece~ Position
-        -Board board
-        +MoveEntry(Move, IReadOnlyDictionary~Square,IPiece~)
-        +MoveEntry(Move, Board)
-    }
-    class Custom{
-        +IEnumerable~MoveType~ BannedMoves
-        +Custom(IReadOnlyDictionary~Square,IPiece~)
-        +Custom(IReadOnlyDictionary~Square,IPiece~, HashSet~MoveType~)
-        +Custom(Custom)
-        +AllMoves(bool) IReadOnlyCollection~Move~
-        +AvailableMoves(bool) IReadOnlyCollection~Move~
-        +Process(Move, out IPiece) bool
-        -ProcessNormal(Move)
-        -ProcessCapture(Move)
-        -ProcessEnPassant(Move, out IPiece)
-        -ProcessCastle(Move)
-        -ProcessPromotion(Move, out IPiece)
-    }
-    Board --* "1" IChess
-    MoveEntry --* "*" IChess
-    Chess ..|> IChess
+    Outcome --* "1" IGame
     IChess --* "1" IGame
-    Custom ..|> Chess
+    Game ..|> IGame
+    Standard~TChess~ --|> Game
 ```
 
 ## Moves
@@ -389,29 +439,4 @@ It's chess, mate!
     Piece <|-- Royalty
     Royalty <|-- Queen
     Royalty <|-- King
-```
-
-# Unit Testing Performance
-
-```shell
-A total of 1 test files matched the specified pattern.
-
-Passed!  - Failed:     0, Passed:   203, Skipped:     0, Total:   156, Duration: 99 ms - Core.dll (net5.0)
-
-Calculating coverage result...
-  Generating report '..\.coverage\lcov.info'
-
-+--------+------+--------+--------+
-| Module | Line | Branch | Method |
-+--------+------+--------+--------+
-| Mate   | 100% | 100%   | 100%   |
-+--------+------+--------+--------+
-
-+---------+------+--------+--------+
-|         | Line | Branch | Method |
-+---------+------+--------+--------+
-| Total   | 100% | 100%   | 100%   |
-+---------+------+--------+--------+
-| Average | 100% | 100%   | 100%   |
-+---------+------+--------+--------+
 ```
