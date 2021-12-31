@@ -2,7 +2,7 @@
 
 name: Compile Mermaid on .md files
 
-on: [pull-request]
+on: [pull_request]
 
 jobs:
   mermaid:
