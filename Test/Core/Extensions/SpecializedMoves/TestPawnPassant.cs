@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
-using Core.Abstractions;
-using Core.Elements;
-using Core.Elements.Pieces;
-using Core.Extensions;
-using Core.Extensions.SpecializedMoves;
-using Tests.Core.Mocks;
+using Mate.Core.Abstractions;
+using Mate.Core.Elements;
+using Mate.Core.Elements.Pieces;
+using Mate.Core.Extensions;
+using Mate.Core.Extensions.SpecializedMoves;
+using Mate.Tests.Core.Mocks;
 
-namespace Tests.Core.Extensions
+namespace Mate.Tests.Core.Extensions
 {
     public class TestPawnPassant
     {

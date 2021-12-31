@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Xunit;
-using Core.Abstractions;
-using Core.Extensions;
+using Mate.Core.Abstractions;
+using Mate.Core.Extensions;
 
-namespace Tests.Core.Extensions
+namespace Mate.Tests.Core.Extensions
 {
     public class TestManeuverability
     {

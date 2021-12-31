@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
-using Core.Abstractions;
-using Core.Elements.Pieces;
-using Core.Elements.Rules;
-using Tests.Core.Mocks;
+using Mate.Core.Abstractions;
+using Mate.Core.Elements.Pieces;
+using Mate.Core.Elements.Rules;
+using Mate.Tests.Core.Mocks;
 
-namespace Tests.Core.Elements.Rules
+namespace Mate.Tests.Core.Elements.Rules
 {
     public class TestCustom
     {
@@ -18,9 +18,6 @@ namespace Tests.Core.Elements.Rules
             Assert.Empty(chess.Position);
             Assert.Empty(chess.BannedMoves);
             Assert.Empty(chess.Position);
-            //TODO: Implement chess legality.
-            //TODO: Implement Process Move.
-            // Assert.All(new []{false, true}, c => Assert.Empty(chess.AvailableMoves(c)));
         }
 
         [Fact]
@@ -378,8 +375,6 @@ namespace Tests.Core.Elements.Rules
                 {new Square(Files.b, Ranks.two  ), new Pawn(false)          },
                 {new Square(Files.g, Ranks.seven), new Pawn(true)           }
             };
-
-        //TODO: Potential bug found -- Pawn threat on Passant
 
         public static IEnumerable<object[]> BannedDataA => new[]{
             new object[] {

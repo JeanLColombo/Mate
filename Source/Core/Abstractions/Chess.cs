@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using Core.Elements;
+using Mate.Core.Elements;
 
-namespace Core.Abstractions
+namespace Mate.Core.Abstractions
 {
     /// <summary>
     /// Implements <see cref="Chess"/>, and it's basic rules.

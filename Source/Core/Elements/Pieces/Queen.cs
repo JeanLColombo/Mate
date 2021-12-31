@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Core.Abstractions;
+using Mate.Core.Abstractions;
 
 
-namespace Core.Elements.Pieces
+namespace Mate.Core.Elements.Pieces
 {
     /// <summary>
     /// Implements the <see cref="Queen"/> piece.

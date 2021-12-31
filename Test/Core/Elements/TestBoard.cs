@@ -1,7 +1,7 @@
 using Xunit;
-using Core.Elements;
+using Mate.Core.Elements;
 
-namespace Tests.Core.Elements
+namespace Mate.Tests.Core.Elements
 {
     public class TestBoard
     {

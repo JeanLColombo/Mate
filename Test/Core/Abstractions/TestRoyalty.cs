@@ -1,12 +1,12 @@
 using System;
 using System.Linq;
 using Xunit;
-using Core.Abstractions;
-using Core.Elements;
-using Core.Extensions;
-using Tests.Core.Mocks;
+using Mate.Core.Abstractions;
+using Mate.Core.Elements;
+using Mate.Core.Extensions;
+using Mate.Tests.Core.Mocks;
 
-namespace Tests.Core.Abstractions
+namespace Mate.Tests.Core.Abstractions
 {
     public class TestRoyalty
     {

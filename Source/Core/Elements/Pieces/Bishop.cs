@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using Core.Abstractions;
-using Core.Extensions;
+using Mate.Core.Abstractions;
+using Mate.Core.Extensions;
 
-namespace Core.Elements.Pieces
+namespace Mate.Core.Elements.Pieces
 {
     /// <summary>
     /// Implements the <see cref="Bishop"/> piece.

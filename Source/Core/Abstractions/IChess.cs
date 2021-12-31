@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Core.Elements;
+using Mate.Core.Elements;
 
-namespace Core.Abstractions
+namespace Mate.Core.Abstractions
 {
     /// <summary>
     /// <see cref="IChess"/> interface.

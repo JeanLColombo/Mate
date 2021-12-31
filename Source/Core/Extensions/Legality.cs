@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
-using Core.Abstractions;
-using Core.Elements.Pieces;
+using Mate.Core.Abstractions;
+using Mate.Core.Elements.Pieces;
 
-namespace Core.Extensions
+namespace Mate.Core.Extensions
 {
     /// <summary>
     /// Provides extension methods for check and <see cref="Move"/> legality checking in 

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using Core.Abstractions;
-using Core.Elements.Pieces;
-using Core.Extensions;
-using Core.Extensions.SpecializedMoves;
+using Mate.Core.Abstractions;
+using Mate.Core.Elements.Pieces;
+using Mate.Core.Extensions;
+using Mate.Core.Extensions.SpecializedMoves;
 
-namespace Core.Elements.Rules
+namespace Mate.Core.Elements.Rules
 {
     /// <summary>
     /// Defines a fully customizable game of chess. Special moves can be enabled and / or disabled and 
@@ -64,20 +64,25 @@ namespace Core.Elements.Rules
             var moves = pieces.SelectMany(p => p.AvailableMoves(Position)).ToList();
 
             // Pawn's special moves
-            var pawnMoves = pieces
-                .Where(p => p is Pawn)
+            var pawns = pieces.Where(p => p is Pawn).ToList();
+
+            var firstMoves = pawns
                 .Where(p => !p.HasMoved(Position, MoveEntries))
-                .SelectMany(p => 
-                    p.PawnFirstMove(Position).Union(
-                    p.EnPassant(Position, MoveEntries)))
+                .SelectMany(p => p.PawnFirstMove(Position))
                 .ToList();
+
+            var enPassant = pawns
+                .SelectMany(p => p.EnPassant(Position, MoveEntries))
+                .ToList();
+
+            var pawnMoves = firstMoves.Union(enPassant);
 
             // King's special moves
             var kingMoves = pieces
                 .Where(p => p is King)
                 .SelectMany(p => 
                     p.Castles(Position, MoveEntries))
-            .ToList();
+                .ToList();
 
             // Append and query banned moves
             return moves

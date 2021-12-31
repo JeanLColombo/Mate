@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Core.Abstractions;
-using Core.Extensions;
+using Mate.Core.Abstractions;
+using Mate.Core.Extensions;
 
-namespace Core.Elements
+namespace Mate.Core.Elements
 {
     /// <summary>
     /// Defines a chess <see cref="Board"/> and its properties.
