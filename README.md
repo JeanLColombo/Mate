@@ -39,7 +39,7 @@ Represents a board of chess, containing several different pieces, placed at spec
 
 ### Diagrams
 
-![Board Class Diagram](docs/UML/Core/Figures/board.svg)
+![Board Class Diagram](docs/UML/Core/board.svg)
 
 ## Chess
 
@@ -56,7 +56,7 @@ Represents the chess rules.
 
 ### Diagrams
 
-![Chess Class Diagram](docs/UML/Core/Figures/chess.svg)
+![Chess Class Diagram](docs/UML/Core/chess.svg)
 
 ## Game
 
@@ -72,7 +72,7 @@ Represents the game dynamics and outcome.
 
 ### Diagrams
 
-![Game Class Diagram](docs/UML/Core/Figures/game.svg)
+![Game Class Diagram](docs/UML/Core/game.svg)
 
 ## Match
 
@@ -85,7 +85,7 @@ Describes how the match logic behaves, by interfacing players actions and transl
 
 ### Diagrams
 
-![Match Class Diagram](docs/UML/Core/Figures/match.svg)
+![Match Class Diagram](docs/UML/Core/match.svg)
 
 
 ## Moves
@@ -104,7 +104,7 @@ Describes piece maneuvers on the board, such as `MoveType.Capture` or `MoveType.
 
 ### Diagrams
 
-![Move Class Diagram](docs/UML/Core/Figures/move.svg)
+![Move Class Diagram](docs/UML/Core/move.svg)
 
 ## Pieces
 
@@ -125,19 +125,19 @@ Represents chess pieces.
 ### Diagrams
 #### Abstract Piece Definition
 
-![Abstract Piece Class Diagram](docs/UML/Core/Figures/abstract_piece.svg)
+![Abstract Piece Class Diagram](docs/UML/Core/abstract_piece.svg)
 
 #### Pawn and Knight
 
-![Pawn and Knight Class Diagram](docs/UML/Core/Figures/pawn_knight.svg)
+![Pawn and Knight Class Diagram](docs/UML/Core/pawn_knight.svg)
 
 #### Bishop and Rook
 
-![Bishop and Rook Class Diagram](docs/UML/Core/Figures/bishop_rook.svg)
+![Bishop and Rook Class Diagram](docs/UML/Core/bishop_rook.svg)
 
 #### King and Queen
 
-![King and Queen Class Diagram](docs/UML/Core/Figures/king_queen.svg)
+![King and Queen Class Diagram](docs/UML/Core/king_queen.svg)
 
 ## Extensions
 
@@ -156,27 +156,27 @@ Represents chess pieces.
 ### Diagrams
 #### Extensions Enumerations
 
-![Enumerations Class Diagram](docs/UML/Core/Figures/ext_enums.svg)
+![Enumerations Class Diagram](docs/UML/Core/ext_enums.svg)
 
 #### Attacking
 
-![Attacking Class Diagram](docs/UML/Core/Figures/ext_attacking.svg)
+![Attacking Class Diagram](docs/UML/Core/ext_attacking.svg)
 
 #### Helper
 
-![Helper Class Diagram](docs/UML/Core/Figures/ext_helper.svg)
+![Helper Class Diagram](docs/UML/Core/ext_helper.svg)
 
 #### Legality 
 
-![Legality Class Diagram](docs/UML/Core/Figures/ext_legality.svg)
+![Legality Class Diagram](docs/UML/Core/ext_legality.svg)
 
 #### Maneuverability
 
-![Maneuverability Class Diagram](docs/UML/Core/Figures/ext_maneuver.svg)
+![Maneuverability Class Diagram](docs/UML/Core/ext_maneuver.svg)
 
 #### Setup
 
-![Setup Class Diagram](docs/UML/Core/Figures/ext_setup.svg)
+![Setup Class Diagram](docs/UML/Core/ext_setup.svg)
 
 #### Specialized Moves
 
@@ -186,16 +186,16 @@ Specialized moves are moves that requires additional information, that the piece
 
 Requires information regarding other pawns maneuvers on the board.
 
-![Passant Class Diagram](docs/UML/Core/Figures/ext_passant.svg)
+![Passant Class Diagram](docs/UML/Core/ext_passant.svg)
 
 ##### Pawn Rush
 
 Pawns must not have been moved.
 
-![Rush Class Diagram](docs/UML/Core/Figures/ext_rush.svg)
+![Rush Class Diagram](docs/UML/Core/ext_rush.svg)
 
 ##### Castling
 
 Castling rules must apply.
 
-![Castles Class Diagram](docs/UML/Core/Figures/ext_castles.svg)
+![Castles Class Diagram](docs/UML/Core/ext_castles.svg)

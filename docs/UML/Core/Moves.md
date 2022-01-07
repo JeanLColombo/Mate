@@ -1,4 +1,4 @@
-![Move Class Diagram](Figures/move.svg)
+![Move Class Diagram](move.svg)
 <details>
     <summary>Game Class Diagram</summary>
     

@@ -1,5 +1,5 @@
 
-![Match Class Diagram](Figures/match.svg)
+![Match Class Diagram](match.svg)
 <details>
     <summary>Match Class Diagram</summary>
     
