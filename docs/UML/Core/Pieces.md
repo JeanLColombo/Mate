@@ -1,4 +1,4 @@
-![Abstract Piece Class Diagram](abstract_piece.svg)
+![Abstract Piece Class Diagram](Figures/abstract_piece.svg)
 <details>
     <summary>Abstract Piece Class Diagram</summary>
     
@@ -20,7 +20,7 @@
 ```
 </details>
 
-![Pawn and Knight Class Diagram](pawn_knight.svg)
+![Pawn and Knight Class Diagram](Figures/pawn_knight.svg)
 <details>
     <summary>Pawn and Knight Class Diagram</summary>
     
@@ -49,7 +49,7 @@
 ```
 </details>
 
-![Bishop and Rook Class Diagram](bishop_rook.svg)
+![Bishop and Rook Class Diagram](Figures/bishop_rook.svg)
 <details>
     <summary>Bishop and Rook Class Diagram</summary>
     
@@ -75,7 +75,7 @@
 ```
 </details>
 
-![King and Queen Class Diagram](king_queen.svg)
+![King and Queen Class Diagram](Figures/king_queen.svg)
 <details>
     <summary>King and Queen Class Diagram</summary>
     

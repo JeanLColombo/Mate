@@ -1,4 +1,4 @@
-![Board Class Diagram](board.svg)
+![Board Class Diagram](Figures/board.svg)
 <details>
     <summary>Board Class Diagram</summary>
     
