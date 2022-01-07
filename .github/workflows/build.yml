@@ -2,11 +2,7 @@
 
 name: .NET Build and Coverage
 
-on:
-  workflow_run:
-    workflows: ["render-md-mermaid"]
-    types:
-      - completed
+on: [pull_request]
 
 jobs:
   build_and_test:
