@@ -15,5 +15,9 @@
         OfferDraw() bool
         AcceptDraw() bool
     }
+    class Match{
+        <<abstract>>
+    }
+    Match ..|> IMatch
 ```
 </details>

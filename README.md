@@ -8,6 +8,7 @@ Mate is a passion project. It is my very own chess C# library and related API's.
     * [Board](#board)
     * [Chess](#chess)
     * [Game](#game)
+    * [Match](#match)
     * [Moves](#moves)
     * [Pieces](#pieces)
     * [Extensions](#extensions)
@@ -72,6 +73,21 @@ Represents the game dynamics and outcome.
 ### Diagrams
 
 ![Game Class Diagram](docs/UML/Core/Figures/game.svg)
+
+## Match
+
+Describes how the match logic behaves, by interfacing players actions and translating them to a game o chess.
+
+### Classes
+
+* [Source\Core\Abstractions\IMatch.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/IMatch.cs)
+* [Source\Core\Abstractions\Match.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/Match.cs)
+
+### Diagrams
+
+![Match Class Diagram](docs/UML/Core/Figures/match.svg)
+
+
 ## Moves
 
 Describes piece maneuvers on the board, such as `MoveType.Capture` or `MoveType.Castle`.
@@ -106,19 +122,20 @@ Represents chess pieces.
 * [Source\Core\Elements\Pieces\Queen.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Elements/Pieces/Queen.cs);
 * [Source\Core\Elements\Pieces\Rook.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Elements/Pieces/Rook.cs).
 
-### Abstract Piece Definition
+### Diagrams
+#### Abstract Piece Definition
 
 ![Abstract Piece Class Diagram](docs/UML/Core/Figures/abstract_piece.svg)
 
-### Pawn and Knight
+#### Pawn and Knight
 
 ![Pawn and Knight Class Diagram](docs/UML/Core/Figures/pawn_knight.svg)
 
-### Bishop and Rook
+#### Bishop and Rook
 
 ![Bishop and Rook Class Diagram](docs/UML/Core/Figures/bishop_rook.svg)
 
-### King and Queen
+#### King and Queen
 
 ![King and Queen Class Diagram](docs/UML/Core/Figures/king_queen.svg)
 
@@ -136,47 +153,48 @@ Represents chess pieces.
 * [Source\Core\Extensions\SpecializedMoves\PawnPassant.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Extensions/SpecializedMoves/PawnPassant.cs);
 * [Source\Core\Extensions\SpecializedMoves\PawnRush.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Extensions/SpecializedMoves/PawnRush.cs).
 
-### Extensions Enumerations
+### Diagrams
+#### Extensions Enumerations
 
 ![Enumerations Class Diagram](docs/UML/Core/Figures/ext_enums.svg)
 
-### Attacking
+#### Attacking
 
 ![Attacking Class Diagram](docs/UML/Core/Figures/ext_attacking.svg)
 
-### Helper
+#### Helper
 
 ![Helper Class Diagram](docs/UML/Core/Figures/ext_helper.svg)
 
-### Legality 
+#### Legality 
 
 ![Legality Class Diagram](docs/UML/Core/Figures/ext_legality.svg)
 
-### Maneuverability
+#### Maneuverability
 
 ![Maneuverability Class Diagram](docs/UML/Core/Figures/ext_maneuver.svg)
 
-### Setup
+#### Setup
 
 ![Setup Class Diagram](docs/UML/Core/Figures/ext_setup.svg)
 
-## Specialized Moves
+#### Specialized Moves
 
 Specialized moves are moves that requires additional information, that the piece might not have, such as historical `MoveEntry` data.
 
-### Pawn Passant
+##### Pawn Passant
 
 Requires information regarding other pawns maneuvers on the board.
 
 ![Passant Class Diagram](docs/UML/Core/Figures/ext_passant.svg)
 
-### Pawn Rush
+##### Pawn Rush
 
 Pawns must not have been moved.
 
 ![Rush Class Diagram](docs/UML/Core/Figures/ext_rush.svg)
 
-### Castling
+##### Castling
 
 Castling rules must apply.
 
