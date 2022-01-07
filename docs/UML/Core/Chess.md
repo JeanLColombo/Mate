@@ -1,4 +1,4 @@
-![Chess Class Diagram](Figures/chess.svg)
+![Chess Class Diagram](docs/UML/Core/Figures/chess.svg)
 <details>
     <summary>Chess Class Diagram</summary>
     

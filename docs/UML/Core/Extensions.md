@@ -1,4 +1,4 @@
-![Enumerations Class Diagram](Figures/ext_enums.svg)
+![Enumerations Class Diagram](docs/UML/Core/Figures/ext_enums.svg)
 <details>
     <summary>Enumerations Class Diagram</summary>
     
@@ -14,7 +14,7 @@
 ```
 </details>
 
-![Attacking Class Diagram](Figures/ext_attacking.svg)
+![Attacking Class Diagram](docs/UML/Core/Figures/ext_attacking.svg)
 <details>
     <summary>Attacking Class Diagram</summary>
     
@@ -30,7 +30,7 @@
 ```
 </details>
 
-![Helper Class Diagram](Figures/ext_helper.svg)
+![Helper Class Diagram](docs/UML/Core/Figures/ext_helper.svg)
 <details>
     <summary>Helper Class Diagram</summary>
     
@@ -46,7 +46,7 @@
 ```
 </details>
 
-![Legality Class Diagram](Figures/ext_legality.svg)
+![Legality Class Diagram](docs/UML/Core/Figures/ext_legality.svg)
 <details>
     <summary>Legality Class Diagram</summary>
     
@@ -61,7 +61,7 @@
 ```
 </details>
 
-![Maneuverability Class Diagram](Figures/ext_maneuver.svg)
+![Maneuverability Class Diagram](docs/UML/Core/Figures/ext_maneuver.svg)
 <details>
     <summary>Maneuverability Class Diagram</summary>
     
@@ -75,7 +75,7 @@
 ```
 </details>
 
-![Setup Class Diagram](Figures/ext_setup.svg)
+![Setup Class Diagram](docs/UML/Core/Figures/ext_setup.svg)
 <details>
     <summary>Setup Class Diagram</summary>
     
@@ -92,7 +92,7 @@
 </details>
 
 
-![Passant Class Diagram](Figures/ext_passant.svg)
+![Passant Class Diagram](docs/UML/Core/Figures/ext_passant.svg)
 <details>
     <summary>Passant Class Diagram</summary>
     
@@ -105,7 +105,7 @@
 ```
 </details>
 
-![Rush Class Diagram](Figures/ext_rush.svg)
+![Rush Class Diagram](docs/UML/Core/Figures/ext_rush.svg)
 <details>
     <summary>Rush Class Diagram</summary>
     
@@ -118,7 +118,7 @@
 ```
 </details>
 
-![Castles Class Diagram](Figures/ext_castles.svg)
+![Castles Class Diagram](docs/UML/Core/Figures/ext_castles.svg)
 <details>
     <summary>Castles Class Diagram</summary>
     
