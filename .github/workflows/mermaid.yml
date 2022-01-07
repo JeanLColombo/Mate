@@ -2,9 +2,7 @@
 
 name: render-md-mermaid
 
-on: 
-  push:
-    branches: [ main ]
+on: [pull_request]
 
 jobs:
   render-md-mermaid:
