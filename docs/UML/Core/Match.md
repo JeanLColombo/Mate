@@ -7,17 +7,20 @@
     classDiagram
     class IMatch{
         <<interface>>
-        int NumberOfGames
+        IReadOnlyList~IGame~ PlayedGames
+        IReadOnlyList~IPlayer~ Players 
         IGame CurrentGame
-        IReadOnlyList~IGame~ playedGames
-        IReadOnlyDictionary~TPlayer, int~ Score 
-        Forfeit() bool
-        OfferDraw() bool
-        AcceptDraw() bool
+        int NumberOfGames
     }
     class Match{
         <<abstract>>
     }
+    class IPlayer{
+        Outcome Resign(IMatch)
+        Outcome Draw(IMatch)
+        bool Play(IMatch, Move)
+    }
     Match ..|> IMatch
+    IPlayer --* "1..*" IMatch
 ```
 </details>

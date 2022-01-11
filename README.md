@@ -81,12 +81,12 @@ Describes how the match logic behaves, by interfacing players actions and transl
 ### Classes
 
 * [Source\Core\Abstractions\IMatch.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/IMatch.cs)
+* [Source\Core\Abstractions\IPlayer.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/IPlayer.cs)
 * [Source\Core\Abstractions\Match.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/Match.cs)
 
 ### Diagrams
 
 ![Match Class Diagram](docs/UML/Core/Figures/match.svg)
-
 
 ## Moves
 
