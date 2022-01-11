@@ -10,6 +10,8 @@
         Checked
         Stalemate
         Checkmate
+        Drawn
+        Resigned
     }
     class IChess{
         <<Interface>>

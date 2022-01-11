@@ -169,6 +169,14 @@ namespace Mate.Core.Abstractions
         /// The <see cref="IGame.CurrentPlayer"/> is checkmated. 
         /// The <see cref="IGame"/> is over.
         /// </summary>
-        Checkmate = 3
+        Checkmate = 3,
+        /// <summary>
+        /// The <see cref="IPlayer"/> offered or agreed to a draw. 
+        /// </summary>
+        Drawn = 4,
+        /// <summary>
+        /// The <see cref="IPlayer"/> resigned the <see cref="IGame"/>. 
+        /// </summary>
+        Resigned = 5
     }
 }

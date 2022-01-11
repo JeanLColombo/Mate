@@ -16,11 +16,16 @@
         <<abstract>>
     }
     class IPlayer{
+        <<interface>
         Outcome Resign(IMatch)
         Outcome Draw(IMatch)
         bool Play(IMatch, Move)
     }
+    class Player{
+        <<abstract>>
+    }
     Match ..|> IMatch
     IPlayer --* "1..*" IMatch
+    Player ..|> IPlayer
 ```
 </details>

@@ -83,6 +83,7 @@ Describes how the match logic behaves, by interfacing players actions and transl
 * [Source\Core\Abstractions\IMatch.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/IMatch.cs)
 * [Source\Core\Abstractions\IPlayer.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/IPlayer.cs)
 * [Source\Core\Abstractions\Match.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/Match.cs)
+* [Source\Core\Abstractions\Player.cs](https://github.com/JeanLColombo/Mate/blob/main/Source/Core/Abstractions/Player.cs)
 
 ### Diagrams
 
