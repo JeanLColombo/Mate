@@ -6,11 +6,11 @@ namespace Mate.Core.Abstractions
     public interface IPlayer
     {
         /// <summary>
-        /// In a given <paramref name="match"/>, resigns the the <see cref="IMatch.CurrentGame"/>.  
+        /// In a given <paramref name="match"/>, resigns the the <see cref="IMatch.CurrentGame"/>.
         /// </summary>
         /// <param name="match">A given <see cref="IMatch"/> in witch this <see cref="IPlayer"/>
         /// is taking part of.</param>
-        /// <returns>The <see cref="IMatch.CurrentGame.Outcome"/>.</returns>
+        /// <returns>The <see cref="IMatch.CurrentGame"/> <see cref="Outcome"/>.</returns>
         Outcome Resign(IMatch match);
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace Mate.Core.Abstractions
         /// </summary>
         /// <param name="match">A given <see cref="IMatch"/> in witch this <see cref="IPlayer"/>
         /// is taking part of.</param>
-        /// <returns>The <see cref="IMatch.CurrentGame.Outcome"/>.</returns>
+        /// <returns>The <see cref="IMatch.CurrentGame"/> <see cref="Outcome"/>.</returns>
         Outcome Draw(IMatch match);
 
         /// <summary>

@@ -10,6 +10,8 @@ namespace Mate.Tests.Core.Abstractions
         public void TestConstructor()
         {
             IMatch match = new MockedMatch();
+
+            Assert.Equal(0, match.TotalGamesFinished);
         }
     }
 }

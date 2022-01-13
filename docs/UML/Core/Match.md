@@ -10,7 +10,9 @@
         IReadOnlyList~IGame~ PlayedGames
         IReadOnlyList~IPlayer~ Players 
         IGame CurrentGame
-        int NumberOfGames
+        int MaximumNumberOfGames
+        int TotalGamesFinished
+        bool MatchIsOver
     }
     class Match{
         <<abstract>>
