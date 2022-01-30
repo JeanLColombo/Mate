@@ -8,7 +8,6 @@
     class IMatch{
         <<interface>>
         IReadOnlyList~IGame~ PlayedGames
-        IReadOnlyList~IPlayer~ Players 
         IGame CurrentGame
         int MaximumNumberOfGames
         int TotalGamesFinished
@@ -16,18 +15,10 @@
     }
     class Match{
         <<abstract>>
-    }
-    class IPlayer{
-        <<interface>
-        Outcome Resign(IMatch)
-        Outcome Draw(IMatch)
-        bool Play(IMatch, Move)
-    }
-    class Player{
-        <<abstract>>
+        -List<Player> _players
+        IReadOnlyList~IPlayer~ Players 
     }
     Match ..|> IMatch
-    IPlayer --* "1..*" IMatch
-    Player ..|> IPlayer
+    Player --* "1..*" Match
 ```
 </details>
