@@ -167,7 +167,7 @@ Represents chess pieces.
 
 ![Helper Class Diagram](docs/UML/Core/Figures/ext_helper.svg)
 
-#### Legality 
+#### Legality  
 
 ![Legality Class Diagram](docs/UML/Core/Figures/ext_legality.svg)
 
