@@ -1,0 +1,44 @@
+<chess>
+    <pieces>
+        <pawn>
+ () 
+ {} 
+{__}
+        </pawn>
+        <rook>
+[UU]
+ || 
+ {} 
+{__}
+        </rook>
+        <knight>
+ T\ 
+ |\)
+ {} 
+{__}
+        </knight>
+        <bishop>
+  ,  
+ (^) 
+ / \ 
+ { } 
+{___}
+        </bishop>
+        <queen>
+ _._ 
+ ( ) 
+ / \ 
+ | | 
+ { } 
+{___}
+        </queen>
+        <king>
+  +  
+ ( ) 
+ / \ 
+ | | 
+ { } 
+{___}
+        </king>
+    </pieces>
+</chess>

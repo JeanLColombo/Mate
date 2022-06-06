@@ -1,0 +1,74 @@
+<chess>
+    <pieces>
+        <pawn>
+♟
+        </pawn>
+        <rook>
+♜
+        </rook>
+        <knigth>
+♞
+        </knigth>
+        <bishop>
+♝
+        </bishop>
+        <queen>
+♛
+        </queen>
+        <king>
+♚
+        </king>
+    </pieces>
+    <ranks>
+        <one>
+➊
+        </one>
+        <two>
+➋
+        </two>
+        <three>
+➌
+        </three>
+        <four>
+➍
+        </four>
+        <five>
+➎
+        </five>
+        <six>
+➏
+        </six>
+        <seven>
+➐
+        </seven>
+        <eight>
+➑
+        </eight>
+    </ranks>
+    <files>
+        <a>
+🅐
+        </a>
+        <b>
+🅑
+        </b>
+        <c>
+🅒
+        </c>
+        <d>
+🅓
+        </d>
+        <e>
+🅔
+        </e>
+        <f>
+🅕
+        </f>
+        <g>
+🅖
+        </g>
+        <h>
+🅗
+        </h>
+    </files>
+</chess>

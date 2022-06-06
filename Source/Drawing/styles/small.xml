@@ -1,0 +1,96 @@
+<chess>
+    <pieces>
+        <pawn>
+_O_
+(_)
+        </pawn>
+        <rook>
+["]
+)_(
+        </rook>
+        <knight>
+{`\
+)_(
+        </knight>
+        <bishop>
+(\)
+)_(
+        </bishop>
+        <queen>
+\^/
+)_(
+        </queen>
+        <king>
+\+/
+)_(
+        </king>
+    </pieces>
+    <ranks>
+        <one>
+'| 
+.|.
+        </one>
+        <two>
+'~)
+ /_
+        </two>
+        <three>
+'~)
+._)
+        </three>
+        <four>
+|_|
+  |
+        </four>
+        <five> 
+L~ 
+_) 
+        </five>
+        <six>
+ / 
+(_)
+        </six>
+        <seven>
+~/
+/ 
+        </seven>
+        <eight>
+(~)
+(_)
+        </eight>
+    </ranks>
+    <files>
+        <a>
+ Λ 
+/~\
+        </a>
+        <b>
+|~)
+|_)
+        </b>
+        <c>
+/~`
+\_,
+        </c>
+        <d>
+|~\
+|_/
+        </d>
+        <e>
+(~ 
+(_ 
+        </e>
+        <f>
+|~~
+|~ 
+        </f>
+        <g>
+/~_
+\_/
+        </g>
+        <h>
+|_|
+| |
+        </h>
+    </files>
+</chess>
