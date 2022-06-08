@@ -22,6 +22,11 @@ namespace Mate.Tests.Core.Notation
         public void TestPieceToNotation(IPiece piece, string notation) =>
             Assert.Equal(notation, Helper.PieceToNotation(piece));
 
+        [Theory]
+        [MemberData(nameof(MoveData))]
+        public void TestMoveToNotation(Move move, string notation) =>
+            Assert.Equal(notation, Helper.MoveToNotation(move));
+
         public static IEnumerable<object[]> PieceData => new[]{
             new object[] {
                 new Pawn(true),
@@ -41,6 +46,23 @@ namespace Mate.Tests.Core.Notation
             new object[] {
                 new Rook(true),
                 "R"}};
+
+        public static IEnumerable<object[]> MoveData => new[]{
+            new object[]{new Move(new Square(Files.e, Ranks.one),   new Square(Files.g, Ranks.one),     MoveType.Castle),           "0-0"},
+            new object[]{new Move(new Square(Files.e, Ranks.eight), new Square(Files.c, Ranks.eight),   MoveType.Castle),           "0-0-0"},
+            new object[]{new Move(new Square(Files.b, Ranks.two),   new Square(Files.b, Ranks.three),   MoveType.Normal),           "b3"},
+            new object[]{new Move(new Square(Files.b, Ranks.two),   new Square(Files.b, Ranks.four),    MoveType.Rush),             "b4"},
+            new object[]{new Move(new Square(Files.b, Ranks.five),  new Square(Files.c, Ranks.six),     MoveType.Passant),          "xc6"},
+            new object[]{new Move(new Square(Files.b, Ranks.five),  new Square(Files.c, Ranks.six),     MoveType.Capture),          "xc6"},
+            new object[]{new Move(new Square(Files.b, Ranks.seven),  new Square(Files.b, Ranks.eight),  MoveType.PromoteToBishop),  "b8=B"},
+            new object[]{new Move(new Square(Files.b, Ranks.seven),  new Square(Files.b, Ranks.eight),  MoveType.PromoteToKnight),  "b8=N"},
+            new object[]{new Move(new Square(Files.b, Ranks.seven),  new Square(Files.b, Ranks.eight),  MoveType.PromoteToQueen),   "b8=Q"},
+            new object[]{new Move(new Square(Files.b, Ranks.seven),  new Square(Files.b, Ranks.eight),  MoveType.PromoteToRook),    "b8=R"},
+            new object[]{new Move(new Square(Files.b, Ranks.seven),  new Square(Files.a, Ranks.eight),  MoveType.PromoteToBishop),  "xa8=B"},
+            new object[]{new Move(new Square(Files.b, Ranks.seven),  new Square(Files.a, Ranks.eight),  MoveType.PromoteToKnight),  "xa8=N"},
+            new object[]{new Move(new Square(Files.b, Ranks.seven),  new Square(Files.c, Ranks.eight),  MoveType.PromoteToQueen),   "xc8=Q"},
+            new object[]{new Move(new Square(Files.b, Ranks.seven),  new Square(Files.c, Ranks.eight),  MoveType.PromoteToRook),    "xc8=R"}
+        };
     }
 
 }

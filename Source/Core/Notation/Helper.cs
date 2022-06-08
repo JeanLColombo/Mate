@@ -45,6 +45,52 @@ public static class Helper
     }
 
     /// <summary>
+    /// Generates the chess notation for the given <paramref name="move"/>.
+    /// </summary>
+    /// <param name="move">A given chess <see cref="Move"/>.</param>
+    /// <returns>A string representing the actual chess notation</returns>
+    public static string MoveToNotation(Move move)
+    {
+        // Control variables
+        var capture = "";
+        var promotion = "";
+
+        // Set capture and promotion values based on move type and occupation
+        switch (move.Type)
+        {
+            case MoveType.Castle:
+                if (move.ToSquare.File == Files.g) return "0-0";
+                else return "0-0-0";
+            case MoveType.Capture:
+                capture = "x";
+                break;
+            case MoveType.Passant:
+                capture =  "x";
+                break;
+            case MoveType.PromoteToBishop:
+                promotion = "=B";
+                capture = move.FromSquare.File != move.ToSquare.File ? "x" : "";
+                break;
+            case MoveType.PromoteToKnight:
+                promotion = "=N";
+                capture = move.FromSquare.File != move.ToSquare.File ? "x" : "";
+                break;
+            case MoveType.PromoteToQueen:
+                promotion = "=Q";
+                capture = move.FromSquare.File != move.ToSquare.File ? "x" : "";
+                break;
+            case MoveType.PromoteToRook:
+                promotion = "=R";
+                capture = move.FromSquare.File != move.ToSquare.File ? "x" : "";
+                break;
+            default:
+                break;
+        }
+
+        return capture + SquareToNotation(move.ToSquare) + promotion;
+    }
+
+    /// <summary>
     /// Maps <see cref="Files"/> instances with their respective string. 
     /// </summary>
     /// <returns>A dictionary of <see cref="Files"/> - <see cref="string"/> tuple.</returns>
