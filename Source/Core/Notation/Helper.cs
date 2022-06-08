@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Mate.Core.Abstractions;
+using Mate.Core.Elements.Pieces;
 
 
 namespace Mate.Core.Notation;
@@ -14,11 +15,33 @@ public static class Helper
     /// Returns a string value representing the given <see cref="Square"/>. 
     /// </summary>
     /// <param name="square">A given <see cref="Square"/> instance.</param>
-    /// <returns>A string representing following square notation.</returns>
-    public static string SquareToNotation(Square square)
+    /// <returns>A string representing the square notation.</returns>
+    public static string SquareToNotation(Square square) =>
+        FileToString()[square.File] + (int)square.Rank;
+
+
+    /// <summary>
+    /// Returns the chess notation for a given <paramref name="piece"/>.
+    /// </summary>
+    /// <param name="piece">A given chess <see cref="IPiece"/>.</param>
+    /// <returns>A string representing the piece chess notation.</returns>
+    public static string PieceToNotation(IPiece piece)
     {
-        var list = FileToString();
-        return list[square.File] + (int)square.Rank;
+        switch (piece)
+        {
+            case Bishop bishop:
+                return "B";
+            case King king:
+                return "K";
+            case Knight knight:
+                return "N";
+            case Queen queen:
+                return "Q";
+            case Rook rook:
+                return "R";
+            default:
+                return "";
+        }
     }
 
     /// <summary>
