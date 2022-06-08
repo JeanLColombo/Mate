@@ -6,9 +6,9 @@
         <rook>
 ♜
         </rook>
-        <knigth>
+        <knight>
 ♞
-        </knigth>
+        </knight>
         <bishop>
 ♝
         </bishop>
@@ -47,28 +47,38 @@
     </ranks>
     <files>
         <a>
-🅐
+Ⓐ
         </a>
         <b>
-🅑
+Ⓑ
         </b>
         <c>
-🅒
+Ⓒ
         </c>
         <d>
-🅓
+Ⓓ
         </d>
         <e>
-🅔
+Ⓔ
         </e>
         <f>
-🅕
+Ⓕ
         </f>
         <g>
-🅖
+Ⓖ
         </g>
         <h>
-🅗
+Ⓗ
         </h>
     </files>
+    <colors>
+        <square>
+            <white>DarkGray</white>
+            <black>DarkRed</black>
+        </square>
+        <piece>
+            <white>White</white>
+            <black>Black</black>
+        </piece>
+    </colors>
 </chess>

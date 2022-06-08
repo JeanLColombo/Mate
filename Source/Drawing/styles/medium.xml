@@ -41,4 +41,14 @@
 {___}
         </king>
     </pieces>
+    <colors>
+        <square>
+            <white>Gray</white>
+            <black>DarkRed</black>
+        </square>
+        <piece>
+            <white>White</white>
+            <black>Black</black>
+        </piece>
+    </colors>
 </chess>

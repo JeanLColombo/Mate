@@ -41,6 +41,8 @@ public class IllustratorStyle
         var icons = pieces.Values.Union(files.Values).Union(ranks.Values).ToArray();
         RankSize = icons.Select(p => p.Split("\n").Length).Max() + 2 * margin;
         FileSize = icons.SelectMany(p => p.Split("\n").Select(r => r.Length)).Max() + 2 * margin;
+        FileSize = ensureSquareSize ? Math.Max(RankSize, FileSize) : FileSize;
+        RankSize = ensureSquareSize ? Math.Max(RankSize, FileSize) : RankSize;
         Files = files.ToDictionary(
             kvp => kvp.Key,
             kvp => CentralizePiece(kvp.Value, RankSize, FileSize)
@@ -49,8 +51,6 @@ public class IllustratorStyle
             kvp => kvp.Key,
             kvp => CentralizePiece(kvp.Value, RankSize, FileSize)
         );
-        FileSize = ensureSquareSize ? Math.Max(RankSize, FileSize) : FileSize;
-        RankSize = ensureSquareSize ? Math.Max(RankSize, FileSize) : RankSize;
         Pieces = pieces.ToDictionary(
             kvp => kvp.Key,
             kvp => CentralizePiece(kvp.Value, RankSize, FileSize)
@@ -87,12 +87,12 @@ public class IllustratorStyle
                                 var backgroundColor = (SquareColor)(
                                     ((int)rank + (int)file) % 2);
                                 Action writer = board.TryGetValue((file, rank), out var pieceColor) ?
-                                    () => Console.Write(
+                                    () => ConsoleExtensions.Write(
                                         Pieces[pieceColor.Item1].Split("\n")[i],
                                         PieceColors[pieceColor.Item2],
                                         SquareColors[backgroundColor])
                                      :
-                                    () => Console.Write(
+                                    () => ConsoleExtensions.Write(
                                         new string(' ', FileSize),
                                         ConsoleColor.Black,
                                         SquareColors[backgroundColor]
@@ -100,7 +100,8 @@ public class IllustratorStyle
                                 return writer;
                             }
                         ).ToList().ForEach(w => w());
-                        return "\n";
+                        Console.WriteLine();
+                        return "";
                     }).ToList().ForEach(Console.Write);});
         Enumerable.Range(0, RankSize).ToList().ForEach(
             i =>

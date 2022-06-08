@@ -93,4 +93,14 @@ _)
 | |
         </h>
     </files>
+    <colors>
+        <square>
+            <white>DarkGray</white>
+            <black>DarkRed</black>
+        </square>
+        <piece>
+            <white>White</white>
+            <black>Black</black>
+        </piece>
+    </colors>
 </chess>
