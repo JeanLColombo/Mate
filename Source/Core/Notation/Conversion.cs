@@ -9,7 +9,7 @@ namespace Mate.Core.Notation;
 /// <summary>
 /// Provide extension helper methods for chess notation. 
 /// </summary>
-public static class Helper
+public static class Conversion
 {
     /// <summary>
     /// Returns a string value representing the given <see cref="Square"/>. 
@@ -87,7 +87,7 @@ public static class Helper
                 break;
         }
 
-        return capture + SquareToNotation(move.ToSquare) + promotion;
+        return SquareToNotation(move.FromSquare) + capture + SquareToNotation(move.ToSquare) + promotion;
     }
 
     /// <summary>
