@@ -88,6 +88,7 @@ namespace Mate.Tests.Core.Elements.Games
                 var move = tuple.Item1;
                 var numberOfPieces = tuple.Item4;
                 var captured = tuple.Item3;
+                var pieceColor = game.Position[move.FromSquare].Color;
 
                 // Process move
                 Assert.True(game.ProcessMove(move));
@@ -116,6 +117,23 @@ namespace Mate.Tests.Core.Elements.Games
                         break;
                 }
 
+                // Fix score for promotions
+                switch(move.Type)
+                {
+                    case MoveType.PromoteToKnight:
+                    case MoveType.PromoteToBishop:
+                        score += (pieceColor ? 1 : -1) * 2;
+                        break;
+                    case MoveType.PromoteToRook:
+                        score += (pieceColor ? 1 : -1) * 4;
+                        break;
+                    case MoveType.PromoteToQueen:
+                        score += (pieceColor ? 1 : -1) * 8;
+                        break;
+                    default:
+                        break;
+                }
+
                 player = !player;
 
                 if (!player) moves++;
@@ -132,7 +150,7 @@ namespace Mate.Tests.Core.Elements.Games
             });
 
             // Post-game assertions
-            AssertGame(game, -17, 0, 17, true, outcome);
+            AssertGame(game, -19, 0, 17, true, outcome);
             Assert.Equal(Outcome.Checkmate, outcome);
 
             // Assert game.Moves

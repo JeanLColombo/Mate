@@ -97,7 +97,7 @@ namespace Mate.Core.Abstractions
         /// </summary>
         /// <value>Based on current <see cref="Game"/> implementation.</value>
         internal virtual int GetScore() =>
-            _captured.Select(p =>
+            this.Chess.Position.Values.Select(p =>
             {
                 int value = 0;
                 switch(p)
@@ -106,6 +106,8 @@ namespace Mate.Core.Abstractions
                         value = 1;
                         break;
                     case Knight:
+                        value = 3;
+                        break;
                     case Bishop:
                         value = 3;
                         break;
@@ -116,7 +118,7 @@ namespace Mate.Core.Abstractions
                         value = 9;
                         break;
                 }
-                return p.Color ? -value : +value;
+                return p.Color ? value : -value;
             }).Sum();
 
         /// <summary>
