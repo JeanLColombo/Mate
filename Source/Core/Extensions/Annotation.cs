@@ -37,7 +37,4 @@ public static class Annotation
 
         return game.ProcessMove(move);
     }
-
-
-    //TODO: Add unit tests.
 }
