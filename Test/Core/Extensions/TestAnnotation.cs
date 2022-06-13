@@ -88,10 +88,8 @@ public class TestAnnotation
             ("d7d5",    Outcome.Game,       3),
             ("e5xd6",   Outcome.Game,       4),
             ("Rh8xh7",  Outcome.Game,       -5),
-            ("d6xc7",   Outcome.Checked,    -4),
-            // Found a bug - debug to fix it
-            // Pawn threatening king does not count as check
-            //("Kb8xc7",  Outcome.Game,       -5),
+            ("d6xc7",   Outcome.Game,       -4),
+            ("Kc8xc7",  Outcome.Game,       -5),
         };
 
 
