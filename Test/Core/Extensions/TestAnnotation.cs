@@ -72,10 +72,10 @@ public class TestAnnotation
             ("Nb8c6",   Outcome.Game,       0),
             ("Bf1b5",   Outcome.Game,       0),
             ("b7b6",    Outcome.Game,       0),
-            ("0-0",     Outcome.Game,       0),
+            ("O-O",     Outcome.Game,       0),
             ("Bc8a6",   Outcome.Game,       0),
             ("Bb5xc6",  Outcome.Game,       3),
-            ("0-0-0",   Outcome.Game,       3),
+            ("O-O-O",   Outcome.Game,       3),
             ("Qg4xe6",  Outcome.Game,       4),
             ("Qg5xd2",  Outcome.Game,       3),
             ("Qe6xf7",  Outcome.Game,       4),
@@ -90,6 +90,15 @@ public class TestAnnotation
             ("Rh8xh7",  Outcome.Game,       -5),
             ("d6xc7",   Outcome.Game,       -4),
             ("Kc8xc7",  Outcome.Game,       -5),
+            ("g2g4",    Outcome.Game,       -5),
+            ("Ba6xf1",  Outcome.Game,       -10),
+            ("g4g5",    Outcome.Game,       -10),
+            ("Kc7xc6",  Outcome.Game,       -13),
+            ("g5g6",    Outcome.Game,       -13),
+            ("Qa2xa1",  Outcome.Game,       -18),
+            ("g6xh7",   Outcome.Game,       -13),
+            ("Qa1xb1",  Outcome.Game,       -16),
+            ("h7xg8=N", Outcome.Game,       -11),
         };
 
 

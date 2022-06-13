@@ -48,8 +48,8 @@ namespace Mate.Tests.Core.Notation
                 "R"}};
 
         public static IEnumerable<object[]> MoveData => new[]{
-            new object[]{new Move(new Square(Files.e, Ranks.one),   new Square(Files.g, Ranks.one),     MoveType.Castle),           "0-0"},
-            new object[]{new Move(new Square(Files.e, Ranks.eight), new Square(Files.c, Ranks.eight),   MoveType.Castle),           "0-0-0"},
+            new object[]{new Move(new Square(Files.e, Ranks.one),   new Square(Files.g, Ranks.one),     MoveType.Castle),           "O-O"},
+            new object[]{new Move(new Square(Files.e, Ranks.eight), new Square(Files.c, Ranks.eight),   MoveType.Castle),           "O-O-O"},
             new object[]{new Move(new Square(Files.b, Ranks.two),   new Square(Files.b, Ranks.three),   MoveType.Normal),           "b2b3"},
             new object[]{new Move(new Square(Files.b, Ranks.two),   new Square(Files.b, Ranks.four),    MoveType.Rush),             "b2b4"},
             new object[]{new Move(new Square(Files.b, Ranks.five),  new Square(Files.c, Ranks.six),     MoveType.Passant),          "b5xc6"},

@@ -59,8 +59,8 @@ public static class Conversion
         switch (move.Type)
         {
             case MoveType.Castle:
-                if (move.ToSquare.File == Files.g) return "0-0";
-                else return "0-0-0";
+                if (move.ToSquare.File == Files.g) return "O-O";
+                else return "O-O-O";
             case MoveType.Capture:
                 capture = "x";
                 break;
