@@ -31,6 +31,13 @@ public class TestAnnotation
         AssertGame(gameData);
     }
 
+    [Fact]
+    public void TestGameB()
+    {
+        var gameData = TestAnnotation.GameDataB;
+        AssertGame(gameData);
+    }
+
     private void AssertGame(IReadOnlyList<(string, Outcome, int)> gameData)
     {
         // Creates a game of standard chess
@@ -54,5 +61,38 @@ public class TestAnnotation
             ("Ng8f6",   Outcome.Game,       0),
             ("Qh5xf7",  Outcome.Checkmate,  1)
         };
+    
+    public static IReadOnlyList<(string, Outcome, int)> GameDataB
+        => new List<(string, Outcome, int)>() {
+            ("e2e4",    Outcome.Game,       0),
+            ("e7e6",    Outcome.Game,       0),
+            ("Qd1g4",   Outcome.Game,       0),
+            ("Qd8g5",   Outcome.Game,       0),
+            ("Ng1f3",   Outcome.Game,       0),
+            ("Nb8c6",   Outcome.Game,       0),
+            ("Bf1b5",   Outcome.Game,       0),
+            ("b7b6",    Outcome.Game,       0),
+            ("0-0",     Outcome.Game,       0),
+            ("Bc8a6",   Outcome.Game,       0),
+            ("Bb5xc6",  Outcome.Game,       3),
+            ("0-0-0",   Outcome.Game,       3),
+            ("Qg4xe6",  Outcome.Game,       4),
+            ("Qg5xd2",  Outcome.Game,       3),
+            ("Qe6xf7",  Outcome.Game,       4),
+            ("Qd2xc2",  Outcome.Game,       3),
+            ("Qf7xg7",  Outcome.Game,       4),
+            ("Qc2xb2",  Outcome.Game,       3),
+            ("Qg7xh7",  Outcome.Game,       4),
+            ("Qb2xa2",  Outcome.Game,       3),
+            ("e4e5",    Outcome.Game,       3),
+            ("d7d5",    Outcome.Game,       3),
+            ("e5xd6",   Outcome.Game,       4),
+            ("Rh8xh7",  Outcome.Game,       -5),
+            ("d6xc7",   Outcome.Checked,    -4),
+            // Found a bug - debug to fix it
+            // Pawn threatening king does not count as check
+            //("Kb8xc7",  Outcome.Game,       -5),
+        };
+
 
 }
