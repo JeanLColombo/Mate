@@ -1,3 +1,5 @@
+using System;
+
 namespace Mate.Core.Abstractions
 {
     /// <summary>
@@ -150,25 +152,30 @@ namespace Mate.Core.Abstractions
     /// <summary>
     /// Defines all possible outcomes of a <see cref="IGame"/> of <see cref="IChess"/>. 
     /// </summary>
+    [Flags]
     public enum Outcome{
+        /// <summary>
+        /// The game is not yet finished.
+        /// </summary>
+        Running = 1,
         /// <summary>
         /// The game is on. The <see cref="Outcome"/> is undecided.
         /// </summary>
-        Game = 0,
+        Game = 3,
         /// <summary>
         /// The current player is under check. The <see cref="Outcome"/> is undecided. 
         /// </summary>
-        Checked = 1,
+        Checked = 5,
         /// <summary>
         /// The game has stalemated. It is a draw. See the current <see cref="IGame"/> 
         /// implementation for more information. 
         /// The <see cref="IGame"/> is over.
         /// </summary>
-        Stalemate = 2,
+        Stalemate = 8,
         /// <summary>
         /// The <see cref="IGame.CurrentPlayer"/> is checkmated. 
         /// The <see cref="IGame"/> is over.
         /// </summary>
-        Checkmate = 3
+        Checkmate = 16
     }
 }

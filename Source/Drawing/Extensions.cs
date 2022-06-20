@@ -1,4 +1,5 @@
 using System.Xml.Linq;
+using Mate.Core.Abstractions;
 
 namespace Mate.Drawing;
 
@@ -48,7 +49,7 @@ public static class IllustratorExtensions
             .First()
             .Descendants()
             .ToDictionary(
-                item => item.Name.ToString().FirstCharToUpper(),
+                item => item.Name.ToString(),
                 item => item.Value.Trim(" ".ToCharArray()).Trim("\n".ToCharArray())
             );
     }
@@ -65,8 +66,8 @@ public static class IllustratorExtensions
             .First()
             .Descendants()
             .ToDictionary(
-                item => item.Name.ToString().FirstCharToUpper(),
-                item => item.Value.FirstCharToUpper()
+                item => item.Name.ToString(),
+                item => item.Value
             );
     }
 
@@ -93,13 +94,6 @@ public static class IllustratorExtensions
             );
     }
 
-    public static string FirstCharToUpper(this string input) =>
-        input switch
-        {
-            "" => throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input)),
-            _ => string.Concat(input[0].ToString().ToUpper(), input.AsSpan(1))
-        };
-
     public static IllustratorStyle LoadFromXML(
         XElement styleSource,
         int margin = 1,
@@ -107,8 +101,8 @@ public static class IllustratorExtensions
     )
     {
         var pieces = GetStyles("pieces", styleSource).DictToEnum<PieceType>();
-        var files = GetStyles("files", styleSource).DictToEnum<BoardFile>();
-        var ranks = GetStyles("ranks", styleSource).DictToEnum<BoardRank>();
+        var files = GetStyles("files", styleSource).DictToEnum<Files>();
+        var ranks = GetStyles("ranks", styleSource).DictToEnum<Ranks>();
         var pieceColors = GetColors("piece", styleSource).DictToEnum<PieceColor, ConsoleColor>();
         var squareColors = GetColors("square", styleSource).DictToEnum<SquareColor, ConsoleColor>();
         return new IllustratorStyle(

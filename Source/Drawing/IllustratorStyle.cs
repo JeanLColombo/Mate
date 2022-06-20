@@ -1,4 +1,7 @@
-﻿namespace Mate.Drawing;
+﻿using Mate.Core.Abstractions;
+
+namespace Mate.Drawing;
+
 public class IllustratorStyle
 {
 
@@ -30,8 +33,8 @@ public class IllustratorStyle
 
     public IllustratorStyle(
         IReadOnlyDictionary<PieceType, string> pieces,
-        IReadOnlyDictionary<BoardFile, string> files,
-        IReadOnlyDictionary<BoardRank, string> ranks,
+        IReadOnlyDictionary<Files, string> files,
+        IReadOnlyDictionary<Ranks, string> ranks,
         IReadOnlyDictionary<PieceColor, ConsoleColor> pieceColors,
         IReadOnlyDictionary<SquareColor, ConsoleColor> squareColors,
         int margin,
@@ -62,17 +65,17 @@ public class IllustratorStyle
     public IReadOnlyDictionary<PieceType, string> Pieces { get; }
     public IReadOnlyDictionary<PieceColor, ConsoleColor> PieceColors { get; }
     public IReadOnlyDictionary<SquareColor, ConsoleColor> SquareColors { get; }
-    public IReadOnlyDictionary<BoardFile, string> Files { get; }
-    public IReadOnlyDictionary<BoardRank, string> Ranks { get; }
+    public IReadOnlyDictionary<Files, string> Files { get; }
+    public IReadOnlyDictionary<Ranks, string> Ranks { get; }
     public int RankSize { get; }
     public int FileSize { get; }
 
     public void DrawBoard(
-        IReadOnlyDictionary<(BoardFile, BoardRank), (PieceType, PieceColor)> board
+        IReadOnlyDictionary<(Files, Ranks), (PieceType, PieceColor)> board
     )
     {
-        var allRanks = Enum.GetValues(typeof(BoardRank)).Cast<BoardRank>();
-        var allFiles = Enum.GetValues(typeof(BoardFile)).Cast<BoardFile>();
+        var allRanks = Enum.GetValues(typeof(Ranks)).Cast<Ranks>();
+        var allFiles = Enum.GetValues(typeof(Files)).Cast<Files>();
         allRanks.Reverse().ToList().ForEach(
             rank =>
             {
