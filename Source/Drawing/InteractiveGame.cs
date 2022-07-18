@@ -4,6 +4,7 @@ using Mate.Core.Elements.Rules;
 using Mate.Core.Extensions;
 using Mate.Core.Notation;
 using Sharprompt;
+using Microsoft.Extensions.Configuration;
 using System.Linq;
 
 namespace Mate.Drawing;
@@ -11,7 +12,7 @@ namespace Mate.Drawing;
 
 public static class InteractiveGame
 {
-    public static void RunInteractive()
+    public static void RunInteractive(IllustratorStyle illustratorStyle)
     {
         IGame game = new Standard<Classical>();
         var options = "";
@@ -19,6 +20,7 @@ public static class InteractiveGame
         {
             var player = game.CurrentPlayer ? "White" : "Black";
             var moves = game.AvailableChessMoves();
+            illustratorStyle.DrawBoard(game.ToStateDictionary());
             options = Prompt.Select(
                 $"It is {player} player turn. What would you like to do?",
                 new[] { "move", "quit", "history", "score" }

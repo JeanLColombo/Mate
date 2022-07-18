@@ -1,6 +1,7 @@
 using System.Xml.Linq;
 using Mate.Core.Abstractions;
-
+using System.Collections.Generic;
+using Mate.Core.Elements.Pieces;
 namespace Mate.Drawing;
 
 
@@ -115,4 +116,23 @@ public static class IllustratorExtensions
             ensureSquare
         );
     }
+}
+
+public static class GameExtensions
+{
+    public static IReadOnlyDictionary<(Files, Ranks), (PieceType, PieceColor)> ToStateDictionary(this IGame game)
+        => game.Position.ToDictionary((kvp) => (kvp.Key.File, kvp.Key.Rank), (kvp) => 
+        (
+            kvp.Value switch
+            {
+                Pawn _ => PieceType.pawn,
+                Bishop _ => PieceType.bishop,
+                Rook _ => PieceType.rook,
+                Knight _ => PieceType.knight,
+                Queen _ => PieceType.queen,
+                King _ => PieceType.king,
+                _ => throw new InvalidOperationException()
+            },
+            kvp.Value.Color ? PieceColor.white : PieceColor.black));
+    
 }

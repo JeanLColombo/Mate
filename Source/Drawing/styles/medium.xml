@@ -41,10 +41,78 @@
 {___}
         </king>
     </pieces>
+    <ranks>
+        <one>
+'| 
+.|.
+        </one>
+        <two>
+'~)
+ /_
+        </two>
+        <three>
+'~)
+._)
+        </three>
+        <four>
+|_|
+  |
+        </four>
+        <five> 
+L~ 
+_) 
+        </five>
+        <six>
+ / 
+(_)
+        </six>
+        <seven>
+~/
+/ 
+        </seven>
+        <eight>
+(~)
+(_)
+        </eight>
+    </ranks>
+    <files>
+        <a>
+ Λ 
+/~\
+        </a>
+        <b>
+|~)
+|_)
+        </b>
+        <c>
+/~`
+\_,
+        </c>
+        <d>
+|~\
+|_/
+        </d>
+        <e>
+(~ 
+(_ 
+        </e>
+        <f>
+|~~
+|~ 
+        </f>
+        <g>
+/~_
+\_/
+        </g>
+        <h>
+|_|
+| |
+        </h>
+    </files>
     <colors>
         <square>
             <white>Gray</white>
-            <black>DarkRed</black>
+            <black>DarkCyan</black>
         </square>
         <piece>
             <white>White</white>

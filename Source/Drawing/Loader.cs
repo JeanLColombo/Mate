@@ -10,7 +10,7 @@ namespace Mate.Drawing;
 public static class Loader
 {
 
-    public static Command GameMenu()
+    public static Command GameMenu(IllustratorStyle style)
     {
         var rootCommand = new RootCommand("mate");
         var newGameCommand = new Command(
@@ -18,7 +18,7 @@ public static class Loader
             "Create a new game");
         newGameCommand.SetHandler(() =>
         {
-            InteractiveGame.RunInteractive();
+            InteractiveGame.RunInteractive(style);
         });
 
         var loadGameCommand = new Command("load",
@@ -30,13 +30,14 @@ public static class Loader
 
     public static void ConfigureServices(HostBuilderContext context, IServiceCollection services)
     {
-        // var illustrator = IllustratorExtensions.LoadFromXML(
-        //     XElement.Load(File.OpenText("Styles/small.xml"))
-        // );
-        services.AddSingleton(GameMenu());
+        var illustrator = IllustratorExtensions.LoadFromXML(
+            XElement.Load(File.OpenText("Styles/medium.xml"))
+        );
+        // context.Configuration
+        services.AddSingleton(GameMenu(illustrator));
     }
 
-    static int Main(string[] args)
+    public static int Main(string[] args)
     {
         var host = new HostBuilder()
             .ConfigureServices(ConfigureServices)

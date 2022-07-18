@@ -10,4 +10,10 @@ public class TestLoader
         var xml = File.OpenText("Styles/small.xml");
         var style = IllustratorExtensions.LoadFromXML(XElement.Load(xml));
     }
+
+    [Fact]
+    public void RunGame()
+    {
+        Loader.Main(new[] { "new" });
+    }
 }
