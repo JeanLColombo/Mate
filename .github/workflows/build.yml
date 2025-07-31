@@ -25,7 +25,7 @@ jobs:
         run: dotnet test --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=../.coverage/lcov
       
       - name: Upload new code coverage
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: lcov.info
           path: ./Test/.coverage/lcov.info
@@ -48,7 +48,7 @@ jobs:
         run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=../.coverage/base_lcov
 
       - name: Upload code coverage for ref branch
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: base_lcov.info
           path: ./Test/.coverage/base_lcov.info
@@ -65,12 +65,12 @@ jobs:
           node-version: v16.11.0
 
       - name: Download code coverage report from base branch
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: base_lcov.info
 
       - name: Download code coverage report for incoming changes
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: lcov.info
 
