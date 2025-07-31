@@ -56,6 +56,9 @@ jobs:
         with:
           dotnet-version: 9.0.x
 
+      - name: Clean
+        run: dotnet clean
+
       - name: Base Coverage 
         run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=../.coverage/base_lcov
 
