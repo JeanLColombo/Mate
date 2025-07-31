@@ -5,7 +5,20 @@ name: .NET Build and Coverage
 on: [pull_request]
 
 jobs:
+  clean:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 9.0.x
+      - name: Clean
+        run: dotnet clean
+
   build_and_test:
+    needs: clean
     runs-on: ubuntu-latest
     
     steps:
@@ -32,7 +45,6 @@ jobs:
   
   base_branch_cov:
     needs: build_and_test
-
     runs-on: ubuntu-latest
 
     steps:
