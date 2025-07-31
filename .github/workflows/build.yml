@@ -54,10 +54,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 9.0.x
-
-      - name: Clean
-        run: dotnet clean
+          dotnet-version: 5.0.x
 
       - name: Base Coverage 
         run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=../.coverage/base_lcov
