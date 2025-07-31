@@ -14,8 +14,14 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 9.0.x
+
       - name: Clean
         run: dotnet clean
+
+      - name: Remove bin and obj folders
+        run: |
+          find . -type d -name "bin" -exec rm -rf {} +
+          find . -type d -name "obj" -exec rm -rf {} +
 
   build_and_test:
     needs: clean
@@ -54,7 +60,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 5.0.x
+          dotnet-version: 9.0.x
 
       - name: Base Coverage 
         run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=../.coverage/base_lcov
